@@ -11,9 +11,9 @@ COMPILE TOOLS
  
 AUTHORS
 ===============
-* 
+* Nils Meier
 
 LINKS
 ===============
-* 
+* http://www.os2world.com/wiki/index.php/FamilyTree
 
