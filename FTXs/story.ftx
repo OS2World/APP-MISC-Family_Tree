@@ -1,0 +1,456 @@
+/*
+   Family Tree Rexx Script FTX
+
+   Copyright (C) 1997 by <Dale DePriest>
+   revised 20 Sep 1997
+
+   Please send comments to / Kommentar bitte an
+        daled@cadence.com
+
+   <
+   English:   This script tells a story about the currently selected person.  :English
+   Deutsch:   Dieses Skript zeigt alle Informationen des aktuell ausgew„hlten Menschen.:Deutsch
+   Nederlands:This script shows all informations about the currently selected person.  :Nederlands
+   Fran‡ais:  Ce script affiche toutes les informations sur la personne actuellement
+              s‚lectionn‚e.                                                            :Fran‡ais
+   >
+
+   Long name is <
+                 English:    Story about current person            :English
+                 Deutsch:    Ausgeben der aktuellen Person       :Deutsch
+                 Nederlands: Print out current person            :Nederlands
+                 Fran‡ais:   Imprime la personne s‚lectionn‚e    :Fran‡ais
+                >
+*/
+
+/* ----------------------- Params  /  Parameter ------------------- */
+
+CALL InitLanguage
+
+parse arg endflag         /* endflag set to 1 will cause early exit */
+cr        = '0d0a'x
+linelength=70
+
+oldage=101
+leftover=''
+oldest=DATE(B)
+
+/* ----------------- Display Header / Kopf der Ausgabe ------------- */
+
+firstname=getFirstName()
+head=msg.header.LANG||Translate(firstname,'','~"')||' 'getName()
+SAY(SPACE(head))
+SAY(COPIES('=',length(head)))
+
+/* find prefered name for user. Several conventions are used to
+ * determine the preferred name.  If the name is inside () then a
+ * true nickname is used.  If inside "" then a preferred name is
+ * used.  If followed by a ~ then the next word is assumed to be
+ * the preferred name and finally the first name is used, if known.
+ * If there is no known first name then a pronoun is assumed. 
+ */
+nickname=""
+leftp=pos('(',firstname)
+if leftp>0 then do          /* it's a real alias nickname */
+	rightp=pos(')',firstname,leftp)
+	nickname=substr(firstname,leftp+1,rightp-leftp-1)
+	firstname=space(delstr(firstname,leftp))
+   end
+else do
+   leftp=pos('"',firstname)
+   if leftp>0 then do       /* user prefers second name or multiple names */
+	rightp=pos('"',firstname,leftp+1)
+        if rightp=0 then rightp=length(firstname)+1
+	nickname=substr(firstname,leftp+1,rightp-leftp-1)
+   end
+end
+
+leftp=pos('~', firstname)
+if nickname='' then do
+   if leftp>1 then do       /* user prefers second name */
+      rightp=pos(' ',firstname, leftp+1)
+      if rightp=0 then rightp=length(firstname)+1
+      nickname=substr(firstname,leftp+1,rightp-leftp-1)
+   end
+end
+if leftp>0 then firstname=delstr(firstname,leftp,1)
+
+/* Standard data / Standardinformationen */
+id=getPID()
+sex1=getSex()
+pronoun=WORD(msg.datasex.LANG,sex1+1)
+sd=WORD(msg.datasex1.LANG,sex1+1)
+
+msg=''
+
+dayold=getBirthDate('d')
+
+/* ------------------------------ Output / Ausgabe ----------------- */
+if dayold \=0 then 
+   msg=Parsedate('birth')	
+msg2=getBirthPlace()
+msg2=ParsePlace()
+if msg2 \= '' then msg=msg||' in 'msg2 
+if msg = '' then call printline(space('Birth information is not known for 'firstname getName())'.')
+else  call printline (firstname getName() 'was born' msg||'.')
+
+if nickname="" then do
+	nickname=word(firstname,1)
+	if nickname="" then nickname=pronoun
+     end
+else call printline (pronoun 'prefers to be called' nickname'.')
+
+/* find out about parents
+ * This can be wrong if a stepchild or an adopted child is being delt with
+ */
+res=doStack('PP')
+res=SelectFamily('p')
+name2=' '
+if res=0 then call printline (pronoun' is the 'sd' of Unknown parents.')
+	/* is res=0 then these is no family record */
+else do
+        daymar=getMarriageDate('d') - 365
+	if (dayold > 0) & (dayold < daymar) then call printline (pronoun' was likely a child of an earlier marriage.')
+	res=selectPerson('p')
+	name1=Translate(getFirstName(),'','~"')||' '||getName()
+	age1=getbirthdate('d')
+	/* age plus 25 years + 35 years down at siblings */
+        if age1 > 0 then oldest=min(oldest, age1+9131)
+	res=selectPerson('p')
+	name2=Translate(getFirstName(),'','~"')||' '||getName()
+	age2=getbirthdate('d')
+        if age2 > 0 then oldest=min(oldest, age2+9131)
+  if (age1 > 0) & (dayold > 0) then name1=name1||' at age '||TRUNC((dayold - age1)/365.25)
+  linetoprint=pronoun' is the 'sd' of 'name1
+  if (age2 > 0) & (dayold > 0) then name2=name2||' at age '||TRUNC((dayold - age2)/365.25)
+  if name2 \= ' ' then linetoprint=space(linetoprint' and 'name2)
+  call printline(linetoprint||'.')
+
+rc=selectPerson('1')
+c=1
+heading=0
+   DO WHILE rc=1
+        results=''
+	pidresult=getPID()
+	if pidresult \= id then do
+	  age1=getbirthdate('d')
+          if age1 > 0 then oldest=min(oldest,age1)
+	  if (age1 > 0) & (dayold \= 0) then do
+	    age2 = TRUNC((age1 - dayold)/365.25)
+	     if age2 < 0 then 
+		 results=', who was '||ABS(age2)||' years older.'
+	     if  age2 = 0 then do
+		age3 = TRUNC((age1 - dayold)/30.5)
+		select
+		  when age3 < 0 then
+		    results=', who was '||ABS(age3)||' months older.'
+		  when age3 = 0 then do
+		    age3=age1-dayold
+		    if age3=0 then 
+		        results=', who was a twin.'
+		    else results=', who was almost the same age.'
+                    end
+		  otherwise
+		    results=', who was '||age3||' months younger.'
+	        end
+             end
+	     if age2 > 0 then 
+		results=', who was '||age2||' years younger.'
+	  end
+          if heading=0 then do
+	     call printline(nickname||' had the following siblings:')
+             if leftover \= '' then say(leftover)
+             leftover=''
+	     heading=1
+          end
+          results=msg.empty.LANG||Translate(getFirstName(),'','~"')||' '||getName()||results
+          SAY(results)
+	end
+      c=c+1
+      rc=selectPerson(c)
+   END
+
+end
+
+res=doStack('pP')
+
+
+if getOccupation() \= '' then call printline (pronoun msg.occupation.LANG getOccupation()'.')
+msg2 = getAddress()
+msg2 = parsePlace()
+if msg2 \= '' then call printline (nickname 'lives at 'msg2'.')
+
+/* calculate death data */
+daydied=getDeathDate('d')
+msg=''
+IF daydied \=0 THEN
+	msg = pronoun||' died '||parsedate('death')
+msg2 = getDeathPlace()
+msg2 = parsePlace()
+if msg2 \= '' then do
+	if msg='' then msg= pronoun||' died'
+	msg=msg||' in '||msg2
+	end
+if (dayold*daydied) \=0 then msg=msg||' at 'TRUNC((daydied-dayold)/365.25)' years of age' 
+if msg \='' then call printline (msg||'.')
+ELSE do /* see if we can presume person died */
+  select
+  when (getDeathDate('O')>0) then
+	call printline(pronoun||' died on an unknown date.')
+  when (dayold \=0) & ((DATE(B)-dayold)/365.25>oldage) then
+	call printline(pronoun||' is presumed dead based on age.')
+        /* oldest sibling can be no more than 35 years older than person */
+  when (oldest \= 0) & ((DATE(B)-oldest)/365.25 > (oldage+35)) then
+	call printline(pronoun' is presumed dead based on the age of siblings or parents.')
+  otherwise nop
+  end
+end
+
+if leftover \= '' then say(leftover)
+leftover=''
+
+
+/* Memo field  /  Memofeld  */
+line=1
+results=getMemo(line)
+IF LENGTH(RESULTS)\=0 THEN SAY (cr||'It can be said about' nickname':')
+DO while results \= ''
+   call printline (results)
+   line=line+1
+   results=getMemo(line)
+END
+if leftover \= '' then say(leftover)
+leftover=''
+
+/* bail out and send nickname back if called with first arg set to 1 */
+if endflag = 1 then EXIT NICKNAME
+
+/* Marriages  /  Ehen */
+
+p=1
+rc=selectFamily(p)
+
+DO WHILE rc=1
+   /* Push Man on Stack  /  Menschen auf Stack */
+   rc=doStack('PP')
+
+   /* Partner  /  Parner */
+   rc=selectPerson('p')
+   results=Translate(getFirstName(),'','~"')||' '||getName()||' '
+
+   /* MarriageDate  /  Heiratsdatum */
+   results=space(nickname msg.marriage.LANG||results||parsedate('marriage'))
+   daymar=getMarriageDate('d')
+
+   /* Output  /  Ausgabe */
+   SAY('')
+if (daymar * dayold) \= 0 then
+   call printline(results||' at age' TRUNC((daymar - dayold)/ 365.25)'.' )
+else call printline (results'.')
+msg2=getMarriagePlace()
+msg2=parsePlace()
+if msg2 \= '' then call printline ('They were married at 'msg2'.')
+if leftover \= '' then say(leftover)
+leftover=''
+
+   /* Children  /  Kinder */
+   c=1
+   rc=selectPerson(c);
+   DO WHILE rc=1
+   if c=1 then say (msg.child.lang)
+	 results=parseDate('birth')
+	 if results \='' then results=msg.Birthdate.LANG||' 'results
+         results=msg.empty.LANG||Translate(getFirstName(),'','~"')||' '||getName()||', '||results
+      SAY(results)
+      c=c+1
+      rc=selectPerson(c)
+   END
+
+divdate=parsedate('divorce')
+divday=GetDivorceDate('d')
+if divday\=0 then call printline ('They were divorced' divdate 'and were married' TRUNC((divday - daymar)/365.25) 'years.')
+if (getDivorceDate('O')>0) then
+	call printline('They were divorced.')
+
+if leftover \= '' then say(leftover)
+leftover=''
+
+
+   /* Pop Man from Stack  /  Menschen vom Stack */
+   rc=doStack('pP')
+
+   /* Next Family of Actual /  Naechste Familie des Aktuellen */
+   p=p+1
+   rc=selectFamily(p)
+END
+
+
+/* Done / Fertig */
+RETURN
+
+  /* Subroutines */
+
+printline:
+parse arg linetoprint
+leftover=leftover||' '||linetoprint
+
+if length(leftover) < linelength then return
+loca=pos(' ',leftover)
+do while loca < linelength
+ oldloc=loca
+ loca=pos(' ',leftover,loca+1)
+ if loca=0 then leave
+end
+say(left(leftover,oldloc))
+leftover=right(leftover,length(leftover)-oldloc)
+if length(leftover) > linelength then call printline
+return
+
+Parsedate: 
+parse arg type
+
+If type='birth' then do
+	Day=Getbirthdate('D')
+	Month1=GetBirthDate('m')
+	Year=GetBirthDate('Y')
+	modify=GetBirthDate('O')
+   end
+if Type='death' then do
+	Day=GetDeathdate('D')
+	Month1=GetDeathDate('m')
+	Year=GetDeathDate('Y')
+	modify=GetDeathDate('O')
+   end
+if Type='divorce' then do
+	Day=GetDivorceDate('D')
+	Month1=GetDivorceDate('m')
+	Year=GetDivorceDate('Y')
+	modify=GetDivorceDate('O')
+   end
+if Type='marriage' then do
+	Day=GetMarriageDate('D')
+	Month1=GetMarriageDate('m')
+	Year=GetMarriageDate('Y')
+	modify=GetMarriageDate('O')
+   end
+
+prep='on'
+if Day=0 then Day=""
+else Day=Day||', '
+if Month1='?' then do
+   Month1 = ''
+   if modify > 0 then prep=''
+   else prep='in'
+end
+if modify = 0 then modify='' 
+Else modify=WORD(msg.mod.LANG, modify)
+If Year=0 then do
+        prep=''
+        year=''
+end
+msg=prep || Modify ||' '||Month1 ||' '|| Day|| Year
+return SPACE(msg)
+
+ParsePlace:
+loc=pos(',',msg2)
+do while loc>0 
+	msg2=insert(' ',msg2,loc)
+	loc=pos(',',msg2,loc+2)
+end
+return space(msg2)
+
+/* ---------------------- LANGUAGE INIT --------------------------- */
+InitLanguage:
+
+   /* Calculate Language Index */
+   lang='E'                              /* Default -> [E]nglish */
+   IF getLanguage()='Deutsch' THEN       /* Deutsch -> [G]erman */
+      lang='G'
+   IF getLanguage()='Nederlands' THEN    /* Nederlands -> [D]utch */
+      lang='D'
+   IF getLanguage()='Fran‡ais' THEN       /* Fran‡ais -> [F]rench */
+      lang='F'
+
+   /* [E]nglish Messages */
+   msg.header.E    ='Personal data of: '
+   msg.name.E      ='Name            : '
+   msg.firstname.E ='First name      : '
+   msg.sex.E       ='Sex             : '
+   msg.birthdate.E ='Birth date'
+   msg.birthplace.E='Birth location  : '
+   msg.deathdate.E ='Death date      : '
+   msg.deathplace.E='Death location  : '
+   msg.occupation.E='works as '
+   msg.address.E   ='Address         : '
+   msg.memo.E      ='Memo            : '
+   msg.picture.E   ='Picture         : '
+   msg.marriage.E  ='married '
+   msg.child.E     ='They had the following Children:'
+   msg.empty.E     ='    '
+   msg.datasex.E   = '? He She'
+   msg.datasex1.E  = 'child son daughter'
+   msg.month.E = 'January February March April May June July August September October November December'
+   msg.mod.E = 'about after before estimated'
+
+   /* [G]erman Messages */
+   msg.header.G    ='Persoenliche Daten von '
+   msg.name.G      ='Name            : '
+   msg.firstname.G ='Vorname         : '
+   msg.sex.G       ='Geschlecht      : '
+   msg.birthdate.G ='Geburtsdatum    : '
+   msg.birthplace.G='Geburtsort      : '
+   msg.deathdate.G ='Todesdatum      : '
+   msg.deathplace.G='Todesort        : '
+   msg.occupation.G='Beruf           : '
+   msg.address.G   ='Addresse        : '
+   msg.memo.G      ='Memo            : '
+   msg.picture.G   ='Bild            : '
+   msg.marriage.G  ='Ehe mit         : '
+   msg.child.G     ='- Kinder        : '
+   msg.empty.G     ='                : '
+   msg.datasex.G   = '? m„nnlich weiblich'
+   msg.datasex1.G   = 'm„nnlich weiblich'
+
+   /* [D]utch Messages */
+   msg.header.D    ='Personal data of '
+   msg.name.D      ='Name            : '
+   msg.firstname.D ='First name      : '
+   msg.sex.D       ='Sex             : '
+   msg.birthdate.D ='Birth date      : '
+   msg.birthplace.D='Birth location  : '
+   msg.deathdate.D ='Death date      : '
+   msg.deathplace.D='Death location  : '
+   msg.occupation.D='Occupation      : '
+   msg.address.D   ='Address         : '
+   msg.memo.D      ='Memo            : '
+   msg.picture.D   ='Picture         : '
+   msg.marriage.D  ='Marriage with   : '
+   msg.child.D     ='- Children      : '
+   msg.empty.D     ='                : '
+   msg.datasex.D   = '? male female'
+
+   /* [F]rench Messages */
+   msg.header.F    ="Renseignements sur "
+   msg.name.F      ="Nom                : "
+   msg.firstname.F ="Pr‚nom(s)          : "
+   msg.sex.F       ="Sexe               : "
+   msg.birthdate.F ="Date de Naissance  : "
+   msg.birthplace.F="Lieu de Naissance  : "
+   msg.deathdate.F ="Date du D‚cŠs      : "
+   msg.deathplace.F="Lieu du D‚cŠs      : "
+   msg.occupation.F="Activit‚           : "
+   msg.address.F   ="Adresse            : "
+   msg.memo.F      ="M‚mo               : "
+   msg.picture.F   ="Image              : "
+   msg.marriage.F  ="Mariage avec       : "
+   msg.child.F     ="- Enfant(s)        : "
+   msg.empty.F     ="                   : "
+   msg.datasex.F   ="? Homme Femme"
+   msg.datasex1.F   ="Homme Femme"
+
+   /* Done */
+   RETURN
+
+
+
+

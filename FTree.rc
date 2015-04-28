@@ -1,0 +1,117 @@
+#include "ftree.h"
+#include <os2.h>
+
+ICON RES_IconFTree     "BMPs\\FTree.ico"
+ICON 0x7112            "BMPs\\Fade.ico" // Special for IBM Openclass Drag&Drop support
+ICON RES_IconDragMan   "BMPs\\DragMan.ico"
+ICON RES_IconDragEvent "BMPs\\DragEvent.ico"
+
+BITMAP RES_BmpSexMale        PRELOAD "BMPs\\SexMale.bmp"
+BITMAP RES_BmpSexFemale      PRELOAD "BMPs\\SexFemale.bmp"
+BITMAP RES_BmpSexUnknown     PRELOAD "BMPs\\SexUnknown.bmp"
+BITMAP RES_BmpLinkMan        PRELOAD "BMPs\\LinkMan.bmp"
+BITMAP RES_BmpLinkEvent      PRELOAD "BMPs\\LinkEvent.bmp"
+
+BITMAP RES_BmpDefault        PRELOAD "BMPs\\Default.bmp"
+BITMAP RES_BmpNotFound       PRELOAD "BMPs\\NotFound.bmp"
+
+BITMAP RES_BmpOpen           PRELOAD "BMPs\\Open.bmp"
+BITMAP RES_BmpSave           PRELOAD "BMPs\\Save.bmp"
+BITMAP RES_BmpPrint          PRELOAD "BMPs\\Print.bmp"
+BITMAP RES_BmpOptions        PRELOAD "BMPs\\Options.bmp"
+BITMAP RES_BmpLocate         PRELOAD "BMPs\\Locate.bmp"
+BITMAP RES_BmpVertical       PRELOAD "BMPs\\Vertical.bmp"
+BITMAP RES_BmpHorizontal     PRELOAD "BMPs\\Horizontal.bmp"
+BITMAP RES_BmpTop            PRELOAD "BMPs\\Top.bmp"
+BITMAP RES_BmpBottom         PRELOAD "BMPs\\Bottom.bmp"
+BITMAP RES_BmpNoSiblings     PRELOAD "BMPs\\NoSiblings.bmp"
+BITMAP RES_BmpSiblings       PRELOAD "BMPs\\Siblings.bmp"
+BITMAP RES_BmpAncestors      PRELOAD "BMPs\\Ancestors.bmp"
+BITMAP RES_BmpDescendants    PRELOAD "BMPs\\Descendants.bmp"
+
+BITMAP RES_BmpPageMan        PRELOAD "BMPs\\PageMan.bmp"
+BITMAP RES_BmpPageManPlus    PRELOAD "BMPs\\PageManPlus.bmp"
+BITMAP RES_BmpPageDocsA      PRELOAD "BMPs\\PageDocsA.bmp"
+BITMAP RES_BmpPageDocsB      PRELOAD "BMPs\\PageDocsB.bmp"
+BITMAP RES_BmpPageEventsA    PRELOAD "BMPs\\PageEventsA.bmp"
+BITMAP RES_BmpPageEventsB    PRELOAD "BMPs\\PageEventsB.bmp"
+BITMAP RES_BmpPageFilesA     PRELOAD "BMPs\\PageFilesA.bmp"
+BITMAP RES_BmpPageFilesB     PRELOAD "BMPs\\PageFilesB.bmp"
+BITMAP RES_BmpPageEvent      PRELOAD "BMPs\\PageEvent.bmp"
+BITMAP RES_BmpPagePersons    PRELOAD "BMPs\\PagePersons.bmp"
+
+BITMAP RES_BmpUP             PRELOAD "BMPs\\UP.bmp"
+BITMAP RES_BmpDOWN           PRELOAD "BMPs\\DOWN.bmp"
+BITMAP RES_BmpLEFT           PRELOAD "BMPs\\LEFT.bmp"
+BITMAP RES_BmpRIGHT          PRELOAD "BMPs\\RIGHT.bmp"
+
+BITMAP RES_BmpYes            PRELOAD "BMPs\\Yes.bmp"
+BITMAP RES_BmpNo             PRELOAD "BMPs\\No.bmp"
+BITMAP RES_BmpUnknown        PRELOAD "BMPs\\Unknown.bmp"
+
+HELPTABLE ID_NMainWindow
+  BEGIN
+    HELPITEM ID_NMainWindow,   ID_NMainWindow, ID_NMainWindow
+    HELPITEM ID_NEditWindow,   ID_NMainWindow, ID_NEditWindow
+    HELPITEM ID_NListWindow,   ID_NMainWindow, ID_NListWindow
+    HELPITEM ID_NOptionsDialog,ID_NMainWindow, ID_NOptionsDialog
+    HELPITEM ID_NPrintDialog,  ID_NMainWindow, ID_NPrintDialog
+    HELPITEM ID_NAboutDialog,  ID_NMainWindow, ID_NAboutDialog
+    HELPITEM ID_NEventsWindow, ID_NMainWindow, ID_NEventsWindow
+    HELPITEM ID_NRexxDialog,   ID_NMainWindow, ID_NRexxDialog
+    HELPITEM ID_NRexxOutput,   ID_NMainWindow, ID_NRexxOutput
+  END
+HELPSUBTABLE ID_NMainWindow
+  BEGIN
+    HELPSUBITEM MI_FileNew, MI_FileNew
+    HELPSUBITEM MI_FileOpen, MI_FileOpen
+    HELPSUBITEM MI_FileSave, MI_FileSave
+    HELPSUBITEM MI_FileSaveAs, MI_FileSaveAs
+    HELPSUBITEM MI_FilePrint, MI_FilePrint
+    HELPSUBITEM MI_FileClose, MI_FileClose
+
+    HELPSUBITEM MI_MankindAncestors, MI_MankindAncestors
+    HELPSUBITEM MI_MankindDescendants, MI_MankindDescendants
+    HELPSUBITEM MI_MankindSiblings, MI_MankindSiblings
+    HELPSUBITEM MI_MankindZoomIn, MI_MankindZoomIn
+    HELPSUBITEM MI_MankindZoomOut, MI_MankindZoomOut
+    HELPSUBITEM MI_MankindVert, MI_MankindVert
+    HELPSUBITEM MI_MankindHori, MI_MankindHori
+    HELPSUBITEM MI_MankindList, MI_MankindList
+
+    HELPSUBITEM MI_ManCenter, MI_ManCenter
+    HELPSUBITEM MI_ManEdit, MI_ManEdit
+    HELPSUBITEM MI_ManOrigin, MI_ManOrigin
+    HELPSUBITEM MI_ManDel, MI_ManDel
+    HELPSUBITEM MI_ManDelPartner, MI_ManDelPartner
+    HELPSUBITEM MI_ManDelChilds, MI_ManDelChilds
+    HELPSUBITEM MI_ManDelParents, MI_ManDelParents
+    HELPSUBITEM MI_ManDelThis, MI_ManDelThis
+    HELPSUBITEM MI_ManChild, MI_ManChild
+    HELPSUBITEM MI_ManChildWith, MI_ManChildWith
+    HELPSUBITEM MI_ManChildNew, MI_ManChildNew
+    HELPSUBITEM MI_ManChildRemembered, MI_ManChildRemembered
+    HELPSUBITEM MI_ManParents, MI_ManParents
+    HELPSUBITEM MI_ManPartner, MI_ManPartner
+    HELPSUBITEM MI_ManPartnerNew, MI_ManPartnerNew
+    HELPSUBITEM MI_ManPartnerRemembered, MI_ManPartnerRemembered
+    HELPSUBITEM MI_ManRemember, MI_ManRemember
+
+    HELPSUBITEM MI_OptionsLayout,MI_OptionsLayout
+    HELPSUBITEM MI_OptionsDataAssistant,MI_OptionsDataAssistant
+    HELPSUBITEM MI_OptionsMiscellaneous,MI_OptionsMiscellaneous
+    HELPSUBITEM MI_OptionsUserFields,MI_OptionsUserFields
+
+    HELPSUBITEM MI_RexxStart+0,MI_RexxStart
+    HELPSUBITEM MI_RexxStart+1,MI_RexxStart
+    HELPSUBITEM MI_RexxStart+2,MI_RexxStart
+    HELPSUBITEM MI_RexxStart+3,MI_RexxStart
+    HELPSUBITEM MI_RexxStart+4,MI_RexxStart
+    HELPSUBITEM MI_RexxStart+5,MI_RexxStart
+    HELPSUBITEM MI_RexxStart+6,MI_RexxStart
+    HELPSUBITEM MI_RexxStart+7,MI_RexxStart
+    HELPSUBITEM MI_RexxStart+8,MI_RexxStart
+    HELPSUBITEM MI_RexxStart+9,MI_RexxStart
+  END
+
+

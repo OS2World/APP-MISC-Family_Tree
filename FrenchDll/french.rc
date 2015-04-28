@@ -1,0 +1,440 @@
+#include "..\ftree.h"
+#include <os2.h>
+
+
+ACCELTABLE ID_NMainWindow
+BEGIN
+   "+", MI_MankindZoomIn
+   "-", MI_MankindZoomOut
+   "n", MI_FileNew, CONTROL
+   "l", MI_FileOpen, CONTROL
+   "m", MI_FileMerge, CONTROL
+   "s", MI_FileSave, CONTROL
+   "p", MI_FilePrint, CONTROL
+   "x", MI_FileClose, CONTROL
+
+   VK_F2, MI_FileSave, VIRTUALKEY
+   VK_F3, MI_FileClose, VIRTUALKEY
+
+   "r", MI_RexxStart, CONTROL
+
+   "1", MI_MankindAncestors, CONTROL
+   "2", MI_MankindDescendants, CONTROL
+   "3", MI_MankindSiblings, CONTROL
+
+   "h", MI_MankindHori, CONTROL
+   "v", MI_MankindVert, CONTROL
+END
+
+
+STRINGTABLE PRELOAD MOVEABLE
+BEGIN
+
+   ID_nbOpen,                "Chargement des donn‚es"
+   ID_nbSave,                "Sauvegarde des donn‚es"
+   ID_nbPrint,               "Impression des donn‚es"
+   ID_nbOptions,             "R‚glage des options"
+   ID_nbLocate,              "Recherche d'une Personne"
+   ID_nbHoriVert,            "Vue horizontale/verticale"
+   ID_nbAncestors,           "Affichage des G‚n‚rations d'Ancˆtres"
+   ID_nbDescendants,         "Affichage des G‚n‚rations de Descendants"
+   ID_nbSiblings,            "Collat‚raux visible"
+   ID_isZoom,                "Taux de Zoom"
+   ID_nbTopBottom,           "Ligne d'icones - Haut/Bas"
+
+
+   SI_MainTitle,               "FamilyTree"
+   SI_MainTitleUnregistered,   " (non enregistr‚)"
+   SI_EditTitle,               "Fenˆtre Edition "
+   SI_ListTitle,               "Fenˆtre Listage "
+   SI_EventTitle,              "Fenˆtre Ev‚nements " /**/
+   SI_OptionsTitle,            "Fenˆtre Options "
+
+   SI_NotImplemented,   "Non mis en oeuvre"
+   SI_TabStandard,      "Champs de Donn‚es Standard"
+   SI_TabUser,          "Champs de Donn‚es Utilisateur"
+   SI_TabSources,       "Sources de documentation"
+   SI_TabEvents,        "EvŠnements"
+   SI_TabAttachments,   "Rattachements Fichier"
+
+   SI_Name,             "Nom"
+   SI_FirstName,        "Pr‚nom"
+   SI_Sex,              "Sexe"
+   SI_MaleFemale,       "-MF"
+   SI_BirthDate,        "Naissance"
+   SI_BirthPlace,       "Lieu"
+   SI_DeathDate,        "D‚cŠs"
+   SI_DeathPlace,       "Lieu"
+   SI_MarriageDate,     "Mariage"
+   SI_MarriagePlace,    "Lieu"
+   SI_DivorceDate,      "Fin"
+   SI_Occupation,       "Activit‚"
+   SI_Address,          "Adresse"
+   SI_Memo,             "M‚mo"
+   SI_Bitmap,           "Image"
+
+   SI_Adam,             "Adam"
+   SI_Child,            "Enfant"
+   SI_Mom,              "MŠre"
+   SI_Dad,              "PŠre"
+   SI_Partner,          "Conjoint"
+   SI_NoneRemembered,   "<Aucun en m‚moire>"
+   SI_NewPerson,        "~Nouveau"
+   SI_ReallyDelChilds1, "Effacement des enfants de "
+   SI_ReallyDelChilds2, " efface tous les enfants et leurs proches! Ex‚cution?"
+   SI_ReallyDelParents1,"Effacement des parents de "
+   SI_ReallyDelParents2," efface les parents et leurs proches, hormis cette ligne! Ex‚cution?"
+   SI_ReallyDelThis1,   "Effacement individu "
+   SI_ReallyDelThis2,   " efface ‚galement tous les proches, qui ne sont pas du cot‚ de l'origine! Ex‚cution?"
+   SI_ReallyDelPartner1,"Effacement du conjoint de "
+   SI_ReallyDelPartner2," efface ses parents, enfants et leur proche! Ex‚cution?"
+   SI_ReallyStealChild1,"Ajout d'un enfant "
+   SI_ReallyStealChild2," efface ses parents, quand ils ne sont plus li‚s … l'origine! Ex‚cution?"
+   SI_AncestorLoop1,    " ne peut ˆtre l'enfant de "
+   SI_AncestorLoop2,    ", car il/elle est son ancˆtre!"
+   SI_ImportNoData,     "*** Pas de donn‚es … importer!"
+   SI_ImportNumPersons, "*** Nombre de personnes devant ˆtre import‚es : "
+   SI_ImportOrigin,     "*** L'origine est                             : "
+   SI_ImportPAdded,     "*** Nbre de p. ajout‚es … cause de situations inconnues/boucles : "
+   SI_ImportPDropped,   "*** Nombre de personnes ‚cart‚es car non li‚es … l'origine      : "
+   SI_ImportFDropped,   "*** Nombre de familles ‚cart‚es car non rattach‚es              : "
+
+   SI_DlgFileError,     "Erreur d'ouverture de fichier : "
+   SI_DlgFileFalse,     "Fichier non valide : "
+   SI_DlgFileBadWrite,  "Erreur d'‚criture de fichier : "
+   SI_DlgFileLoad,      "Chargement de l'arbre g‚n‚alogique"
+   SI_DlgFileSave,      "Sauvegarde de l'arbre g‚n‚alogique"
+
+   SI_BmpOrGifPlease,   "S'il vous plait seulement des GIFs,TIFs,PCXs ou BMPs !"
+   SI_BmpGiveName,      "Donnez un nom … votre arbre g‚n‚alogique (avec Sauvegarde Comme), ainsi je pourrais l'enregistrer avec un chemin attach‚ !"
+   SI_BmpDoRelative,    "D‚placez le fichier dans la (sous-)directorie o— r‚side votre arbre g‚n‚alogique, ainsi je pourrais l'enregistrer avec un chemin attach‚ !"
+
+   SI_NoHelp,           "Pas d'aide disponible!"
+   SI_SaveNow,          "Vous avez modifi‚ l'arbre g‚n‚al.! Sauvegarder maintenant?"
+   SI_NoProfile,        "N'a pu lire le Profile ou le profile n'est pas termin‚!"
+   SI_NoSaveProfile,    "N'a pu ‚crire le Profile!"
+
+   SI_PrintTitle,              "Impression Arbre G‚n‚alogique"
+   SI_PrintPrinter,            "Imprimante"
+   SI_PrintPageSize,           "Taille de Page (cm)"
+   SI_PrintDPI,                "R‚solution (dpi)"
+   SI_PrintPages,              "Pages"
+   SI_PrintFit,                "Ajustement"
+   SI_PrintZoom,               "Zoom par"
+   SI_PrintDoPrint,            "Impression"
+   SI_PrintDoProps,            "Propri‚t‚s"
+   SI_PrintDoCancel,           "Annulation"
+   SI_PrintErrNoQueuesDef,     "Il n'y a pas de Queues d'Impression de d‚finies! Pas d'impression disponible!"
+   SI_PrintErrDevOpenFailed,   "N'a pu ouvrir le systŠme pour la Queue d'Impression "
+   SI_PrintErrQueryCapsFailed, "N'a pu s'assurer des caract‚ristiques pour la Queue d'Impression "
+   SI_PrintErrCreatePSFailed,  "N'a pu cr‚er PS !"
+
+   SI_QueryGenerationsPlease  ,"Veuillez sp‚cifier" /**/
+   SI_QueryGenerationsParent  ,"Le nombre de g‚n‚rations d'ancˆtres, auquel vous voulez r‚duire l'arbre"
+   SI_QueryGenerationsChild   ,"Le nombre de g‚n‚rations de descendants, auquel vous voulez r‚duire l'arbre"
+   SI_QueryGenerationsMax     ,"Toujours le Maximum"
+   SI_QueryGenerationsUpTo    ,"Jusqu'… "
+
+   SI_DropFileHere,            "Faites glisser un fichier!"
+   SI_DropPersonHere,          "Faire glisser une personne pour l'ajouter … cet ‚vŠnement!"
+   SI_DropEventHere,           "Faites glisser un ‚v‚nement pour l'ajouter … cette personne!"
+   SI_ClickForEvent,           "Cliquez ici pour cr‚er un nouvel ‚vŠnement!"
+   SI_Person,                  "Personne"
+   SI_Event,                   "EvŠnement"
+   SI_InvolvedPerson,          "Impliqu‚ d'un Individu"
+   SI_InvolvedAs,              "Impliqu‚ comme"
+
+   SI_MsgGenAncestors,         " Gen.Ancˆtres "
+   SI_MsgGenDescendants,       " Gen.Descendants "
+   SI_MsgNumberOfMan,          " Individus "
+   SI_MsgNumberOfRel,          " Familles "
+   SI_MsgPrinting,             "Impression page "
+   SI_MsgLoadPerson,           "Chargement d'un Individu "
+   SI_MsgLoadMarriage,         "Chargement Relation "
+   SI_MsgSavePerson,           "Sauvegarde Individu "
+   SI_MsgSaveMarriage,         "Sauvegarde Relation "
+   SI_MsgLoadEvent,            "Chargement ‚vŠnement "
+   SI_MsgSaveEvent,            "Sauvegarde ‚vŠnement "
+   SI_MsgLoadCheck,            "V‚rification IDs..."
+   SI_MsgDuplicateIDs,         "ID(s) en double/ou manquante ! O.K. pour corriger ID(s) ?"
+   SI_MsgDoingBackup,          "Sauvegarde en cours "
+
+   SI_AboutTitle,              "A propos de Family Tree"
+   SI_AboutHead,               "Family Tree 1.2f"
+   SI_AboutCopyright,          "(C) 1996 Nils Meier"
+   SI_AboutRegisterHere,       "Vous pouvez vous enregistrer ici :"
+   SI_AboutPlease1,            "Veuillez lire l'aide en ligne pour"
+   SI_AboutPlease2,            "information sur comment vous enregistrer."
+   SI_AboutDoRegister,         "Enregistrer"
+   SI_AboutLater,              "Plus tard"
+   SI_AboutIsRegTo,            "Ce programme est enregistr‚ pour :"
+   SI_AboutThanks,             "Merci de vous ˆtre enregistr‚ !"
+   SI_AboutVerify,             "Veuillez v‚rifiez vos donn‚es! \n Entrez les infos pour vous enregistrer comme elles sont indiqu‚es!"
+
+   SI_MonthNames+ 0,           "?"
+   SI_MonthNames+ 1,           "Janvier"
+   SI_MonthNames+ 2,           "F‚vrier"
+   SI_MonthNames+ 3,           "Mars"
+   SI_MonthNames+ 4,           "Avril"
+   SI_MonthNames+ 5,           "Mai"
+   SI_MonthNames+ 6,           "Juin"
+   SI_MonthNames+ 7,           "Juillet"
+   SI_MonthNames+ 8,           "Ao–t"
+   SI_MonthNames+ 9,           "Septembre"
+   SI_MonthNames+10,           "Octobre"
+   SI_MonthNames+11,           "Novembre"
+   SI_MonthNames+12,           "D‚cembre"
+
+   SI_Window,                  "Fenˆtre"
+   SI_Language,                "Fran‡ais"
+   SI_EnterPath,               "Entrez le chemin :"
+
+   SI_RexxDialog,              "Choisissez un script"
+   SI_RexxScript,              "Script"
+   SI_RexxLongname,            "D‚nomination"
+   SI_RexxAuthor,              "Auteur"
+   SI_RexxComment,             "Commentaire"
+   SI_RexxStart,               "~D‚marrer"
+   SI_RexxRemember,            "~Rappeler"
+   SI_RexxNotFound,            "Pas trouv‚ de scripts !"
+   SI_RexxUnknown,             "Inconnu"
+   SI_RexxTitle,               "Sortie Rexx de "
+   SI_RexxFinished,            "Fini "
+   SI_RexxDone,                "~OK"
+   SI_RexxCancel,              "~Annuler"
+   SI_RexxPrint,               "~Impression"
+   SI_RexxSave,                "~Sauvegarde"
+   SI_RexxOutputSave,          "Sauvegarde de la sortie rexx vers un fichier"
+   SI_RexxOutputSaveError,     "N'a pu ‚crire la sortie rexx vers un fichier!"
+   SI_RexxUnfinishedImport,    "Des personnes ont ‚t‚ laiss‚es, car non li‚es … l'origine! Voulez-vous les garder en m‚moire pour un import ult‚rieur?"
+
+   SI_ListId,                  "Id"
+   SI_ListSex,                 "Sexe"
+   SI_ListName,                "Nom"
+   SI_ListFirst,               "Pr‚nom"
+   SI_ListBirth,               "Naissance"
+   SI_ListBPlace,              "LieuNais"
+   SI_ListDeath,               "D‚cŠs"
+   SI_ListDPlace,              "LieuD‚c"
+   SI_ListSortBy,              "S‚lection de Tri"
+   SI_ListSortFields,          "Champs disponibles"
+   SI_ListSortSequence,        "Tri‚ par"
+
+   SI_EventsTab1,              "Donn‚es EvŠnement"
+   SI_EventsTab2,              "Personnes Impliqu‚es"
+   SI_EventsTab3,              "Sources Document‚es"
+   SI_EventsName,              "Ev‚nement"
+   SI_EventsFrom,              "Du (Date)"
+   SI_EventsTo,                "Au (Date)"
+   SI_EventsPlace,             "Endroit"
+   SI_EventsDescription,       "Description"
+
+   SI_OptionsLayout,           "Pr‚sentation"
+   SI_OptionsDataAssistant,    "Donn‚es Assistant"
+   SI_OptionsMiscellaneous,    "Divers"
+   SI_OptionsDateFormat,       "Date format"
+   SI_OptionsUserFields,       "Champs Utilisateur"
+   SI_OptionsProgram,          "(ParamŠtres Programme)"
+   SI_OptionsTree,             "(ParamŠtres Arbre)"
+   SI_OptionsLines,            "Lignes"
+   SI_OptionsDiagonal,         "Diagonal"
+   SI_OptionsOrthogonal,       "Orthogonal"
+   SI_OptionsDetail,           "D‚tail"
+   SI_OptionsFirstNames,       "Pr‚noms"
+   SI_OptionsDates,            "Dates Naissance/D‚cŠs"
+   SI_OptionsColor,            "Couleur"
+   SI_OptionsCBackground,      "Fond"
+   SI_OptionsCLines,           "Lignes"
+   SI_OptionsCBoxes,           "Cadres"
+   SI_OptionsCEmphasis,        "Accentuation"
+   SI_OptionsCTexts,           "Textes"
+   SI_OptionsCDefault,         "D‚faut"
+   SI_OptionsFont,             "Fonte"
+   SI_OptionsAddPartSA,        "Ajout Conjoint -> Mettre la mˆme adresse"
+   SI_OptionsAddPartOS,        "Ajout Conjoint -> Indiquer le sexe oppos‚"
+   SI_OptionsAddChilSN,        "Ajout Enfant   -> Mettre le mˆme nom"
+   SI_OptionsAddChilSA,        "Ajout Enfant   -> Mettre la mˆme adresse"
+   SI_OptionsAddPareMF,        "Ajout Parents  -> Avoir Homme et Femme"
+   SI_OptionsAddPareSN,        "Ajout Parents  -> Mettre le mˆme nom"
+   SI_OptionsAddPareSA,        "Ajout Parents  -> Mettre la mˆme adresse"
+   SI_OptionsFocusToEdit,      "La fonction Edit est activ‚e apr‚s avoir cliqu‚ sur la personne"
+   SI_OptionsRelPath,          "Essayer d'inclure les chemins associ‚s"
+   SI_OptionsDoBackup,         "Faire une sauvegarde avant d'enregistrer"
+   SI_OptionsImportPreserve,   "Toujours conserver les personnes non import‚es"
+   SI_OptionsFloatEdit,        "Fenˆtre d'Edition ind‚pendante"
+   SI_OptionsFloatList,        "Fenˆtre de Listage ind‚pendante"
+   SI_OptionsFloatEvents,      "Fenˆtre Ev‚nement ind‚pendante"
+   SI_OptionsMemoWordWrap,     "C‚sure champ M‚mo"
+   SI_OptionsBorderlessButtons,"Boutons en relief"
+   SI_OptionsDateFmt,          "Format de la Date"
+   SI_OptionsChooseFont,       "Choisir une fonte"
+
+   SI_FeatureNotAvailable1,    "Non enregistr‚"
+   SI_FeatureNotAvailable2,    "Apr‚s avoir enregistr‚ FamilyTree, ce changement sera permanent. Les liens d'un Fichier ne sont pas m‚moris‚s dans la version non enregistr‚e !"
+
+   SI_UserFieldField,     "Champ"
+   SI_UserFieldValue,     "Valeur"
+   SI_UserFieldFieldName, "Nom de Champ"
+   SI_UserFieldFieldType, "Type de Champ"
+   SI_UserFieldYesNo,     "Oui/Non"
+   SI_UserFieldText,      "Texte"
+   SI_UserFieldNumber,    "Nombre"
+   SI_UserFieldDate,      "Date"
+   SI_UserFieldNone,      "Aucun champ de d‚fini!"
+   SI_UserFieldMax3,      "D‚solu, mais vous ne pouvez pas d‚finir plus de 3 champs utilisateur avec la version non enregistr‚e de FamilyTree!"
+   SI_UserFieldDelete,    "Voulez vous vraiment enlever le champ utilisateur $ d‚fini? Toutes les donn‚es dans l'arbre li‚es … ce champ seront ‚cart‚es!"
+
+   SI_OK,     "OK"
+   SI_Cancel, "Annuler"
+   SI_New,    "Nouveau"
+   SI_Change, "Changer"
+   SI_Delete, "Effacer"
+   SI_Yes,    "Oui"
+   SI_No,     "Non"
+   SI_Unknown,"Inconnu"
+
+END
+
+MENU MI_Main PRELOAD MOVEABLE
+  BEGIN
+        SUBMENU "~Fichier", MI_MainFile
+          BEGIN
+            MENUITEM "~Nouveau\tCtrl+N",         MI_FileNew
+            MENUITEM "~Charger\tCtrl+L",         MI_FileOpen
+            MENUITEM "Fusi~Onner\tCtrl+M",       MI_FileMerge
+            MENUITEM "~Sauvegarder\tCtrl+S",     MI_FileSave
+            MENUITEM "Sauvegarder ~en",          MI_FileSaveAs
+            MENUITEM "~Imprimer\tCtrl+P",        MI_FilePrint
+            MENUITEM                             SEPARATOR
+            MENUITEM "~Fermer\tCtrl+X",          MI_FileClose
+          END
+        SUBMENU "~Visualiser", MI_MainView
+          BEGIN
+            MENUITEM "~Ancˆtres\tCtrl+1",        MI_MankindAncestors
+            MENUITEM "~Descendants\tCtrl+2",     MI_MankindDescendants
+            MENUITEM "~Collat‚raux\tCtrl+3",     MI_MankindSiblings
+            MENUITEM                             SEPARATOR
+            MENUITEM "Zoom grossissant\t+",      MI_MankindZoomIn
+            MENUITEM "Zoom ‚loignant\t-",        MI_MankindZoomOut
+            MENUITEM                             SEPARATOR
+            MENUITEM "~Horizontal\tCtrl+H",      MI_MankindHori
+            MENUITEM "~Vertical\tCtrl+V",        MI_MankindVert
+            MENUITEM                             SEPARATOR
+            MENUITEM "~Lister",                  MI_MankindList
+            MENUITEM "~EvŠnements",              MI_MankindEvents
+            MENUITEM "~Barre d'Outils",          MI_MankindToolbar
+          END
+        SUBMENU "~Options", MI_MainOptions
+          BEGIN
+            MENUITEM "~Pr‚sentation",            MI_OptionsLayout
+            MENUITEM "~Assistance r‚daction",    MI_OptionsDataAssistant
+            MENUITEM "~Divers",                  MI_OptionsMiscellaneous
+            MENUITEM "Champs ~Utilisateur",      MI_OptionsUserFields
+          END
+        SUBMENU "~Rexx",                         MI_MainRexx
+          BEGIN
+            MENUITEM "~D‚marrer Ctrl+R",        MI_RexxStart
+            MENUITEM                             SEPARATOR
+          END
+        SUBMENU "~Aide",                         MI_MainHelp, MIS_HELP
+          BEGIN
+            MENUITEM "~Introduction",   SC_HELPEXTENDED, MIS_SYSCOMMAND
+            MENUITEM "~Index Aide",     SC_HELPINDEX, MIS_SYSCOMMAND
+            MENUITEM                    SEPARATOR
+            MENUITEM "~A propos",       MI_About
+          END
+  END
+
+MENU MI_Man PRELOAD MOVEABLE                       //ManPopUpMenu for Man
+  BEGIN
+    MENUITEM "~Centrer",                MI_ManCenter
+    MENUITEM "Edi~ter",                 MI_ManEdit
+    MENUITEM "~Origine",                MI_ManOrigin
+    MENUITEM                            SEPARATOR
+    SUBMENU "Ef~facer",                 MI_ManDel
+      BEGIN
+        SUBMENU "~Conjoint ",           MI_ManDelPartner
+          BEGIN
+          END
+        SUBMENU "Enf~ants avec ",       MI_ManDelChilds
+          BEGIN
+          END
+        MENUITEM "~Parents",            MI_ManDelParents
+        MENUITEM "Cec~i",               MI_ManDelThis
+      END
+    SUBMENU "Ajout d'un Enf~ant avec ", MI_ManChild
+      BEGIN
+      END
+    MENUITEM "Ajout de ~parents",       MI_ManParents
+    SUBMENU "Ajout d'un c~onjoint",     MI_ManPartner
+      BEGIN
+        MENUITEM "~Nouveau",            MI_ManPartnerNew
+      END
+    MENUITEM "Se ~souvenir",            MI_ManRemember
+  END
+
+MENU MI_Mankind PRELOAD MOVEABLE                  //ManPopUpMenu for Mankind
+  BEGIN
+    MENUITEM "~Ancˆtres\tCtrl+1",       MI_MankindAncestors
+    MENUITEM "~Descendants\tCtrl+2",    MI_MankindDescendants
+    MENUITEM "~Collat‚raux\tCtrl+3",    MI_MankindSiblings
+    MENUITEM                            SEPARATOR
+    MENUITEM "Zoom grossissant\t~+",    MI_MankindZoomIn
+    MENUITEM "Zoom ‚loignant\t~-",      MI_MankindZoomOut
+    MENUITEM                            SEPARATOR
+    MENUITEM "~Horizontal\tCtrl+H",     MI_MankindHori
+    MENUITEM "~Vertical\tCtrl+V",       MI_MankindVert
+    MENUITEM                            SEPARATOR
+    MENUITEM "~Lister",                 MI_MankindList
+    MENUITEM "~EvŠnements",             MI_MankindEvents
+    MENUITEM "~Toolbar",                MI_MankindToolbar
+  END
+
+MENU MI_Manlist PRELOAD MOVEABLE           // ManlistPopUpMenu for Manlist
+  BEGIN
+    MENUITEM "~Trier par ...",          MI_ManlistSort
+  END
+
+MENU MI_EventList PRELOAD MOVEABLE        // EventList
+  BEGIN
+    MENUITEM "~Nouvel ‚vŠnement",       MI_EventListNew
+    MENUITEM "~D‚truire un ‚vŠnement",  MI_EventListDel
+  END
+
+MENU MI_EventEdit PRELOAD MOVEABLE        // EventEdit
+  BEGIN
+    MENUITEM "~Changer",                MI_EventEditChange
+    MENUITEM "~Enlever",                MI_EventEditDel
+    MENUITEM "~Haut",                   MI_EventEditUp
+    MENUITEM "~Bas",                    MI_EventEditDown
+  END
+
+MENU MI_ManEditEventList PRELOAD MOVEABLE  // ManEdit EventList
+  BEGIN
+    MENUITEM "~Aller …",                MI_ManEditEventListJump
+    MENUITEM                            SEPARATOR
+    MENUITEM "~Changer",                MI_ManEditEventListChange
+    MENUITEM                            SEPARATOR
+    MENUITEM "~Enlever",                MI_ManEditEventListDel
+  END
+
+MENU MI_FileBox PRELOAD MOVEABLE           // FilesPopUpMenu for NFileBox
+  BEGIN
+    MENUITEM "~Ouvrir",                 MI_FileBoxOpen
+    MENUITEM "~Changer",                MI_FileBoxChange
+    MENUITEM "~Rendre Premier",         MI_FileBoxFirst
+    MENUITEM "~Enlever",                MI_FileBoxDel
+    MENUITEM                            SEPARATOR
+    MENUITEM "~Nouveau",                MI_FileBoxNew
+    MENUITEM "Enlever ~Tout",           MI_FileBoxClear
+  END
+
+MENU MI_Date PRELOAD MOVEABLE           // PopUpMenu for date information
+  BEGIN
+    MENUITEM "~le\aCtrl+0",             MI_DateAt
+    MENUITEM "e~nviron\aCtrl+1",        MI_DateAbout
+    MENUITEM "a~prŠs\aCtrl+2",          MI_DateAfter
+    MENUITEM "a~vant\aCtrl+3",          MI_DateBefore
+    MENUITEM "~estim‚\aCtrl+4",         MI_DateEstimated
+  END
+

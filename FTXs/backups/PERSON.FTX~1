@@ -1,0 +1,204 @@
+/*
+   Family Tree Rexx Script FTX
+
+   Copyright (C) 1996 by <Nils Meier>
+
+   Please send comments to / Kommentar bitte an
+        meier2@athene.informatik.uni-bonn.de
+
+   <
+   English:   This script shows all informations about the currently selected person.  :English
+   Deutsch:   Dieses Skript zeigt alle Informationen des aktuell ausgew„hlten Menschen.:Deutsch
+   Nederlands:This script shows all informations about the currently selected person.  :Nederlands
+   Fran‡ais:  Ce script affiche toutes les informations sur la personne actuellement
+              s‚lectionn‚e.                                                            :Fran‡ais
+   >
+
+   Long name is <
+                 English:    Print out current person            :English
+                 Deutsch:    Ausgeben der aktuellen Person       :Deutsch
+                 Nederlands: Print out current person            :Nederlands
+                 Fran‡ais:   Imprime la personne s‚lectionn‚e    :Fran‡ais
+                >
+*/
+
+/* ----------------------- Params  /  Parameter ------------------- */
+
+CALL InitLanguage
+
+/* ----------------- Display Header / Kopf der Ausgabe ------------- */
+
+head=msg.header.LANG||getName()||','||getFirstName()
+SAY(head)
+SAY(COPIES('=',length(head)))
+
+/* ------------------------------ Output / Ausgabe ----------------- */
+
+/* Standard data / Standardinformationen */
+SAY(msg.name.LANG      ||getName()                         )
+SAY(msg.firstname.LANG ||getFirstName()                    )
+SAY(msg.sex.LANG       ||WORD(msg.datasex.LANG,getSex()+1) )
+SAY(msg.birthdate.LANG ||getBirthDate()                    )
+SAY(msg.birthplace.LANG||getBirthPlace()                   )
+SAY(msg.deathdate.LANG ||getDeathDate()                    )
+SAY(msg.deathplace.LANG||getDeathPlace()                   )
+SAY(msg.occupation.LANG||getOccupation()                   )
+SAY(msg.address.LANG   ||getAddress()                      )
+
+/* Memo field  /  Memofeld  */
+line=1
+SAY(msg.memo.LANG||getMemo(line))
+DO FOREVER
+   line=line+1
+   result=getMemo(line)
+   IF LENGTH(result)=0 THEN LEAVE
+   SAY(msg.empty.LANG||result)
+END
+
+/* User Fields */
+user=1
+DO FOREVER
+  name = getUserFieldName(user)
+  if LENGTH(name)=0 THEN LEAVE
+
+  result = getUserField(user)
+  IF LENGTH(result)<>0 THEN DO
+    SAY(name||COPIES(' ',20-length(name))||':'||result)
+  END
+
+  user=user+1
+END
+
+/* Marriages  /  Ehen */
+
+p=1
+rc=selectFamily(p)
+
+DO WHILE rc=1
+   /* Push Man on Stack  /  Menschen auf Stack */
+   rc=doStack('PP')
+
+   /* Partner  /  Parner */
+   rc=selectPerson('p')
+   result=getFirstName()||' '||getName()||'  '
+
+   /* MarriageDate  /  Heiratsdatum */
+   result=msg.marriage.LANG||result||getMarriageDate()
+
+   /* Output  /  Ausgabe */
+   SAY('.........................................')
+   SAY(result)
+
+   /* Children  /  Kinder */
+   c=1
+   rc=selectPerson(c);
+   DO WHILE rc=1
+      IF c=1 THEN
+         result=msg.child.LANG||getBirthDate()||' '||getFirstName()||' '||getName()
+      ELSE
+         result=msg.empty.LANG||getBirthDate()||' '||getFirstName()||' '||getName()
+      SAY(result)
+      c=c+1
+      rc=selectPerson(c)
+   END
+
+   /* Pop Man from Stack  /  Menschen vom Stack */
+   rc=doStack('pP')
+
+   /* Next Family of Actual /  Naechste Familie des Aktuellen */
+   p=p+1
+   rc=selectFamily(p)
+END
+
+
+/* Done / Fertig */
+RETURN
+
+
+/* ---------------------- LANGUAGE INIT --------------------------- */
+InitLanguage:
+
+   /* Calculate Language Index */
+   lang='E'                              /* Default -> [E]nglish */
+   IF getLanguage()='Deutsch' THEN       /* Deutsch -> [G]erman */
+      lang='G'
+   IF getLanguage()='Nederlands' THEN    /* Nederlands -> [D]utch */
+      lang='D'
+   IF getLanguage()='Fran‡ais' THEN       /* Fran‡ais -> [F]rench */
+      lang='F'
+
+   /* [E]nglish Messages */
+   msg.header.E    ='Personal data of '
+   msg.name.E      ='Name            : '
+   msg.firstname.E ='First name      : '
+   msg.sex.E       ='Sex             : '
+   msg.birthdate.E ='Birth date      : '
+   msg.birthplace.E='Birth location  : '
+   msg.deathdate.E ='Death date      : '
+   msg.deathplace.E='Death location  : '
+   msg.occupation.E='Occupation      : '
+   msg.address.E   ='Address         : '
+   msg.memo.E      ='Memo            : '
+   msg.picture.E   ='Picture         : '
+   msg.marriage.E  ='Marriage with   : '
+   msg.child.E     ='- Children      : '
+   msg.empty.E     ='                : '
+   msg.datasex.E   = '? male female'
+
+   /* [G]erman Messages */
+   msg.header.G    ='Persoenliche Daten von '
+   msg.name.G      ='Name            : '
+   msg.firstname.G ='Vorname         : '
+   msg.sex.G       ='Geschlecht      : '
+   msg.birthdate.G ='Geburtsdatum    : '
+   msg.birthplace.G='Geburtsort      : '
+   msg.deathdate.G ='Todesdatum      : '
+   msg.deathplace.G='Todesort        : '
+   msg.occupation.G='Beruf           : '
+   msg.address.G   ='Addresse        : '
+   msg.memo.G      ='Memo            : '
+   msg.picture.G   ='Bild            : '
+   msg.marriage.G  ='Ehe mit         : '
+   msg.child.G     ='- Kinder        : '
+   msg.empty.G     ='                : '
+   msg.datasex.G   = '? m„nnlich weiblich'
+
+   /* [D]utch Messages */
+   msg.header.D    ='Personal data of '
+   msg.name.D      ='Name            : '
+   msg.firstname.D ='First name      : '
+   msg.sex.D       ='Sex             : '
+   msg.birthdate.D ='Birth date      : '
+   msg.birthplace.D='Birth location  : '
+   msg.deathdate.D ='Death date      : '
+   msg.deathplace.D='Death location  : '
+   msg.occupation.D='Occupation      : '
+   msg.address.D   ='Address         : '
+   msg.memo.D      ='Memo            : '
+   msg.picture.D   ='Picture         : '
+   msg.marriage.D  ='Marriage with   : '
+   msg.child.D     ='- Children      : '
+   msg.empty.D     ='                : '
+   msg.datasex.D   = '? male female'
+
+   /* [F]rench Messages */
+   msg.header.F    ="Renseignements sur "
+   msg.name.F      ="Nom                : "
+   msg.firstname.F ="Pr‚nom(s)          : "
+   msg.sex.F       ="Sexe               : "
+   msg.birthdate.F ="Date de Naissance  : "
+   msg.birthplace.F="Lieu de Naissance  : "
+   msg.deathdate.F ="Date du D‚cŠs      : "
+   msg.deathplace.F="Lieu du D‚cŠs      : "
+   msg.occupation.F="Activit‚           : "
+   msg.address.F   ="Adresse            : "
+   msg.memo.F      ="M‚mo               : "
+   msg.picture.F   ="Image              : "
+   msg.marriage.F  ="Mariage avec       : "
+   msg.child.F     ="- Enfant(s)        : "
+   msg.empty.F     ="                   : "
+   msg.datasex.F   ="? Homme Femme"
+
+   /* Done */
+   RETURN
+

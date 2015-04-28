@@ -1,0 +1,6 @@
+14   F:\Nils.Cpp\FTree\ftree.exe
+NMakeInfo::ProcessMake: cmdfile = F:\IBMCPP\TMP\17F00002.CTN
+F: & cd \Nils.Cpp\FTree & NMAKE /NOLOGO /N /A /F ftree.mak ftree.exe > F:\IBMCPP\TMP\17F00003.CTN 2>&1
+Working directory: F:\Nils.Cpp\FTree\
+icc.exe /D__TEMPINC__=1 /D_CHAR_UNSIGNED=1 /D__EXTENDED__=1 /D__cplusplus=1 /D__IBMCPP__=300 /D_M_I386=1 /D__OS2__=1 /D__SOM_ENABLED__=210 /D__32BIT__=1 /D__HHW_INTEL__=1 /D__HOS_OS2__=1 /D__THW_INTEL__=1 /D__TOS_OS2__=1 /D__TEMPINC__=1 /D__MULTI__=1 /D__IMPORTLIB__=1 /IE:\MUGLIB;F:\IBMCPP\INCLUDE\OS2;F:\IBMCPP\INC;F:\IBMCPP\INCLUDE;F:\IBMCPP\INCLUDE\SOM;F:\SQLLIB\INCLUDE f:\nils.cpp\ftree\nmantree.cpp
+PDBFile: f:\nils.cpp\ftree\nmantree.pdb

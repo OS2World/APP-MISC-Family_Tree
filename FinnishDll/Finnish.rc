@@ -1,0 +1,440 @@
+#include "..\ftree.h"
+#include <os2.h>
+
+
+ACCELTABLE ID_NMainWindow
+BEGIN
+   "+", MI_MankindZoomIn
+   "-", MI_MankindZoomOut
+   "u", MI_FileNew, CONTROL
+   "a", MI_FileOpen, CONTROL
+   "y", MI_FileMerge, CONTROL
+   "t", MI_FileSave, CONTROL
+   "t", MI_FilePrint, CONTROL
+   "s", MI_FileClose, CONTROL
+
+   VK_F2, MI_FileSave, VIRTUALKEY
+   VK_F3, MI_FileClose, VIRTUALKEY
+
+   "r", MI_RexxStart, CONTROL
+
+   "1", MI_MankindAncestors, CONTROL
+   "2", MI_MankindDescendants, CONTROL
+   "3", MI_MankindSiblings, CONTROL
+
+   "h", MI_MankindHori, CONTROL
+   "v", MI_MankindVert, CONTROL
+END
+
+
+STRINGTABLE PRELOAD MOVEABLE
+BEGIN
+
+   ID_nbOpen,                "Avaa tiedosto"
+   ID_nbSave,                "Talleta tiedosto"
+   ID_nbPrint,               "Tulosta"
+   ID_nbOptions,             "Asetukset"
+   ID_nbLocate,              "Etsi henkil”"
+   ID_nbHoriVert,            "Vaaka-/pystysuora n„kym„"
+   ID_nbAncestors,           "N„kyviss„ olevat esivanhempien sukupolvet"
+   ID_nbDescendants,         "N„kyviss„ olevat j„lkel„isten sukupolvet"
+   ID_nbSiblings,            "N„kyviss„ olevat sisarukset"
+   ID_isZoom,                  "Suurennussuhde"
+   ID_nbTopBottom,           "Yl„valikko yl”s/alas"
+
+
+   SI_MainTitle,               "FamilyTree"
+   SI_MainTitleUnregistered,   " (rekister”im„t”n)"
+   SI_EditTitle,               "Editointi "
+   SI_ListTitle,               "Luettelo "
+   SI_EventTitle,              "Events window "/*!*/
+   SI_OptionsTitle,            "Asetukset "
+
+   SI_NotImplemented,   "Not implemented"      /*!*/
+   SI_TabStandard,      "Standard data fields" /*!*/
+   SI_TabUser,          "User data fields"     /*!*/
+   SI_TabSources,       "Documented Sources"   /*!*/
+   SI_TabEvents,        "Events"               /*!*/
+   SI_TabAttachments,   "File attachments"     /*!*/
+
+   SI_Name,             "Nimi"
+   SI_FirstName,        "Etunimi"
+   SI_Sex,              "Sukupuoli"
+   SI_MaleFemale,       "-MN"
+   SI_BirthDate,        "Syntynyt"
+   SI_BirthPlace,       "Paikka"
+   SI_DeathDate,        "Kuollut"
+   SI_DeathPlace,       "Paikka"
+   SI_MarriageDate,     "Avioliitto"
+   SI_MarriagePlace,    "Paikka"
+   SI_DivorceDate,      "Ero"
+   SI_Occupation,       "Ammatti"
+   SI_Address,          "Osoite"
+   SI_Memo,             "Muistio"
+   SI_Bitmap,           "Kuva"
+
+   SI_Adam,             "Aatami"
+   SI_Child,            "Lapsi"
+   SI_Mom,              "Žiti"
+   SI_Dad,              "Is„"
+   SI_Partner,          "Puoliso"
+   SI_NoneRemembered,   "<Ei muistettu>"
+   SI_NewPerson,        "~Uusi"
+   SI_ReallyDelChilds1, "Poistetaan  lapset "
+   SI_ReallyDelChilds2, " poistaa kaikki lapset ja heid„n sukulaisensa! Jatketaanko?"
+   SI_ReallyDelParents1,"Poistetaan vanhemmat "
+   SI_ReallyDelParents2," poistaa vanhemmat ja heid„n sukulaisensa, t„m„n rivin lis„ksi! Jatketaanko?"    SI_ReallyDelThis1,   "Poistetaan henkil” "
+   SI_ReallyDelThis2,   " poistaa my”s kaikki sukulaiset, jotka eiv„t ole alkukohdan puolella! Jatketaanko?"
+   SI_ReallyDelPartner1,"Poistetaan puoliso "
+   SI_ReallyDelPartner2,"Poistaa h„nen vanhempansa, lapsensa ja sukulaisensa! Jatketaanko?"
+   SI_ReallyStealChild1,"Lis„t„„n lapsi "
+   SI_ReallyStealChild2,"poistaa vanhemmat, kun he eiv„t en„„ ole sukua alkukohdalle! Jatketaanko?"
+   SI_AncestorLoop1,    "ei voi olla n:n lapsi "
+   SI_AncestorLoop2,    ", koska h„n on esivanhempi!"
+   SI_ImportNoData,     "***Ei latauskelpoista tiedostoa!"
+   SI_ImportNumPersons, "***Tuotavien henkil”iden m„„r„ : "
+   SI_ImportOrigin,     "***Alkukohta on                        : "
+   SI_ImportPAdded,     "***Lis„ttyjen henkil”iden lukum„„r„ johtuen tuntemattomasta/silmukka tilanteesta    : "
+   SI_ImportPDropped,   "***Henkil”iden lukum„„r„, joita ei ole huomioitu, koska he eiv„t ole sukua alkukohdalle : "
+   SI_ImportFDropped,   "***Niiden perheiden lukum„„r„, joita ei ole tavoitettu     : "
+
+   SI_DlgFileError,     "Virhe luettaessa tiedostoa: "
+   SI_DlgFileFalse,     "Ep„kelpo tiedosto: "
+   SI_DlgFileBadWrite,  "Virhe tallennettaessa tiedostoa: "
+   SI_DlgFileLoad,      "Sukupuun avaus"
+   SI_DlgFileSave,      "Sukupuun tallennus"
+
+   SI_BmpOrGifPlease,   "Vain GIF,TIF,PCX tai BMP !"
+   SI_BmpGiveName,      "Anna sukupuulle nimi (tallenna nimell„), jotta voin tallentaa oikean tiedon polusta !"
+   SI_BmpDoRelative,    "Siirr„ tiedosto samaan hakemistoon kuin miss„ sukupuusi sijaitsee, jotta voin tallenttaa oikean tiedon polusta !"
+
+   SI_NoHelp,           "Ei aputiedostoa k„ytett„viss„!"
+   SI_SaveNow,          "Olet muuttanut sukupuuta! Tallennetaanko nyt?"
+   SI_NoProfile,        "Ei voi lukea profiilia tai se ei ole t„ydellinen!"
+   SI_NoSaveProfile,    "Ei voi kirjoittaa profiilia!"
+
+   SI_PrintTitle,              "FamilyTree tulostus"
+   SI_PrintPrinter,            "Tulostin"
+   SI_PrintPageSize,           "Sivun koko (cm)"
+   SI_PrintDPI,                "Tarkkuus (dpi)"
+   SI_PrintPages,              "Sivua"
+   SI_PrintFit,                "Sovita"
+   SI_PrintZoom,               "Zoomaa"
+   SI_PrintDoPrint,            "Tulosta"
+   SI_PrintDoProps,            "Ominaisuudet"
+   SI_PrintDoCancel,           "Peruuta"
+   SI_PrintErrNoQueuesDef,     "Tulostusjonoa ei ole m„„ritetty! Tulostus ei ole k„ytett„viss„!"
+   SI_PrintErrDevOpenFailed,   "Laite ei ole valmis tulostusjonoa varten "
+   SI_PrintErrQueryCapsFailed, "Tulostusjonon ominaisuuksien selvitys ei onnistunut "
+   SI_PrintErrCreatePSFailed,  "PS:n luonti ep„onnistui !"
+
+   SI_QueryGenerationsPlease  ,"Please specify" /**/
+   SI_QueryGenerationsParent  ,"Visible generations of ancestors to cut the tree to"
+   SI_QueryGenerationsChild   ,"Visible generations of descendants to cut the tree to"
+   SI_QueryGenerationsMax     ,"Always maximum"
+   SI_QueryGenerationsUpTo    ,"Up to "
+
+   SI_DropFileHere,            "Drop a file!"
+   SI_DropPersonHere,          "Drop a person to add it to this event!"
+   SI_DropEventHere,           "Drop an event to add it to this person!"
+   SI_ClickForEvent,           "Click here to create new event!"
+   SI_Person,                  "Person"
+   SI_Event,                   "Event"
+   SI_InvolvedPerson,          "Involved Person"
+   SI_InvolvedAs,              "Involved As"
+
+   SI_MsgGenAncestors,         " Esivanhempien sukupolvia "
+   SI_MsgGenDescendants,       " J„lkel„isten sukupolvia "
+   SI_MsgNumberOfMan,          " Henkil”it„ "
+   SI_MsgNumberOfRel,          " Perheit„ "
+   SI_MsgPrinting,             "Tulostetaan sivua "
+   SI_MsgLoadPerson,           "Ladataan henkil”„ "
+   SI_MsgLoadMarriage,         "Ladataan sukua "
+   SI_MsgSavePerson,           "Talletetaan henkil”„ "
+   SI_MsgSaveMarriage,         "Talletetaan sukua "
+   SI_MsgLoadEvent,            "Loading event "
+   SI_MsgSaveEvent,            "Saving event "
+   SI_MsgLoadCheck,            "Tarkistetaan koodit..."
+   SI_MsgDuplicateIDs,         "L”ytyi kaksi samaa/puuttuvaa koodia ! Korjataanko koodi(t) ?"
+   SI_MsgDoingBackup,          "Tehd„„n varmuuskopio "
+
+   SI_AboutTitle,              "Tietoja ohjelmasta"
+   SI_AboutHead,               "Family Tree 1.2f"
+   SI_AboutCopyright,          "(C) 1996 Nils Meier"
+   SI_AboutRegisterHere,       "Voit rekister”id„ t„„ll„ :"
+   SI_AboutPlease1,            "Ole hyv„ ja lue helppi"
+   SI_AboutPlease2,            "kuinka rekister”id„."
+   SI_AboutDoRegister,         "Rekister”i"
+   SI_AboutLater,              "N„hd„„n my”hemmin"
+   SI_AboutIsRegTo,            "T„m„ ohjelma on rekister”ity"
+   SI_AboutThanks,             "Kiitos rekister”innist„ !"
+   SI_AboutVerify,             "Ole hyv„ ja tarkista koodi! \n Kirjoita rekister”intitiedot t„sm„lleen samalla tavalla kuin ne on ilmoitettu!"
+
+   SI_MonthNames+ 0,           "?"
+   SI_MonthNames+ 1,           "Tammikuu"
+   SI_MonthNames+ 2,           "Helmikuu"
+   SI_MonthNames+ 3,           "Maaliskuu"
+   SI_MonthNames+ 4,           "Huhtikuu"
+   SI_MonthNames+ 5,           "Toukokuu"
+   SI_MonthNames+ 6,           "Kes„kuu"
+   SI_MonthNames+ 7,           "Hein„kuu"
+   SI_MonthNames+ 8,           "Elokuu"
+   SI_MonthNames+ 9,           "Syyskuu"
+   SI_MonthNames+10,           "Lokakuu"
+   SI_MonthNames+11,           "Marraskuu"
+   SI_MonthNames+12,           "Joulukuu"
+
+   SI_Window,                  "Ikkuna"
+   SI_Language,                "Suomi"
+   SI_EnterPath,               "Anna polku :"
+
+   SI_RexxDialog,              "Valitse rexx"
+   SI_RexxScript,              "Skripti"
+   SI_RexxLongname,            "Skriptin nimi"
+   SI_RexxAuthor,              "Tekij„"
+   SI_RexxComment,             "Kommentti"
+   SI_RexxStart,               "~Aloita"
+   SI_RexxRemember,            "~Muista"
+   SI_RexxNotFound,            "Skripti„ ei l”ytynyt !"
+   SI_RexxUnknown,             "Tuntematon"
+   SI_RexxTitle,               "Rexx-ohjelman tuloste "
+   SI_RexxFinished,            "Loppu "
+   SI_RexxDone,                "~OK"
+   SI_RexxCancel,              "~Peruuta"
+   SI_RexxPrint,               "~Tulosta"
+   SI_RexxSave,                "~Talleta"
+   SI_RexxOutputSave,          "Talleta rexx-tuloste tiedostoon"
+   SI_RexxOutputSaveError,     "Rexx-tulosteen tallennus tiedostoon ei onnistunut!"
+   SI_RexxUnfinishedImport,    "J„ljell„ on sellaisia henkil”it„, jotka eiv„t ole sukua alkukohdalle! Haluatko s„ilytt„„ ne muistissa my”hemp„„ k„ytt”„ varten?"
+
+   SI_ListId,                  "Koodi"
+   SI_ListSex,                 "Sukup"
+   SI_ListName,                "Sukunimi"
+   SI_ListFirst,               "Etunimi"
+   SI_ListBirth,               "Syntynyt"
+   SI_ListBPlace,              "Spaikka"
+   SI_ListDeath,               "Kuollut"
+   SI_ListDPlace,              "Kpaikka"
+   SI_ListSortBy,              "Sort selection"
+   SI_ListSortFields,          "Available fields"
+   SI_ListSortSequence,        "Sort by"
+
+   SI_EventsTab1,              "Event Data"
+   SI_EventsTab2,              "Involved Persons"
+   SI_EventsTab3,              "Documented Sources"
+   SI_EventsName,              "Event"
+   SI_EventsFrom,              "From Date"
+   SI_EventsTo,                "To Date"
+   SI_EventsPlace,             "Place"
+   SI_EventsDescription,       "Description"
+
+   SI_OptionsLayout,           "Ulkoasu"
+   SI_OptionsDataAssistant,    "Data-avustaja"
+   SI_OptionsMiscellaneous,    "Muuta"
+   SI_OptionsDateFormat,       "Date format"
+   SI_OptionsUserFields,       "K„ytt„j„n kent„t"
+   SI_OptionsProgram,          "(Ohjelman asetukset)"
+   SI_OptionsTree,             "(Puun asetukset)"
+   SI_OptionsLines,            "Viivat"
+   SI_OptionsDiagonal,         "Diagonaali"
+   SI_OptionsOrthogonal,       "Suorakulmainen"
+   SI_OptionsDetail,           "Lis„ykset"
+   SI_OptionsFirstNames,       "Etunimet"
+   SI_OptionsDates,            "Syntym„-/kuolinp„iv„t"
+   SI_OptionsColor,            "V„ri"
+   SI_OptionsCBackground,      "Tausta"
+   SI_OptionsCLines,           "Viivat"
+   SI_OptionsCBoxes,           "Laatikot"
+   SI_OptionsCEmphasis,        "Korostus"
+   SI_OptionsCTexts,           "Tekstit"
+   SI_OptionsCDefault,         "Oletus"
+   SI_OptionsFont,             "Fontti"
+   SI_OptionsAddPartSA,        "Lis„„ puoliso -> saa saman osoitteen"
+   SI_OptionsAddPartOS,        "Lis„„ puoliso -> saa vastakkaisen sukupuolen"
+   SI_OptionsAddChilSN,        "Lis„„ lapsi -> saa saman nimen"
+   SI_OptionsAddChilSA,        "Lis„„ lapsi -> saa saman osoitteen"
+   SI_OptionsAddPareMF,        "Lis„„ vanhemmat -> tulee mies&nainen"
+   SI_OptionsAddPareSN,        "Lis„„ vanhemmat -> saa saman nimen"
+   SI_OptionsAddPareSA,        "Lis„„ vanhemmat -> saa saman osoitteen"
+   SI_OptionsFocusToEdit,      "Editointi-ikkuna aktivoituu kun klikataan henkil”„"
+   SI_OptionsRelPath,          "Yrit„ tallettaa polut"
+   SI_OptionsDoBackup,         "Tee varmuuskopio ennen tallennusta"
+   SI_OptionsImportPreserve,   "S„ilyt„ aina henkil”t, joita ei ole ladattu"
+   SI_OptionsFloatEdit,        "Kelluva editointi-ikkuna"
+   SI_OptionsFloatList,        "Kelluva lista-ikkuna"
+   SI_OptionsFloatEvents,      "Free floating Event window" /*!*/
+   SI_OptionsMemoWordWrap,     "Memo field word wrap"       /*!*/
+   SI_OptionsBorderlessButtons,"Borderless buttons"
+   SI_OptionsDateFmt,          "P„iv„yksen muoto"
+   SI_OptionsChooseFont,       "Valitse fontti"
+
+   SI_FeatureNotAvailable1,    "Rekister”im„t”n"
+   SI_FeatureNotAvailable2,    "FamilyTreen rekister”imisen j„lkeen t„m„ muutos on pysyv„. Tiedostolinkitykset eiv„t tallennu rekister”im„tt”m„ss„ versiossa"
+
+   SI_UserFieldField,     "Field"
+   SI_UserFieldValue,     "Value"
+   SI_UserFieldFieldName, "Field name"
+   SI_UserFieldFieldType, "Field type"
+   SI_UserFieldYesNo,     "Yes/No"
+   SI_UserFieldText,      "Text"
+   SI_UserFieldNumber,    "Number"
+   SI_UserFieldDate,      "Date"
+   SI_UserFieldNone,      "No fields defined!"
+   SI_UserFieldMax3,      "Sorry, but you can't define more than 3 user fields in the unregistered version of FamilyTree!"
+   SI_UserFieldDelete,    "Do you really want to remove the user defined field $? All data in the tree in respect to that field will be discarded!"
+
+   SI_OK,     "OK"
+   SI_Cancel, "Cancel"
+   SI_New,    "New"
+   SI_Change, "Change"
+   SI_Delete, "Delete"
+   SI_Yes,    "Yes"
+   SI_No,     "No"
+   SI_Unknown,"Unknown"
+
+END
+
+MENU MI_Main PRELOAD MOVEABLE
+  BEGIN
+        SUBMENU "~Tiedosto", MI_MainFile
+          BEGIN
+            MENUITEM "~Uusi\tCtrl+U",         MI_FileNew
+            MENUITEM "~Avaa\tCtrl+A",        MI_FileOpen
+            MENUITEM "~Yhdist„\tCtrl+Y",       MI_FileMerge
+            MENUITEM "~Talleta\tCtrl+T",        MI_FileSave
+            MENUITEM "Talleta ~nimell„",             MI_FileSaveAs
+            MENUITEM "Tu~losta\tCtrl+L",       MI_FilePrint
+            MENUITEM                         SEPARATOR
+            MENUITEM "Sulje\tCtrl+S",       MI_FileClose
+          END
+        SUBMENU "N„kym„", MI_MainView
+          BEGIN
+            MENUITEM "~Esivanhemmat\tCtrl+1",   MI_MankindAncestors
+            MENUITEM "~J„lkel„iset\tCtrl+2", MI_MankindDescendants
+            MENUITEM "~Sisarukset\tCtrl+3",    MI_MankindSiblings
+            MENUITEM                         SEPARATOR
+            MENUITEM "Suurenna\t+",           MI_MankindZoomIn
+            MENUITEM "Pienenn„\t-",          MI_MankindZoomOut
+            MENUITEM                         SEPARATOR
+            MENUITEM "~Vaakasuora\tCTRL+V",  MI_MankindHori
+            MENUITEM "~Pystysuora\tCtrl+P",    MI_MankindVert
+            MENUITEM                         SEPARATOR
+            MENUITEM "~Lista",                MI_MankindList
+            MENUITEM "~Events",              MI_MankindEvents
+            MENUITEM "~Toolbar",             MI_MankindToolbar
+          END
+        SUBMENU "~Asetukset", MI_MainOptions
+          BEGIN
+            MENUITEM "~Ulkoasu",              MI_OptionsLayout
+            MENUITEM "~Data-avustaja",      MI_OptionsDataAssistant
+            MENUITEM "~Muuta",       MI_OptionsMiscellaneous
+            MENUITEM "~K„ytt„j„n kent„t",         MI_OptionsUserFields
+          END
+        SUBMENU "~Rexx", MI_MainRexx
+          BEGIN
+            MENUITEM "~Aloita Ctrl+A",       MI_RexxStart
+            MENUITEM                         SEPARATOR
+          END
+        SUBMENU "~Apua", MI_MainHelp, MIS_HELP
+          BEGIN
+            MENUITEM "~Esittely",        SC_HELPEXTENDED, MIS_SYSCOMMAND
+            MENUITEM "~Apuindeksi",           SC_HELPINDEX, MIS_SYSCOMMAND
+            MENUITEM                         SEPARATOR
+            MENUITEM "~Tietoa ohjelmasta",               MI_About
+          END
+  END
+
+MENU MI_Man PRELOAD MOVEABLE                       //ManPopUpMenu for Man
+  BEGIN
+    MENUITEM "~Keskit„",            MI_ManCenter
+    MENUITEM "~Editoi",              MI_ManEdit
+    MENUITEM "~Alkukohta",            MI_ManOrigin
+    MENUITEM                       SEPARATOR
+    SUBMENU "~Poista",             MI_ManDel
+      BEGIN
+        SUBMENU "~Puoliso ",MI_ManDelPartner
+          BEGIN
+          END
+        SUBMENU "~Lapsia kanssa ", MI_ManDelChilds
+          BEGIN
+          END
+        MENUITEM "~Vanhemmat",       MI_ManDelParents
+        MENUITEM "~T„m„",          MI_ManDelThis
+      END
+    SUBMENU "Li~s„„ lapsi kanssa ",    MI_ManChild
+      BEGIN
+      END
+    MENUITEM "Lis„„ ~vanhemmat",       MI_ManParents
+    SUBMENU "Lis„„ ~puoliso",        MI_ManPartner
+      BEGIN
+        MENUITEM "~Uusi",           MI_ManPartnerNew
+      END
+    MENUITEM "~Muista",        MI_ManRemember
+  END
+
+MENU MI_Mankind PRELOAD MOVEABLE                  //ManPopUpMenu for Mankind
+  BEGIN
+    MENUITEM "~Esivanhemmat\tCtrl+1",  MI_MankindAncestors
+    MENUITEM "~J„lkel„iset\tCtrl+2",  MI_MankindDescendants
+    MENUITEM "~Sisarukset\tCtrl+3",   MI_MankindSiblings
+    MENUITEM                          SEPARATOR
+    MENUITEM "Suurenna\t~+",          MI_MankindZoomIn
+    MENUITEM "Pienenn„\t~-",          MI_MankindZoomOut
+    MENUITEM                          SEPARATOR
+    MENUITEM "~Vaakasuora\tCTRL+V",   MI_MankindHori
+    MENUITEM "~Pystysuora\tCtrl+P",    MI_MankindVert
+    MENUITEM                          SEPARATOR
+    MENUITEM "~Lista",                MI_MankindList
+    MENUITEM "~Events",               MI_MankindEvents
+    MENUITEM "~Toolbar",              MI_MankindToolbar
+  END
+
+MENU MI_Manlist PRELOAD MOVEABLE           // ManlistPopUpMenu for Manlist
+  BEGIN
+    MENUITEM "~Sort by ...",             MI_ManlistSort
+  END
+
+MENU MI_EventList PRELOAD MOVEABLE        // EventList
+  BEGIN
+    MENUITEM "~New event",            MI_EventListNew
+    MENUITEM "~Delete event",         MI_EventListDel
+  END
+
+MENU MI_EventEdit PRELOAD MOVEABLE        // EventEdit
+  BEGIN
+    MENUITEM "~Change",                MI_EventEditChange
+    MENUITEM "~Remove",                MI_EventEditDel
+    MENUITEM "~Up",                    MI_EventEditUp
+    MENUITEM "~Down",                  MI_EventEditDown
+  END
+
+MENU MI_ManEditEventList PRELOAD MOVEABLE  // ManEdit EventList
+  BEGIN
+    MENUITEM "~Jump to",               MI_ManEditEventListJump
+    MENUITEM                           SEPARATOR
+    MENUITEM "~Change",                MI_ManEditEventListChange
+    MENUITEM                           SEPARATOR
+    MENUITEM "~Remove",                MI_ManEditEventListDel
+  END
+
+MENU MI_FileBox PRELOAD MOVEABLE           // FilesPopUpMenu for NFileBox
+  BEGIN
+    MENUITEM "~Avaa",                MI_FileBoxOpen
+    MENUITEM "~Muuta",              MI_FileBoxChange
+    MENUITEM "~Tee ensin",          MI_FileBoxFirst
+    MENUITEM "~Poista",              MI_FileBoxDel
+    MENUITEM                         SEPARATOR
+    MENUITEM "~Uusi",                 MI_FileBoxNew
+    MENUITEM "Poista ~kaikki",          MI_FileBoxClear
+  END
+
+MENU MI_Date PRELOAD MOVEABLE           // PopUpMenu for date information
+  BEGIN
+    MENUITEM "~at\aCtrl+0",                  MI_DateAt
+    MENUITEM "a~bout\aCtrl+1",               MI_DateAbout
+    MENUITEM "a~fter\aCtrl+2",               MI_DateAfter
+    MENUITEM "~before\aCtrl+3",              MI_DateBefore
+    MENUITEM "~estimated\aCtrl+4",           MI_DateEstimated
+  END
+
+

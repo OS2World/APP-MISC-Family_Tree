@@ -1,0 +1,303 @@
+/*
+   Family Tree Rexx Script FTX
+
+   Copyright (C) 1996 by <Peter Gervai, Walter Kopmann>
+
+   Please send comments to
+   Grin at 2:370/15@fidonet or grin@lifeforce.fido.hu
+
+   <
+   English:   Hierarchical-List. Data in HTML Text for view by WEB Browser
+              or input to Textprograms                                    :English
+   Deutsch:   Stamm-Baum-Liste. Gibt Daten hierarchisch in HTML Text aus
+              zur Anzeige mit WEB Browser oder Eingabe fr Textprogramme  :Deutsch
+   Nederlands:Hierarchical-List. Data in HTML Text for view by WEB Browser
+              or input to Textprograms                                    :Nederlands
+   Fran‡ais:  List hi‚rarchique. Les donn‚es sont au format HTML pour ˆtre
+              visualis‚es par un browser ou entr‚es dans un programme TXT :Fran‡ais
+   >
+
+   Long name is <
+                 English:   Hierarchical List (HTML)      :English
+                 Deutsch:   Hierarchische Ausgabe (HTML)  :Deutsch
+                 Nederlands:Hierarchical List (HTML)      :Nederlands
+                 Fran‡ais:  List hi‚rarchique (HTML)      :Fran‡ais
+                >
+*/
+
+call InitLanguage
+
+/*
+ * Global variables (for EXPOSE in procedures)
+ */
+globals = 'cr msg. person. out_rec '
+
+cr = '0d0a'x
+person. = 0
+loop. = 1
+
+/*
+ * Start   HTML ouput
+*/
+
+call charout ,'<HTML><BODY><head></head>'cr
+
+rc=sortPersons('P')
+
+call SelectPerson('F')
+
+do while loop.1
+
+  call DoStack('PP')
+  loop.found = SearchForAdam()
+
+   /* print nonprinted adam and his subtree */
+  if loop.found then do
+    call DoStack('PP')                 /* push for emitPerson! */
+    call DEmitPerson 1
+  end
+
+  call DoStack('pP')                        /* original person */
+
+  /* search for the next person who have unprocessed subtree */
+  do until (person.pid=0) | res=0
+    res = SelectPerson('N')
+    pid = getPID()
+  end
+
+  loop.1 = res        /* ...and finish if we're out of persons */
+
+end
+
+call charout ,'</BODY></HTML>'cr
+exit;
+/*------------------------------- end  ------------------------*/
+
+/*
+ * recursive function
+ */
+DEmitPerson: procedure expose (globals); parse arg level
+
+
+  /* pull actual person */
+  if DoStack('pP')=0 then perror(msg.Error.LANG)
+  pid=getPID()
+  person.pid=1
+  de.count = 1
+
+  /* check families */
+  res = SelectFamily(de.count)
+  de.husband = copies('ø ',level-1) || getName()' ' getFirstName()
+
+  work=getBirthPlace()' 'getBirthDate()
+  if work \= ' ' then
+   de.daten1  = copies('ø ',level-1) || '     *   'getBirthPlace()' 'getBirthDate()
+   else de.daten1=''
+
+  work=getMarriagePlace()' 'getMarriageDate()
+  if work \= ' ' then
+   de.daten2  = copies('ø ',level-1) || '     &#176;&#176;  ',
+                            getMarriagePlace()' 'getMarriageDate()
+   else de.daten2=''
+
+  work=getDeathPlace()' 'getDeathDate()
+  if work \= ' ' then
+   de.daten3  = copies('ø ',level-1) || '     +   'getDeathPlace()' 'getDeathDate()
+   else de.daten3=''
+
+  /* check families */
+  res = SelectFamily(de.count)
+  do while res\=0
+    /* print wife */
+    call DoStack('PP')
+    res = SelectPerson('p')
+
+    pid=getPID()
+    if level=1 then person.pid=1
+    out_rec = de.husband '®-¯' getName()' ' getFirstName()
+    out_rec = trans(out_rec)
+    if level =1 then  out_rec = '<H1><FONT SIZE=-0.5>'out_rec'</FONT></H1>'cr
+      else  out_rec = '<H2><FONT size=-0>'out_rec'</FONT></H2>'cr
+    call charout ,out_rec
+
+    work=getBirthPlace()' 'getBirthDate()
+    if work \=' ' then do
+      if de.daten1=' ' then de.daten1=copies('ø ',level-1)'     *   '
+        out_rec = de.daten1||' ®-¯ 'getBirthPlace()' 'getBirthDate()
+        out_rec = trans(out_rec)
+        out_rec = out_rec||'<BR>'||cr
+        call charout ,out_rec
+
+    end
+    else do
+     if de.daten1 \=' ' then  do
+      out_rec = de.daten1
+      out_rec = trans(out_rec)
+      out_rec = out_rec||'<BR>'||cr
+      call charout ,out_rec
+     end
+    end
+
+    work=getMarriagePlace()' 'getMarriageDate()
+    if work \= ' ' then
+     de.daten2  = copies('ø ',level-1) || '     &#176;&#176;  ',
+                          getMarriagePlace()' 'getMarriageDate()
+     else de.daten2=''
+     if de.daten2 \= ' ' then do
+       out_rec = de.daten2
+       out_rec = trans(out_rec)
+       out_rec = out_rec||'<BR>'||cr
+       call charout ,out_rec
+     end
+
+    work=getDeathPlace()' 'getDeathDate()
+    if work \=' ' then do
+      if de.daten3=' ' then de.daten3=copies('ø ',level-1)'     +   '
+      out_rec = de.daten3||' ®-¯ 'getDeathPlace()' 'getDeathDate()
+      out_rec = trans(out_rec)
+      out_rec = out_rec||'<BR>'||cr
+      call charout ,out_rec
+    end
+
+    else do
+      if de.daten3 \= ' ' then do
+         out_rec = de.daten3
+         out_rec = trans(out_rec)
+         out_rec = out_rec||'<BR>'||cr
+         call charout ,out_rec
+      end
+
+    end
+
+    call DoStack('pP')
+
+    /* examine children */
+    call DoStack('PP')            /* original person */
+    de.childcount = 1
+    res = SelectPerson(de.childcount)
+    do while res\=0
+    /* print children's tree */
+      call DoStack('PF')   /* save family because SelectPerson(<count>) needs it! */
+      call DoStack('PP')   /* push child for recursion (routine pops it) */
+      call DEmitPerson level+1      /* print child's tree (indent2) */
+      de.childcount = de.childcount + 1
+      call DoStack('pP')                          /* pop original person... */
+      call DoStack('PP')                          /* ...and push again... */
+      call DoStack('pF')                          /* original family */
+      res = SelectPerson(de.childcount)           /* ...just for get his next child */
+    end
+
+    call DoStack('pP')                            /* original person */
+    de.count = de.count + 1                       /* next family */
+    res = SelectFamily(de.count)
+  end
+  if de.count=1 then do
+         out_rec = de.husband
+         out_rec = trans(out_rec)
+         call charout ,'<H2><FONT SIZE=-0>'out_rec'</FONT></H2>'cr
+
+     if de.daten1 \= ' 'then do
+         out_rec = de.daten1
+         out_rec = trans(out_rec)
+         out_rec = out_rec||'<BR>'||cr
+         call charout ,out_rec
+     end
+
+     if de.daten3 \= ' 'then do
+         out_rec = de.daten3
+         out_rec = trans(out_rec)
+         out_rec = out_rec||'<BR>'||cr||cr
+         call charout ,out_rec
+     end
+  end
+return
+
+/*
+ * Search for oldest ancestor up the tree
+ *
+ *   return:
+ *      1: if found someone not already used, and
+ *       SELECTED actual person if there's no ancestor, or
+ *       SELECTED the oldest ancestor person
+ *      0: if all ancestors and the actual person was already used
+ */
+SearchForAdam: procedure expose (globals)
+  call DoStack('PP')
+  res = SelectFamily('p')         /* select parental family */
+  if res\=0 then do
+    res = SelectPerson('p')       /* select a parent */
+    res = SearchForAdam()         /* search for his ancestors */
+    if res then do                /* found */
+      call DoStack('DP')          /* drop original (Peter now 'DROP' is in there :)) */
+      return 1
+    end
+    res = SelectPerson('p')       /* select other parent */
+    res = SearchForAdam()
+    if res then do                /* found */
+      call DoStack('DP')          /* drop original (Peter now 'DROP' is in there :)) */
+      return 1
+    end
+  end
+
+  call DoStack('pP')              /* get original person */
+  if getsex()=2 then res=selectperson('p')
+  pid = getPID()
+  if person.pid then              /* if he's already used up */
+    return 0                      /* fail */
+  else
+    return 1                      /* ok, person unused */
+return 0
+
+/******************************************************************
+ *
+ * Translate HTML Character
+ *
+ ******************************************************************/
+
+Trans: procedure expose (globals)
+parse arg txt
+org_txt = '<    >    ™       Ž     š      ”      „            á         ø      ñ      ®       ¯     ‚                Š        Ô        …        ·        ˆ       Ò       –       ê       Œ       ƒ       ¶    '
+rep_txt = '&lt; &gt; &Ouml; &Auml; &Uuml; &ouml; &auml; &uuml; &szlig; &#183; &#177; &#171; &#187; &eacute; &Eacute; &egrave; &Egrave; &agrave; &Agrave; &ecirc; &Ecirc; &ucirc; &ucirc; &icirc; &acirc; &Acirc;'
+do i=1 to words(org_txt)
+  strt=1
+  do while strt\=0
+    pn=pos(word(org_txt,i),txt,strt)
+     if pn\=0 then do
+      txt=substr(txt,strt,pn-strt)||word(rep_txt,i)||substr(txt,pn+1,length(txt)-pn)
+     end
+     else iterate i
+  end
+end
+return  txt
+
+/******************************************************************
+ *
+ * Language init
+ *
+ ******************************************************************/
+InitLanguage:
+
+   /* Calculate Language Index */
+   lang='E'                              /* Default -> [E]nglish */
+   IF getLanguage()='Deutsch' THEN       /* Deutsch -> [G]erman */
+      lang='G'
+   IF getLanguage()='Nederlands' THEN    /* Nederlands -> [D]utch */
+      lang='D'
+   IF getLanguage()='Francais' THEN      /* Francais -> [F]rench */
+      lang='F'
+
+   /* [E]nglish Messages */
+   msg.Error.E  = 'SCRIPT ERROR: Empty Stack!'
+
+   /* [G]erman Messages */
+   msg.Error.G  = 'SCRIPT FEHLER: Leerer Stack!'
+
+   /* [D]utch Messages */
+   msg.Error.E  = 'SCRIPT ERROR: Empty Stack!'
+
+   /* [F]rench Messages */
+   msg.Error.F  = "ERREUR SCRIPT: Pile Vide!"
+
+   /* Done */
+   RETURN
+

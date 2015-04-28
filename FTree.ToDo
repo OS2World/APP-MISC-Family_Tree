@@ -1,0 +1,146 @@
+---------- Release Planning ---------------
+
+BUG: Changing font in options dialog required two cancel/ok-clicks from font dialog
+
+1.3
+
+   - Searching
+
+   - Improved tree drawing quality
+       7. Im letzten Jahr hatte ich schon mal angeregt, z.B. Hochzeits- bzw.
+          evtl. Scheidungsdaten links und rechts neben den Kringel zu drucken.
+          Du hattest mir geantwortet, dass schon andere auf die Idee gekommen seien.
+          Hast Du schon mal wieder darueber nachgedacht, ob es moeglich ist?
+          U.U. koennte man ja sogar noch weiter abstrahieren und die innerhalb des
+          Druck-Kaestchens zu druckenden Daten abhaengig vom persoenlichen
+          Geschmack bzw. Beduerfnis machen. Ich stelle mir das so vor:
+          1. spezifiziere die Anzahl der Zeilen innerhalb eines Druckfeldes
+          2. spezifiziere die zu druckenden Felder je Zeile zzgl. evtl.
+             Verknuepfungszeichen, wie z.B. "," oder ";"
+          Das aktuelle Format saehe dann so aus:
+          3 Zeilen
+          1. Zeile: <Nachname>
+          2. Zeile: <Vorname(n)>
+          3. Zeile: <Geburtsdatum> "-" <Todesdatum>
+          4. Zeile: M„nnlich & Weiblich Symbol einpacken
+
+          Ein anderes Format koennte dann so aussehen:
+          5 Zeilen
+          1. Zeile: <Nachname> "," <Vorname(n)>
+          2. Zeile: <Adresse>
+          3. Zeile: <Leerzeile>
+          4. Zeile: "Geburt: " <Geburtsdatum> " " <Geburtsort>
+          5. Zeile: "Tod:    " <Todessdatum> " " <Todessort>
+
+   - Improved print-handling
+     - Overlapping pages
+     - Page header (1/1,...)
+     - Layout (left,right,center,...) with correct page data
+     - "Keep aspect ratio" when printing with "fit to page".
+     - Separate Data-Sheet printing
+
+   - Merging of trees
+
+   - Documented Sources (max 3 RegisteredOnly)
+     - list of
+     - edit of
+     - drag&drop to persons/events
+     - save
+
+Not scheduled yet
+   CHA:"Drop X here" text is centered and broken to fit window (even+edit)
+   NEW:User defineable fields support multi line text
+   NEW:FTree assumes .fam-ending when specifying file name on command line
+   NEW:Dates can be shown 01.01.1997 or  1. 1.1997 and --.--.1997 or     1997
+   NEW:Override auto sort of partners and let user choose order
+   NEW:sex shown by picture + text (m,f,-)
+   NEW:Undo for edit window
+   NEW:Order of Persons in Events / Events in Persons via Drag&Drop
+   NEW:Create sibling
+   NEW:Remembered Scripts can be unremembered
+   NEW:Keys to walk through tree
+   NEW:Function keys to open/close edit window
+   NEW:Visualize hidden (additional) partner
+   NEW: Rexx script working only on visible persons
+   NEW: ~ instead of +-
+   NEW:Picture select ... standard file dialog instead of field ?
+   NEW:Central management of places which can be dragged to data entries
+   NEW:Flag adopted/step- child
+   CHA:Person - should include marriage and divorce data IMHO.
+   NEW:Month entry is Jan,Feb,Mar,... instead of 1,2,3,... (Chooseable)
+   NEW:"New Home" Remember person's tree (List of choosable origins)
+       View/Tree of/Remember
+                   /----------
+                   /Nils Meier
+                   /Sven Meier
+                   /Otto Hauschildt
+   NEW:Autosave (15min)
+   NEW:EditDialog -> jump to father/mother/sibling
+   NEW:File open recently (10 remembered)
+   NEW:Rexx
+       - Function getDate 'YY.MM.DD' 'DD.YYYY.MM' <- configurable
+       - Rexx that only works on visible tree
+       - Print Rexx Output (ASCII/Graphic)
+       - Data gathering sheet
+   CHA:Drawing in a separate thread
+   NEW:Main Window Content can be copied to Clipboard
+   CHA:No centering of actual after each action - try to keep view
+   NEW:Tell relationship between actual and remembered (brothers,grand-grand-father,...)
+   CHA:Colored information (grandmother red - grandfather blue ?)
+   CHA:Tree with more information, e.g. marriage (between partners ?)
+   NEW:Option to enable double-click = edit
+   NEW:Information hiding (only 1st partner)
+   NEW:Cursor up/down jump from field to field
+   NEW:Religion (fixed field)
+   NEW:Family remarks field
+   NEW:ASCII Help file
+   NEW:Search and retrieval
+        a. on surnames
+        b. surname/given name + date/place name combinations
+        c. boolian, fuzzy and Soundex searches
+        d. Search of every word in source and text fields
+        e. Search on user-defined tag items - output to text file, printer or screen
+
+
+
+> 9/ Back to reports. A nice report would be a "tree in time", I mean to
+>    print tree on a time matrix.
+>
+>            +-----------------+
+>            | Renate Ulmer    |
+>            +-----------------+
+>                    <>-------+
+>          +---------------+  |
+>          | Hans Ulmer    |  |
+>          +---------------+  |
+>                             |
+>                  +-------------------+
+>                  | Sebastian Ulmer   |
+>                  +-------------------+
+>
+>    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--
+>              1850     1880     1910     1940     1970
+>
+>    Or in any other form - this is just an idea.
+
+------------ These are common tags --------------------
+
+PERSON:
+  CHR  - christening (baptizing/naming)
+  BURI - buried
+  BAPL - The event of baptism performed at age eight or later
+         by priesthood authority of The Church of Jesus Christ
+         of Latter-day Saints. (See also BAPM.)
+  ENDL - A religious event where an endowment ordinance for an
+         individual was performed by priesthood authority in an
+         LDS Temple.
+  SLGC - A religious event pertaining to the sealing of a child
+         to his or her parents in an LDS temple ceremony.
+  REFN - A description or number used to identify an item for
+         filing, storage, or other reference purposes.
+FAM:
+  SLGS - A religious event pertaining to the sealing
+         of a husband and wife in an LDS temple ceremony.
+
+
+

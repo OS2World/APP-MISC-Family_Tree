@@ -1,0 +1,99 @@
+/*
+   Family Tree Rexx Script FTX
+
+   Copyright (C) 1996 by <Nils Meier>
+
+   Please send comments to / Kommentar bitte an
+        meier2@athene.informatik.uni-bonn.de
+
+   <
+   English:    This script displays an ordered list of all persons in the family tree.        :English
+   Deutsch:    Dieses Skript zeigt eine alphabetische Liste aller Menschen im Stammbaum.      :Deutsch
+   Nederlands: Dit script produceert een alfabetische lijst van alle personen in de stamboom. :Nederlands
+   Fran‡ais:   Ce script affiche une liste alphab‚tique de toutes les personnes de
+               l'arbre g‚n‚alogique.                                                          :Fran‡ais
+   >
+
+   Long name is <
+                 English:    Alphabetic List     :English
+                 Deutsch:    Alphabetische Liste :Deutsch
+                 Nederlands: Alfabetische lijst  :Nederlands
+                 Fran‡ais:   Liste alphab‚tique  :Fran‡ais
+                >
+*/
+
+
+/* ----------------------- Params  /  Parameter ------------------- */
+
+namewidth=30
+datewidth=12
+
+CALL initLanguage
+
+/* ----------------- Display Header / Kopf der Ausgabe ------------- */
+
+head=msg.Header.LANG||DATE()
+SAY(head)
+SAY(COPIES('=',length(head)))
+
+/* ------------------------------ Output / Ausgabe ----------------- */
+
+/* Sort Persons by Name,FirstName / Menschen nach Name,Vorname sortieren */
+CALL sortPersons('N,F,B')
+
+/* Display persons in tree / Zeige die Menschen an */
+rc=selectPerson('F')
+DO UNTIL RC=0
+
+   /* Calc Name,FirstName / Berechne Name,Vorname */
+   result=getName()
+   firstname=getFirstName()
+   IF LENGTH(firstname)>0 THEN result=result||','||firstname
+   result=LEFT(result,namewidth)
+
+   /* Calc Dates / Berechne Daten */
+   birth=getBirthDate()
+   result=result||' *'||LEFT(birth,datewidth)||' '
+
+   death=getDeathDate()
+   result=result||'+'||LEFT(death,datewidth)
+
+   /* Output / Ausgabe */
+   SAY(result)
+
+   /* Next one / Naechster */
+   rc=selectPerson('N')
+END
+
+/* Done / Fertig */
+
+RETURN
+
+
+/* ---------------------- LANGUAGE INIT --------------------------- */
+InitLanguage:
+
+   /* Calculate Language Index */
+   lang='E'                              /* Default -> [E]nglish */
+   IF getLanguage()='Deutsch' THEN       /* Deutsch -> [G]erman */
+      lang='G'
+   IF getLanguage()='Nederlands' THEN    /* Nederlands -> [D]utch */
+      lang='D'
+   IF getLanguage()='Fran‡ais' THEN      /* Fran‡ais -> [F]rench */
+      lang='F'
+
+   /* [E]nglish Messages */
+   msg.Header.E='Alphabetical List - Today is :'
+
+   /* [G]erman Messages */
+   msg.Header.G='Alphabetische Liste. Heute ist der '
+
+   /* [D]utch Messages */
+   msg.Header.D='Alfabetische lijst - Heut is de :'
+
+   /* [F]rench Messages */
+   msg.Header.F="Liste Alphab‚tique - Nous sommes le "
+
+   /* Done */
+   RETURN
+

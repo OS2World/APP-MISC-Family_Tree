@@ -1,0 +1,112 @@
+/*
+   Family Tree Rexx Script FTX
+
+   Copyright (C) 1996 by <Nils Meier>
+
+   Please send comments to / Kommentar bitte an
+        meier2@athene.informatik.uni-bonn.de
+
+   <
+   English:   This script shows the anniversaries of death in this year  :English
+   Deutsch:   Dieses Skript zeigt die Todestage in diesem Jahr.          :Deutsch
+   Nederlands:Dit script toont de sterfdagen in dit jaar.                :Nederlands
+   Franáais:  Ce script montre les dates anniversaires de dÇcäs dans
+              l'annÇe en cours.                                          :Franáais
+   >
+
+   Long name is <
+                 English:    List anniversaries of death      :English
+                 Deutsch:    Auflisten der Todestage          :Deutsch
+                 Nederlands: List anniversaries of death      :Nederlands
+                 Franáais:   Montre les anniversaires de dÇcäs:Franáais
+                >
+*/
+
+/* ----------------------- Params  /  Parameter ------------------- */
+
+datewidth=14
+namewidth=datewidth+30
+
+CALL initLanguage
+
+/* ----------------- Display Header / Kopf der Ausgabe ------------- */
+
+head=msg.Header.LANG||DATE()
+SAY(head)
+SAY(COPIES('=',length(head)))
+
+
+/* ------------------------------ Output / Ausgabe ----------------- */
+
+/* Sort Persons by Death Month,Day  /  Menschen sortieren nach Todesmonat,Tag */
+rc=sortPersons('DM,DD')
+
+/* Calculate actual year  /  aktuelles Jahr berechnen */
+thisyear=WORD(DATE(),3)
+
+/* Display persons in tree  /  Menschen ausgeben */
+
+rc=selectPerson('F')
+DO UNTIL rc=0
+
+   /* Get month of Death  /  berechne Monat des Todes */
+   result=getDeathDate('m')
+
+   /* Check if we've got a month  /  nachpruefen ob wir Monat haben */
+   IF result<>'?' THEN DO
+
+      /* Get Day of Death  /  berechne Todestag */
+      day=getDeathDate('D')
+      if day<>0 THEN
+         result=result||' '||day
+      result=LEFT(result,datewidth)
+
+      /* Add name,first name  /  plus Name,Vorname */
+      result=result||getName()||','||getFirstName()
+      result=LEFT(result,namewidth)
+
+      /* Add anniversary  /  plus Jahrestag */
+      year=getDeathDate('Y')
+      IF year<>0 THEN
+         result=result||' ('||thisyear-year||')'
+
+      /* output  /  Ausgabe */
+      SAY(result)
+   END
+
+   /* Next one */
+   rc=selectPerson('N')
+END
+
+/* Done */
+RETURN
+
+
+/* ---------------------- LANGUAGE INIT --------------------------- */
+InitLanguage:
+
+   /* Calculate Language Index */
+   lang='E'                              /* Default -> [E]nglish */
+   IF getLanguage()='Deutsch' THEN       /* Deutsch -> [G]erman */
+      lang='G'
+   IF getLanguage()='Nederlands' THEN    /* Nederlands -> [D]utch */
+      lang='D'
+   IF getLanguage()='Franáais' THEN      /* Franáais -> [F]rench */
+      lang='F'
+
+   /* [E]nglish Messages */
+   msg.Header.E='Anniversary of Death (next anniversary). Today is '
+
+   /* [G]erman Messages */
+   msg.Header.G='Todestage. (naechster Jahrestag). Heute ist der '
+
+   /* [D]utch Messages */
+   msg.Header.D='Verjaardag van het overlijden (Eerstvolgende sterfdag). Vandaag is '
+
+   /* [F]rench Messages */
+   msg.Header.F="Anniversaires de DÇcäs (prochains anniversaires). Nous sommes le "
+
+   /* Done */
+   RETURN
+
+

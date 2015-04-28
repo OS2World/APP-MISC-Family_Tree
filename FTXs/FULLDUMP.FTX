@@ -1,0 +1,282 @@
+/*
+   Family Tree Rexx Script FTX
+
+   Copyright (C) 1996 by <Peter Gervai>
+
+   Please send comments to
+   Grin at 2:370/15@fidonet or grin@lifeforce.fido.hu
+
+   <
+   English:   Prints full tree based on descendant subtrees into Spreadsheet
+              (something-delimited; default is comma) data file.                       :English
+   Deutsch:   Gibt den vollst„ndigen Stammbaum, basierend auf den Teilb„umen
+              der Nachfahren, in eine Tabelle aus (Trennzeichen ist Komma).            :Deutsch
+   Nederlands:Exporteert de volledige stamboom, gebaseerd op de sub-stambomen
+              van de afstammelingen, naar een Spreadsheet data bestand (een met
+              tekens afgebakend bestand-standaard met komma's).                        :Nederlands
+   Fran‡ais:  Imprime la totalit‚ de l'arbre bas‚e sur les ramifications descendantes. :Fran‡ais
+   >
+
+   Well, I use this one to create sheets for relatives far away
+   from me and computers, to fill out the gaps... :)
+
+   Long name is <
+                 English:    Dump of the tree                 :English
+                 Deutsch:    Unformatierte Ausgabe des Baumes :Deutsch
+                 Nederlands: Dump of the tree                 :Nederlands
+                 Fran‡ais:   Imprime la totalit‚ de l'arbre   :Fran‡ais
+                >
+*/
+
+/*
+ * Global variables (for EXPOSE in procedures)
+ */
+globals = 'LANG msg. cr person. dlt'
+cr = '0d0a'x
+dlt = ','
+person. = 0                             /* array of already printed persons */
+
+call InitLanguage
+
+/*
+ * start
+ */
+title = msg.Header.LANG getName()',' getFirstName()
+
+say title
+say copies('=',length(title))
+say msg.Row.LANG
+
+loop. = 1
+
+call SelectPerson('F')
+
+do while loop.1
+  call DoStack('PP')
+  loop.found = SearchForAdam()
+
+    /* print nonprinted adam and his subtree */
+  if loop.found then do
+    call DoStack('PP')                            /* push for emitPerson! */
+    call DEmitPerson 1
+  end
+
+  call DoStack('pP')                              /* original person */
+
+  /* search for the next person who have unprocessed subtree */
+  do until (person.pid=0) | res=0
+    res = SelectPerson('N')
+    pid = getPID()
+  end
+  loop.1 = res                                    /* ...and finish if we're out of persons */
+end
+
+
+say msg.Finish.LANG
+
+/*
+do i=1 until \person.i
+  i = i + 1
+end
+say 'CHECK: sequentially listed' i-1 'persons.'
+*/
+
+return 0
+
+/*
+ * recursive function to travel through subtrees
+ */
+DEmitPerson: procedure expose (globals); parse arg level
+  /* pull actual person */
+  if DoStack('pP')=0 then perror(msg.Error.LANG)
+
+  pid = getPID()
+  if person.pid then return                       /* skip already used subtree */
+
+  call OutputPerson1 level                        /* the guy */
+  de.guy = str1                                   /* keep for 2nd and more wife */
+
+  de.count = 1
+  /* check families */
+  res = SelectFamily(de.count)
+  do while res\=0
+  /* print wife */
+    call DoStack('PP')
+    res = SelectPerson('p')
+
+    if de.count\=1 then do
+      call charout ,'('level')'||dlt||de.guy      /* at wife #n */
+    end
+    call OutputPerson2 level                      /* wife */
+
+    call DoStack('pP')
+
+    /* examine children */
+    call DoStack('PP')                            /* original person */
+    de.childcount = 1
+    res = SelectPerson(de.childcount)
+    do while res\=0
+    /* print children's tree */
+      call DoStack('PF')                          /* save family because SelectPerson(<count>) needs it! */
+      call DoStack('PP')                          /* push child for recursion (routine pops it) */
+      call DEmitPerson level+1                    /* print child's tree (indent1) */
+
+      de.childcount = de.childcount + 1
+      call DoStack('pF')                          /* original family */
+      res = SelectPerson(de.childcount)           /* get his next child */
+    end
+
+    call DoStack('pP')                            /* original person */
+    de.count = de.count + 1                       /* next family */
+    res = SelectFamily(de.count)
+  end
+  if de.count=1 then
+    call charout ,cr                            /* cr after wifeless guys
+*/
+return
+
+/*
+ * Print personal data
+ */
+OutputPerson: parse arg lvl
+  str1 = ''
+  pid = getPID()
+  if person.pid then str1 = '*'
+  person.pid = 1
+
+  str1 = str1 || Translate(getName(),' ',dlt)||dlt
+  str1 = str1 || Translate(getFirstName(),' ',dlt)||dlt
+  str1 = str1 || WORD(msg.Sex.LANG,getSex()+1)||dlt
+  str1 = str1 || getBirthDate()||dlt
+  str1 = str1 || Translate(getBirthPlace(),' ',dlt)||dlt
+  str1 = str1 || getDeathDate()||dlt
+  str1 = str1 || Translate(getDeathPlace(),' ',dlt)||dlt
+
+  memofield = translate(getMemo(),';',dlt||'0d0a'x)
+  str1 = str1 || memofield||dlt
+
+  call charout ,str1
+
+  drop lvl
+return
+
+/* husband */
+OutputPerson1: parse arg lvl
+  call charout ,lvl||dlt
+  call OutputPerson
+  drop lvl
+return
+
+/* wife */
+OutputPerson2: parse arg lvl
+  call OutputMarriage
+  call OutputPerson lvl
+  call charout ,cr
+
+  drop lvl
+return
+
+/* marriage */
+OutputMarriage:
+  call charout ,getMarriageDate()||dlt
+  call charout ,Translate(getMarriagePlace(),' ',dlt)||dlt
+  call charout ,getDivorceDate()||dlt
+return
+
+/*
+ * Search for oldest ancestor up the tree
+ *
+ *   return:
+ *      1: if found someone not already used, and
+ *       SELECTED actual person if there's no ancestor, or
+ *       SELECTED the oldest ancestor person
+ *      0: if all ancestors and the actual person was already used
+ */
+SearchForAdam: procedure expose (globals)
+  call DoStack('PP')
+  res = SelectFamily('p')                         /* select parental family */
+  if res\=0 then do
+    res = SelectPerson('p')                       /* select a parent */
+    res = SearchForAdam()                         /* search for his ancestors */
+    if res then do                                /* found */
+      call DoStack('DP')                          /* drop original (Peter now 'DROP' is in there :)) */
+      return 1
+    end
+    res = SelectPerson('p')                       /* select other parent */
+    res = SearchForAdam()
+    if res then do                                /* found */
+      call DoStack('DP')                          /* drop original (Peter now 'DROP' is in there :)) */
+      return 1
+    end
+  end
+
+  call DoStack('pP')                              /* get original person */
+  pid = getPID()
+  if person.pid then                              /* if he's already used up */
+    return 0                                      /* fail */
+  else
+    return 1                                      /* ok, person unused */
+return 0
+
+
+/* ---------------------- LANGUAGE INIT --------------------------- */
+InitLanguage:
+
+   /* Calculate Language Index */
+   lang='E'                              /* Default -> [E]nglish */
+   IF getLanguage()='Deutsch' THEN       /* Deutsch -> [G]erman */
+      lang='G'
+   IF getLanguage()='Nederlands' THEN    /* Nederlands -> [D]utch */
+      lang='D'
+   IF getLanguage()='Fran‡ais' THEN      /* Fran‡ais -> [F]rench */
+      lang='F'
+
+   /* [E]nglish Messages */
+   msg.Header.E = 'Full Tree based on descendant subtrees'
+   msg.Sex.E    = 'N/A Male Female'
+   msg.Row.E    = 'Lvl'||dlt||'Name'||dlt||dlt||'Sex'||dlt||'Born'||dlt||,
+                  'BPlace'||dlt||'Died'||dlt||'DPlace'||dlt||'Comment'||dlt||,
+                  'Married'||dlt||'MPlace'||dlt||dlt,
+                  'Partner name'||dlt||dlt||'Sex'||dlt||'Born'||dlt||,
+                  'BPlace'||dlt||'Died'||dlt||'DPlace'||dlt||'Comment'
+   msg.Error.E  = 'Error popping from stack!'
+   msg.Finish.E = '===Finished==='
+
+   /* [G]erman Messages */
+   msg.Header.G = 'Vollst„ndiger Baum basierend auf Teilb„ume der Nachfahren'
+   msg.Sex.G    = 'N/A M„nnlich Weiblich'
+   msg.Row.G    = 'Lvl'||dlt||'Name'||dlt||dlt||'Geschlecht'||dlt||'Geboren'||dlt||,
+                  'GebOrt'||dlt||'Gestorben'||dlt||'GesOrt'||dlt||'Kommentar'||dlt||,
+                  'Verheiratet'||dlt||'VerOrd'||dlt||dlt,
+                  'Name d.Partners'||dlt||dlt||'Geschlecht'||dlt||'Geboren'||dlt||,
+                  'GebOrt'||dlt||'Gestorben'||dlt||'GesOrt'||dlt||'Kommentar'
+   msg.Error.G  = 'Fehler beim Pop von Person von Stack!'
+   msg.Finish.G = '===Beendet==='
+
+   /* [D]utch Messages */
+   msg.Header.D = 'Volledige stamboom gebaseerd op afstammelingen sub-stambomen'
+   msg.Sex.D    = 'NVT Manlijk Vrouwelijk'
+   msg.Row.D    = 'Lvl'||dlt||'Naam'||dlt||dlt||'geslacht'||dlt||'geboren'||dlt||,
+                  'GPlaats'||dlt||'Overl.'||dlt||'SPlaats'||dlt||'Commentaar'||dlt||,
+                  'Getrouwd'||dlt||'TPlaats'||dlt||dlt,
+                  'Partner naam'||dlt||dlt||'Geslacht'||dlt||'Geboren'||dlt||,
+                  'BPlaats'||dlt||'Overl.'||dlt||'SPlaats'||dlt||'Commentaar'
+   msg.Error.D  = 'Fout "popping from stack!"'
+   msg.Finish.D = '===Klaar==='
+
+   /* [F]rench Messages */
+   msg.Header.F = "Arbre Complet bas‚ sur les arborescences descendantes"
+   msg.Sex.F    = "N/A Homme Femme"
+   msg.Row.F    = "Lvl"||dlt||"Nom"||dlt||dlt||"Sexe"||dlt||"N‚(e)"||dlt||,
+                  "LieuNais"||dlt||"D‚c‚d‚(e)"||dlt||"LieuD‚c"||dlt||"Commentaire"||dlt||,
+                  "Mari‚(e)"||dlt||"LieuMar"||dlt||dlt,
+                  "Nom du Conjoint"||dlt||dlt||"Sexe"||dlt||"N‚(e)"||dlt||,
+                  "LieuNais"||dlt||"D‚c‚d‚(e)"||dlt||"LieuD‚c"||dlt||"Commentaire"
+   msg.Error.F  = "Erreur survenant de la pile!"
+   msg.Finish.F = "===Termin‚==="
+
+   /* Done */
+   RETURN
+
+
+

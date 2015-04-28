@@ -1,0 +1,7898 @@
+0 HEAD
+1 SOUR FamilyTree for OS/2 - ExGedcom.ftx
+2 VERS 1.1a
+1 CHAR IBMPC
+1 FILE heuler.GED
+1 DATE 10 Jun 1997
+0 @I128@ INDI
+1 NAME Nancy Jane  /Slacke/
+1 SEX F
+1 BIRT
+2 DATE  5 MAY 1951
+2 PLAC San Jose, CA
+1 DEAT
+2 DATE 
+2 PLAC 
+1 PHOT nancy.pcx
+1 OCCU Dietician, housewife, meditation instructor
+1 ADDR 36 Sycamore Creek
+2 CONT  Irvine CA 92666
+1 FAMS @F59@
+0 @I130@ INDI
+1 NAME Walter Kenneth /Heuler/
+1 SEX M
+1 BIRT
+2 DATE  22 JUL 1949
+2 PLAC Orange, CA
+1 DEAT
+2 DATE 
+2 PLAC 
+1 PHOT walt.pcx
+1 OCCU Psychiatrist
+1 ADDR 942 E. Chapman
+2 CONT  Orange CA 92666
+1 NOTE M.D. from U. Texas 1975
+2 CONT Psychiatrist
+2 CONT UCI volunteer faculty
+2 CONT  
+1 FAMS @F59@
+1 FAMC @F60@
+0 @I276@ INDI
+1 NAME  /Emma of Normandy/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F111@
+1 FAMS @F140@
+1 FAMC @F62@
+0 @I277@ INDI
+1 NAME  /ETHELRED II, The Unready/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1016
+2 PLAC 
+1 OCCU King of England
+1 NOTE ruled 978 - 1016
+1 FAMS @F111@
+1 FAMS @F139@
+0 @I278@ INDI
+1 NAME  /EDWARD, The Confessor/
+1 SEX M
+1 BIRT
+2 DATE  1005
+2 PLAC 
+1 DEAT
+2 DATE  1066
+2 PLAC 
+1 OCCU King of England
+1 NOTE King of England 1042-1066
+2 CONT The conflict over the succession of the
+2 CONT throne after his death lead to the invasion
+2 CONT of the Normans, and defeat of Harold
+2 CONT at Hastings, Christmas day 1066.
+1 FAMC @F111@
+0 @I134@ INDI
+1 NAME  /Gunnor of Denmark/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F62@
+0 @I133@ INDI
+1 NAME  /Richard I the Fearless/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  996
+2 PLAC 
+1 OCCU Count of Normandy
+1 NOTE Richard was of Danish descent, his 
+2 CONT ancestors raiding the coast of North
+2 CONT France where they eventually settled.
+2 CONT & founded Normandy.  He was a Dane 
+2 CONT or Viking Northman.
+1 FAMS @F62@
+0 @I279@ INDI
+1 NAME King of Scots /Malcom III/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1093
+2 PLAC 
+1 NOTE father of Edith, wife of HENRY I
+2 CONT grandfather of Matilda of Boulogne, 
+2 CONT wife of STEPHEN
+1 FAMS @F4@
+0 @I280@ INDI
+1 NAME  /Edgar Athling/
+1 SEX  
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F3@
+0 @I281@ INDI
+1 NAME  /St. Margaret/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1093
+2 PLAC 
+1 FAMS @F4@
+1 FAMC @F3@
+0 @I282@ INDI
+1 NAME  /Partner/
+1 SEX  
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F3@
+0 @I283@ INDI
+1 NAME  /Edward Athling/
+1 SEX  
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1057
+2 PLAC 
+1 FAMS @F3@
+1 FAMC @F112@
+0 @I284@ INDI
+1 NAME  /Partner/
+1 SEX  
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F112@
+0 @I285@ INDI
+1 NAME Bishop of Bayeux, Earl of Kent /Odo/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1097
+2 PLAC 
+1 FAMC @F141@
+0 @I286@ INDI
+1 NAME Erna /Heuler/
+1 SEX F
+1 BIRT
+2 DATE  1893
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F145@
+0 @I287@ INDI
+1 NAME George /Heuler/
+1 SEX M
+1 BIRT
+2 DATE  1888
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F145@
+0 @I29@ INDI
+1 NAME Jean /Heuler/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F6@
+0 @I28@ INDI
+1 NAME John /Heuler/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F6@
+0 @I27@ INDI
+1 NAME Nancy /Heuler/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 PHOT NancyP.pcx
+1 FAMS @F113@
+1 FAMC @F6@
+0 @I26@ INDI
+1 NAME Margaret /(Heuler)/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F6@
+0 @I25@ INDI
+1 NAME George Barton /Heuler/
+1 SEX M
+1 BIRT
+2 DATE  1929
+2 PLAC Fellows, CA
+1 DEAT
+2 DATE 
+2 PLAC 
+1 OCCU Dentist, entrepreneur
+1 ADDR Anaheim
+2 CONT  CA
+1 FAMS @F6@
+1 FAMC @F56@
+0 @I288@ INDI
+1 NAME William /Pyzel/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 PHOT WmPyzel.pcx
+1 FAMS @F113@
+0 @I289@ INDI
+1 NAME Anna Grace /Pyzel/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 PHOT AnnaP.gif
+1 FAMC @F113@
+0 @I300@ INDI
+1 NAME Myrtle Lillian /Groves/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F118@
+0 @I301@ INDI
+1 NAME Albert Laurence /Smith/
+1 SEX M
+1 BIRT
+2 DATE  20 MAY 1883
+2 PLAC 
+1 DEAT
+2 DATE  30 APR 1965
+2 PLAC 
+1 FAMS @F119@
+0 @I302@ INDI
+1 NAME William Allison /Gibson/
+1 SEX M
+1 BIRT
+2 DATE  20 JUL 1887
+2 PLAC 
+1 DEAT
+2 DATE  8 MAY 1962
+2 PLAC 
+1 FAMS @F120@
+0 @I303@ INDI
+1 NAME Eliza Mabel  (Lyda) /Strang/
+1 SEX F
+1 BIRT
+2 DATE  2 OCT 1879
+2 PLAC 
+1 DEAT
+2 DATE  13 OCT 1918
+2 PLAC 
+1 FAMS @F121@
+0 @I304@ INDI
+1 NAME Maude Alma  /Richards/
+1 SEX F
+1 BIRT
+2 DATE  24 AUG 1870
+2 PLAC 
+1 DEAT
+2 DATE  16 JUL 1960
+2 PLAC 
+1 FAMS @F122@
+0 @I305@ INDI
+1 NAME Earl Manfred /Moore/
+1 SEX M
+1 BIRT
+2 DATE  6 FEB 1894
+2 PLAC Washington Twp., Jefferson County, PA
+1 DEAT
+2 DATE  21 MAY 1941
+2 PLAC 
+1 FAMS @F118@
+1 FAMC @F146@
+0 @I306@ INDI
+1 NAME Baby Boy /Moore/
+1 SEX M
+1 BIRT
+2 DATE  26 AUG 1887
+2 PLAC Washington Twp., Jefferson County, PA
+1 DEAT
+2 DATE  26 AUG 1887
+2 PLAC Washington Twp., Jefferson County, PA
+1 FAMC @F146@
+0 @I307@ INDI
+1 NAME Emily Sara /Moore/
+1 SEX F
+1 BIRT
+2 DATE  10 APR 1885
+2 PLAC Washington Twp., Jefferson County, PA
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F119@
+1 FAMC @F146@
+0 @I308@ INDI
+1 NAME Hannah Mary Maude /Moore/
+1 SEX F
+1 BIRT
+2 DATE  15 MAY 1881
+2 PLAC Washington Twp., Jefferson County, PA
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F120@
+1 FAMC @F146@
+0 @I309@ INDI
+1 NAME Mabel Prescott /Moore/
+1 SEX F
+1 BIRT
+2 DATE  6 MAR 1878
+2 PLAC Washington Twp., Jefferson County, PA
+1 DEAT
+2 DATE 
+2 PLAC 
+1 OCCU nurse
+1 NOTE never married
+1 FAMC @F146@
+0 @I310@ INDI
+1 NAME Edna Lucretia /Moore/
+1 SEX F
+1 BIRT
+2 DATE  14 DEC 1875
+2 PLAC Washington Twp., Jefferson County, PA
+1 DEAT
+2 DATE  21 JUL 1950
+2 PLAC 
+1 PHOT ednaM.gif
+1 OCCU nurse
+1 NOTE never married
+2 CONT became Director of Nursing
+2 CONT at Temple University Hospital from 
+2 CONT 1917-1938
+1 FAMC @F146@
+0 @I311@ INDI
+1 NAME James Walter /Moore/
+1 SEX M
+1 BIRT
+2 DATE  7 DEC 1873
+2 PLAC Washington Twp., Jefferson County, PA
+1 DEAT
+2 DATE  18 JAN 1962
+2 PLAC 
+1 FAMS @F121@
+1 FAMC @F146@
+0 @I12@ INDI
+1 NAME Fred Alexander /Moore/
+1 SEX M
+1 BIRT
+2 DATE  19 FEB 1872
+2 PLAC Washington Twp., Jefferson County, PA
+1 DEAT
+2 DATE  8 JAN 1960
+2 PLAC 
+1 FAMS @F122@
+1 FAMC @F146@
+0 @I312@ INDI
+1 NAME Roger /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  21 DEC 1834
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F208@
+0 @I313@ INDI
+1 NAME Joseph /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  31 DEC 1832
+2 PLAC 
+1 DEAT
+2 DATE  21 DEC 1890
+2 PLAC 
+1 FAMC @F208@
+0 @I314@ INDI
+1 NAME John /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  29 APR 1821
+2 PLAC 
+1 DEAT
+2 DATE  10 MAY 1854
+2 PLAC 
+1 FAMC @F208@
+0 @I315@ INDI
+1 NAME Alice /Warriner/
+1 SEX F
+1 BIRT
+2 DATE  28 DEC 1802
+2 PLAC 
+1 DEAT
+2 DATE  25 JUL 1875
+2 PLAC 
+1 FAMC @F69@
+0 @I316@ INDI
+1 NAME Mary /Warriner/
+1 SEX F
+1 BIRT
+2 DATE  27 APR 1800
+2 PLAC 
+1 DEAT
+2 DATE  1872
+2 PLAC 
+1 FAMC @F69@
+0 @I317@ INDI
+1 NAME Nancy /Warriner/
+1 SEX F
+1 BIRT
+2 DATE  1 JUN 1795
+2 PLAC 
+1 DEAT
+2 DATE  1865
+2 PLAC 
+1 FAMC @F69@
+0 @I318@ INDI
+1 NAME Alvin Burton /Moore/
+1 SEX M
+1 BIRT
+2 DATE  6 DEC 1860
+2 PLAC Jefferson County PA
+1 DEAT
+2 DATE  19 MAY 1934
+2 PLAC 
+1 FAMC @F148@
+0 @I319@ INDI
+1 NAME Walter W. /Moore/
+1 SEX M
+1 BIRT
+2 DATE  20 MAR 1858
+2 PLAC Jefferson County PA
+1 DEAT
+2 DATE  27 AUG 1859
+2 PLAC 
+1 FAMC @F148@
+0 @I320@ INDI
+1 NAME James M. /Moore/
+1 SEX M
+1 BIRT
+2 DATE  1 MAY 1855
+2 PLAC Jefferson County PA
+1 DEAT
+2 DATE  19 JAN 1941
+2 PLAC 
+1 FAMC @F148@
+0 @I321@ INDI
+1 NAME Andrew Uriah /Moore/
+1 SEX M
+1 BIRT
+2 DATE  6 OCT 1852
+2 PLAC Jefferson County PA
+1 DEAT
+2 DATE  21 AUG 1920
+2 PLAC 
+1 FAMC @F148@
+0 @I322@ INDI
+1 NAME Estavilla H. /Moore/
+1 SEX F
+1 BIRT
+2 DATE  17 APR 1850
+2 PLAC Jefferson County PA
+1 DEAT
+2 DATE  2 APR 1924
+2 PLAC 
+1 FAMC @F148@
+0 @I323@ INDI
+1 NAME Melvin K. /Moore/
+1 SEX M
+1 BIRT
+2 DATE  27 AUG 1848
+2 PLAC Jefferson County PA
+1 DEAT
+2 DATE  27 JUN 1849
+2 PLAC 
+1 FAMC @F148@
+0 @I324@ INDI
+1 NAME Martha J. /Moore/
+1 SEX F
+1 BIRT
+2 DATE  6 JAN 1846
+2 PLAC Jefferson County PA
+1 DEAT
+2 DATE  24 JAN 1918
+2 PLAC 
+1 FAMC @F148@
+0 @I325@ INDI
+1 NAME Joseph /Moore/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 NOTE oldest child, remained in Ireland
+2 CONT had blue eyes, all others had 
+2 CONT brown
+1 FAMC @F151@
+0 @I326@ INDI
+1 NAME Jacob /Moore/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 NOTE settled in Brookeville
+1 FAMC @F151@
+0 @I327@ INDI
+1 NAME Edward /Moore/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F151@
+0 @I328@ INDI
+1 NAME John /Moore/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 ADDR Porter Twp.
+2 CONT  Clinton County PA
+1 NOTE soldier in War of 1812
+1 FAMC @F151@
+0 @I329@ INDI
+1 NAME James /Moore/
+1 SEX M
+1 BIRT
+2 DATE  1789
+2 PLAC 
+1 DEAT
+2 DATE  29 MAR 1885
+2 PLAC 
+1 ADDR Clearfield County PA
+1 NOTE soldier in War of 1812
+1 FAMC @F151@
+0 @I330@ INDI
+1 NAME Nancy Moore /Donohue/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F151@
+0 @I331@ INDI
+1 NAME Margaret Moore /McConnel/
+1 SEX F
+1 BIRT
+2 DATE  1782
+2 PLAC 
+1 DEAT
+2 DATE  29 JAN 1850
+2 PLAC 
+1 FAMC @F151@
+0 @I332@ INDI
+1 NAME Edward Miles /Moore/
+1 SEX M
+1 BIRT
+2 DATE  27 AUG 1821
+2 PLAC 
+1 DEAT
+2 DATE  24 SEP 1904
+2 PLAC 
+1 FAMS @F124@
+1 FAMC @F149@
+0 @I333@ INDI
+1 NAME Mary Ann Moore /Stewart/
+1 SEX F
+1 BIRT
+2 DATE  14 JUN 1824
+2 PLAC Center Co. PA
+1 DEAT
+2 DATE  8 FEB 1901
+2 PLAC 
+1 FAMS @F123@
+1 FAMC @F149@
+0 @I334@ INDI
+1 NAME William Allen /Stewart/
+1 SEX M
+1 BIRT
+2 DATE  10 AUG 1827
+2 PLAC Indiana Co. PA
+1 DEAT
+2 DATE  20 JUN 1886
+2 PLAC 
+1 FAMS @F123@
+0 @I335@ INDI
+1 NAME Hannah Barton Satterlee /Moore/
+1 SEX F
+1 BIRT
+2 DATE  24 FEB 1821
+2 PLAC 
+1 DEAT
+2 DATE  14 MAY 1908
+2 PLAC 
+1 FAMS @F124@
+0 @I336@ INDI
+1 NAME Frances Willard Moore /Best/
+1 SEX F
+1 BIRT
+2 DATE  9 MAR 1827
+2 PLAC 
+1 DEAT
+2 DATE  23 JUN 1919
+2 PLAC 
+1 FAMS @F125@
+1 FAMC @F149@
+0 @I337@ INDI
+1 NAME William Jr. /Best/
+1 SEX M
+1 BIRT
+2 DATE  24 OCT 1823
+2 PLAC Plum Twp., Westmoreland Co. PA
+1 DEAT
+2 DATE  6 JUN 1874
+2 PLAC 
+1 FAMS @F125@
+0 @I338@ INDI
+1 NAME Nancy /Moore/
+1 SEX F
+1 BIRT
+2 DATE  1833
+2 PLAC 
+1 DEAT
+2 DATE  10 JUL 1917
+2 PLAC 
+1 FAMC @F149@
+0 @I339@ INDI
+1 NAME Andrew E. /Moore/
+1 SEX M
+1 BIRT
+2 DATE  2 MAR 1833
+2 PLAC 
+1 DEAT
+2 DATE  23 JAN 1912
+2 PLAC 
+1 FAMS @F126@
+1 FAMC @F149@
+0 @I340@ INDI
+1 NAME Jacob Ramsey /Moore/
+1 SEX M
+1 BIRT
+2 DATE  23 DEC 1835
+2 PLAC 
+1 DEAT
+2 DATE  23 SEP 1909
+2 PLAC 
+1 FAMS @F127@
+1 FAMC @F149@
+0 @I341@ INDI
+1 NAME David Barnett /Moore/
+1 SEX M
+1 BIRT
+2 DATE  3 SEP 1839
+2 PLAC 
+1 DEAT
+2 DATE  21 JUL 1910
+2 PLAC 
+1 FAMS @F128@
+1 FAMC @F149@
+0 @I342@ INDI
+1 NAME Lucretia Perrin /Moore/
+1 SEX F
+1 BIRT
+2 DATE  16 NOV 1835
+2 PLAC 
+1 DEAT
+2 DATE  5 JAN 1907
+2 PLAC 
+1 FAMS @F126@
+0 @I343@ INDI
+1 NAME Maria Elma Simpson /Moore/
+1 SEX F
+1 BIRT
+2 DATE  28 APR 1844
+2 PLAC 
+1 DEAT
+2 DATE  11 MAY 1914
+2 PLAC 
+1 FAMS @F127@
+0 @I344@ INDI
+1 NAME Mary L. /Moore/
+1 SEX F
+1 BIRT
+2 DATE  6 JAN 1846
+2 PLAC Jefferson County PA
+1 DEAT
+2 DATE  23 MAR 1919
+2 PLAC 
+1 FAMC @F148@
+0 @I345@ INDI
+1 NAME Margaret Malvina /Moore/
+1 SEX F
+1 BIRT
+2 DATE  29 JUN 1843
+2 PLAC Elk County, PA
+1 DEAT
+2 DATE  18 MAY 1937
+2 PLAC 
+1 FAMC @F148@
+0 @I346@ INDI
+1 NAME Ferdinand B. /Moore/
+1 SEX M
+1 BIRT
+2 DATE  30 AUG 1839
+2 PLAC Elk County, PA
+1 DEAT
+2 DATE  15 MAY 1841
+2 PLAC 
+1 FAMC @F148@
+0 @I347@ INDI
+1 NAME Orlanda R. /Moore/
+1 SEX F
+1 BIRT
+2 DATE  10 MAY 1838
+2 PLAC Elk County, PA
+1 DEAT
+2 DATE  20 OCT 1841
+2 PLAC 
+1 FAMC @F148@
+0 @I348@ INDI
+1 NAME Helen Perrin /Moore/
+1 SEX F
+1 BIRT
+2 DATE  2 MAY 1840
+2 PLAC 
+1 DEAT
+2 DATE  9 MAR 1912
+2 PLAC 
+1 FAMS @F128@
+0 @I244@ INDI
+1 NAME John /Glouce/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F103@
+0 @I243@ INDI
+1 NAME  /Partner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F102@
+0 @I242@ INDI
+1 NAME Peter /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  1614
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F102@
+1 FAMC @F77@
+0 @I241@ INDI
+1 NAME Jane /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F73@
+0 @I240@ INDI
+1 NAME Adam /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  1667
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F74@
+0 @I239@ INDI
+1 NAME Ann Warriner /Glouce/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F103@
+1 FAMC @F102@
+0 @I271@ INDI
+1 NAME  /CHARLES VI of France/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F171@
+0 @I270@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F171@
+0 @I269@ INDI
+1 NAME Richard Earl of Warwick /Neville/
+1 SEX M
+1 BIRT
+2 DATE  22 NOV 1428
+2 PLAC 
+1 DEAT
+2 DATE  14 APR 1471
+2 PLAC Battle of Barnet
+1 PHOT c:\Family Tree\pictures\warwick.gif
+1 NOTE Known as The King Maker, because
+2 CONT of the influence his support had in
+2 CONT War of the Roses.
+2 CONT killed in battle in War of Roses
+1 FAMS @F129@
+1 FAMC @F50@
+0 @I268@ INDI
+1 NAME Duke of Lorraine /Rene/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F174@
+0 @I267@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F174@
+0 @I266@ INDI
+1 NAME  /CHARLES the Bad of Navarre/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 OCCU King of Navarre
+1 FAMS @F15@
+0 @I265@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F15@
+0 @I264@ INDI
+1 NAME  /CHARLES VI of France/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 OCCU King of France
+1 FAMS @F17@
+0 @I263@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F17@
+0 @I262@ INDI
+1 NAME  /PHILLIP III of France/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 OCCU King of France
+1 FAMS @F204@
+0 @I261@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F204@
+0 @I260@ INDI
+1 NAME  /LOUIS VII of France/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 OCCU King of France
+1 FAMS @F108@
+0 @I245@ INDI
+1 NAME John /Smith/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F75@
+0 @I349@ INDI
+1 NAME Anne, Countess of Warwick /de Beauchamp/
+1 SEX F
+1 BIRT
+2 DATE  1429
+2 PLAC 
+1 DEAT
+2 DATE  1493
+2 PLAC 
+1 FAMS @F129@
+0 @I350@ INDI
+1 NAME Isabella (Arundale) /Neville/
+1 SEX F
+1 BIRT
+2 DATE  1451
+2 PLAC 
+1 DEAT
+2 DATE  1476
+2 PLAC 
+1 FAMC @F129@
+0 @I351@ INDI
+1 NAME Anne /Neville/
+1 SEX F
+1 BIRT
+2 DATE  1456
+2 PLAC 
+1 DEAT
+2 DATE  1485
+2 PLAC 
+1 NOTE marries RICHARD III
+1 FAMC @F129@
+0 @I352@ INDI
+1 NAME Richard /Wydville/
+1 SEX M
+1 BIRT
+2 DATE  1405
+2 PLAC 
+1 DEAT
+2 DATE  1469
+2 PLAC 
+1 OCCU 1st Earl Rivers
+1 FAMS @F12@
+0 @I353@ INDI
+1 NAME Owen /Tudor/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1461
+2 PLAC 
+1 FAMS @F13@
+0 @I354@ INDI
+1 NAME Edmund, Earl of Richmond /Tudor/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1456
+2 PLAC 
+1 FAMS @F14@
+1 FAMC @F13@
+0 @I355@ INDI
+1 NAME Margaret /Beaufort/
+1 SEX F
+1 BIRT
+2 DATE  1443
+2 PLAC 
+1 DEAT
+2 DATE  1509
+2 PLAC 
+1 FAMS @F14@
+0 @I356@ INDI
+1 NAME HENRY VII /Tudor/
+1 SEX M
+1 BIRT
+2 DATE  1457
+2 PLAC 
+1 DEAT
+2 DATE  1509
+2 PLAC 
+1 FAMC @F14@
+0 @I357@ INDI
+1 NAME Charles /Fordtran/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F153@
+0 @I358@ INDI
+1 NAME R. L.  /Fordtran/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F153@
+0 @I359@ INDI
+1 NAME ? Fordtran /McGregor/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F153@
+0 @I360@ INDI
+1 NAME ? Fordtran /Baker/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F153@
+0 @I361@ INDI
+1 NAME ? Fordtran /Mensing/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F153@
+0 @I362@ INDI
+1 NAME E. L. Fordtran /Healey/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F153@
+0 @I363@ INDI
+1 NAME Mary  /Warriner/
+1 SEX F
+1 BIRT
+2 DATE  7 JUL 1823
+2 PLAC 
+1 DEAT
+2 DATE  JAN 1918
+2 PLAC 
+1 FAMS @F130@
+1 FAMC @F208@
+0 @I364@ INDI
+1 NAME Matthew /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  18 SEP 1817
+2 PLAC 
+1 DEAT
+2 DATE  8 APR 1865
+2 PLAC 
+1 FAMC @F208@
+0 @I365@ INDI
+1 NAME William /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  16 SEP 1825
+2 PLAC 
+1 DEAT
+2 DATE  JUL 1885
+2 PLAC 
+1 FAMC @F208@
+0 @I366@ INDI
+1 NAME Isaiah /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  15 NOV 1818
+2 PLAC 
+1 DEAT
+2 DATE  23 SEP 1866
+2 PLAC 
+1 FAMC @F208@
+0 @I367@ INDI
+1 NAME Edward /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  5 MAY 1830
+2 PLAC 
+1 DEAT
+2 DATE  28 AUG 1887
+2 PLAC 
+1 FAMC @F208@
+0 @I368@ INDI
+1 NAME Roger /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  31 DEC 1832
+2 PLAC 
+1 DEAT
+2 DATE  17 JAN 1833
+2 PLAC 
+1 FAMC @F208@
+0 @I369@ INDI
+1 NAME Robert /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  10 DEC 1837
+2 PLAC 
+1 DEAT
+2 DATE  12 DEC 1890
+2 PLAC 
+1 FAMC @F208@
+0 @I370@ INDI
+1 NAME Ellen /Warriner/
+1 SEX F
+1 BIRT
+2 DATE  5 MAY 1842
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 NOTE named after twin of Mary, b.7-10-1823
+2 CONT d.10-10-1823
+1 FAMC @F208@
+0 @I371@ INDI
+1 NAME Joseph /Sanders/
+1 SEX M
+1 BIRT
+2 DATE  1826
+2 PLAC 
+1 DEAT
+2 DATE  1889
+2 PLAC 
+1 FAMS @F130@
+0 @I372@ INDI
+1 NAME Matthew James /Sanders/
+1 SEX M
+1 BIRT
+2 DATE  1859
+2 PLAC 
+1 DEAT
+2 DATE  1935
+2 PLAC 
+1 FAMS @F131@
+1 FAMC @F130@
+0 @I373@ INDI
+1 NAME Flora Miller /Sanders/
+1 SEX F
+1 BIRT
+2 DATE  1861
+2 PLAC 
+1 DEAT
+2 DATE  1957
+2 PLAC 
+1 FAMS @F131@
+0 @I374@ INDI
+1 NAME Dorothy Muriel Sanders /Stuart/
+1 SEX F
+1 BIRT
+2 DATE  1890
+2 PLAC 
+1 DEAT
+2 DATE  1980
+2 PLAC 
+1 FAMS @F132@
+1 FAMC @F131@
+0 @I375@ INDI
+1 NAME Charles Edward /Stuart/
+1 SEX M
+1 BIRT
+2 DATE  1881
+2 PLAC 
+1 DEAT
+2 DATE  1943
+2 PLAC 
+1 FAMS @F132@
+0 @I376@ INDI
+1 NAME Elizabeth Charles Stuart /Burke/
+1 SEX F
+1 BIRT
+2 DATE  1919
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F133@
+1 FAMC @F132@
+0 @I377@ INDI
+1 NAME Julian Thompson Jr. /Burke/
+1 SEX M
+1 BIRT
+2 DATE  1918
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F133@
+0 @I378@ INDI
+1 NAME Mary /Warriner/
+1 SEX F
+1 BIRT
+2 DATE  7 SEP 1792
+2 PLAC 
+1 DEAT
+2 DATE  23 NOV 1795
+2 PLAC 
+1 FAMC @F69@
+0 @I379@ INDI
+1 NAME Elizabeth /Warriner/
+1 SEX F
+1 BIRT
+2 DATE  27 MAR 1790
+2 PLAC 
+1 DEAT
+2 DATE  1873
+2 PLAC 
+1 FAMC @F69@
+0 @I380@ INDI
+1 NAME Matthew /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  24 NOV 1787
+2 PLAC 
+1 DEAT
+2 DATE  11 JUN 1789
+2 PLAC 
+1 FAMC @F69@
+0 @I381@ INDI
+1 NAME Roger /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  25 JAN 1786
+2 PLAC 
+1 DEAT
+2 DATE  14 NOV 1861
+2 PLAC 
+1 FAMC @F69@
+0 @I382@ INDI
+1 NAME Julian Thompson III /Burke/
+1 SEX M
+1 BIRT
+2 DATE  1946
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 ADDR Placentia CA
+1 FAMC @F133@
+0 @I383@ INDI
+1 NAME Emmanuel /Vogwill/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC England
+1 DEAT
+2 DATE  1879
+2 PLAC England
+1 FAMS @F195@
+1 FAMC @F134@
+0 @I384@ INDI
+1 NAME Johanna /Piper/
+1 SEX F
+1 BIRT
+2 DATE  1846
+2 PLAC Whitechurch, Devon
+1 DEAT
+2 DATE  1870
+2 PLAC Chicago, IL
+1 FAMS @F195@
+0 @I385@ INDI
+1 NAME Henry Jr. /Vogwill/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F134@
+1 FAMS @F137@
+1 FAMC @F135@
+0 @I386@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F134@
+0 @I387@ INDI
+1 NAME Henry /Vogwill/
+1 SEX M
+1 BIRT
+2 DATE  1793
+2 PLAC England
+1 DEAT
+2 DATE  15 NOV 1871
+2 PLAC England
+1 FAMS @F135@
+1 FAMC @F136@
+0 @I388@ INDI
+1 NAME Jane /(Vogwill)/
+1 SEX F
+1 BIRT
+2 DATE  1786
+2 PLAC 
+1 DEAT
+2 DATE  14 JAN 1850
+2 PLAC 
+1 FAMS @F135@
+0 @I389@ INDI
+1 NAME John /Vogwill/
+1 SEX M
+1 BIRT
+2 DATE  1755
+2 PLAC 
+1 DEAT
+2 DATE  13 JAN 1845
+2 PLAC Whitechurch, Devon, England
+1 FAMS @F136@
+0 @I390@ INDI
+1 NAME Mary /(Vogwill)/
+1 SEX F
+1 BIRT
+2 DATE  1749
+2 PLAC 
+1 DEAT
+2 DATE  29 MAY 1829
+2 PLAC Whitechurch, Devon, England
+1 FAMS @F136@
+0 @I391@ INDI
+1 NAME Bessie /Bailey/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F137@
+0 @I392@ INDI
+1 NAME  /Elgifu of Northampton/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F138@
+0 @I393@ INDI
+1 NAME  /HAROLD I/
+1 SEX  
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1040
+2 PLAC 
+1 OCCU King of England
+1 NOTE King of England 1035-1040
+1 FAMC @F138@
+0 @I394@ INDI
+1 NAME  /Swein, King of Norway/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1036
+2 PLAC 
+1 FAMC @F138@
+0 @I395@ INDI
+1 NAME  /Elfreda (Elgifu)/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F139@
+0 @I396@ INDI
+1 NAME  /Edmund Ironside/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1016
+2 PLAC 
+1 FAMS @F112@
+1 FAMC @F139@
+0 @I397@ INDI
+1 NAME  /CNUT/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1035
+2 PLAC 
+1 OCCU Danish King, ruled England
+1 NOTE King of England 1016-1035
+1 FAMS @F138@
+1 FAMS @F140@
+0 @I398@ INDI
+1 NAME  /HARTHACNUT/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1042
+2 PLAC 
+1 NOTE King of England 1040-1042
+1 FAMC @F140@
+0 @I399@ INDI
+1 NAME  /Robert, Count of Mortain/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F141@
+0 @I400@ INDI
+1 NAME Viscount of Conteville /Herluin/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 OCCU Viscount of Conteville
+1 FAMS @F141@
+0 @I401@ INDI
+1 NAME  /Edgar, King of Scots/
+1 SEX M
+1 BIRT
+2 DATE  1074
+2 PLAC 
+1 DEAT
+2 DATE  1106
+2 PLAC 
+1 FAMC @F4@
+0 @I402@ INDI
+1 NAME    /Edith (Matilda) of Scotland/
+1 SEX F
+1 BIRT
+2 DATE  1079
+2 PLAC 
+1 DEAT
+2 DATE  1118
+2 PLAC 
+1 FAMS @F142@
+1 FAMC @F4@
+0 @I403@ INDI
+1 NAME  /Alexander I, King of Scots/
+1 SEX M
+1 BIRT
+2 DATE  1077
+2 PLAC 
+1 DEAT
+2 DATE  1124
+2 PLAC 
+1 FAMC @F4@
+0 @I404@ INDI
+1 NAME  /David I, King of Scots/
+1 SEX M
+1 BIRT
+2 DATE  1080
+2 PLAC 
+1 DEAT
+2 DATE  1153
+2 PLAC 
+1 FAMC @F4@
+0 @I405@ INDI
+1 NAME  /Mary/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F143@
+1 FAMC @F4@
+0 @I406@ INDI
+1 NAME  /HENRY I/
+1 SEX M
+1 BIRT
+2 DATE  1068
+2 PLAC 
+1 DEAT
+2 DATE  1135
+2 PLAC 
+1 FAMS @F142@
+0 @I407@ INDI
+1 NAME Count of Boulogne /Eustace III/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F143@
+0 @I408@ INDI
+1 NAME  /Matilda of Boulogne/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1151
+2 PLAC 
+1 FAMS @F144@
+1 FAMC @F143@
+0 @I409@ INDI
+1 NAME  /STEPHEN/
+1 SEX M
+1 BIRT
+2 DATE  1096
+2 PLAC 
+1 DEAT
+2 DATE  1154
+2 PLAC 
+1 FAMS @F144@
+0 @I180@ INDI
+1 NAME Count of Hainault /William/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F38@
+0 @I179@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F38@
+0 @I146@ INDI
+1 NAME Count of Provence /Raymond Berenger/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F45@
+0 @I145@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F45@
+0 @I144@ INDI
+1 NAME  /PHILLIP the Fair of France/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 OCCU King of France?
+1 FAMS @F41@
+0 @I143@ INDI
+1 NAME  /Mother/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F41@
+0 @I410@ INDI
+1 NAME Augusta /(Heuler)/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  10 SEP 1914
+2 PLAC Pasadena, CA
+1 FAMS @F145@
+0 @I411@ INDI
+1 NAME George /Heuler/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F145@
+0 @I184@ INDI
+1 NAME Hepsie Alta Frances /Moore/
+1 SEX F
+1 BIRT
+2 DATE  19 AUG 1889
+2 PLAC Washington Twp., Jefferson County, PA
+1 DEAT
+2 DATE  OCT 1982
+2 PLAC Anaheim, CA
+1 PHOT hepsie.pcx
+1 OCCU nurse
+1 NOTE graduate of Stetson Hospital Training
+2 CONT School for Nurses in 11/1915
+1 FAMS @F56@
+1 FAMC @F146@
+0 @I183@ INDI
+1 NAME Leo /Heuler/
+1 SEX M
+1 BIRT
+2 DATE  14 MAY 1890
+2 PLAC Philadelphia, PA
+1 DEAT
+2 DATE  15 APR 1950
+2 PLAC Fellows, CA
+1 PHOT Lheuler.gif
+1 OCCU physician, general practice
+1 NOTE Graduate Jefferson U. Medical School
+2 CONT in Philadelphia in 1913.  His parents
+2 CONT separated when he was a child, and
+2 CONT his mother moved him and his sibs to 
+2 CONT Pasadena.  He returned to Philadelphia
+2 CONT to go to medical school because his
+2 CONT father remained there and would pay
+2 CONT for him to attend.
+2 CONT He became the company doctor for the
+2 CONT CCMO, a subsidiary of Santa Fe RR.
+1 FAMS @F56@
+1 FAMC @F145@
+0 @I412@ INDI
+1 NAME Manfred Miles /Moore/
+1 SEX M
+1 BIRT
+2 DATE  8 APR 1841
+2 PLAC Elk County, PA
+1 DEAT
+2 DATE  1 JUN 1921
+2 PLAC Washington Twp., Jefferson County, PA
+1 OCCU farmer
+1 FAMS @F146@
+1 FAMC @F148@
+0 @I413@ INDI
+1 NAME Elizabeth Emily /Perrin/
+1 SEX F
+1 BIRT
+2 DATE  1 FEB 1852
+2 PLAC 
+1 DEAT
+2 DATE  4 APR 1929
+2 PLAC 
+1 OCCU school teacher
+1 NOTE nine children, Hepsie being the 8th
+1 FAMS @F146@
+1 FAMC @F147@
+0 @I414@ INDI
+1 NAME James Lindsey /Moore/
+1 SEX M
+1 BIRT
+2 DATE  20 APR 1819
+2 PLAC Center Co. PA
+1 DEAT
+2 DATE  30 JAN 1901
+2 PLAC Jefferson County PA
+1 OCCU farmer
+1 NOTE 12 children, Manfred being the third
+1 FAMS @F148@
+1 FAMC @F149@
+0 @I415@ INDI
+1 NAME Sarah  /Rogers/
+1 SEX F
+1 BIRT
+2 DATE  28 JAN 1819
+2 PLAC 
+1 DEAT
+2 DATE  1 JAN 1892
+2 PLAC 
+1 FAMS @F148@
+0 @I416@ INDI
+1 NAME Andrew /Moore/
+1 SEX M
+1 BIRT
+2 DATE  24 APR 1790
+2 PLAC County Derry, Ireland
+1 DEAT
+2 DATE  24 JUL 1877
+2 PLAC Jefferson County PA
+1 NOTE moved to US with parents in 1802
+2 CONT James Lindsey first of 8 children
+1 FAMS @F149@
+1 FAMC @F151@
+0 @I417@ INDI
+1 NAME Margaret Eakins /Moore/
+1 SEX F
+1 BIRT
+2 DATE  1799
+2 PLAC Ireland
+1 DEAT
+2 DATE  17 JAN 1850
+2 PLAC Jefferson County PA
+1 FAMS @F149@
+1 FAMC @F150@
+0 @I418@ INDI
+1 NAME James B. /Moore/
+1 SEX M
+1 BIRT
+2 DATE  1756
+2 PLAC Londonderry County, Ireland
+1 DEAT
+2 DATE  1829
+2 PLAC Center County, PA
+1 FAMS @F151@
+0 @I419@ INDI
+1 NAME Mary Anne  /Lindsey/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F151@
+0 @I420@ INDI
+1 NAME Nathan /Perrin/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F147@
+0 @I421@ INDI
+1 NAME Emily Satterly /Perrin/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F147@
+0 @I422@ INDI
+1 NAME Andrew /Eakins/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 NOTE private in Company of William 
+2 CONT Alexander of Bellfonte, Center County,
+2 CONT PA in War of 1812
+1 FAMS @F150@
+0 @I423@ INDI
+1 NAME Anne Horne /Eakins/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F150@
+0 @I424@ INDI
+1 NAME  /Fordtran/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F206@
+1 FAMC @F152@
+0 @I425@ INDI
+1 NAME Amanda Letitia //
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F206@
+0 @I182@ INDI
+1 NAME Robert Mercer /Marsdan/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F58@
+0 @I181@ INDI
+1 NAME Charlotte  /Barker/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F58@
+0 @I426@ INDI
+1 NAME Eugene Henry /Fordtran/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 NOTE Civil War veteran from Texas,
+2 CONT Captured, he spent some time in a Union POW
+2 CONT Camp, and carved the family heirloom walking 
+2 CONT stick while imprisoned.
+1 FAMS @F152@
+1 FAMC @F153@
+0 @I427@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F152@
+0 @I428@ INDI
+1 NAME Charles /Fordtran/
+1 SEX M
+1 BIRT
+2 DATE  7 MAY 1801
+2 PLAC Minden, Prussia
+1 DEAT
+2 DATE  1 NOV 1900
+2 PLAC Industry, Texas
+1 NOTE moved to New York 1830
+2 CONT settled in Industry, Texas in 1831
+2 CONT participated with Stephen Austin in 
+2 CONT Texas independance.
+2 CONT Three sons fought for the south in the 
+2 CONT Civil War
+1 FAMS @F153@
+0 @I429@ INDI
+1 NAME Almeda Brookfield /Fordtran/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F153@
+0 @I178@ INDI
+1 NAME Joan of Sheriff Hutton /Beaufort/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F50@
+0 @I177@ INDI
+1 NAME Ralph  /Neville/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F50@
+1 FAMC @F81@
+0 @I176@ INDI
+1 NAME Emma of Sheriff Hutton /Bulemer/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F81@
+0 @I175@ INDI
+1 NAME Geoffrey /Neville/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F81@
+1 FAMC @F80@
+0 @I174@ INDI
+1 NAME Mary of Middleham /FitzRandolf/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F80@
+0 @I173@ INDI
+1 NAME Robert /Neville/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F80@
+0 @I172@ INDI
+1 NAME  /John of Hawes/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F79@
+0 @I171@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F79@
+0 @I170@ INDI
+1 NAME  /Wilf, the warriner/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 NOTE Warriners first mentioned in a Deed of 1550 or 1530 at Ripon, listed in 1555
+2 CONT Warriners of Wesleydale, Yorkshire, England.
+1 FAMS @F78@
+1 FAMC @F79@
+0 @I169@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F78@
+0 @I168@ INDI
+1 NAME Adam /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  1576
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F77@
+1 FAMC @F78@
+0 @I167@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F77@
+0 @I166@ INDI
+1 NAME Henry /Warriner/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F76@
+1 FAMC @F77@
+0 @I165@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F76@
+0 @I164@ INDI
+1 NAME John William /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  1670
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F74@
+1 FAMC @F76@
+0 @I163@ INDI
+1 NAME Mary  /Smith/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F74@
+1 FAMC @F75@
+0 @I162@ INDI
+1 NAME William John /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  1670
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F73@
+1 FAMC @F74@
+0 @I161@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F73@
+0 @I160@ INDI
+1 NAME Jack /Warriner/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  31 DEC 1740
+2 PLAC Masham
+1 FAMS @F72@
+1 FAMC @F73@
+0 @I159@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F72@
+0 @I158@ INDI
+1 NAME John /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  1730
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F70@
+1 FAMC @F72@
+0 @I157@ INDI
+1 NAME Janet  /Ray/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F70@
+1 FAMC @F71@
+0 @I156@ INDI
+1 NAME Matthew /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  1760
+2 PLAC 
+1 DEAT
+2 DATE  31 JAN 1838
+2 PLAC 
+1 FAMS @F69@
+1 FAMC @F70@
+0 @I155@ INDI
+1 NAME Ellen /(Warriner)/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  26 SEP 1831
+2 PLAC 
+1 FAMS @F69@
+0 @I154@ INDI
+1 NAME William of Redmire /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  24 FEB 1784
+2 PLAC 
+1 DEAT
+2 DATE  31 DEC 1861
+2 PLAC 
+1 FAMS @F208@
+1 FAMC @F69@
+0 @I153@ INDI
+1 NAME Mary Raw /Raw/
+1 SEX F
+1 BIRT
+2 DATE  1763
+2 PLAC Yorkshire
+1 DEAT
+2 DATE  1866
+2 PLAC Yorkshire
+1 FAMS @F208@
+0 @I152@ INDI
+1 NAME John of Hawes /Smith/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F68@
+0 @I151@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F68@
+0 @I150@ INDI
+1 NAME Adam /Smith/
+1 SEX M
+1 BIRT
+2 DATE  1620
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F75@
+1 FAMC @F68@
+0 @I149@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F75@
+0 @I148@ INDI
+1 NAME Henry of Askrigg /Ray/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F71@
+0 @I147@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F71@
+0 @I48@ INDI
+1 NAME  /RICHARD III/
+1 SEX M
+1 BIRT
+2 DATE  1452
+2 PLAC 
+1 DEAT
+2 DATE  1485
+2 PLAC 
+1 FAMS @F25@
+0 @I49@ INDI
+1 NAME Prince of Wales /Edward/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1471
+2 PLAC 
+1 FAMS @F26@
+0 @I53@ INDI
+1 NAME Jasper, Earl of Pembroke /Tudor/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1496
+2 PLAC 
+1 FAMS @F27@
+1 FAMC @F13@
+0 @I54@ INDI
+1 NAME Catherine /Wydville/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F27@
+0 @I430@ INDI
+1 NAME Violante of Milan /Visconti/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1404
+2 PLAC 
+1 FAMS @F154@
+0 @I431@ INDI
+1 NAME  /Margaret/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F219@
+1 FAMC @F43@
+0 @I432@ INDI
+1 NAME    /Beatrice/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F220@
+1 FAMC @F43@
+0 @I433@ INDI
+1 NAME King of Scots /Alexander III/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F219@
+0 @I434@ INDI
+1 NAME Duke of Brittany /John/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F220@
+0 @I45@ INDI
+1 NAME Julie Anna /Lewis/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F155@
+0 @I44@ INDI
+1 NAME Diana /Lewis/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F155@
+0 @I435@ INDI
+1 NAME Wayne /Lewis/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F155@
+0 @I436@ INDI
+1 NAME Kent /Lewis/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F155@
+0 @I437@ INDI
+1 NAME Shere /Lewis/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F155@
+0 @I438@ INDI
+1 NAME Gary /Lewis/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F155@
+0 @I439@ INDI
+1 NAME Sharon /Bonell/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F155@
+0 @I440@ INDI
+1 NAME Dorothy /Lewis/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F156@
+0 @I441@ INDI
+1 NAME Donald /Lewis/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F155@
+1 FAMC @F156@
+0 @I442@ INDI
+1 NAME Edith /Holt/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F156@
+0 @I443@ INDI
+1 NAME Gladys  /(Lewis)/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F157@
+0 @I444@ INDI
+1 NAME Lena /Tibto/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F158@
+0 @I445@ INDI
+1 NAME Katherine /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F159@
+0 @I446@ INDI
+1 NAME Mary /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F159@
+0 @I447@ INDI
+1 NAME Helen /(Warriner)/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F159@
+0 @I448@ INDI
+1 NAME Lou Esther /Brock/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F160@
+0 @I449@ INDI
+1 NAME Janet Kay /Lobst/
+1 SEX F
+1 BIRT
+2 DATE  DEC
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F161@
+0 @I450@ INDI
+1 NAME Robert Neal /Lobst/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F161@
+0 @I451@ INDI
+1 NAME Richard /Lobst/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F161@
+0 @I452@ INDI
+1 NAME Paul Edward /Lobst/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F161@
+0 @I453@ INDI
+1 NAME Paul /Lobst/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F161@
+0 @I454@ INDI
+1 NAME Kenneth Jr. /Warriner/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F162@
+0 @I455@ INDI
+1 NAME Rose /Newding/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F162@
+0 @I456@ INDI
+1 NAME Jean /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F164@
+0 @I457@ INDI
+1 NAME Jane /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F164@
+0 @I458@ INDI
+1 NAME Paula /(Warriner)/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F163@
+0 @I459@ INDI
+1 NAME Francis /(Warriner)/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F164@
+0 @I460@ INDI
+1 NAME Joel Jr. /Moon/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F165@
+0 @I461@ INDI
+1 NAME Ruth /Moon/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F165@
+0 @I462@ INDI
+1 NAME Joel E. /Moon/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F165@
+0 @I463@ INDI
+1 NAME Ann /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F166@
+0 @I464@ INDI
+1 NAME Shirley /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F166@
+0 @I465@ INDI
+1 NAME William /Warriner/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F166@
+0 @I466@ INDI
+1 NAME Dolly /Hughes/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F166@
+0 @I467@ INDI
+1 NAME Betty /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F167@
+0 @I468@ INDI
+1 NAME Jack /Warriner/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F167@
+0 @I469@ INDI
+1 NAME George Jr. /Warriner/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F167@
+0 @I470@ INDI
+1 NAME Bernice /(Warriner)/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F167@
+0 @I471@ INDI
+1 NAME William /Brewer/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F202@
+0 @I472@ INDI
+1 NAME Evelyn /Brewer/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F202@
+0 @I473@ INDI
+1 NAME May /Brewer/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F202@
+0 @I474@ INDI
+1 NAME Alice /Brewer/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F202@
+0 @I475@ INDI
+1 NAME Margery /Brewer/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F202@
+0 @I476@ INDI
+1 NAME Betty /Brewer/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F202@
+0 @I55@ INDI
+1 NAME Robert /Arundale/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F207@
+0 @I477@ INDI
+1 NAME George /Arundale/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F190@
+1 FAMC @F207@
+0 @I478@ INDI
+1 NAME William James /Arundale/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F207@
+0 @I52@ INDI
+1 NAME Elizabeth /Arundale/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F191@
+1 FAMS @F192@
+1 FAMC @F207@
+0 @I51@ INDI
+1 NAME Ann /Arundale/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F193@
+1 FAMC @F207@
+0 @I479@ INDI
+1 NAME  /Constanza of Castile/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1394
+2 PLAC 
+1 FAMS @F168@
+0 @I58@ INDI
+1 NAME Fredric /Arundale/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F30@
+0 @I57@ INDI
+1 NAME Catherine /Arundale/
+1 SEX F
+1 BIRT
+2 DATE  1638
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F32@
+0 @I56@ INDI
+1 NAME Peter /Arundale/
+1 SEX M
+1 BIRT
+2 DATE  1695
+2 PLAC 
+1 DEAT
+2 DATE  1720
+2 PLAC 
+1 FAMC @F34@
+0 @I50@ INDI
+1 NAME John /Arundale/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F33@
+0 @I480@ INDI
+1 NAME William /Arundale/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F33@
+0 @I481@ INDI
+1 NAME John /Arundale/
+1 SEX M
+1 BIRT
+2 DATE  31 DEC 1500
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F28@
+0 @I47@ INDI
+1 NAME Margaret, Countess of Salisbury /Plantagenet (Arundale)/
+1 SEX F
+1 BIRT
+2 DATE  1473
+2 PLAC 
+1 DEAT
+2 DATE  1541
+2 PLAC 
+1 FAMC @F205@
+0 @I46@ INDI
+1 NAME Phillippa, Countess of Ulster /Plantagenet/
+1 SEX F
+1 BIRT
+2 DATE  1355
+2 PLAC 
+1 DEAT
+2 DATE  1382
+2 PLAC 
+1 NOTE grandmother of Ann Mortimer
+1 FAMS @F21@
+1 FAMC @F22@
+0 @I482@ INDI
+1 NAME Duke of Clarence /Lionel of Antwerp/
+1 SEX M
+1 BIRT
+2 DATE  1338
+2 PLAC 
+1 DEAT
+2 DATE  1368
+2 PLAC 
+1 OCCU Duke of Clarence
+1 FAMS @F154@
+1 FAMS @F22@
+1 FAMC @F39@
+0 @I483@ INDI
+1 NAME Duke of Gloucester /Thomas of Woodstock/
+1 SEX M
+1 BIRT
+2 DATE  1356
+2 PLAC 
+1 DEAT
+2 DATE  1397
+2 PLAC 
+1 OCCU Duke of Gloucester
+1 FAMS @F240@
+1 FAMC @F39@
+0 @I484@ INDI
+1 NAME Elizabeth /de Burgh/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1363
+2 PLAC 
+1 FAMS @F22@
+0 @I485@ INDI
+1 NAME Edmund, Earl of March /Mortimer/
+1 SEX M
+1 BIRT
+2 DATE  1352
+2 PLAC 
+1 DEAT
+2 DATE  DEC 1381
+2 PLAC Cork, Ireland
+1 OCCU 3rd Earl of March
+1 NOTE drowned while crossing a ford.
+1 FAMS @F21@
+0 @I486@ INDI
+1 NAME Duke of York /Edward/
+1 SEX M
+1 BIRT
+2 DATE  1373
+2 PLAC 
+1 DEAT
+2 DATE  1415
+2 PLAC 
+1 NOTE Killed at Agincourt
+1 FAMS @F241@
+1 FAMC @F52@
+0 @I487@ INDI
+1 NAME  /Anne of Bohemia/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1394
+2 PLAC 
+1 FAMS @F20@
+0 @I488@ INDI
+1 NAME The Black Prince /Edward of Woodstock/
+1 SEX M
+1 BIRT
+2 DATE  1330
+2 PLAC 
+1 DEAT
+2 DATE  1376
+2 PLAC 
+1 OCCU Prince of Wales
+1 FAMS @F18@
+1 FAMC @F39@
+0 @I489@ INDI
+1 NAME  /Joan of Kent/
+1 SEX F
+1 BIRT
+2 DATE  1328
+2 PLAC 
+1 DEAT
+2 DATE  1385
+2 PLAC 
+1 FAMS @F18@
+0 @I490@ INDI
+1 NAME  /Isabella of France/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1409
+2 PLAC 
+1 FAMS @F19@
+1 FAMC @F17@
+0 @I491@ INDI
+1 NAME  /RICHARD II/
+1 SEX M
+1 BIRT
+2 DATE  1367
+2 PLAC Bordeaux
+1 DEAT
+2 DATE  JAN 1400
+2 PLAC Pontefract Castle, buried at Westminster
+1 PHOT c:\Family Tree\pictures\richard2.gif
+1 OCCU King of England 1377-1399
+1 NOTE murdered or starved to death while imprisoned
+1 FAMS @F20@
+1 FAMS @F19@
+1 FAMC @F18@
+0 @I492@ INDI
+1 NAME Joanna /Plantagenet/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F16@
+1 FAMC @F15@
+0 @I493@ INDI
+1 NAME  /John of Gaunt/
+1 SEX M
+1 BIRT
+2 DATE  1340
+2 PLAC 
+1 DEAT
+2 DATE  1399
+2 PLAC 
+1 PHOT c:\Family Tree\pictures\jgaunt.gif
+1 OCCU Duke of Lancaster
+1 FAMS @F168@
+1 FAMS @F169@
+1 FAMS @F176@
+1 FAMC @F39@
+0 @I494@ INDI
+1 NAME  /Blanche of Lancaster/
+1 SEX F
+1 BIRT
+2 DATE  1345
+2 PLAC 
+1 DEAT
+2 DATE  1369
+2 PLAC 
+1 FAMS @F169@
+0 @I495@ INDI
+1 NAME Mary /de Bohun/
+1 SEX F
+1 BIRT
+2 DATE  1366
+2 PLAC 
+1 DEAT
+2 DATE  1394
+2 PLAC 
+1 FAMS @F170@
+0 @I496@ INDI
+1 NAME Earl of Bolingbroke /HENRY IV/
+1 SEX M
+1 BIRT
+2 DATE  APR 1366
+2 PLAC Bolingbroke
+1 DEAT
+2 DATE  20 MAR 1413
+2 PLAC Westminster Palace
+1 PHOT c:\Family Tree\pictures\henry4.gif
+1 OCCU King of England 1399-1413
+1 FAMS @F170@
+1 FAMS @F16@
+1 FAMC @F169@
+0 @I497@ INDI
+1 NAME  /HENRY V/
+1 SEX M
+1 BIRT
+2 DATE  1387
+2 PLAC Monmouth
+1 DEAT
+2 DATE  31 AUG 1422
+2 PLAC Bois de Vincennes
+1 PHOT c:\Family Tree\pictures\henry5.gif
+1 OCCU King of England 1413-1422
+1 NOTE Victor at Agincourt 1416
+1 FAMS @F173@
+1 FAMC @F170@
+0 @I498@ INDI
+1 NAME  /Katherine of Valois/
+1 SEX F
+1 BIRT
+2 DATE  1401
+2 PLAC 
+1 DEAT
+2 DATE  1437
+2 PLAC 
+1 FAMS @F173@
+1 FAMS @F13@
+1 FAMC @F171@
+0 @I499@ INDI
+1 NAME  /Margaret of Anjou/
+1 SEX F
+1 BIRT
+2 DATE  1429
+2 PLAC 
+1 DEAT
+2 DATE  1482
+2 PLAC 
+1 PHOT C:\Family Tree\pictures\M_anjou.gif
+1 FAMS @F172@
+1 FAMC @F174@
+0 @I500@ INDI
+1 NAME  /HENRY VI/
+1 SEX M
+1 BIRT
+2 DATE  6 DEC 1421
+2 PLAC Windsor
+1 DEAT
+2 DATE  21 MAY 1471
+2 PLAC London
+1 PHOT C:\Family Tree\pictures\henry6.gif
+1 OCCU King of England 1422-1461
+1 NOTE Last of the Lancastrian Kings
+1 FAMS @F172@
+1 FAMC @F173@
+0 @I501@ INDI
+1 NAME (Crouchback) /RICHARD III/
+1 SEX M
+1 BIRT
+2 DATE  2 OCT 1452
+2 PLAC Fotheringay Castle
+1 DEAT
+2 DATE  22 AUG 1485
+2 PLAC Bosworth Field
+1 PHOT c:\Family Tree\pictures\richard3.gif
+1 OCCU King of England 1483-1485
+1 NOTE His lack of support by the nobility, likely 
+2 CONT because of his own treacherous behavior,
+2 CONT lead to an early end to his reign and the 
+2 CONT end of Yorkist and Plantagenet rule.
+1 FAMS @F175@
+1 FAMC @F51@
+0 @I502@ INDI
+1 NAME Anne /Neville/
+1 SEX F
+1 BIRT
+2 DATE  1455
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F26@
+1 FAMS @F175@
+0 @I503@ INDI
+1 NAME Elizabeth /Plantagenet/
+1 SEX F
+1 BIRT
+2 DATE  1444
+2 PLAC 
+1 DEAT
+2 DATE  1503
+2 PLAC 
+1 FAMS @F186@
+1 FAMC @F51@
+0 @I504@ INDI
+1 NAME Katherine /Swynford/
+1 SEX F
+1 BIRT
+2 DATE  1350
+2 PLAC 
+1 DEAT
+2 DATE  1403
+2 PLAC 
+1 FAMS @F176@
+0 @I505@ INDI
+1 NAME Prince of Wales /Edward of Lancaster/
+1 SEX M
+1 BIRT
+2 DATE  13 OCT 1453
+2 PLAC Westminster
+1 DEAT
+2 DATE  3 MAY 1471
+2 PLAC Tewkesbury
+1 OCCU Prince of Wales
+1 NOTE Killed in last battle of War of the Roses
+1 FAMS @F177@
+1 FAMC @F172@
+0 @I506@ INDI
+1 NAME Anna /Neville/
+1 SEX M
+1 BIRT
+2 DATE  1456
+2 PLAC 
+1 DEAT
+2 DATE  1485
+2 PLAC 
+1 FAMS @F25@
+1 FAMS @F177@
+0 @I507@ INDI
+1 NAME Elizabeth /Mortimer/
+1 SEX F
+1 BIRT
+2 DATE  1372
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F178@
+1 FAMC @F21@
+0 @I508@ INDI
+1 NAME  /Mortimer/
+1 SEX  
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F21@
+0 @I509@ INDI
+1 NAME Roger, Earl of March /Mortimer/
+1 SEX M
+1 BIRT
+2 DATE  1373
+2 PLAC 
+1 DEAT
+2 DATE  1398
+2 PLAC 
+1 OCCU 4th Earl of March
+1 FAMS @F179@
+1 FAMC @F21@
+0 @I510@ INDI
+1 NAME Sir Henry "Hotspur" /Percy/
+1 SEX M
+1 BIRT
+2 DATE  1361
+2 PLAC 
+1 DEAT
+2 DATE  1403
+2 PLAC 
+1 FAMS @F178@
+0 @I511@ INDI
+1 NAME Henry /Percy/
+1 SEX M
+1 BIRT
+2 DATE  1394
+2 PLAC 
+1 DEAT
+2 DATE  1455
+2 PLAC 
+1 OCCU 2nd Earl of Northumberland
+1 FAMC @F178@
+0 @I512@ INDI
+1 NAME Eleanor /Holland/
+1 SEX F
+1 BIRT
+2 DATE  1373
+2 PLAC 
+1 DEAT
+2 DATE  1405
+2 PLAC 
+1 FAMS @F179@
+0 @I513@ INDI
+1 NAME Anne /Mortimer/
+1 SEX F
+1 BIRT
+2 DATE  1390
+2 PLAC 
+1 DEAT
+2 DATE  1411
+2 PLAC 
+1 NOTE marries Richard , Earl of Cambridge
+1 FAMC @F179@
+0 @I514@ INDI
+1 NAME Edmund /Mortimer/
+1 SEX M
+1 BIRT
+2 DATE  1392
+2 PLAC 
+1 DEAT
+2 DATE  1425
+2 PLAC 
+1 FAMS @F180@
+1 FAMC @F179@
+0 @I515@ INDI
+1 NAME Anne /Stafford/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1432
+2 PLAC 
+1 FAMS @F180@
+0 @I516@ INDI
+1 NAME Duke of Clarence /Thomas/
+1 SEX M
+1 BIRT
+2 DATE  1388
+2 PLAC 
+1 DEAT
+2 DATE  1421
+2 PLAC 
+1 FAMS @F181@
+1 FAMC @F170@
+0 @I517@ INDI
+1 NAME Margaret /Holland/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1439
+2 PLAC 
+1 FAMS @F181@
+0 @I518@ INDI
+1 NAME Duke of Bedford /John/
+1 SEX M
+1 BIRT
+2 DATE  1359
+2 PLAC 
+1 DEAT
+2 DATE  1435
+2 PLAC 
+1 FAMS @F182@
+1 FAMS @F183@
+1 FAMC @F170@
+0 @I519@ INDI
+1 NAME  /Anne of Burgundy/
+1 SEX F
+1 BIRT
+2 DATE  1404
+2 PLAC 
+1 DEAT
+2 DATE  1432
+2 PLAC 
+1 FAMS @F182@
+0 @I520@ INDI
+1 NAME  /Jacquetta of Luxembourg/
+1 SEX F
+1 BIRT
+2 DATE  1416
+2 PLAC 
+1 DEAT
+2 DATE  1472
+2 PLAC 
+1 FAMS @F12@
+1 FAMS @F183@
+0 @I521@ INDI
+1 NAME Duke of Gloucester /Humphrey/
+1 SEX M
+1 BIRT
+2 DATE  1390
+2 PLAC 
+1 DEAT
+2 DATE  1447
+2 PLAC 
+1 FAMC @F170@
+0 @I522@ INDI
+1 NAME Isabella /Plantagenet/
+1 SEX F
+1 BIRT
+2 DATE  1409
+2 PLAC 
+1 DEAT
+2 DATE  1484
+2 PLAC 
+1 FAMS @F184@
+1 FAMC @F49@
+0 @I523@ INDI
+1 NAME Henry /Bourchier/
+1 SEX M
+1 BIRT
+2 DATE  1430
+2 PLAC 
+1 DEAT
+2 DATE  1475
+2 PLAC 
+1 OCCU 4th Duke of Exeter
+1 FAMS @F184@
+0 @I524@ INDI
+1 NAME Anne /Plantagenet/
+1 SEX F
+1 BIRT
+2 DATE  1429
+2 PLAC 
+1 DEAT
+2 DATE  1476
+2 PLAC 
+1 FAMS @F185@
+1 FAMC @F51@
+0 @I525@ INDI
+1 NAME Henry /Holland/
+1 SEX M
+1 BIRT
+2 DATE  1430
+2 PLAC 
+1 DEAT
+2 DATE  1475
+2 PLAC 
+1 OCCU 4th Duke of Exeter
+1 FAMS @F185@
+0 @I526@ INDI
+1 NAME Edmund, Earl of Rutland /Plantagenet/
+1 SEX M
+1 BIRT
+2 DATE  1442
+2 PLAC 
+1 DEAT
+2 DATE  1460
+2 PLAC Battle of Wakefield
+1 OCCU Earl of Rutland
+1 FAMC @F51@
+0 @I527@ INDI
+1 NAME John, Duke of Suffolk /de la Pole/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1491
+2 PLAC 
+1 OCCU 2nd Duke of Suffolk
+1 FAMS @F186@
+0 @I528@ INDI
+1 NAME Margaret /Plantagenet/
+1 SEX F
+1 BIRT
+2 DATE  1446
+2 PLAC 
+1 DEAT
+2 DATE  1503
+2 PLAC 
+1 FAMS @F187@
+1 FAMC @F51@
+0 @I529@ INDI
+1 NAME Duke of Burgundy /Charles the Bold/
+1 SEX M
+1 BIRT
+2 DATE  1432
+2 PLAC 
+1 DEAT
+2 DATE  1477
+2 PLAC 
+1 OCCU Duke of Burgundy
+1 FAMS @F187@
+0 @I530@ INDI
+1 NAME Richard /Plantagenet /
+1 SEX M
+1 BIRT
+2 DATE  6 OCT 1476
+2 PLAC Tewkesbury, Goucester
+1 DEAT
+2 DATE  1 JAN 1477
+2 PLAC Warwick Castle
+1 NOTE difficulty with the birth of Richard lead to 
+2 CONT the death of mother Isabella, and the 
+2 CONT short life of Richard.
+1 FAMC @F205@
+0 @I531@ INDI
+1 NAME  /EDWARD V/
+1 SEX M
+1 BIRT
+2 DATE  1471
+2 PLAC Westminster
+1 DEAT
+2 DATE  1483
+2 PLAC Tower of London
+1 PHOT C:\Family Tree\pictures\ed5.gif
+1 OCCU King of England April-June 1483
+1 NOTE murdered by agents of RICHARD III
+1 FAMC @F189@
+0 @I532@ INDI
+1 NAME Mary /Plantagenet/
+1 SEX F
+1 BIRT
+2 DATE  1467
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F189@
+0 @I533@ INDI
+1 NAME Richard, Duke of York /Plantagenet/
+1 SEX M
+1 BIRT
+2 DATE  1473
+2 PLAC 
+1 DEAT
+2 DATE  1483
+2 PLAC Tower of London
+1 NOTE the younger of the Two Princes murdered
+2 CONT by agents of RICHARD III
+1 FAMC @F189@
+0 @I534@ INDI
+1 NAME Cecily /Plantagenet/
+1 SEX F
+1 BIRT
+2 DATE  1469
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F189@
+0 @I535@ INDI
+1 NAME Earl of Richmond /HENRY VII (Tudor)/
+1 SEX M
+1 BIRT
+2 DATE  1457
+2 PLAC Pembroke
+1 DEAT
+2 DATE  1509
+2 PLAC Westminster
+1 PHOT c:\Family Tree\pictures\henry7.gif
+1 OCCU King of England 1485-1509
+1 NOTE Descendant of John of Gaunt, and hence 
+2 CONT of the house of Lancaster, by marrying 
+2 CONT Elizabeth of York rejoined the York and 
+2 CONT Lancastrian lines.  First of the Tudor Kings
+1 FAMS @F188@
+0 @I536@ INDI
+1 NAME Elizabeth of York /Plantagenet/
+1 SEX F
+1 BIRT
+2 DATE  1466
+2 PLAC 
+1 DEAT
+2 DATE  1503
+2 PLAC 
+1 NOTE married to HENRY VII Tudor, mother of HENRY VIII
+1 FAMS @F188@
+1 FAMC @F189@
+0 @I537@ INDI
+1 NAME  /EDWARD IV/
+1 SEX M
+1 BIRT
+2 DATE  APR 1442
+2 PLAC Rouen
+1 DEAT
+2 DATE  9 APR 1483
+2 PLAC 
+1 PHOT C:\Family Tree\pictures\ed4.gif
+1 OCCU King of England 1461-1471
+1 FAMS @F189@
+1 FAMC @F51@
+0 @I538@ INDI
+1 NAME Elizabeth /Wydville/
+1 SEX F
+1 BIRT
+2 DATE  1437
+2 PLAC 
+1 DEAT
+2 DATE  1492
+2 PLAC 
+1 PHOT c:\Family Tree\pictures\EWydville.gif
+1 FAMS @F189@
+0 @I539@ INDI
+1 NAME  /HENRY VIII/
+1 SEX M
+1 BIRT
+2 DATE  1491
+2 PLAC Greenwich
+1 DEAT
+2 DATE  1547
+2 PLAC Windsor
+1 PHOT c:\Family Tree\pictures\henry8.gif
+1 OCCU King of England 1509-1547
+1 FAMC @F188@
+0 @I540@ INDI
+1 NAME George /Plantagenet/
+1 SEX M
+1 BIRT
+2 DATE  1476
+2 PLAC 
+1 DEAT
+2 DATE  1477
+2 PLAC 
+1 FAMC @F189@
+0 @I541@ INDI
+1 NAME Louisa /Fay/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F190@
+0 @I542@ INDI
+1 NAME Tom /Harris/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F191@
+0 @I543@ INDI
+1 NAME Tom Jr. /Harris/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F191@
+0 @I544@ INDI
+1 NAME Annie /Harris/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F191@
+0 @I545@ INDI
+1 NAME Dennis /Grannel/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F192@
+0 @I546@ INDI
+1 NAME George Jr. /Arundale/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F190@
+0 @I547@ INDI
+1 NAME William /Arundale/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F190@
+0 @I548@ INDI
+1 NAME Cissy /Arundale/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F190@
+0 @I549@ INDI
+1 NAME Louie /Arundale/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F190@
+0 @I550@ INDI
+1 NAME Maud /Arundale/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F190@
+0 @I551@ INDI
+1 NAME Henry /Joplin/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F193@
+0 @I552@ INDI
+1 NAME Henry Jr. /Joplin/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F193@
+0 @I553@ INDI
+1 NAME William /Joplin/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F193@
+0 @I554@ INDI
+1 NAME Nellie /Joplin/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 NOTE died in her youth
+1 FAMC @F193@
+0 @I555@ INDI
+1 NAME Germain /Joplin/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F193@
+0 @I556@ INDI
+1 NAME Frank /Joplin/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 NOTE killed in an accident as a youth
+1 FAMC @F193@
+0 @I557@ INDI
+1 NAME Annie /Joplin/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F193@
+0 @I558@ INDI
+1 NAME George /Joplin/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 ADDR Australia
+1 FAMC @F193@
+0 @I120@ INDI
+1 NAME Scott Kenneth /Moen/
+1 SEX M
+1 BIRT
+2 DATE  17 NOV 1980
+2 PLAC Torrance, CA
+1 DEAT
+2 DATE 
+2 PLAC 
+1 PHOT scott.pcx
+1 FAMC @F53@
+0 @I119@ INDI
+1 NAME Elizabeth Anne /Heuler/
+1 SEX F
+1 BIRT
+2 DATE  17 JAN 1947
+2 PLAC Orange, CA
+1 DEAT
+2 DATE 
+2 PLAC 
+1 PHOT bette.pcx
+1 OCCU Banker, housewife
+1 FAMS @F24@
+1 FAMS @F53@
+1 FAMC @F60@
+0 @I118@ INDI
+1 NAME Donne Phillip /Moen/
+1 SEX M
+1 BIRT
+2 DATE  31 MAR 1936
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 PHOT donmoen.pcx
+1 OCCU Banker
+1 FAMS @F53@
+0 @I69@ INDI
+1 NAME Martin /Erck/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F24@
+0 @I68@ INDI
+1 NAME Olive /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 NOTE no children
+1 FAMS @F23@
+0 @I67@ INDI
+1 NAME William David (Alan) /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  16 JUL 1901
+2 PLAC England
+1 DEAT
+2 DATE  9 SEP 1937
+2 PLAC England
+1 PHOT Alanwarr.gif
+1 FAMS @F23@
+1 FAMC @F54@
+0 @I66@ INDI
+1 NAME John Arthur /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  1856
+2 PLAC 
+1 DEAT
+2 DATE  1856
+2 PLAC 
+1 NOTE died in infancy
+1 FAMC @F57@
+0 @I65@ INDI
+1 NAME William /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  22 OCT 1857
+2 PLAC 
+1 DEAT
+2 DATE  6 FEB 1937
+2 PLAC 
+1 PHOT Willwarr.gif
+1 NOTE no children
+1 FAMS @F197@
+1 FAMC @F57@
+0 @I64@ INDI
+1 NAME Matthew /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  28 DEC 1860
+2 PLAC 
+1 DEAT
+2 DATE  11 APR 1933
+2 PLAC 
+1 PHOT matwarr.gif
+1 NOTE 5 children
+1 FAMS @F194@
+1 FAMC @F57@
+0 @I63@ INDI
+1 NAME Robert Arundale /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  10 JAN 1862
+2 PLAC 
+1 DEAT
+2 DATE  29 NOV 1951
+2 PLAC 
+1 PHOT robtwarr.gif
+1 NOTE 5 children
+1 FAMS @F198@
+1 FAMC @F57@
+0 @I62@ INDI
+1 NAME Isabel /Warriner/
+1 SEX F
+1 BIRT
+2 DATE  9 JUL 1865
+2 PLAC 
+1 DEAT
+2 DATE  18 JUN 1960
+2 PLAC 
+1 PHOT Is_Warr.gif
+1 NOTE no children
+1 FAMS @F199@
+1 FAMC @F57@
+0 @I61@ INDI
+1 NAME George Albert Edward /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  1867
+2 PLAC 
+1 DEAT
+2 DATE  21 MAR 1958
+2 PLAC 
+1 PHOT georgwar.gif
+1 NOTE 8 children
+1 FAMS @F200@
+1 FAMC @F57@
+0 @I60@ INDI
+1 NAME John Arthur /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  FEB 1869
+2 PLAC 
+1 DEAT
+2 DATE  28 JUL 1870
+2 PLAC 
+1 FAMC @F57@
+0 @I59@ INDI
+1 NAME Annie Adeline /Warriner/
+1 SEX F
+1 BIRT
+2 DATE  1870
+2 PLAC 
+1 DEAT
+2 DATE  29 OCT 1949
+2 PLAC 
+1 PHOT adeline.gif
+1 FAMS @F201@
+1 FAMC @F57@
+0 @I559@ INDI
+1 NAME Emily /Vogwill/
+1 SEX F
+1 BIRT
+2 DATE  1869
+2 PLAC Whitechurch, Devon, England
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F194@
+1 FAMC @F195@
+0 @I560@ INDI
+1 NAME Marian /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F194@
+0 @I561@ INDI
+1 NAME Matthew /Warriner/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F196@
+1 FAMC @F194@
+0 @I562@ INDI
+1 NAME Margery /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F194@
+0 @I563@ INDI
+1 NAME Doris /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F194@
+0 @I564@ INDI
+1 NAME Emily Bertha /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F194@
+0 @I565@ INDI
+1 NAME  /Partner/
+1 SEX  
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F196@
+0 @I566@ INDI
+1 NAME Matthew /Warriner/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F196@
+0 @I567@ INDI
+1 NAME Jean /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F196@
+0 @I568@ INDI
+1 NAME Mary Ann (Nancy) /Adams/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F197@
+0 @I569@ INDI
+1 NAME Margaret /Johnson/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F198@
+0 @I570@ INDI
+1 NAME Douglas /Warriner/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F198@
+0 @I571@ INDI
+1 NAME Alfred /Warriner/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F198@
+0 @I572@ INDI
+1 NAME Mary /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F198@
+0 @I573@ INDI
+1 NAME David /Warriner/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F198@
+0 @I574@ INDI
+1 NAME Janet /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMC @F198@
+0 @I575@ INDI
+1 NAME John W. /Foss/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F199@
+0 @I576@ INDI
+1 NAME Iva May /Morgan/
+1 SEX F
+1 BIRT
+2 DATE  1873
+2 PLAC 
+1 DEAT
+2 DATE  20 SEP 1968
+2 PLAC 
+1 FAMS @F200@
+0 @I577@ INDI
+1 NAME Viola  /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F202@
+1 FAMC @F200@
+0 @I578@ INDI
+1 NAME George /Warriner/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F167@
+1 FAMC @F200@
+0 @I579@ INDI
+1 NAME Owen /Warriner/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F166@
+1 FAMC @F200@
+0 @I580@ INDI
+1 NAME Ruth /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F165@
+1 FAMC @F200@
+0 @I581@ INDI
+1 NAME Robert /Warriner/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F163@
+1 FAMS @F164@
+1 FAMC @F200@
+0 @I582@ INDI
+1 NAME Kenneth /Warriner/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F162@
+1 FAMC @F200@
+0 @I583@ INDI
+1 NAME Iva Jr. /Warriner/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F161@
+1 FAMC @F200@
+0 @I584@ INDI
+1 NAME Harold  /Warriner/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F159@
+1 FAMS @F160@
+1 FAMC @F200@
+0 @I585@ INDI
+1 NAME Charles Forster /Lewis/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F201@
+0 @I586@ INDI
+1 NAME Harold D. /Lewis/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 NOTE no children
+1 FAMS @F157@
+1 FAMS @F158@
+1 FAMC @F201@
+0 @I587@ INDI
+1 NAME Jan /Brewer/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F202@
+0 @I588@ INDI
+1 NAME Donald Forster /Lewis/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F156@
+1 FAMC @F201@
+0 @I589@ INDI
+1 NAME Earl of Lancaster /Edmund de Gant/
+1 SEX M
+1 BIRT
+2 DATE  1245
+2 PLAC 
+1 DEAT
+2 DATE  1296
+2 PLAC 
+1 FAMS @F221@
+1 FAMC @F43@
+0 @I590@ INDI
+1 NAME  /Margaret of France/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1317
+2 PLAC 
+1 FAMS @F203@
+1 FAMC @F204@
+0 @I591@ INDI
+1 NAME King of the Romans /Richard of Cornwall/
+1 SEX M
+1 BIRT
+2 DATE  1209
+2 PLAC 
+1 DEAT
+2 DATE  1272
+2 PLAC 
+1 FAMC @F44@
+0 @I592@ INDI
+1 NAME  /Joan/
+1 SEX F
+1 BIRT
+2 DATE  1210
+2 PLAC 
+1 DEAT
+2 DATE  1238
+2 PLAC 
+1 FAMC @F44@
+0 @I593@ INDI
+1 NAME  /Isabelle/
+1 SEX F
+1 BIRT
+2 DATE  1214
+2 PLAC 
+1 DEAT
+2 DATE  1241
+2 PLAC 
+1 FAMC @F44@
+0 @I594@ INDI
+1 NAME  /Eleanor/
+1 SEX F
+1 BIRT
+2 DATE  1215
+2 PLAC 
+1 DEAT
+2 DATE  1275
+2 PLAC 
+1 FAMC @F44@
+0 @I117@ INDI
+1 NAME Isabella (Arundale) /Neville/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 PHOT c:\Family Tree\pictures\I_Neville.gif
+1 FAMS @F205@
+0 @I116@ INDI
+1 NAME George, Duke of Clarence /Plantagenet /
+1 SEX M
+1 BIRT
+2 DATE  21 OCT 1449
+2 PLAC Dublin
+1 DEAT
+2 DATE  18 FEB 1478
+2 PLAC Tower of London
+1 PHOT c:\Family Tree\pictures\clarence.gif
+1 NOTE drowned in wine,
+2 CONT  see Shakespeare "Richard III"
+2 CONT This was an unusual means of execution,
+2 CONT but apparently had been suggested by
+2 CONT the Duke of Clarence himself once,
+2 CONT possibly in jest.
+1 FAMS @F205@
+1 FAMC @F51@
+0 @I93@ INDI
+1 NAME Annie /Newcom/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F207@
+0 @I92@ INDI
+1 NAME William /Arundale/
+1 SEX M
+1 BIRT
+2 DATE  1800
+2 PLAC Ayogarth, Yorkshire
+1 DEAT
+2 DATE 
+2 PLAC 
+1 PHOT Willarun.gif
+1 FAMS @F207@
+1 FAMC @F37@
+0 @I91@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F37@
+0 @I90@ INDI
+1 NAME Richard /Arundale/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F37@
+1 FAMC @F36@
+0 @I89@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F36@
+0 @I88@ INDI
+1 NAME George /Arundale/
+1 SEX M
+1 BIRT
+2 DATE  1750
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F36@
+1 FAMC @F35@
+0 @I87@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F35@
+0 @I86@ INDI
+1 NAME John /Arundale/
+1 SEX M
+1 BIRT
+2 DATE  1700
+2 PLAC 
+1 DEAT
+2 DATE  1760
+2 PLAC 
+1 FAMS @F35@
+1 FAMC @F34@
+0 @I85@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F34@
+0 @I84@ INDI
+1 NAME Richard /Arundale/
+1 SEX M
+1 BIRT
+2 DATE  1665
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F34@
+1 FAMC @F33@
+0 @I83@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F33@
+0 @I82@ INDI
+1 NAME Edward /Arundale/
+1 SEX M
+1 BIRT
+2 DATE  1640
+2 PLAC 
+1 DEAT
+2 DATE  1691
+2 PLAC 
+1 FAMS @F33@
+1 FAMC @F32@
+0 @I81@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F32@
+0 @I80@ INDI
+1 NAME Richard /Arundale/
+1 SEX M
+1 BIRT
+2 DATE  1600
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F32@
+1 FAMC @F31@
+0 @I79@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F31@
+0 @I78@ INDI
+1 NAME William Neville /Arundale/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F31@
+1 FAMC @F30@
+0 @I77@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F30@
+0 @I76@ INDI
+1 NAME Peter /Arundale/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 NOTE his will proved at York, 1870
+1 FAMS @F30@
+1 FAMC @F29@
+0 @I75@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F29@
+0 @I74@ INDI
+1 NAME Henry /Arundale/
+1 SEX M
+1 BIRT
+2 DATE  1498
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F29@
+1 FAMC @F28@
+0 @I73@ INDI
+1 NAME  /Mother/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F28@
+0 @I72@ INDI
+1 NAME Edward, Earl of Warwick /Plantagenet (Arundale)/
+1 SEX M
+1 BIRT
+2 DATE  1475
+2 PLAC 
+1 DEAT
+2 DATE  1 NOV 1499
+2 PLAC Tower of London
+1 PHOT c:\Family Tree\pictures\edplant.gif
+1 NOTE Edward, Earl of Warwick is considered 
+2 CONT the last of the Yorkist claimants to the 
+2 CONT throne, and is considered the end of the 
+2 CONT Plantagenet line
+1 FAMS @F28@
+1 FAMC @F205@
+0 @I140@ INDI
+1 NAME  /Matilda of Flanders/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1083
+2 PLAC 
+1 FAMS @F65@
+0 @I139@ INDI
+1 NAME Duke of Normandy /WILLIAM I/
+1 SEX M
+1 BIRT
+2 DATE  1025
+2 PLAC 
+1 DEAT
+2 DATE  1087
+2 PLAC Rouen, France
+1 PHOT c:\Family Tree\pictures\wm1.gif
+1 OCCU King of England 1066-1087
+1 NOTE Victor at Hastings, lead the last 
+2 CONT successful invasion of England.
+2 CONT died falling off a horse in battle.
+2 CONT Ilegitimate son of Robert and Herleva, 
+2 CONT he was also known as William
+2 CONT the Bastard.
+1 FAMS @F65@
+1 FAMC @F64@
+0 @I138@ INDI
+1 NAME  /Herleva/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 NOTE Never married to Robert, she was given 
+2 CONT in marriage to one of Robert's followers.
+1 FAMS @F141@
+1 FAMS @F64@
+0 @I137@ INDI
+1 NAME Duke of Normandy /Robert the Devil/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1035
+2 PLAC 
+1 OCCU Duke of Normandy
+1 FAMS @F64@
+1 FAMC @F63@
+0 @I136@ INDI
+1 NAME  /Judith of Brittany/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F63@
+0 @I135@ INDI
+1 NAME  /Richard II/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1026
+2 PLAC 
+1 OCCU Duke of Normandy
+1 FAMS @F63@
+1 FAMC @F62@
+0 @I115@ INDI
+1 NAME Ann /Mortimer/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 NOTE descendant of Lionel, second son of Edward III.  Richard, by marrying Ann, bought right of succession into the House of York
+1 FAMS @F49@
+0 @I114@ INDI
+1 NAME Richard, Earl of Cambridge /Plantagenet/
+1 SEX M
+1 BIRT
+2 DATE  1375
+2 PLAC 
+1 DEAT
+2 DATE  1415
+2 PLAC 
+1 FAMS @F49@
+1 FAMS @F242@
+1 FAMC @F52@
+0 @I113@ INDI
+1 NAME  /Isabella of Castille/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F52@
+0 @I112@ INDI
+1 NAME Duke of York /Edmund of Langley/
+1 SEX M
+1 BIRT
+2 DATE  1341
+2 PLAC 
+1 DEAT
+2 DATE  1402
+2 PLAC 
+1 FAMS @F52@
+1 FAMC @F39@
+0 @I111@ INDI
+1 NAME Cecily (Arundale) /Neville/
+1 SEX F
+1 BIRT
+2 DATE  1415
+2 PLAC Raby Castle, County Durham
+1 DEAT
+2 DATE  1495
+2 PLAC 
+1 NOTE following the battle of Wakefield, Cecily
+2 CONT fled Sandall castle with her surviving 
+2 CONT children (1460)  The York lands were
+2 CONT forfeited to the family Clifford.   The name
+2 CONT Arundale first was used in 1460 in 
+2 CONT reference to this flight.  The Arundales
+2 CONT later inherited the land owned by the 
+2 CONT Nevilles in Wenslydale.
+1 FAMS @F51@
+1 FAMC @F50@
+0 @I110@ INDI
+1 NAME Richard, Duke of York /Plantagenet/
+1 SEX M
+1 BIRT
+2 DATE  1411
+2 PLAC 
+1 DEAT
+2 DATE  30 DEC 1460
+2 PLAC Battle of Wakefield 
+1 PHOT c:\Family Tree\pictures\RichYork.gif
+1 NOTE Initiated the Yorkist claim to the throne 
+2 CONT against Henry VI
+1 FAMS @F51@
+1 FAMC @F49@
+0 @I109@ INDI
+1 NAME  /Edith (Matilda) of Scotland/
+1 SEX F
+1 BIRT
+2 DATE  1079
+2 PLAC 
+1 DEAT
+2 DATE  1118
+2 PLAC 
+1 FAMS @F48@
+0 @I108@ INDI
+1 NAME (Beauclerc) /HENRY I /
+1 SEX M
+1 BIRT
+2 DATE  1068
+2 PLAC 
+1 DEAT
+2 DATE  DEC 1135
+2 PLAC 
+1 OCCU King of England 1100-1135
+1 NOTE supposedly died from overeating
+2 CONT lampreys.
+1 FAMS @F48@
+1 FAMS @F218@
+1 FAMC @F65@
+0 @I107@ INDI
+1 NAME  /Matilda/
+1 SEX F
+1 BIRT
+2 DATE  1102
+2 PLAC 
+1 DEAT
+2 DATE  1167
+2 PLAC 
+1 FAMS @F47@
+1 FAMS @F216@
+1 FAMC @F48@
+0 @I106@ INDI
+1 NAME  /Geoffrey Plantagenet/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  31 DEC 1151
+2 PLAC 
+1 PHOT GeofP.gif
+1 OCCU Count of Anjou
+1 NOTE considered the first Plantagenet.
+1 FAMS @F47@
+0 @I105@ INDI
+1 NAME  /Eleanor of Aquitaine/
+1 SEX F
+1 BIRT
+2 DATE  1122
+2 PLAC 
+1 DEAT
+2 DATE  1202
+2 PLAC 
+1 FAMS @F108@
+1 FAMS @F46@
+0 @I104@ INDI
+1 NAME  /HENRY II/
+1 SEX M
+1 BIRT
+2 DATE  4 MAR 1133
+2 PLAC Le Mans
+1 DEAT
+2 DATE  6 JUL 1189
+2 PLAC 
+1 PHOT c:\family tree\pictures\henry2.gif
+1 OCCU King of England 1154-1189
+1 NOTE King 1154 - 1189
+1 FAMS @F46@
+1 FAMC @F47@
+0 @I103@ INDI
+1 NAME  /Isabella of Angouleme/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F44@
+0 @I102@ INDI
+1 NAME  /JOHN (Lackland)/
+1 SEX M
+1 BIRT
+2 DATE  24 DEC 1167
+2 PLAC Oxford
+1 DEAT
+2 DATE  OCT 1216
+2 PLAC Newark Castle
+1 PHOT Kingjohn.gif
+1 OCCU King of England 1199-1216
+1 NOTE Signed Magna Carta 1215
+2 CONT called Lackland because he did not
+2 CONT hold any land of his own.
+1 FAMS @F209@
+1 FAMS @F44@
+1 FAMC @F46@
+0 @I101@ INDI
+1 NAME  /Eleanor of Castile/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1290
+2 PLAC 
+1 PHOT ElofCast.gif
+1 FAMS @F42@
+0 @I100@ INDI
+1 NAME  /Eleanor of Provence/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1291
+2 PLAC 
+1 FAMS @F43@
+1 FAMC @F45@
+0 @I99@ INDI
+1 NAME  /HENRY III/
+1 SEX M
+1 BIRT
+2 DATE  1207
+2 PLAC Winchester
+1 DEAT
+2 DATE  1272
+2 PLAC Westminster
+1 PHOT c:\family tree\pictures\henry3.gif
+1 OCCU King of England 1216-1272
+1 FAMS @F43@
+1 FAMC @F44@
+0 @I98@ INDI
+1 NAME (Longshanks) /EDWARD I/
+1 SEX F
+1 BIRT
+2 DATE  1239
+2 PLAC Westminster
+1 DEAT
+2 DATE  7 JUL 1307
+2 PLAC Westminster
+1 PHOT Ed1.gif
+1 OCCU King of England 1272-1307
+1 FAMS @F42@
+1 FAMS @F203@
+1 FAMC @F43@
+0 @I97@ INDI
+1 NAME  /Isabella of France/
+1 SEX F
+1 BIRT
+2 DATE  1296
+2 PLAC 
+1 DEAT
+2 DATE  1358
+2 PLAC 
+1 FAMS @F40@
+1 FAMC @F41@
+0 @I96@ INDI
+1 NAME  /EDWARD II/
+1 SEX M
+1 BIRT
+2 DATE  1284
+2 PLAC Caernarvon
+1 DEAT
+2 DATE  1327
+2 PLAC Berkeley Castle
+1 PHOT c:\family tree\pictures\ed2.gif
+1 OCCU King of England 1307-1327
+1 NOTE murdered a few months after abdicating 
+2 CONT the throne
+1 FAMS @F40@
+1 FAMC @F42@
+0 @I95@ INDI
+1 NAME  /Phillipa of Hainault/
+1 SEX F
+1 BIRT
+2 DATE  1314
+2 PLAC 
+1 DEAT
+2 DATE  1369
+2 PLAC 
+1 FAMS @F39@
+1 FAMC @F38@
+0 @I94@ INDI
+1 NAME  /EDWARD III/
+1 SEX M
+1 BIRT
+2 DATE  1312
+2 PLAC Windsor
+1 DEAT
+2 DATE  1377
+2 PLAC 
+1 PHOT c:\Family Tree\pictures\edward3.gif
+1 OCCU King of England 1327-1377
+1 FAMS @F39@
+1 FAMC @F40@
+0 @I124@ INDI
+1 NAME Leo Kenneth /Heuler/
+1 SEX M
+1 BIRT
+2 DATE  23 FEB 1919
+2 PLAC Fellows, CA
+1 DEAT
+2 DATE 
+2 PLAC 
+1 PHOT ken.pcx
+1 OCCU Dentist
+1 ADDR Anaheim CA
+2 CONT  retired to Irvine CA
+1 FAMS @F60@
+1 FAMC @F56@
+0 @I123@ INDI
+1 NAME Edith Louise /Fordtran/
+1 SEX F
+1 BIRT
+2 DATE  28 JUN 1920
+2 PLAC Galveston, TX
+1 DEAT
+2 DATE 
+2 PLAC 
+1 PHOT edith.pcx
+1 OCCU housewife
+1 FAMS @F60@
+1 FAMC @F55@
+0 @I126@ INDI
+1 NAME Annie /Marsdan/
+1 SEX F
+1 BIRT
+2 DATE  18 AUG 1859
+2 PLAC 
+1 DEAT
+2 DATE  8 APR 1951
+2 PLAC Galveston, Texas
+1 PHOT c:\family tree\pictures\amarsdan.gif
+1 FAMS @F54@
+1 FAMC @F58@
+0 @I125@ INDI
+1 NAME David /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  3 MAR 1859
+2 PLAC 
+1 DEAT
+2 DATE  9 SEP 1944
+2 PLAC 
+1 PHOT c:\family tree\pictures\dwarriner.gif
+1 FAMS @F54@
+1 FAMC @F57@
+0 @I122@ INDI
+1 NAME Walter Lalyette /Fordtran/
+1 SEX M
+1 BIRT
+2 DATE  4 DEC 1884
+2 PLAC Galveston, TX
+1 DEAT
+2 DATE  1940
+2 PLAC Santa Monica, California
+1 PHOT c:\family tree\pictures\waltford.gif
+1 OCCU bookkeeper, insurance agency
+1 FAMS @F55@
+1 FAMC @F206@
+0 @I121@ INDI
+1 NAME Edith Isabel  /Warriner/
+1 SEX F
+1 BIRT
+2 DATE  9 JUL 1886
+2 PLAC White Rock, Minnesota
+1 DEAT
+2 DATE  31 AUG 1975
+2 PLAC Anaheim, California
+1 PHOT c:\family tree\pictures\goggy.gif
+1 FAMS @F55@
+1 FAMC @F54@
+0 @I71@ INDI
+1 NAME Isabella /Arundale/
+1 SEX M
+1 BIRT
+2 DATE  3 MAR 1830
+2 PLAC Ayogarth, Yorkshire
+1 DEAT
+2 DATE  8 APR 1917
+2 PLAC 
+1 PHOT c:\Family Tree\pictures\Is_Arund.gif
+1 FAMS @F57@
+1 FAMC @F207@
+0 @I70@ INDI
+1 NAME David /Warriner/
+1 SEX M
+1 BIRT
+2 DATE  4 DEC 1827
+2 PLAC 
+1 DEAT
+2 DATE  29 JUN 1899
+2 PLAC 
+1 PHOT c:\Family Tree\pictures\Dwarriner1.gif
+1 FAMS @F57@
+1 FAMC @F208@
+0 @I595@ INDI
+1 NAME  /Isabelle de Clare of Gloucester/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1217
+2 PLAC 
+1 FAMS @F209@
+0 @I596@ INDI
+1 NAME Count of Toulouse /Raymond VI/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1222
+2 PLAC 
+1 FAMS @F210@
+0 @I597@ INDI
+1 NAME  /William II of Sicily/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1189
+2 PLAC 
+1 FAMS @F211@
+0 @I598@ INDI
+1 NAME  /Joan/
+1 SEX F
+1 BIRT
+2 DATE  1165
+2 PLAC 
+1 DEAT
+2 DATE  1199
+2 PLAC 
+1 FAMS @F210@
+1 FAMS @F211@
+1 FAMC @F46@
+0 @I599@ INDI
+1 NAME King of Castile /Alfonso/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1214
+2 PLAC 
+1 FAMS @F212@
+0 @I600@ INDI
+1 NAME  /Eleanor/
+1 SEX F
+1 BIRT
+2 DATE  1161
+2 PLAC 
+1 DEAT
+2 DATE  1214
+2 PLAC 
+1 FAMS @F212@
+1 FAMC @F46@
+0 @I601@ INDI
+1 NAME Duke of Saxony /Henry/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1195
+2 PLAC 
+1 FAMS @F213@
+0 @I602@ INDI
+1 NAME  /Matilda/
+1 SEX F
+1 BIRT
+2 DATE  1156
+2 PLAC 
+1 DEAT
+2 DATE  1189
+2 PLAC 
+1 FAMS @F213@
+1 FAMC @F46@
+0 @I603@ INDI
+1 NAME  /William/
+1 SEX M
+1 BIRT
+2 DATE  1153
+2 PLAC 
+1 DEAT
+2 DATE  1156
+2 PLAC 
+1 FAMC @F46@
+0 @I604@ INDI
+1 NAME  /Berengaria of Navarre/
+1 SEX F
+1 BIRT
+2 DATE  1163
+2 PLAC 
+1 DEAT
+2 DATE  1230
+2 PLAC 
+1 FAMS @F214@
+0 @I605@ INDI
+1 NAME  /Constance of Brittany/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1201
+2 PLAC 
+1 FAMS @F215@
+0 @I606@ INDI
+1 NAME  /Geoffrey/
+1 SEX M
+1 BIRT
+2 DATE  1158
+2 PLAC 
+1 DEAT
+2 DATE  1186
+2 PLAC 
+1 FAMS @F215@
+1 FAMC @F46@
+0 @I607@ INDI
+1 NAME (Coeur de Lion) /RICHARD I/
+1 SEX M
+1 BIRT
+2 DATE  9 AUG 1157
+2 PLAC Oxford
+1 DEAT
+2 DATE  4 JUN 1199
+2 PLAC Fontevraud
+1 OCCU King of England 1189-1199
+1 NOTE Most noted for rarely being in England during
+2 CONT his reign, leading to conflicts of authority in his
+2 CONT absence (Robin Hood, etc.)
+1 FAMS @F214@
+1 FAMC @F46@
+0 @I608@ INDI
+1 NAME The Young King /Henry/
+1 SEX M
+1 BIRT
+2 DATE  1155
+2 PLAC 
+1 DEAT
+2 DATE  1183
+2 PLAC 
+1 FAMC @F46@
+0 @I609@ INDI
+1 NAME  /Arthur/
+1 SEX M
+1 BIRT
+2 DATE  1187
+2 PLAC 
+1 DEAT
+2 DATE  1203
+2 PLAC 
+1 FAMC @F215@
+0 @I142@ INDI
+1 NAME  /Matilda of Boulogne/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1151
+2 PLAC 
+1 FAMS @F67@
+0 @I141@ INDI
+1 NAME  /STEPHEN/
+1 SEX M
+1 BIRT
+2 DATE  1096
+2 PLAC Blois
+1 DEAT
+2 DATE  25 OCT 1154
+2 PLAC Faversham
+1 OCCU King of England 1131-1154
+1 FAMS @F67@
+1 FAMC @F66@
+0 @I132@ INDI
+1 NAME Stephen /Henry/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1102
+2 PLAC 
+1 OCCU Count of Blois
+1 FAMS @F66@
+0 @I131@ INDI
+1 NAME  /Adela/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F66@
+1 FAMC @F65@
+0 @I610@ INDI
+1 NAME  /WILLIAM II Rufus/
+1 SEX M
+1 BIRT
+2 DATE  1057
+2 PLAC 
+1 DEAT
+2 DATE  2 AUG 1100
+2 PLAC New Forest, near Winchester
+1 PHOT Wm2.gif
+1 OCCU King of England 1087-1100
+1 NOTE Killed during hunting accident
+1 FAMC @F65@
+0 @I611@ INDI
+1 NAME Duke of Normandy /Robert III Curthose/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  31 DEC 1134
+2 PLAC 
+1 PHOT c:\Family Tree\pictures\robtnorm.gif
+1 OCCU Duke of Normandy
+1 FAMS @F217@
+1 FAMC @F65@
+0 @I612@ INDI
+1 NAME  /Richard/
+1 SEX M
+1 BIRT
+2 DATE  1054
+2 PLAC 
+1 DEAT
+2 DATE  1075
+2 PLAC 
+1 NOTE killed by a stag
+2 CONT 2nd son of William I
+1 FAMC @F65@
+0 @I613@ INDI
+1 NAME  /Henry V (German)/
+1 SEX M
+1 BIRT
+2 DATE  1086
+2 PLAC 
+1 DEAT
+2 DATE  1125
+2 PLAC 
+1 OCCU Emperor of Germany
+1 FAMS @F216@
+0 @I614@ INDI
+1 NAME  /William Athling/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1120
+2 PLAC 
+1 NOTE legitimate heir to the throne, William drowned, causing a succession crisis
+1 FAMC @F48@
+0 @I615@ INDI
+1 NAME  /Sybil of Conversano/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F217@
+0 @I616@ INDI
+1 NAME  /William III/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 OCCU Count of Flanders
+1 FAMC @F217@
+0 @I617@ INDI
+1 NAME  /Eustace/
+1 SEX M
+1 BIRT
+2 DATE  1130
+2 PLAC 
+1 DEAT
+2 DATE  AUG 1153
+2 PLAC 
+1 FAMC @F67@
+0 @I618@ INDI
+1 NAME  /William/
+1 SEX M
+1 BIRT
+2 DATE  1135
+2 PLAC 
+1 DEAT
+2 DATE  1159
+2 PLAC 
+1 FAMC @F67@
+0 @I619@ INDI
+1 NAME  /Adelaide of Louvaine/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1151
+2 PLAC 
+1 FAMS @F218@
+0 @I620@ INDI
+1 NAME  /Blanche of Artois/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1302
+2 PLAC 
+1 FAMS @F221@
+0 @I621@ INDI
+1 NAME Earl of Lancaster /Thomas/
+1 SEX M
+1 BIRT
+2 DATE  1276
+2 PLAC 
+1 DEAT
+2 DATE  1322
+2 PLAC 
+1 FAMC @F221@
+0 @I622@ INDI
+1 NAME Earl of Lancaster /Henry/
+1 SEX M
+1 BIRT
+2 DATE  1281
+2 PLAC 
+1 DEAT
+2 DATE  1345
+2 PLAC 
+1 FAMS @F222@
+1 FAMC @F221@
+0 @I623@ INDI
+1 NAME Maud /Chaworth/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F222@
+0 @I624@ INDI
+1 NAME 1st Duke of Lancaster /Henry/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1361
+2 PLAC 
+1 FAMS @F223@
+1 FAMC @F222@
+0 @I625@ INDI
+1 NAME   /Isabel de Beaumont/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F223@
+0 @I626@ INDI
+1 NAME  /Blanche of Lancaster/
+1 SEX F
+1 BIRT
+2 DATE  1341
+2 PLAC 
+1 DEAT
+2 DATE  1369
+2 PLAC 
+1 NOTE marries John of Gaunt
+1 FAMC @F223@
+0 @I627@ INDI
+1 NAME  /Phillipa/
+1 SEX F
+1 BIRT
+2 DATE  1360
+2 PLAC 
+1 DEAT
+2 DATE  1415
+2 PLAC 
+1 FAMS @F224@
+1 FAMC @F169@
+0 @I628@ INDI
+1 NAME  /Elizabeth/
+1 SEX F
+1 BIRT
+2 DATE  1364
+2 PLAC 
+1 DEAT
+2 DATE  1426
+2 PLAC 
+1 FAMS @F225@
+1 FAMS @F226@
+1 FAMC @F169@
+0 @I629@ INDI
+1 NAME King of Portugal /John/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F224@
+0 @I630@ INDI
+1 NAME John, Duke of Exeter /Holland/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F225@
+0 @I631@ INDI
+1 NAME Sir John, Lord Fanhope /Cornwall/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F226@
+0 @I632@ INDI
+1 NAME   /Catherine/
+1 SEX F
+1 BIRT
+2 DATE  1372
+2 PLAC 
+1 DEAT
+2 DATE  1418
+2 PLAC 
+1 FAMS @F227@
+1 FAMC @F168@
+0 @I633@ INDI
+1 NAME King of Castile & Leon /Henry III/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F227@
+0 @I634@ INDI
+1 NAME  /Eleanor/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1298
+2 PLAC 
+1 FAMS @F228@
+1 FAMC @F42@
+0 @I635@ INDI
+1 NAME  /Joan of Acre/
+1 SEX F
+1 BIRT
+2 DATE  1272
+2 PLAC 
+1 DEAT
+2 DATE  1307
+2 PLAC 
+1 FAMS @F229@
+1 FAMS @F230@
+1 FAMC @F42@
+0 @I636@ INDI
+1 NAME  /Margaret/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F231@
+1 FAMC @F42@
+0 @I637@ INDI
+1 NAME  /Elizabeth/
+1 SEX F
+1 BIRT
+2 DATE  1282
+2 PLAC 
+1 DEAT
+2 DATE  1316
+2 PLAC 
+1 FAMS @F232@
+1 FAMC @F42@
+0 @I638@ INDI
+1 NAME Count of Bar /Henry/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F228@
+0 @I639@ INDI
+1 NAME Earl of Gloucester /Gilbert de Clare/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1295
+2 PLAC 
+1 FAMS @F229@
+0 @I640@ INDI
+1 NAME  /Ralph de Monthermer/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1305
+2 PLAC 
+1 FAMS @F230@
+0 @I641@ INDI
+1 NAME Duke of Lorraine /John/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F231@
+0 @I642@ INDI
+1 NAME Earl of Hereford & Essex /Humphrey de Bohun/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1322
+2 PLAC 
+1 FAMS @F232@
+0 @I643@ INDI
+1 NAME Earl of Norfolk /Thomas of Brotherton/
+1 SEX M
+1 BIRT
+2 DATE  1300
+2 PLAC 
+1 DEAT
+2 DATE  1338
+2 PLAC 
+1 FAMS @F233@
+1 FAMC @F203@
+0 @I644@ INDI
+1 NAME Earl of Kent /Edmund/
+1 SEX M
+1 BIRT
+2 DATE  1307
+2 PLAC 
+1 DEAT
+2 DATE  1330
+2 PLAC 
+1 FAMS @F234@
+1 FAMC @F203@
+0 @I645@ INDI
+1 NAME Alice /Italys/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F233@
+0 @I646@ INDI
+1 NAME  /Margaret of Wake/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1349
+2 PLAC 
+1 FAMS @F234@
+0 @I647@ INDI
+1 NAME  /Joan of Kent/
+1 SEX F
+1 BIRT
+2 DATE  1328
+2 PLAC 
+1 DEAT
+2 DATE  1385
+2 PLAC 
+1 FAMC @F234@
+0 @I648@ INDI
+1 NAME Earl of Cornwall /John of Eltham/
+1 SEX M
+1 BIRT
+2 DATE  1316
+2 PLAC 
+1 DEAT
+2 DATE  1346
+2 PLAC 
+1 FAMC @F40@
+0 @I649@ INDI
+1 NAME  /Eleanor/
+1 SEX F
+1 BIRT
+2 DATE  1318
+2 PLAC 
+1 DEAT
+2 DATE  1355
+2 PLAC 
+1 FAMS @F235@
+1 FAMC @F40@
+0 @I650@ INDI
+1 NAME  /Joan/
+1 SEX F
+1 BIRT
+2 DATE  1321
+2 PLAC 
+1 DEAT
+2 DATE  1362
+2 PLAC 
+1 FAMS @F236@
+1 FAMC @F40@
+0 @I651@ INDI
+1 NAME Duke of Guelders /Reginald/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1343
+2 PLAC 
+1 FAMS @F235@
+0 @I652@ INDI
+1 NAME King of Scots /David II/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F236@
+0 @I653@ INDI
+1 NAME    /Isabella/
+1 SEX F
+1 BIRT
+2 DATE  1333
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F237@
+1 FAMC @F39@
+0 @I654@ INDI
+1 NAME    /Enguerrand de Courcy/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1396
+2 PLAC 
+1 FAMS @F237@
+0 @I655@ INDI
+1 NAME  /Joan/
+1 SEX F
+1 BIRT
+2 DATE  1335
+2 PLAC 
+1 DEAT
+2 DATE  1348
+2 PLAC 
+1 FAMC @F39@
+0 @I656@ INDI
+1 NAME  /Mary/
+1 SEX F
+1 BIRT
+2 DATE  1342
+2 PLAC 
+1 DEAT
+2 DATE  1362
+2 PLAC 
+1 FAMS @F238@
+1 FAMC @F39@
+0 @I657@ INDI
+1 NAME  /Margaret/
+1 SEX F
+1 BIRT
+2 DATE  1343
+2 PLAC 
+1 DEAT
+2 DATE  1361
+2 PLAC 
+1 FAMS @F239@
+1 FAMC @F39@
+0 @I658@ INDI
+1 NAME John, Duke of Brittany /de Montfort/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1399
+2 PLAC 
+1 FAMS @F238@
+0 @I659@ INDI
+1 NAME John, Earl of Pembroke /Hastings/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1375
+2 PLAC 
+1 FAMS @F239@
+0 @I660@ INDI
+1 NAME Eleanor /de Bohun/
+1 SEX  
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1399
+2 PLAC 
+1 FAMS @F240@
+0 @I661@ INDI
+1 NAME Phillipa /Mohun/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F241@
+0 @I662@ INDI
+1 NAME Maud /Clifford/
+1 SEX F
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE 
+2 PLAC 
+1 FAMS @F242@
+0 @I663@ INDI
+1 NAME John, Earl of Lincoln /de la Pole/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1487
+2 PLAC 
+1 FAMC @F186@
+0 @I664@ INDI
+1 NAME Edmund, Duke of Suffolk /de la Pole/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1513
+2 PLAC 
+1 FAMC @F186@
+0 @I665@ INDI
+1 NAME Richard /de la Pole/
+1 SEX M
+1 BIRT
+2 DATE 
+2 PLAC 
+1 DEAT
+2 DATE  1525
+2 PLAC 
+1 FAMC @F186@
+0 @F60@ FAM
+1 HUSB @I124@
+1 WIFE @I123@
+1 MARR
+2 DATE  3 JUL 1942
+2 PLAC San Francisco, CA
+1 DIV
+2 DATE 
+1 CHIL @I119@
+1 CHIL @I130@
+0 @F59@ FAM
+1 HUSB @I130@
+1 WIFE @I128@
+1 MARR
+2 DATE  7 JUL 1973
+2 PLAC San Jose, CA
+1 DIV
+2 DATE 
+0 @F111@ FAM
+1 HUSB @I277@
+1 WIFE @I276@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I278@
+0 @F62@ FAM
+1 HUSB @I133@
+1 WIFE @I134@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I135@
+1 CHIL @I276@
+0 @F4@ FAM
+1 HUSB @I279@
+1 WIFE @I281@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I405@
+1 CHIL @I401@
+1 CHIL @I403@
+1 CHIL @I402@
+1 CHIL @I404@
+0 @F3@ FAM
+1 HUSB @I283@
+1 WIFE @I282@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I281@
+1 CHIL @I280@
+0 @F112@ FAM
+1 HUSB @I396@
+1 WIFE @I284@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I283@
+0 @F6@ FAM
+1 HUSB @I25@
+1 WIFE @I26@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I27@
+1 CHIL @I28@
+1 CHIL @I29@
+0 @F113@ FAM
+1 HUSB @I288@
+1 WIFE @I27@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I289@
+0 @F118@ FAM
+1 HUSB @I305@
+1 WIFE @I300@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F119@ FAM
+1 HUSB @I301@
+1 WIFE @I307@
+1 MARR
+2 DATE  21 JUN 1911
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F120@ FAM
+1 HUSB @I302@
+1 WIFE @I308@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F121@ FAM
+1 HUSB @I311@
+1 WIFE @I303@
+1 MARR
+2 DATE  7 JUN 1905
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F122@ FAM
+1 HUSB @I12@
+1 WIFE @I304@
+1 MARR
+2 DATE  25 JUN 1902
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F123@ FAM
+1 HUSB @I334@
+1 WIFE @I333@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F124@ FAM
+1 HUSB @I332@
+1 WIFE @I335@
+1 MARR
+2 DATE  12 FEB 1852
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F125@ FAM
+1 HUSB @I337@
+1 WIFE @I336@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F126@ FAM
+1 HUSB @I339@
+1 WIFE @I342@
+1 MARR
+2 DATE  1854
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F127@ FAM
+1 HUSB @I340@
+1 WIFE @I343@
+1 MARR
+2 DATE  29 DEC 1863
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F128@ FAM
+1 HUSB @I341@
+1 WIFE @I348@
+1 MARR
+2 DATE  24 SEP 1863
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F103@ FAM
+1 HUSB @I244@
+1 WIFE @I239@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F102@ FAM
+1 HUSB @I242@
+1 WIFE @I243@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I239@
+0 @F108@ FAM
+1 HUSB @I260@
+1 WIFE @I105@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE  MAR 1152
+0 @F129@ FAM
+1 HUSB @I269@
+1 WIFE @I349@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I350@
+1 CHIL @I351@
+0 @F12@ FAM
+1 HUSB @I352@
+1 WIFE @I520@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F13@ FAM
+1 HUSB @I353@
+1 WIFE @I498@
+1 MARR
+2 DATE  1428
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I354@
+1 CHIL @I53@
+0 @F14@ FAM
+1 HUSB @I354@
+1 WIFE @I355@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I356@
+0 @F130@ FAM
+1 HUSB @I371@
+1 WIFE @I363@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I372@
+0 @F131@ FAM
+1 HUSB @I372@
+1 WIFE @I373@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I374@
+0 @F132@ FAM
+1 HUSB @I375@
+1 WIFE @I374@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I376@
+0 @F133@ FAM
+1 HUSB @I377@
+1 WIFE @I376@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I382@
+0 @F134@ FAM
+1 HUSB @I385@
+1 WIFE @I386@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I383@
+0 @F135@ FAM
+1 HUSB @I387@
+1 WIFE @I388@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I385@
+0 @F136@ FAM
+1 HUSB @I389@
+1 WIFE @I390@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I387@
+0 @F137@ FAM
+1 HUSB @I385@
+1 WIFE @I391@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F138@ FAM
+1 HUSB @I397@
+1 WIFE @I392@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I393@
+1 CHIL @I394@
+0 @F139@ FAM
+1 HUSB @I277@
+1 WIFE @I395@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I396@
+0 @F140@ FAM
+1 HUSB @I397@
+1 WIFE @I276@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I398@
+0 @F141@ FAM
+1 HUSB @I400@
+1 WIFE @I138@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I399@
+1 CHIL @I285@
+0 @F142@ FAM
+1 HUSB @I406@
+1 WIFE @I402@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F143@ FAM
+1 HUSB @I407@
+1 WIFE @I405@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I408@
+0 @F144@ FAM
+1 HUSB @I409@
+1 WIFE @I408@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F145@ FAM
+1 HUSB @I411@
+1 WIFE @I410@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I287@
+1 CHIL @I183@
+1 CHIL @I286@
+0 @F146@ FAM
+1 HUSB @I412@
+1 WIFE @I413@
+1 MARR
+2 DATE  26 DEC 1870
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I12@
+1 CHIL @I311@
+1 CHIL @I310@
+1 CHIL @I309@
+1 CHIL @I308@
+1 CHIL @I307@
+1 CHIL @I306@
+1 CHIL @I184@
+1 CHIL @I305@
+0 @F147@ FAM
+1 HUSB @I420@
+1 WIFE @I421@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I413@
+0 @F148@ FAM
+1 HUSB @I414@
+1 WIFE @I415@
+1 MARR
+2 DATE  20 JUN 1838
+2 PLAC Elk County PA
+1 DIV
+2 DATE 
+1 CHIL @I347@
+1 CHIL @I346@
+1 CHIL @I412@
+1 CHIL @I345@
+1 CHIL @I324@
+1 CHIL @I344@
+1 CHIL @I323@
+1 CHIL @I322@
+1 CHIL @I321@
+1 CHIL @I320@
+1 CHIL @I319@
+1 CHIL @I318@
+0 @F149@ FAM
+1 HUSB @I416@
+1 WIFE @I417@
+1 MARR
+2 DATE  1818
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I414@
+1 CHIL @I332@
+1 CHIL @I333@
+1 CHIL @I336@
+1 CHIL @I338@
+1 CHIL @I339@
+1 CHIL @I340@
+1 CHIL @I341@
+0 @F150@ FAM
+1 HUSB @I422@
+1 WIFE @I423@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I417@
+0 @F151@ FAM
+1 HUSB @I418@
+1 WIFE @I419@
+1 MARR
+2 DATE 
+2 PLAC Londonderry County, Ireland
+1 DIV
+2 DATE 
+1 CHIL @I325@
+1 CHIL @I326@
+1 CHIL @I327@
+1 CHIL @I328@
+1 CHIL @I330@
+1 CHIL @I331@
+1 CHIL @I329@
+1 CHIL @I416@
+0 @F152@ FAM
+1 HUSB @I426@
+1 WIFE @I427@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I424@
+0 @F153@ FAM
+1 HUSB @I428@
+1 WIFE @I429@
+1 MARR
+2 DATE 
+2 PLAC Industry, Texas
+1 DIV
+2 DATE 
+1 CHIL @I426@
+1 CHIL @I357@
+1 CHIL @I358@
+1 CHIL @I359@
+1 CHIL @I360@
+1 CHIL @I361@
+1 CHIL @I362@
+0 @F81@ FAM
+1 HUSB @I175@
+1 WIFE @I176@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I177@
+0 @F80@ FAM
+1 HUSB @I173@
+1 WIFE @I174@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I175@
+0 @F79@ FAM
+1 HUSB @I172@
+1 WIFE @I171@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I170@
+0 @F78@ FAM
+1 HUSB @I170@
+1 WIFE @I169@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I168@
+0 @F77@ FAM
+1 HUSB @I168@
+1 WIFE @I167@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I166@
+1 CHIL @I242@
+0 @F76@ FAM
+1 HUSB @I166@
+1 WIFE @I165@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I164@
+0 @F75@ FAM
+1 HUSB @I150@
+1 WIFE @I149@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I245@
+1 CHIL @I163@
+0 @F74@ FAM
+1 HUSB @I164@
+1 WIFE @I163@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I240@
+1 CHIL @I162@
+0 @F73@ FAM
+1 HUSB @I162@
+1 WIFE @I161@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I241@
+1 CHIL @I160@
+0 @F72@ FAM
+1 HUSB @I160@
+1 WIFE @I159@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I158@
+0 @F71@ FAM
+1 HUSB @I148@
+1 WIFE @I147@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I157@
+0 @F70@ FAM
+1 HUSB @I158@
+1 WIFE @I157@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I156@
+0 @F69@ FAM
+1 HUSB @I156@
+1 WIFE @I155@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I154@
+1 CHIL @I381@
+1 CHIL @I380@
+1 CHIL @I379@
+1 CHIL @I378@
+1 CHIL @I317@
+1 CHIL @I316@
+1 CHIL @I315@
+0 @F68@ FAM
+1 HUSB @I152@
+1 WIFE @I151@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I150@
+0 @F25@ FAM
+1 HUSB @I48@
+1 WIFE @I506@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F26@ FAM
+1 HUSB @I49@
+1 WIFE @I502@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F27@ FAM
+1 HUSB @I53@
+1 WIFE @I54@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F154@ FAM
+1 HUSB @I482@
+1 WIFE @I430@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F155@ FAM
+1 HUSB @I441@
+1 WIFE @I439@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I438@
+1 CHIL @I437@
+1 CHIL @I436@
+1 CHIL @I435@
+1 CHIL @I44@
+1 CHIL @I45@
+0 @F156@ FAM
+1 HUSB @I588@
+1 WIFE @I442@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I441@
+1 CHIL @I440@
+0 @F157@ FAM
+1 HUSB @I586@
+1 WIFE @I443@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F158@ FAM
+1 HUSB @I586@
+1 WIFE @I444@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F159@ FAM
+1 HUSB @I584@
+1 WIFE @I447@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I446@
+1 CHIL @I445@
+0 @F160@ FAM
+1 HUSB @I584@
+1 WIFE @I448@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F161@ FAM
+1 HUSB @I453@
+1 WIFE @I583@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I452@
+1 CHIL @I451@
+1 CHIL @I450@
+1 CHIL @I449@
+0 @F162@ FAM
+1 HUSB @I582@
+1 WIFE @I455@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I454@
+0 @F163@ FAM
+1 HUSB @I581@
+1 WIFE @I458@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F164@ FAM
+1 HUSB @I581@
+1 WIFE @I459@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I457@
+1 CHIL @I456@
+0 @F165@ FAM
+1 HUSB @I462@
+1 WIFE @I580@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I461@
+1 CHIL @I460@
+0 @F166@ FAM
+1 HUSB @I579@
+1 WIFE @I466@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I465@
+1 CHIL @I464@
+1 CHIL @I463@
+0 @F167@ FAM
+1 HUSB @I578@
+1 WIFE @I470@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I469@
+1 CHIL @I468@
+1 CHIL @I467@
+0 @F168@ FAM
+1 HUSB @I493@
+1 WIFE @I479@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I632@
+0 @F22@ FAM
+1 HUSB @I482@
+1 WIFE @I484@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I46@
+0 @F21@ FAM
+1 HUSB @I485@
+1 WIFE @I46@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I508@
+1 CHIL @I507@
+1 CHIL @I509@
+0 @F20@ FAM
+1 HUSB @I491@
+1 WIFE @I487@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F19@ FAM
+1 HUSB @I491@
+1 WIFE @I490@
+1 MARR
+2 DATE  1394
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F18@ FAM
+1 HUSB @I488@
+1 WIFE @I489@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I491@
+0 @F17@ FAM
+1 HUSB @I264@
+1 WIFE @I263@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I490@
+0 @F16@ FAM
+1 HUSB @I496@
+1 WIFE @I492@
+1 MARR
+2 DATE  1395
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F15@ FAM
+1 HUSB @I266@
+1 WIFE @I265@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I492@
+0 @F169@ FAM
+1 HUSB @I493@
+1 WIFE @I494@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I627@
+1 CHIL @I628@
+1 CHIL @I496@
+0 @F170@ FAM
+1 HUSB @I496@
+1 WIFE @I495@
+1 MARR
+2 DATE  1380
+2 PLAC 
+1 DIV
+2 DATE  1394
+1 CHIL @I518@
+1 CHIL @I497@
+1 CHIL @I516@
+1 CHIL @I521@
+0 @F171@ FAM
+1 HUSB @I271@
+1 WIFE @I270@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I498@
+0 @F172@ FAM
+1 HUSB @I500@
+1 WIFE @I499@
+1 MARR
+2 DATE  1444
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I505@
+0 @F173@ FAM
+1 HUSB @I497@
+1 WIFE @I498@
+1 MARR
+2 DATE  2 JUN 1420
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I500@
+0 @F174@ FAM
+1 HUSB @I268@
+1 WIFE @I267@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I499@
+0 @F175@ FAM
+1 HUSB @I501@
+1 WIFE @I502@
+1 MARR
+2 DATE  OCT 1471
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F176@ FAM
+1 HUSB @I493@
+1 WIFE @I504@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F177@ FAM
+1 HUSB @I506@
+1 WIFE @I505@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F178@ FAM
+1 HUSB @I510@
+1 WIFE @I507@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I511@
+0 @F179@ FAM
+1 HUSB @I509@
+1 WIFE @I512@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I513@
+1 CHIL @I514@
+0 @F180@ FAM
+1 HUSB @I514@
+1 WIFE @I515@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F181@ FAM
+1 HUSB @I516@
+1 WIFE @I517@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F182@ FAM
+1 HUSB @I518@
+1 WIFE @I519@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F183@ FAM
+1 HUSB @I518@
+1 WIFE @I520@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F184@ FAM
+1 HUSB @I523@
+1 WIFE @I522@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F185@ FAM
+1 HUSB @I525@
+1 WIFE @I524@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F186@ FAM
+1 HUSB @I527@
+1 WIFE @I503@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I663@
+1 CHIL @I664@
+1 CHIL @I665@
+0 @F187@ FAM
+1 HUSB @I529@
+1 WIFE @I528@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F188@ FAM
+1 HUSB @I535@
+1 WIFE @I536@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I539@
+0 @F189@ FAM
+1 HUSB @I537@
+1 WIFE @I538@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I536@
+1 CHIL @I532@
+1 CHIL @I534@
+1 CHIL @I531@
+1 CHIL @I533@
+1 CHIL @I540@
+0 @F190@ FAM
+1 HUSB @I477@
+1 WIFE @I541@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I546@
+1 CHIL @I547@
+1 CHIL @I548@
+1 CHIL @I549@
+1 CHIL @I550@
+0 @F191@ FAM
+1 HUSB @I542@
+1 WIFE @I52@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I543@
+1 CHIL @I544@
+0 @F192@ FAM
+1 HUSB @I545@
+1 WIFE @I52@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F193@ FAM
+1 HUSB @I551@
+1 WIFE @I51@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I552@
+1 CHIL @I553@
+1 CHIL @I554@
+1 CHIL @I555@
+1 CHIL @I556@
+1 CHIL @I557@
+1 CHIL @I558@
+0 @F53@ FAM
+1 HUSB @I118@
+1 WIFE @I119@
+1 MARR
+2 DATE  14 MAY 1977
+2 PLAC Anaheim, CA
+1 DIV
+2 DATE 
+1 CHIL @I120@
+0 @F24@ FAM
+1 HUSB @I69@
+1 WIFE @I119@
+1 MARR
+2 DATE  31 JAN 1970
+2 PLAC Anaheim, CA
+1 DIV
+2 DATE  31 DEC 1972
+0 @F23@ FAM
+1 HUSB @I67@
+1 WIFE @I68@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F194@ FAM
+1 HUSB @I64@
+1 WIFE @I559@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I560@
+1 CHIL @I561@
+1 CHIL @I562@
+1 CHIL @I563@
+1 CHIL @I564@
+0 @F195@ FAM
+1 HUSB @I383@
+1 WIFE @I384@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I559@
+0 @F196@ FAM
+1 HUSB @I561@
+1 WIFE @I565@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I566@
+1 CHIL @I567@
+0 @F197@ FAM
+1 HUSB @I65@
+1 WIFE @I568@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F198@ FAM
+1 HUSB @I63@
+1 WIFE @I569@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I570@
+1 CHIL @I571@
+1 CHIL @I572@
+1 CHIL @I573@
+1 CHIL @I574@
+0 @F199@ FAM
+1 HUSB @I575@
+1 WIFE @I62@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F200@ FAM
+1 HUSB @I61@
+1 WIFE @I576@
+1 MARR
+2 DATE  30 OCT 1892
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I577@
+1 CHIL @I578@
+1 CHIL @I579@
+1 CHIL @I580@
+1 CHIL @I581@
+1 CHIL @I582@
+1 CHIL @I583@
+1 CHIL @I584@
+0 @F201@ FAM
+1 HUSB @I585@
+1 WIFE @I59@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I586@
+1 CHIL @I588@
+0 @F202@ FAM
+1 HUSB @I587@
+1 WIFE @I577@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I476@
+1 CHIL @I475@
+1 CHIL @I474@
+1 CHIL @I473@
+1 CHIL @I472@
+1 CHIL @I471@
+0 @F203@ FAM
+1 HUSB @I590@
+1 WIFE @I98@
+1 MARR
+2 DATE  1291
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I643@
+1 CHIL @I644@
+0 @F204@ FAM
+1 HUSB @I262@
+1 WIFE @I261@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I590@
+0 @F37@ FAM
+1 HUSB @I90@
+1 WIFE @I91@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I92@
+0 @F36@ FAM
+1 HUSB @I88@
+1 WIFE @I89@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I90@
+0 @F35@ FAM
+1 HUSB @I86@
+1 WIFE @I87@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I88@
+0 @F34@ FAM
+1 HUSB @I84@
+1 WIFE @I85@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I56@
+1 CHIL @I86@
+0 @F33@ FAM
+1 HUSB @I82@
+1 WIFE @I83@
+1 MARR
+2 DATE  31 DEC 1658
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I50@
+1 CHIL @I480@
+1 CHIL @I84@
+0 @F32@ FAM
+1 HUSB @I80@
+1 WIFE @I81@
+1 MARR
+2 DATE  31 DEC 1627
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I57@
+1 CHIL @I82@
+0 @F31@ FAM
+1 HUSB @I78@
+1 WIFE @I79@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I80@
+0 @F30@ FAM
+1 HUSB @I76@
+1 WIFE @I77@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I78@
+1 CHIL @I58@
+0 @F29@ FAM
+1 HUSB @I74@
+1 WIFE @I75@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I76@
+0 @F28@ FAM
+1 HUSB @I72@
+1 WIFE @I73@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I74@
+1 CHIL @I481@
+0 @F205@ FAM
+1 HUSB @I116@
+1 WIFE @I117@
+1 MARR
+2 DATE  31 JUL 1469
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I47@
+1 CHIL @I72@
+1 CHIL @I530@
+0 @F65@ FAM
+1 HUSB @I139@
+1 WIFE @I140@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I131@
+1 CHIL @I611@
+1 CHIL @I612@
+1 CHIL @I610@
+1 CHIL @I108@
+0 @F64@ FAM
+1 HUSB @I137@
+1 WIFE @I138@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I139@
+0 @F63@ FAM
+1 HUSB @I135@
+1 WIFE @I136@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I137@
+0 @F52@ FAM
+1 HUSB @I112@
+1 WIFE @I113@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I486@
+1 CHIL @I114@
+0 @F51@ FAM
+1 HUSB @I110@
+1 WIFE @I111@
+1 MARR
+2 DATE  OCT 1424
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I524@
+1 CHIL @I526@
+1 CHIL @I537@
+1 CHIL @I503@
+1 CHIL @I528@
+1 CHIL @I116@
+1 CHIL @I501@
+0 @F50@ FAM
+1 HUSB @I177@
+1 WIFE @I178@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I111@
+1 CHIL @I269@
+0 @F49@ FAM
+1 HUSB @I114@
+1 WIFE @I115@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I522@
+1 CHIL @I110@
+0 @F48@ FAM
+1 HUSB @I108@
+1 WIFE @I109@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I614@
+1 CHIL @I107@
+0 @F47@ FAM
+1 HUSB @I106@
+1 WIFE @I107@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I104@
+0 @F46@ FAM
+1 HUSB @I104@
+1 WIFE @I105@
+1 MARR
+2 DATE  MAY 1152
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I603@
+1 CHIL @I608@
+1 CHIL @I602@
+1 CHIL @I607@
+1 CHIL @I606@
+1 CHIL @I600@
+1 CHIL @I598@
+1 CHIL @I102@
+0 @F45@ FAM
+1 HUSB @I146@
+1 WIFE @I145@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I100@
+0 @F44@ FAM
+1 HUSB @I102@
+1 WIFE @I103@
+1 MARR
+2 DATE  OCT 1200
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I99@
+1 CHIL @I591@
+1 CHIL @I592@
+1 CHIL @I593@
+1 CHIL @I594@
+0 @F43@ FAM
+1 HUSB @I99@
+1 WIFE @I100@
+1 MARR
+2 DATE  1236
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I431@
+1 CHIL @I432@
+1 CHIL @I98@
+1 CHIL @I589@
+0 @F42@ FAM
+1 HUSB @I101@
+1 WIFE @I98@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I634@
+1 CHIL @I636@
+1 CHIL @I635@
+1 CHIL @I637@
+1 CHIL @I96@
+0 @F41@ FAM
+1 HUSB @I143@
+1 WIFE @I144@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I97@
+0 @F40@ FAM
+1 HUSB @I96@
+1 WIFE @I97@
+1 MARR
+2 DATE  1308
+2 PLAC Boulogne
+1 DIV
+2 DATE 
+1 CHIL @I94@
+1 CHIL @I648@
+1 CHIL @I649@
+1 CHIL @I650@
+0 @F39@ FAM
+1 HUSB @I94@
+1 WIFE @I95@
+1 MARR
+2 DATE  1328
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I488@
+1 CHIL @I653@
+1 CHIL @I655@
+1 CHIL @I482@
+1 CHIL @I493@
+1 CHIL @I112@
+1 CHIL @I656@
+1 CHIL @I657@
+1 CHIL @I483@
+0 @F38@ FAM
+1 HUSB @I180@
+1 WIFE @I179@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I95@
+0 @F56@ FAM
+1 HUSB @I183@
+1 WIFE @I184@
+1 MARR
+2 DATE  15 JUN 1916
+2 PLAC Chicago, IL
+1 DIV
+2 DATE 
+1 CHIL @I124@
+1 CHIL @I25@
+0 @F55@ FAM
+1 HUSB @I122@
+1 WIFE @I121@
+1 MARR
+2 DATE  1916
+2 PLAC Galveston, TX
+1 DIV
+2 DATE 
+1 CHIL @I123@
+0 @F206@ FAM
+1 HUSB @I424@
+1 WIFE @I425@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I122@
+0 @F58@ FAM
+1 HUSB @I182@
+1 WIFE @I181@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I126@
+0 @F57@ FAM
+1 HUSB @I71@
+1 WIFE @I70@
+1 MARR
+2 DATE  31 JUL 1855
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I66@
+1 CHIL @I65@
+1 CHIL @I125@
+1 CHIL @I64@
+1 CHIL @I63@
+1 CHIL @I62@
+1 CHIL @I61@
+1 CHIL @I60@
+1 CHIL @I59@
+0 @F54@ FAM
+1 HUSB @I125@
+1 WIFE @I126@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I121@
+1 CHIL @I67@
+0 @F207@ FAM
+1 HUSB @I92@
+1 WIFE @I93@
+1 MARR
+2 DATE  1828
+2 PLAC Yorkshire, England
+1 DIV
+2 DATE 
+1 CHIL @I55@
+1 CHIL @I477@
+1 CHIL @I478@
+1 CHIL @I52@
+1 CHIL @I51@
+1 CHIL @I71@
+0 @F208@ FAM
+1 HUSB @I154@
+1 WIFE @I153@
+1 MARR
+2 DATE  28 MAY 1816
+2 PLAC Redmire Church,Yorkshire
+1 DIV
+2 DATE 
+1 CHIL @I364@
+1 CHIL @I366@
+1 CHIL @I314@
+1 CHIL @I363@
+1 CHIL @I365@
+1 CHIL @I70@
+1 CHIL @I367@
+1 CHIL @I313@
+1 CHIL @I368@
+1 CHIL @I312@
+1 CHIL @I369@
+1 CHIL @I370@
+0 @F209@ FAM
+1 HUSB @I102@
+1 WIFE @I595@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE  AUG 1200
+0 @F210@ FAM
+1 HUSB @I596@
+1 WIFE @I598@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F211@ FAM
+1 HUSB @I597@
+1 WIFE @I598@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F212@ FAM
+1 HUSB @I599@
+1 WIFE @I600@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F213@ FAM
+1 HUSB @I601@
+1 WIFE @I602@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F214@ FAM
+1 HUSB @I607@
+1 WIFE @I604@
+1 MARR
+2 DATE  MAY 1191
+2 PLAC Limassol, Cyprus
+1 DIV
+2 DATE 
+0 @F215@ FAM
+1 HUSB @I606@
+1 WIFE @I605@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I609@
+0 @F67@ FAM
+1 HUSB @I141@
+1 WIFE @I142@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I617@
+1 CHIL @I618@
+0 @F66@ FAM
+1 HUSB @I132@
+1 WIFE @I131@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I141@
+0 @F216@ FAM
+1 HUSB @I613@
+1 WIFE @I107@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F217@ FAM
+1 HUSB @I611@
+1 WIFE @I615@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I616@
+0 @F218@ FAM
+1 HUSB @I108@
+1 WIFE @I619@
+1 MARR
+2 DATE  1120
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F219@ FAM
+1 HUSB @I433@
+1 WIFE @I431@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F220@ FAM
+1 HUSB @I434@
+1 WIFE @I432@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F221@ FAM
+1 HUSB @I589@
+1 WIFE @I620@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I621@
+1 CHIL @I622@
+0 @F222@ FAM
+1 HUSB @I622@
+1 WIFE @I623@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I624@
+0 @F223@ FAM
+1 HUSB @I624@
+1 WIFE @I625@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I626@
+0 @F224@ FAM
+1 HUSB @I629@
+1 WIFE @I627@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F225@ FAM
+1 HUSB @I630@
+1 WIFE @I628@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F226@ FAM
+1 HUSB @I631@
+1 WIFE @I628@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F227@ FAM
+1 HUSB @I633@
+1 WIFE @I632@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F228@ FAM
+1 HUSB @I638@
+1 WIFE @I634@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F229@ FAM
+1 HUSB @I639@
+1 WIFE @I635@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F230@ FAM
+1 HUSB @I640@
+1 WIFE @I635@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F231@ FAM
+1 HUSB @I641@
+1 WIFE @I636@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F232@ FAM
+1 HUSB @I642@
+1 WIFE @I637@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F233@ FAM
+1 HUSB @I643@
+1 WIFE @I645@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F234@ FAM
+1 HUSB @I644@
+1 WIFE @I646@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+1 CHIL @I647@
+0 @F235@ FAM
+1 HUSB @I651@
+1 WIFE @I649@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F236@ FAM
+1 HUSB @I652@
+1 WIFE @I650@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F237@ FAM
+1 HUSB @I654@
+1 WIFE @I653@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F238@ FAM
+1 HUSB @I658@
+1 WIFE @I656@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F239@ FAM
+1 HUSB @I659@
+1 WIFE @I657@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F240@ FAM
+1 HUSB @I483@
+1 WIFE @I660@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F241@ FAM
+1 HUSB @I486@
+1 WIFE @I661@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 @F242@ FAM
+1 HUSB @I114@
+1 WIFE @I662@
+1 MARR
+2 DATE 
+2 PLAC 
+1 DIV
+2 DATE 
+0 TRLR

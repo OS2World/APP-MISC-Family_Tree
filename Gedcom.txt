@@ -1,0 +1,275 @@
+
+Technical documentation for imgedcom.ftx and exgedcom.ftx which are part 
+of Family Tree for OS/2 also known as Ftree.
+
+IMPORTING GEDCOM FILES
+----------------------
+
+This section defines the GEDCOM semantics that are understood by Ftree and
+more specifically by the rexx routine IMGEDCOM.FTX.  In GEDCOM each entry
+consists of, as a minimum, a level indicator and a keyword.  Except in a
+few instances GEDCOM has generalize the level indicator so that the same
+type information might appear at more than one level.  Ftree does not
+support this level of generalization.  In a few specific instances ftree
+will provide for an alternate input format that may involve interpreting
+the same data at different levels.  This will usually result in only a
+single entry in the database.  The GEDCOM constructions are generally
+compatible with releases of the GEDCOM standard up to 5.5. Not all 5.5
+GEDCOM contructions are understood by Ftree. The ones that are 
+understood include:
+
+0 HEAD	    This is recognized by ftree as the start of a GEDCOM file
+            and causes certain fields to be output to the screen.  But 
+            no data from a HEAD record is retained.
+X SYST	    in head record the content is printed to the screen
+X SOUR	    in head record the content is printed to the screen
+X DATE	    in head record the content is printed to the screen
+1 LANG	    This entry will be used to determine the abbreviation name
+	    used in a month entry for date.  Only English, the default, 
+	    and French are supported so far.
+
+0 @ INDI    A record about an individual - See below
+0 @ FAM	    A record about a family - See below
+0 @ FAMI    An older form of a record about a family - See below
+0 TRLR	    End of record flag - everything below this point will be ignored
+0 EOF	    End of record flag - everything below this point will be ignored
+0 COMM arg  A comment - The rest of the line and all subsequent text until
+	    the next level zero will be ignored.
+
+All of the information must be in one file.  If you have several files
+they must be concatenated together before submitting them to FTREE.
+
+Individual Record 
+-----------------
+
+This maps directly to Ftree database structure for a Person.  There are
+three words and they must be separated with spaces.  The second word on an
+INDI line is taken to be a unique id for the person.  This is preserved and
+can be referenced from a family record to uniquely identify a person.  In
+GEDCOM syntax the unique id is bracketed with an '@' sign. For example:
+@I27@.  It must be numeric with an optional leading I which will be
+ignored.
+
+1 NAME arg  The argument to the NAME entry should contain the full name
+	    of the individual.  The surname should be bracketed with '/' and
+	    may be on the left, middle, or right of other text.  All other
+	    text is assumed to be part of the given name.  All of the
+	    following forms are allowed: 'some names /surname/', 
+	    'name /surname/ more names', and '/surname/some names'.  In ftree
+	    there are only two places for names, surname and all other names.
+2 NFSX arg  The field specifies a suffix name such as 2nd, or Jr. It will
+	    be appended to the surname entry in Ftree separated with
+	    a comma.  Note that the TITL tag described below will
+	    be treated the same way.  Only one of them will be retained.
+2 NICK arg  This field specifies a nickname for the person.  It will be
+	    appended to the first names and bracketed with '()' unless
+	    a nickname using this syntax already exists in the name field.
+
+1 TITL arg  This field specifies a title for the person.  It will be
+	    appended to the surname entry in Ftree separated with a comma.
+	    Note that a TITL would overwrite a name suffix.
+
+1 COMM arg  Any data following this comment tag up to the next level one
+	    or level 0 entry will be ignored.
+
+1 SEX M|W|F The sex of the person is indicated only M, W and F are accepted.
+	    where M indicates man, and F or W indicates woman.
+
+1 BIRT	    Start of a birth entry.
+2 DATE	    date of birth - See below for date structure
+2 PLAC	    place of birth - see below for place structure
+
+1 DEAT Y|NIL An explicit Y or an entry in DATE or PLAC implies that
+	    the death has occured.  Empty fields imply nothing.
+2 DATE      Date of death - See below for structure
+2 PLAC      Place of death - see below for structure
+
+1 OCCU arg  This field specifies the occupation for the person. A second
+	    form of OCCU without an argument is also supported.
+
+1 OCCU	    Second form of occupation entry.
+2 TITL arg  Job title
+2 PLAC arg  place will be concatenated with a comma to title.
+2 CORP arg  company name will be concatenated with a comma to title.
+
+1 ADDR arg  This field specifies the address of the person.  
+	    There are two forms of this data and the trick is to 
+	    avoid duplicating the information since both may be present. The
+	    address itself may be specified on this line or any of the
+	    lines indicated below.  If text appears on the address line
+	    then only CONT and PHON lines will be permitted.
+2 CONT arg  Continuation of the ADDR line.  Multiple lines are supported.
+2 PHON arg  Phone Number.
+
+1 ADDR      Without an argument, a more structure form is assumed.
+            All entries will be concatenated together on the address line, 
+            separated with commas.
+2 ADR1 arg  Address line one.
+2 ADR2 arg  Address line two.
+2 CITY arg  City part of address
+2 STAE arg  State part of address
+2 POST arg  Postal code, also known as zip code.
+2 CTRY arg  Country name.
+2 PHON arg  Phone Number.
+
+1 PHON arg  A phone number that will be concatenated to the address
+	    information in Ftree separated by a comma.  This could result
+	    in duplicate entries of the phone number if PHON is also in
+	    an address structure.
+
+1 NOTE arg  A note that will be placed in the Ftree memo field.  Multiple 
+	    notes in the Individual record will all be appended to each 
+	    other in the memo field.
+2 CONT arg  A continuation line for a note. Multiples are permitted.
+2 CONC arg  The argument will be concatenated to the note on the same line as
+	    the current line. Don't expect a trailing space to be preserved.
+
+1 FILE arg  Set a pointer to the location of a file that is attached to
+	    the record of this person.  This file can contain any kind
+	    of information.
+
+1 PARE	    This is a two line entry that causes the person to be assigned
+2 RFN arg   as a child to the family referenced.  Supporting this entry
+	    permits older forms of GEDOCM to be supported and will be used 
+	    to build a family record in FAMI structures. 
+
+1 PHOT arg  Set a pointer to a photo of this person. - This form is retained
+	    to support previous releases. It is not standard with GEDCOM 5.5.
+
+1 OBJE	    This is the standard multi-media object format. Only the last
+	    entry in the record for this person will be used.	    
+2 FORM GIF|BMP|PCX Only these types of files will be recognized.
+2 FILE arg  This is a pointer to the photo of this person.
+
+All other entries in an individual records will be ignored.  Some of these
+may cause loss of significant information while some will be handled
+automatically using other techniques by Ftree.  Those that will usually
+not cause a loss of information include FAMI, FAMC, FAMS, REFN, RFN, CHEC,
+and SIBL.
+
+Family Record 
+-------------
+
+This maps directly to Ftree database structure for a Family.  There are
+three words and they must be separated with spaces.  The second word on a
+FAM or FAMI line is taken to be a unique id for the family.  This is 
+preserved in Ftree but is not used elsewhere during the import.  In
+GEDCOM syntax the unique id is bracketed with an '@' sign. For example:
+@F27@.  It must be numeric with an optional leading F which will be
+ignored.  Note that FAMI is supported to permit the import of older GEDCOM
+databases.  All entries of persons in a family entry are made by the id
+value with the individual record.  Note that Ftree requires that both
+a HUSB and WIFE exist for a family record but a marriage entry is not
+required.  Some GEDCOM files do not supply both a HUSB and WIFE entry
+in all cases so these will be invented by the interface to satisfy Ftree 
+requirements.  There can only be one HUSB and one WIFE per family, however
+the same person can appear in more than one family. Data from a family
+record will automatically appear in both SPOUSES individual data fields
+inside of Ftree.
+
+Some versions of GEDCOM files only include the MARR and DIV events if
+the event occurred but do not include the Y.  This behavior is most
+common with older version 4.0 GEDCOM files.  There is a setting in
+IMGEDCOM.FTX source file that can be changed to permit proper 
+interpretation of these older files. Look for VERS.
+
+1 HUSB id   This entry assigns the specified husband to this family.
+
+1 HUSB	    Alternate form of HUSB record to support older formats.
+2 RFN id
+
+1 WIFE id   This entry assigns the specified wife to this family.
+
+1 WIFE	    Alternate form of WIFE record to support older formats.
+2 RFN id
+
+1 CHIL id   This entry assigns the specified child to this family.
+	    This entry type is only supported in FAM record types.
+
+1 CHIL	    This entry without an id is only supported for FAMI record
+	    types.  It triggers the entry of all previously saved child
+	    information for this family.
+
+1 MARR Y|Nil A marriage event is signified by a Y or implicitly by an
+	    entry in the date or place fields. See comment on 4.0 above.
+2 DATE	    Date of marriage 
+2 PLAC	    Place of marriage
+
+1 DIV  Y|Nil This entry indicates the husband and wife are divorced if
+	    the Y is present or a date is mentioned.  DIV is only supported
+	    in FAM record types. See comment on 4.0 above.
+2 DATE	    Date of divorce gets placed in the 'End' entry in Ftree.
+
+1 DIVO Y    This entry indicates the husband and wife are divorced if
+	    the Y is present.  Only supported in FAMI record types.
+
+1 COMM arg  Any data following this comment tag up to the next level one
+	    or level 0 entry will be ignored.
+
+All other entries in a family record will be ignored.  Some of these
+may cause loss of significant information while some will be handled
+automatically using other techniques by Ftree.  Those that will usually
+not cause a loss of information include CHEC. A entry of '2 OTHE' in HUSB
+or WIFE entry to signify a second family will be handled automatically by
+Ftree.
+
+Date Format
+-----------
+
+The preferred format for a date entry is 'day month year'.  This entry may
+optionally be preceded with a modifier.  ABT, AFT, BEF, EST are the only
+modifiers accepted and mean about, after, before and estimated
+respectively.  Month may be entered as a three letter abbreviation or a
+number. The LANG entry in the HEAD section will determine the accepted
+abbreviations for months. Some fields may be missing if they are unknown.
+Internally a Y entry on a MARR, DIV, DIVO, or DEAT line is stored as ABT in
+the year 0.
+
+The older form of YYYYMMDD is also accepted where YYYY is the year, MM is
+the month entered as a number, and DD is day.  Unknown entries should be
+entered as 0's so that the full 8 characters are always present.  Appending 
+an 'A' to the 8 number sequence is decoded to the ABT modifier.
+
+Place Format
+------------
+
+The place format for Ftree is a free form entry.  Some GEDCOM files may
+contain a comma separated list with fixed meanings as to the order and
+number of commas.  These commas will be preserved but not interpreted by
+Ftree.
+
+EXPORTING GEDCOM FILES
+----------------------
+
+This section documents the EXGEDCOM.FTX program for exported GEDCOM files
+as a backup or for other systems.  Generally all of the structures in
+the FTREE database can be exported without loss of significant information 
+into an industry standard GEDCOM format.  (Currently events and user
+defined tags aren't supported but they will be in a future release.)
+The GEDCOM format is a revision of an older PAF format and has, itself,
+gone through several revisions.  In general exgedcom.ftx outputs a
+file that is compatible with version 5.3 of the standard but can
+be configured by changing a variable, VERS, in the source to output the
+lastest 5.5 version.  In many instances the 5.3 output will also be
+adequate to communicate with systems that understand versions as low
+as 4.0.  Be aware that some other systems have severe line length limits
+and may truncate data when read.  The oldest format, PAF 2.0, cannot be
+generated by this program although the import program can read it.
+
+EXGEDCOM outputs a file that is subset of the data that is understood
+by the GEDCOM import routine.  A HEAD record is output, followed by
+a separate INDI record for each person in the database.  A FAM record is
+generated for each family in the database and finally a TRLR record is output.
+Some receiving systems expect to see additional records such as the
+name of the submittor of the file.  This information can be placed in
+a separate file using the same basename as the intended GEDCOM output file
+except that the extension must be .INC instead of .GED.  There is a
+SAMPLE.INC file that accompanies FTREE that can serve as a template for this
+file.  The data must already be in GEDCOM format.
+
+The individual records output NAME data, and optionally the new structured
+form in 5.5, SEX data, BIRTH data, DEATH data, TITL data, PHOTO data
+(called OBJE in 5.5), OCCU data, ADDR data, FILE data, NOTE data, and
+FAMC/FAMS pointers.  Family records include HUSB, WIFE, CHIL pointers, MARR
+data and DIV data.  Tags are only output when some data is present.
+

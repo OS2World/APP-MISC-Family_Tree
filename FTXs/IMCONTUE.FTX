@@ -1,0 +1,92 @@
+/*
+   Family Tree Rexx Script FTX
+
+   Copyright (C) 1996 by <Nils Meier>
+
+   Please send comments to / Kommentar bitte an
+        meier2@athene.informatik.uni-bonn.de
+
+   <
+   English:   This script continues import, if there were persons left from last import. :English
+   Deutsch:   Dieses Skript setzt den Import fort, wenn Personen vom letzten Import
+              briggeblieben sind.                                                       :Deutsch
+   Nederlands:Dit Script hervat de import, als er personen overgebleven zijn van de
+              vorige import.                                                             :Nederlands
+   Fran‡ais:  Ce script active l'import, si des personnes ont ‚t‚ laiss‚es de c“t‚ lors  :Fran‡ais
+              du dernier import.
+   >
+
+   Long name is <
+                 English:    Continue Import            :English
+                 Deutsch:    Import fortsetzen          :Deutsch
+                 Nederlands: Continue Import            :Nederlands
+                 Fran‡ais:   Active le dernier import   :Fran‡ais
+                >
+*/
+
+cr = '0d0a'x
+
+CALL initLanguage
+
+/* ----------------- Display Header / Kopf der Ausgabe ------------- */
+head=msg.header.LANG||DATE()
+SAY(head)
+SAY(COPIES('=',length(head)))
+SAY('')
+
+/* ----------------- Do the Import / Importieren ------------------ */
+
+SAY(msg.importstart.LANG)
+
+result=importDone()
+
+IF (result='') THEN
+   SAY(msg.error.LANG)
+ELSE
+   SAY(result)
+
+SAY
+SAY(msg.done.LANG)
+
+EXIT
+
+
+/* ---------------------- LANGUAGE INIT --------------------------- */
+InitLanguage:
+
+   /* Calculate Language Index */
+   lang='E'                              /* Default -> [E]nglish */
+   IF getLanguage()='Deutsch' THEN       /* Deutsch -> [G]erman */
+      lang='G'
+   IF getLanguage()='Nederlands' THEN    /* Nederlands -> [D]utch */
+      lang='D'
+   IF getLanguage()='Fran‡ais' THEN       /* Fran‡ais -> [F]rench */
+      lang='F'
+
+   /* [E]nglish Messages */
+   msg.header.E      = 'Importing from GEDCOM-file :'
+   msg.done.E        = 'Done !'
+   msg.importstart.E = 'Starting Calculation of family tree !'cr'First person in GEDCOM-file becomes Origin :'
+   msg.error.E       = 'No data to import !'
+
+   /* [G]erman Messages */
+   msg.header.G      = 'Importieren von GEDCOM-Daten :'
+   msg.done.G        = 'Fertig !'
+   msg.importstart.G = 'Starte jetzt Berechnung des Stammbaumes !'cr'Die erste Person aus der GEDCOM-Datei wird Ursprung :'
+   msg.error.G       = 'Keine Daten, die importiert werden k”nnten !'
+
+   /* [D]utch Messages */
+   msg.header.D      = 'Importeren van GEDCOM-bestand :'
+   msg.done.D        = 'Klaar !'
+   msg.importstart.D = 'Begint met de berekening van de stamboom !'cr'Eeerste persoon in GEDCOM-bestand wordt de oorsprong :'
+   msg.error.D       = 'Geen data te importeren !'
+
+   /* [F]rench Messages */
+   msg.header.F      = "Import de GEDCOM-file :"
+   msg.done.F        = "Fait !"
+   msg.importstart.F = "D‚but de Calcul de l'arbre g‚n‚alogique !"cr"La PremiŠre personne dans le fichier GEDCOM est consid‚r‚e comme Origine :"
+   msg.error.F       = 'No data to import !'
+
+   /* Done */
+   RETURN
+

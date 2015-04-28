@@ -1,0 +1,112 @@
+/*
+   Family Tree Rexx Script FTX
+
+   Copyright (C) 1996 by <Nils Meier>
+
+   Please send comments to / Kommentar bitte an
+        meier2@athene.informatik.uni-bonn.de
+
+   <
+   English:    This script shows all wedding aniversaries in this year.        :English
+   Deutsch:    Dieses Skript zeigt die Heiratsjubil„en in diesem Jahr.         :Deutsch
+   Nederlands: This script shows all wedding aniversaries in this year.        :Nederlands
+   Fran‡ais:   Ce script donne tous les anniversaires de mariage dans l'ann‚e.:Fran‡ais
+   >
+
+   Long name is <
+                 English:    List wedding aniversaries        :English
+                 Deutsch:    Auflisten der Heiratsjubil„en    :Deutsch
+                 Nederlands: List weddings aniversaries       :Nederlands
+                 Fran‡ais:   Imprime anniversaires de mariage :Fran‡ais
+                >
+*/
+
+/* ----------------------- Params  /  Parameter ------------------- */
+
+datewidth=14
+yearwidth=datewidth+9
+
+CALL InitLanguage
+
+/* -------------------------- Output / Ausgabe --------------------- */
+
+SAY(msg.Header.LANG)
+SAY(COPIES('=',length(msg.Header.LANG)))
+
+
+/* Sort Families by Date Month,Day  /  Familien nach Monat,Tag sortieren  */
+rc=sortFamilies('MM,MD')
+
+
+/* Calculate actual year  /  aktuelles Jahr berechnen */
+thisyear=WORD(DATE(),3)
+
+/* Display families in tree  /  Familien ausgeben */
+
+rc=selectFamily('F')
+
+DO WHILE rc=1
+
+   /* Get month  /  berechne Monat */
+   result=getMarriageDate('m')
+
+   /* Check if we've got a month  /  nachpruefen ob wir Monat haben */
+   IF result<>'?' THEN DO
+
+      /* Get Day   /  berechne Tag */
+      day=getMarriageDate('D')
+      if day<>0 THEN
+         result=result||' '||day
+      result=LEFT(result,datewidth)
+
+      /* Add anniversary  /  plus Jahrestag */
+      year=getMarriageDate('Y')
+      IF year<>0 THEN
+         result=result||' ('||thisyear-year||')'
+      result=LEFT(result,yearwidth)
+
+      /* Add name,first name  /  plus Name,Vorname */
+      rc=selectPerson('f')
+      result=result||getName()||','||getFirstName()
+      rc=selectPerson('m')
+      result=result||' - '||getName()||','||getFirstName()
+
+      /* output  /  Ausgabe */
+      SAY(result)
+   END
+
+   /* Next one */
+   rc=selectFamily('N')
+END
+
+/* Done */
+RETURN
+
+
+/* ---------------------- LANGUAGE INIT --------------------------- */
+InitLanguage:
+
+   /* Calculate Language Index */
+   lang='E'                              /* Default -> [E]nglish */
+   IF getLanguage()='Deutsch' THEN       /* Deutsch -> [G]erman */
+      lang='G'
+   IF getLanguage()='Nederlands' THEN    /* Nederlands -> [D]utch */
+      lang='D'
+   IF getLanguage()='Fran‡ais' THEN       /* Fran‡ais -> [F]rench */
+      lang='F'
+
+   /* [E]nglish Messages */
+   msg.Header.E='Wedding Anniversary this year (next anniversary) '
+
+   /* [G]erman Messages */
+   msg.Header.G='Heiratsjubilaeum in diesem Jahr (Jahrestag) '
+
+   /* [D]utch Messages */
+   msg.Header.D='Wedding Anniversary this year (next anniversary) '
+
+   /* [F]rench Messages */
+   msg.Header.F="Anniversaires de mariage cette ann‚e (prochains anniversaires) "
+
+   /* Done */
+   RETURN
+

@@ -1,0 +1,441 @@
+#include "..\ftree.h"
+#include <os2.h>
+
+
+ACCELTABLE ID_NMainWindow
+BEGIN
+   "+", MI_MankindZoomIn
+   "-", MI_MankindZoomOut
+   "n", MI_FileNew, CONTROL
+   "l", MI_FileOpen, CONTROL
+   "m", MI_FileMerge, CONTROL
+   "s", MI_FileSave, CONTROL
+   "p", MI_FilePrint, CONTROL
+   "x", MI_FileClose, CONTROL
+
+   VK_F2, MI_FileSave, VIRTUALKEY
+   VK_F3, MI_FileClose, VIRTUALKEY
+
+   "r", MI_RexxStart, CONTROL
+
+   "1", MI_MankindAncestors, CONTROL
+   "2", MI_MankindDescendants, CONTROL
+   "3", MI_MankindSiblings, CONTROL
+
+   "h", MI_MankindHori, CONTROL
+   "v", MI_MankindVert, CONTROL
+END
+
+
+STRINGTABLE PRELOAD MOVEABLE
+BEGIN
+
+   ID_nbOpen,                "Beolvas†s"
+   ID_nbSave,                "MentÇs"
+   ID_nbPrint,               "Nyomtat†s"
+   ID_nbOptions,             "Be†ll°t†sok"
+   ID_nbLocate,              "NÇv keresÇse"
+   ID_nbHoriVert,            "V°zszintes/fÅggìleges nÇzet"
+   ID_nbAncestors,           "Az ìsîk l†that¢ nemzedÇkei"
+   ID_nbDescendants,         "A lesz†rmazottak l†that¢ nemzedÇkei"
+   ID_nbSiblings,            "TestvÇrek l†that¢ak"
+   ID_isZoom,                  "Nagy°t†s mÇrtÇke"
+   ID_nbTopBottom,           "Ikonsor fent/lent"
+
+
+   SI_MainTitle,               "FamilyTree"
+   SI_MainTitleUnregistered,   " (regisztr†latlan)"
+   SI_EditTitle,               "Szerkesztìablak "
+   SI_ListTitle,               "Listaablak "
+   SI_EventTitle,              "EsemÇnyek ablak "
+   SI_OptionsTitle,            "Be†ll°t†sok ablak "
+
+   SI_NotImplemented,   "Nem implement†lt"
+   SI_TabStandard,      "Szabv†nyos adatok"
+   SI_TabUser,          "Felhaszn†l¢i adatok"
+   SI_TabSources,       "Forr†sdokumentumok"
+   SI_TabEvents,        "EsemÇnyek"
+   SI_TabAttachments,   "Csatolt file-ok"
+
+   SI_Name,             "NÇv"
+   SI_FirstName,        "KeresztnÇv"
+   SI_Sex,              "Neme"
+   SI_MaleFemale,       "-FN"
+   SI_BirthDate,        "SzÅletÇs"
+   SI_BirthPlace,       "Helye"
+   SI_DeathDate,        "Hal†l"
+   SI_DeathPlace,       "Helye"
+   SI_MarriageDate,     "H†zass†g"
+   SI_MarriagePlace,    "Helye"
+   SI_DivorceDate,      "VÇge"
+   SI_Occupation,       "Foglalk."
+   SI_Address,          "C°m"
+   SI_Memo,             "Megj."
+   SI_Bitmap,           "KÇp"
+
+   SI_Adam,             "èd†m"
+   SI_Child,            "Gyerek"
+   SI_Mom,              "Anya"
+   SI_Dad,              "Apa"
+   SI_Partner,          "Partner"
+   SI_NoneRemembered,   "<Nincs megjegyezve>"
+   SI_NewPerson,        "~Uj"
+   SI_ReallyDelChilds1, "Gyermek tîrlÇse "
+   SI_ReallyDelChilds2, " tîrîl minden gyereket Çs azok lesz†rmazottait! Mehet?"
+   SI_ReallyDelParents1,"SzÅlìk tîrlÇse, a gyerek: "
+   SI_ReallyDelParents2," tîrli a szÅlìket Çs azon rokonokat akik nem kîthetìek az ìsîkhîz! Mehet?"
+   SI_ReallyDelThis1,   "SzemÇly tîrlÇse "
+   SI_ReallyDelThis2,   " minden rokont tîrîl, aki nem fÅggetlen tìle! Mehet?"
+   SI_ReallyDelPartner1,"Partner tîrlÇse "
+   SI_ReallyDelPartner2," tîrli a szÅleit, lesz†rmazottait Çs azok rokonait! Mehet?"
+   SI_ReallyStealChild1,"Gyerek hozz†ad†sa "
+   SI_ReallyStealChild2," tîrli a szÅleit ha azok nem kîthetìek az ìsîkhîz! Mehet?"
+   SI_AncestorLoop1,    " nem lehet a gyermeke "
+   SI_AncestorLoop2,    ", mert ì az ìse!"
+   SI_ImportNoData,     "*** Nincs beolvasand¢ adat!"
+   SI_ImportNumPersons, "*** Beolvasand¢ szemÇlyek sz†ma      : "
+   SI_ImportOrigin,     "*** Forr†s                           : "
+   SI_ImportPAdded,     "*** Az ismeretlen illetve hurkot alkot¢ szemÇlyek sz†ma         : "
+   SI_ImportPDropped,   "*** Az ìsîkhîz nem kîthetì (be nem olvasott) szemÇlyek sz†ma    : "
+   SI_ImportFDropped,   "*** A sehova nem kîthetì (be nem olvasott) csal†dok sz†ma       : "
+
+   SI_DlgFileError,     "File nyit†si hiba: "
+   SI_DlgFileFalse,     "Nincs ÇrvÇnyes file: "
+   SI_DlgFileBadWrite,  "File °r†si hiba: "
+   SI_DlgFileLoad,      "Csal†dfa betîltÇse"
+   SI_DlgFileSave,      "Csal†dfa mentÇse"
+
+   SI_BmpOrGifPlease,   "Csak GIF, TIF, PCX vagy BMP lehet!"
+   SI_BmpGiveName,      "KÇrlek adj a csal†df†dnak nevet (Save As-szal) hogy tudjak relat°v utat t†rolni!"
+   SI_BmpDoRelative,    "KÇrlek m†sold a file-t a csal†df†d kînyvt†r†ba vagy az al† hogy relat°v utakat tudjak haszn†lni!"
+
+   SI_NoHelp,           "Nincs elÇrhetì help!"
+   SI_SaveNow,          "Megv†ltoztattad a csal†df†dat! Mentsem el most?"
+   SI_NoProfile,        "Nem tudom elmenteni a Profilt vagy hi†nyos!"
+   SI_NoSaveProfile,    "Nem tudom fel°rni a Profilt!"
+
+   SI_PrintTitle,              "FamilyTree Nyomtat†s"
+   SI_PrintPrinter,            "Printer"
+   SI_PrintPageSize,           "Lap mÇret (cm)"
+   SI_PrintDPI,                "Felbont†s (dpi)"
+   SI_PrintPages,              "Lapok"
+   SI_PrintFit,                "Illeszt"
+   SI_PrintZoom,               "Nagy°t†s"
+   SI_PrintDoPrint,            "Print"
+   SI_PrintDoProps,            "Tulajdons†gok"
+   SI_PrintDoCancel,           "Megszak°t"
+   SI_PrintErrNoQueuesDef,     "Nincsenek Print Queue-k be†ll°tva! Hi†nyz¢ nyomtat¢!"
+   SI_PrintErrDevOpenFailed,   "Nem tudom az egysÇget megnyitni a Queue-hoz "
+   SI_PrintErrQueryCapsFailed, "Nem tudom lekÇrdezni a Queue tulajdons†gait "
+   SI_PrintErrCreatePSFailed,  "Nem tudok PS-t kÇsz°teni!"
+
+   SI_QueryGenerationsPlease  ,"Add meg"
+   SI_QueryGenerationsParent  ,"Szintek sz†ma ameddig az ìsîk l†tsz¢djanak"
+   SI_QueryGenerationsChild   ,"Szintek sz†ma ameddig a lesz†rmazottak l†tsz¢djanak"
+   SI_QueryGenerationsMax     ,"Mindig maxim†lis"
+   SI_QueryGenerationsUpTo    ,"Max. "
+
+   SI_DropFileHere,            "Dobj ide egy file-t!"
+   SI_DropPersonHere,          "Dobj ide egy szemÇlyt a hozz†ad†shoz!"
+   SI_DropEventHere,           "Dobj ide egy esemÇnyt a hozz†ad†shoz!"
+   SI_ClickForEvent,           "Kattints ide egy £j esemÇnyhez"
+   SI_Person,                  "SzemÇly"
+   SI_Event,                   "EsemÇny"
+   SI_InvolvedPerson,          "RÇsztvevìk"
+   SI_InvolvedAs,              "RÇszt vett mint"
+
+   SI_MsgGenAncestors,         " ßsîk gen. "
+   SI_MsgGenDescendants,       " lesz†rmazottak gen. "
+   SI_MsgNumberOfMan,          " SzemÇlyek "
+   SI_MsgNumberOfRel,          " Csal†dok "
+   SI_MsgPrinting,             "Lap nyomtat†sa "
+   SI_MsgLoadPerson,           "SzemÇly betîltÇse "
+   SI_MsgLoadMarriage,         "Rokons†g betîltÇse "
+   SI_MsgSavePerson,           "SzemÇly mentÇse "
+   SI_MsgSaveMarriage,         "Rokons†g mentÇse "
+   SI_MsgLoadEvent,            "EsemÇny betîltÇse "
+   SI_MsgSaveEvent,            "EsemÇny mentÇse "
+   SI_MsgLoadCheck,            "Azonos°t¢ teszt..."
+   SI_MsgDuplicateIDs,         "Dupla/hi†nyz¢ azonos°t¢k! Indulhat a korrekci¢?"
+   SI_MsgDoingBackup,          "Bizons†gi m†solat "
+
+   SI_AboutTitle,              "About Family Tree"
+   SI_AboutHead,               "Family Tree 1.2d"
+   SI_AboutCopyright,          "(C) 1996 Nils Meier"
+   SI_AboutRegisterHere,       "Itt regisztr†lhatod :"
+   SI_AboutPlease1,            "KÇrlek olvasd el a help-et"
+   SI_AboutPlease2,            "hogy mikÇpp lehetsÇges a regisztr†ci¢."
+   SI_AboutDoRegister,         "Regisztr†lod"
+   SI_AboutLater,              "Viszl†t kÇsìbb"
+   SI_AboutIsRegTo,            "A program regisztr†lt:"
+   SI_AboutThanks,             "Kîszînîm a regisztr†ci¢t!"
+   SI_AboutVerify,             "Ellenìrizd az adatokat \n KÇrlek az inform†ci¢kat pontosan add meg!"
+
+   SI_MonthNames+ 0,           "?"
+   SI_MonthNames+ 1,           "Janu†r"
+   SI_MonthNames+ 2,           "Febru†r"
+   SI_MonthNames+ 3,           "M†rcius"
+   SI_MonthNames+ 4,           "èprilis"
+   SI_MonthNames+ 5,           "M†jus"
+   SI_MonthNames+ 6,           "J£nius"
+   SI_MonthNames+ 7,           "J†lius"
+   SI_MonthNames+ 8,           "Augusztus"
+   SI_MonthNames+ 9,           "Szeptember"
+   SI_MonthNames+10,           "Okt¢ber"
+   SI_MonthNames+11,           "November"
+   SI_MonthNames+12,           "December"
+
+   SI_Window,                  "Ablak"
+   SI_Language,                "Magyar"
+   SI_EnterPath,               "Add meg az utat :"
+
+   SI_RexxDialog,              "Rexx v†laszt†s"
+   SI_RexxScript,              "Program"
+   SI_RexxLongname,            "Hossz£ nÇv"
+   SI_RexxAuthor,              "Szerzì"
+   SI_RexxComment,             "MegjegyzÇs"
+   SI_RexxStart,               "~Start"
+   SI_RexxRemember,            "~Megjegyez"
+   SI_RexxNotFound,            "Nem tal†lom a programot!"
+   SI_RexxUnknown,             "Ismeretlen"
+   SI_RexxTitle,               "Rexx kimenet: "
+   SI_RexxFinished,            "KÇsz "
+   SI_RexxDone,                "~OK"
+   SI_RexxCancel,              "~Vissza"
+   SI_RexxPrint,               "~Nyomtat"
+   SI_RexxSave,                "~Kiment"
+   SI_RexxOutputSave,          "Rexx eredmÇny kimentÇse file-ba"
+   SI_RexxOutputSaveError,     "Nem tudom a Rexx eredmÇnyt file-ba °rni!"
+   SI_RexxUnfinishedImport,    "Maradtak olyan szemÇlyek akik nem kapcsolhat¢ak az ìsîkhîz! Tartsam ìket a mem¢ri†ban a tov†bbi importok esetÇre?"
+
+   SI_ListId,                  "Azon"
+   SI_ListSex,                 "Neme"
+   SI_ListName,                "Neve"
+   SI_ListFirst,               "KeresztnÇv"
+   SI_ListBirth,               "SzÅl. d†tum"
+   SI_ListBPlace,              "SzÅl. hely"
+   SI_ListDeath,               "Hal†l d†tum"
+   SI_ListDPlace,              "Hal†l hely"
+   SI_ListSortBy,              "Sorbarendez"
+   SI_ListSortFields,          "ElÇrhetì mezìk"
+   SI_ListSortSequence,        "Rendezve"
+
+   SI_EventsTab1,              "EsemÇny adatok"
+   SI_EventsTab2,              "RÇsztvevì szemÇlyek"
+   SI_EventsTab3,              "Dokument†lt forr†sok"
+   SI_EventsName,              "EsemÇny"
+   SI_EventsFrom,              "Kezdì d†tum"
+   SI_EventsTo,                "VÇgd†tum"
+   SI_EventsPlace,             "Hely"
+   SI_EventsDescription,       "Le°r†s"
+
+   SI_OptionsLayout,           "L†tv†ny"
+   SI_OptionsDataAssistant,    "Adat segÇdlet"
+   SI_OptionsMiscellaneous,    "Egyebek"
+   SI_OptionsDateFormat,       "D†tum form†tum"
+   SI_OptionsUserFields,       "Saj†t mezìk"
+   SI_OptionsProgram,          "(Program be†ll°t†sok)"
+   SI_OptionsTree,             "(Fa be†ll°t†sok)"
+   SI_OptionsLines,            "Vonalak"
+   SI_OptionsDiagonal,         "Ferde"
+   SI_OptionsOrthogonal,       "Ortogon†lis"
+   SI_OptionsDetail,           "RÇszletek"
+   SI_OptionsFirstNames,       "Keresztnevek"
+   SI_OptionsDates,            "SzÅl./hal†l d†tumok"
+   SI_OptionsColor,            "Sz°n"
+   SI_OptionsCBackground,      "H†ttÇr"
+   SI_OptionsCLines,           "Vonalak"
+   SI_OptionsCBoxes,           "Dobozok"
+   SI_OptionsCEmphasis,        "KijelîlÇs"
+   SI_OptionsCTexts,           "Szîvegek"
+   SI_OptionsCDefault,         "Alap"
+   SI_OptionsFont,             "Betñ"
+   SI_OptionsAddPartSA,        "Partner hozz†ad†s -> ugyanazt a c°met kapja"
+   SI_OptionsAddPartOS,        "Partner hozz†ad†s -> ellenkezì nemñ lesz"
+   SI_OptionsAddChilSN,        "Gyerek hozz†ad†s -> ugyanazt a nevet kapja"
+   SI_OptionsAddChilSA,        "Gyerek hozz†ad†s -> ugyanazt a c°met kapja"
+   SI_OptionsAddPareMF,        "SzÅlìk hozz†ad†sa -> fÇrfi Çs nì lesz"
+   SI_OptionsAddPareSN,        "SzÅlìk hozz†ad†sa -> ugyanazt a nevet kapja"
+   SI_OptionsAddPareSA,        "SzÅlìk hozz†ad†sa -> ugyanazt a c°met kapja"
+   SI_OptionsFocusToEdit,      "A szerkesztì ablak elìtÇrbe kerÅl a szemÇlyre klikkelÇskor"
+   SI_OptionsRelPath,          "Rel°t°v utakat pr¢b†l t†rolni"
+   SI_OptionsDoBackup,         "MentÇs elìtt biztons†gi m†solat"
+   SI_OptionsImportPreserve,   "Mindig ìrizze meg az import†lhatatlan szemÇlyeket"
+   SI_OptionsFloatEdit,        "Szabadon lebegì Szerkesztìablak"
+   SI_OptionsFloatList,        "Szabadon lebegì Listaablak"
+   SI_OptionsFloatEvents,      "Szabadon lebegì EsemÇnyek-ablak"
+   SI_OptionsMemoWordWrap,     "A megjegyzÇs mezì tîrdel"
+   SI_OptionsBorderlessButtons,"Kerettelen gombok"
+   SI_OptionsDateFmt,          "D†tum form†tum"
+   SI_OptionsChooseFont,       "V†lassz egy betñt°pust"
+
+   SI_FeatureNotAvailable1,    "Regisztr†latlan"
+   SI_FeatureNotAvailable2,    "A FamilyTree regisztr†ci¢ja ut†n a v†ltoztat†s †lland¢ lesz. A csatolt file-okat a regisztr†latlan verzi¢ nem jegyzi meg!"
+
+   SI_UserFieldField,     "Mezì"
+   SI_UserFieldValue,     "êrtÇk"
+   SI_UserFieldFieldName, "MezìnÇv"
+   SI_UserFieldFieldType, "Mezìt°pus"
+   SI_UserFieldYesNo,     "Igen/Nem"
+   SI_UserFieldText,      "Szîveg"
+   SI_UserFieldNumber,    "Sz†m"
+   SI_UserFieldDate,      "D†tum"
+   SI_UserFieldNone,      "Nincs be†ll°tott mezì!"
+   SI_UserFieldMax3,      "Sajn†lom, de a regisztr†latlan v†ltozat maximum 3 mezìt enged!"
+   SI_UserFieldDelete,    "Biztos el akarod t†vol°tani a(z) $ mezìt? Minden ehhez kapcsol¢d¢ adat elvÇsz a f†b¢l!"
+
+   SI_OK,     "OK"
+   SI_Cancel, "MÇgsem"
+   SI_New,    "Uj"
+   SI_Change, "V†ltoztat"
+   SI_Delete, "Tîrîl"
+   SI_Yes,    "Igen"
+   SI_No,     "Nem"
+   SI_Unknown,"Ismeretlen"
+
+END
+
+MENU MI_Main PRELOAD MOVEABLE
+  BEGIN
+        SUBMENU "~File", MI_MainFile
+          BEGIN
+            MENUITEM "~Uj\tCtrl+N",         MI_FileNew
+            MENUITEM "~BetîltÇs\tCtrl+L",        MI_FileOpen
+            MENUITEM "~Hozz†ad†s\tCtrl+M",       MI_FileMerge
+            MENUITEM "~MentÇs\tCtrl+S",        MI_FileSave
+            MENUITEM "M~entÇs m†s nÇven",             MI_FileSaveAs
+            MENUITEM "~Nyomtat†s\tCtrl+P",       MI_FilePrint
+            MENUITEM                         SEPARATOR
+            MENUITEM "~VÇge\tCtrl+X",       MI_FileClose
+          END
+        SUBMENU "~L†tv†ny", MI_MainView
+          BEGIN
+            MENUITEM "ß~sîk\tCtrl+1",   MI_MankindAncestors
+            MENUITEM "L~esz†rmazottak\tCtrl+2", MI_MankindDescendants
+            MENUITEM "~TestvÇrek\tCtrl+3",    MI_MankindSiblings
+            MENUITEM                         SEPARATOR
+            MENUITEM "Nagy°t†s\t+",           MI_MankindZoomIn
+            MENUITEM "Kicsiny°tÇs\t-",          MI_MankindZoomOut
+            MENUITEM                         SEPARATOR
+            MENUITEM "~V°zszintes\tCtrl+H",  MI_MankindHori
+            MENUITEM "~FÅggìleges\tCtrl+V",    MI_MankindVert
+            MENUITEM                         SEPARATOR
+            MENUITEM "~Lista",                MI_MankindList
+            MENUITEM "~EsemÇnyek",              MI_MankindEvents
+            MENUITEM "Sze~rsz†mok",             MI_MankindToolbar
+          END
+        SUBMENU "~Be†ll°t†sok", MI_MainOptions
+          BEGIN
+            MENUITEM "~L†tv†ny",              MI_OptionsLayout
+            MENUITEM "~Adat segÇdlet",      MI_OptionsDataAssistant
+            MENUITEM "~Egyebek",       MI_OptionsMiscellaneous
+            MENUITEM "~Saj†t mezìk",         MI_OptionsUserFields
+          END
+        SUBMENU "~Rexx", MI_MainRexx
+          BEGIN
+            MENUITEM "~Start Ctrl+R",       MI_RexxStart
+            MENUITEM                         SEPARATOR
+          END
+        SUBMENU "~Help", MI_MainHelp, MIS_HELP
+          BEGIN
+            MENUITEM "~Introduction",        SC_HELPEXTENDED, MIS_SYSCOMMAND
+            MENUITEM "Help~index",           SC_HELPINDEX, MIS_SYSCOMMAND
+            MENUITEM                         SEPARATOR
+            MENUITEM "~About",               MI_About
+          END
+  END
+
+MENU MI_Man PRELOAD MOVEABLE                       //ManPopUpMenu for Man
+  BEGIN
+    MENUITEM "~KîzÇppontba",            MI_ManCenter
+    MENUITEM "~SzerkesztÇs",              MI_ManEdit
+    MENUITEM "~Eredet",            MI_ManOrigin
+    MENUITEM                       SEPARATOR
+    SUBMENU "~TîrlÇs",             MI_ManDel
+      BEGIN
+        SUBMENU "~Partner ",MI_ManDelPartner
+          BEGIN
+          END
+        SUBMENU "~GyermekÇt ", MI_ManDelChilds
+          BEGIN
+          END
+        MENUITEM "~SzÅlìket",       MI_ManDelParents
+        MENUITEM "~Mag†t",          MI_ManDelThis
+      END
+    SUBMENU "~Gyerek hozz†ad†sa ",    MI_ManChild
+      BEGIN
+      END
+    MENUITEM "SzÅ~lìk hozz†ad†sa",       MI_ManParents
+    SUBMENU "P~artner hozz†ad†sa",        MI_ManPartner
+      BEGIN
+        MENUITEM "~Uj",           MI_ManPartnerNew
+      END
+    MENUITEM "~Megjegyez",        MI_ManRemember
+  END
+
+MENU MI_Mankind PRELOAD MOVEABLE                  //ManPopUpMenu for Mankind
+  BEGIN
+    MENUITEM "ßsî~k\tCtrl+1",   MI_MankindAncestors
+    MENUITEM "Les~z†rmazottak\tCtrl+2", MI_MankindDescendants
+    MENUITEM "~TestvÇrek\tCtrl+3",    MI_MankindSiblings
+    MENUITEM                         SEPARATOR
+    MENUITEM "Nagy°t\t~+",          MI_MankindZoomIn
+    MENUITEM "Kicsiny°t\t~-",         MI_MankindZoomOut
+    MENUITEM                         SEPARATOR
+    MENUITEM "~V°zszintes\tCtrl+H",  MI_MankindHori
+    MENUITEM "~FÅggìleges\tCtrl+V",    MI_MankindVert
+    MENUITEM                         SEPARATOR
+    MENUITEM "~Lista",                MI_MankindList
+    MENUITEM "~EsemÇnyek",              MI_MankindEvents
+    MENUITEM "~Szersz†mok",             MI_MankindToolbar
+  END
+
+MENU MI_Manlist PRELOAD MOVEABLE           // ManlistPopUpMenu for Manlist
+  BEGIN
+    MENUITEM "~Sorbarendez ...",             MI_ManlistSort
+  END
+
+MENU MI_EventList PRELOAD MOVEABLE        // EventList
+  BEGIN
+    MENUITEM "~Uj esemÇny",            MI_EventListNew
+    MENUITEM "EsemÇny ~tîrlÇs",         MI_EventListDel
+  END
+
+MENU MI_EventEdit PRELOAD MOVEABLE        // EventEdit
+  BEGIN
+    MENUITEM "~V†ltoztat",                MI_EventEditChange
+    MENUITEM "~Tîrîl",                MI_EventEditDel
+    MENUITEM "~Fel",                    MI_EventEditUp
+    MENUITEM "~Le",                  MI_EventEditDown
+  END
+
+MENU MI_ManEditEventList PRELOAD MOVEABLE  // ManEdit EventList
+  BEGIN
+    MENUITEM "~R†ugrik",               MI_ManEditEventListJump
+    MENUITEM                           SEPARATOR
+    MENUITEM "~V†ltoztat",                MI_ManEditEventListChange
+    MENUITEM                           SEPARATOR
+    MENUITEM "~Tîrîl",                MI_ManEditEventListDel
+  END
+
+MENU MI_FileBox PRELOAD MOVEABLE           // FilesPopUpMenu for NFileBox
+  BEGIN
+    MENUITEM "~Megnyit†s",                MI_FileBoxOpen
+    MENUITEM "~V†ltoztat†s",              MI_FileBoxChange
+    MENUITEM "~Elsìnek",          MI_FileBoxFirst
+    MENUITEM "~TîrlÇs",              MI_FileBoxDel
+    MENUITEM                         SEPARATOR
+    MENUITEM "~Uj",                 MI_FileBoxNew
+    MENUITEM "M~indent tîrîl",          MI_FileBoxClear
+  END
+
+MENU MI_Date PRELOAD MOVEABLE           // PopUpMenu for date information
+  BEGIN
+    MENUITEM "~pontosan\aCtrl+0",                  MI_DateAt
+    MENUITEM "~nagyj†b¢l\aCtrl+1",               MI_DateAbout
+    MENUITEM "~ut†na\aCtrl+2",               MI_DateAfter
+    MENUITEM "~elìtte\aCtrl+3",              MI_DateBefore
+    MENUITEM "~becslÇs\aCtrl+4",           MI_DateEstimated
+  END
+
+

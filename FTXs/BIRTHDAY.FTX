@@ -1,0 +1,114 @@
+/*
+   Family Tree Rexx Script FTX
+
+   Copyright (C) 1996 by <Nils Meier>
+
+   Please send comments to / Kommentar bitte an
+        meier2@athene.informatik.uni-bonn.de
+
+   <
+   English:   This script shows all birthdays of every person in the tree       :English
+   Deutsch:   Dieses Skript zeigt alle Geburtstage der Menschen im Stammbaum    :Deutsch
+   Nederlands:This script shows all birthdays of every person in the tree       :Nederlands
+   Fran‡ais:  Ce script affiche la date de naissance de toutes les personnes de
+              l'arbre g‚n‚alogique et l'age qu'ils auraient actuellement.       :Fran‡ais
+   >
+
+   Long name is <
+                 English:    List of Birthdays            :English
+                 Deutsch:    Liste der Geburtstage        :Deutsch
+                 Nederlands: Dit Script toont alle verjaardagen van de personen in de stamboom:Nederlands
+                 Fran‡ais:   Imprime la date de naissance :Fran‡ais
+                >
+*/
+
+
+/* ----------------------- Params  /  Parameter ------------------- */
+
+namewidth=32
+datewidth=14
+namewidth=datewidth+30
+
+CALL initLanguage
+
+/* ----------------- Display Header / Kopf der Ausgabe ------------- */
+
+head=msg.Header.LANG||DATE()
+SAY(head)
+SAY(COPIES('=',length(head)))
+
+
+/* ------------------------------ Output / Ausgabe ----------------- */
+
+/* Sort Perons by Birth Month,Day  /  Menschen sortieren nach Geburtsmonat,Tag */
+rc=sortPersons('BM,BD,N,F')
+
+/* Calculate actual year  /  Berechne aktuelles Jahr  */
+thisyear=WORD(DATE(),3)
+
+/* Display persons in tree / Anzeigen der Menschen im Baum*/
+
+rc=selectPerson('F')
+DO UNTIL rc=0
+
+   /* Get month of Birth  /  Geburtstagmonat */
+   result=getBirthDate('m')
+
+   /* Only if month is given / Nur wenn Monat bekannt */
+   IF result<>'?' THEN DO
+
+      /* Get Day of Birth  /  Geburtstag */
+      day=getBirthDate('D')
+      IF day<>0 THEN
+         result=result||' '||day
+      result=LEFT(result,datewidth)
+
+      /* Add Name,First name  /  plus Name,Vorname */
+      result=result||getName()||','||getFirstName()
+      result=LEFT(result,namewidth)
+
+      /* Age this year  /  Alter in diesem Jahr */
+      year=getBirthDate('Y')
+      IF year<>0 THEN
+         result=result||' ('||thisyear-year||')'
+
+      /* Output  /  Ausgabe */
+      SAY(result)
+   END
+
+   /* Next one  /  Naechster */
+   rc=selectPerson('N')
+END
+
+/* Done  /  Fertig */
+RETURN
+
+
+/* ---------------------- LANGUAGE INIT --------------------------- */
+InitLanguage:
+
+   /* Calculate Language Index */
+   lang='E'                              /* Default -> [E]nglish */
+   IF getLanguage()='Deutsch' THEN       /* Deutsch -> [G]erman */
+      lang='G'
+   IF getLanguage()='Nederlands' THEN    /* Nederlands -> [D]utch */
+      lang='D'
+   IF getLanguage()='Fran‡ais' THEN       /* Fran‡ais -> [F]rench */
+      lang='F'
+
+   /* [E]nglish Messages */
+   msg.Header.E='Birthday List (age this year) '
+
+   /* [G]erman Messages */
+   msg.Header.G='Geburtstagsliste (Alter in diesem Jahr) '
+
+   /* [D]utch Messages */
+   msg.Header.D='verjaardagen lijst (leeftijd dit jaar) '
+
+   /* [F]rench Messages */
+   msg.Header.F="Liste des Dates de Naissance (Age cette ann‚e). Nous sommes le "
+
+   /* Done */
+   RETURN
+
+

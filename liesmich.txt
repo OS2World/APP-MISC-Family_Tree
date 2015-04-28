@@ -1,0 +1,316 @@
+FamilyTree Version 1.2f
+=======================
+
+Copyright (C) 1996 Nils Meier
+
+Die Erlaubnis, diese Software und Dokumentation privat zu kopieren und zu
+verbreiten, wird hiermit erteilt, wenn nur eine geringe GebÅhr fÅr das
+Kopieren erhoben wird und diese Copyright-Bemerkung in allen Kopien
+verbleibt.
+Diese Software wird ohne GewÑhr auf FunktionalitÑt oder Fehlerfreiheit
+zur VerfÅgung gestellt. Der Autor garantiert nicht die Korrektheit dieses
+Programmes. Der Autor kann nicht fÅr den Verlust von Daten oder anderen
+SchÑden verantwortlich gemacht werden.
+
+Ab Version 1.0d ist FamilyTree Shareware. Bitte testen und prÅfen Sie
+dieses Programm. Registrieren Sie bitte das Program, wenn Sie den Autor
+unterstÅtzen wollen, dieses Programm zu verbessern. Danke.
+Bitte lesen Sie die Online-Hilfe fÅr mehr Informationen Åber
+das Registrieren.
+
+KURZE BESCHREIBUNG:
+===================
+
+FamilyTree ist ein PM-32bit-multithreaded Programm fÅr OS/2 3.x.
+
+Mit FamilyTree kînnen Sie Ihre Ahnendaten als visuellen Stammbaum
+bearbeiten. Sie kînnen Personen hinzufÅgen und Ihre Eigenschaften
+verÑndern, die Vorfahren und Nachfahren im öberblick betrachten und
+Verwandtschaften untersuchen.
+UnterstÅtze Eigenschaften sind: Name, Geburt, Tod, Heirat, Adresse,
+Kommentar, Bild, Dateien, *Benutzerfelder, *Quellen, *Ereignisse
+(*=geplant).
+Gearbeitet wird mittels AuswÑhlen durch die Maus und ôffnen von
+KontextmenÅs mittels rechtem Mausklick.
+FamilyTree unterstÅtzt (erweiterbare) Rexx-SKripte fÅr verschiedene
+Statistiken und Im/Export von Daten (GEDCOM wird unterstÅtzt).
+
+Als Beispieldatei stelle ich Ihnen meinen Stammbaum NILS.FAM zur
+VerfÅgung.
+
+Schauen Sie in die Onlinehilfe (F1) um mehr Åber das Programm zu
+erfahren.
+
+FamilyTree wurde geschrieben und getestet unter OS/2 3.0 (4) mit VAC++3.0.
+
+INSTALLATION:
+=============
+
+Entpacken Sie die Datei FTREE*.ZIP in das gewÅnschte Verzeichnis auf
+Ihrer Festplatte. Benutzen Sie das Programm install.cmd um ein
+FamilyTree Programmobjekt auf der ArbeitsoberflÑche zu erzeugen und
+die sprachspezifische DLL+HLP zu initialisieren.
+Stellen Sie sicher, da· die folgende Anweisung (so oder Ñhnlich) in
+Ihrer config.sys vorhanden ist:
+      LIBPATH=.;Restliche Pfadanweisung
+
+FTREE AUSFöHREN:
+===============
+
+Wechseln Sie in eine Kommandozeile und geben Sie ftree.exe ein,
+oder starten sie Family Tree durch einen Doppelklick auf das
+Programmobjekt auf der ArbeitsoberflÑche (wenn die Installation
+erfolgreich war).
+Sie kînnen automatisch einen Stammbaum einladen, wenn Sie die
+gewÅnschte Datei als Parameter auf der Kommandozeile angeben
+(ftree.exe .\nils.fam) oder diese Information in das Parameter-
+feld des Programmobjektes eingeben.
+
+RELEASE öBERBLICK:
+==================
+
+Version (NEW neues Feature,BUG Fehler behoben,CHA énderung)
+
+1.0 , MÑr 11 1996: NEW:Erster Release
+
+1.0a, MÑr 16 1996: BUG:Vergessen /Gd- bei DLLs
+
+1.0b, MÑr 24 1995: NEW:WÑhlen des Rufnamens durch Tilde (~)
+                   NEW:Drag&Drop von Bildern in die Eigenschaften
+                   NEW:Maximale Kinderzahl 12
+                   NEW:Datumfeld Sterben
+
+1.0c, Apr 14 1996: NEW:FTree schreibt ein neues Format, das nicht von Ñlterer Version
+                       gelesen werden kann !!! (Einlesen des alten Formats wird noch unterstÅtzt)
+                   NEW:HILFE SchaltflÑche enthÑlt Inhalt/ZurÅck/Suchen/Drucken/Index
+                   CHA:Neue Startpositionen fÅr Listen/Haupt/Editier-Fenster
+                   CHA:Memogrî·e ist jetzt 4k
+                   CHA:Einaden lÑuft in einem zweiten Thread
+                   CHA:Datum in Englisch ist MM/DD/YYYY - in Deutsch DD.MM.YYYY
+                   NEW:FTree fragt nach Speichern wenn ein Baum geschlossen wird
+                   NEW:Hauptfenster merkt sich Maximierung
+                   BUG:Workaround fÅr den S3-Treiber Fehler in API GpiBox
+                       (Rote Linie bleibt stehen, wenn Aktueller sich Ñndert)
+                   NEW:Ringe zwischen Partnern
+                   NEW:Mehrfachheirat (Maximum ist 4)
+                   NEW:Neue feste Felder: Geschlecht + Todesort + Heiratinfos (Heirat,Ort,Trennung)
+                   NEW:Geschwister werden nach Geburtsdatum / Partner nach Heiratsdatum sortiert
+                   NEW:Auswahl der Bauminformationen (Vorname,Daten)
+                   NEW:Drucken
+                       Achtung    : Drucken an FaxWorks arbeitet nur wenn FaxWorks schon lÑuft
+                       Information: Ich werde das Drucken in einen 2. Thread legen, aber ein
+                                    blîder Bug hindert mich noch :-(
+
+1.0d, Apr 22 1996: BUG:Drucken lÑuft jetzt im 2. Thread und FaxWorks funzt damit auch
+                       Information: Ein DeviceContext mu· im 2. Thread geîffnet werden, nicht
+                                    (wie in 1.0c) im 1. Thread :-/
+                   NEW:Informationszeile meldet VorgÑnge beim Drucken/Laden/Speichern
+                   BUG:Rote Umrandung des "Aktuellen" wird nicht gedruckt
+                   CHA:Scrolling lÑuft schneller
+                   NEW:Click und Drag Tree durch drÅcken von linker Maustaste und Bewegen der Maus
+                   NEW:"öber"-Dialog (mit Versionsinfo) wo FTree registriert werden kann
+                   NEW:MenÅs erreichbar Åber Acceleratorkeys und Zoomen mit +/-
+                   CHA:Ausschnittberechnung nach Aktion verbessert (Neu,Laden,Ursprung,HinzufÅgen,Lîschen)
+                   BUG:Bei Drucken auf angepa·te Anzahl von Seiten unter "Vorfahren"-Ansicht fehlte der
+                       Ursprung wg. einer falschen Grî·enberechnung
+                   NEW:Vertikale Ansicht des Stammbaumes
+                   BUG:Geschlecht wird jetzt sprachunabhÑngig gespeichert
+                       (0/1/2 anstatt -/M/W weil W!=F)
+
+1.0e, Mai 01 1996: NEW:Datumformat (DD.MM.YYYY oder MM/DD/YYYY) wird nicht durch Sprache
+                       sondern durch OS/2 Systemeinstellung gewÑhlt
+                   NEW:Rexx (beta), Speichern aber kein Drucken
+                   NEW:ABC-List.ftx (Liste aller Personen sortiert nach Name)
+                   NEW:AnnDeath.ftx (Jahrestage Tod)
+                   NEW:Birthday.ftx (Jahrestage Geburtstag)
+                   NEW:Lngevity.ftx (Lebenszeitanalyse)
+                   BUG:Darstellungs-Bug bei Vertikalmodus mit V+N+G behoben
+                   NEW:Neues Kind -> bekommt den Namen vom aktuellen Elternteil
+                   NEW:Mit Tab zwischen Datumsfeldern -> Zahl ist selektiert und wird bei
+                       nÑchster Taste Åberschrieben
+                   NEW:Dialoge stehen in der Fensterliste
+                   NEW:Drag&Drop von Font und Farbe aufs Hauptfenster
+                   NEW:Registrierung ist jetzt bei BMT Micro mîglich
+
+1.0f, Mai 25 1996: BUG:Ziehen des Stammbaumes aktiv, obwohl keine Maustaste gedrÅckt
+                   BUG:Birthday.ftx arbeitet nicht korrekt, da Sortieren nach Geburtsdatum falsch
+                   CHA:Listenfenster ist jetzt Container (DetailAnsicht) mit/sortiert nach Datum
+                   CHA:Drucken mehrerer Seiten erfolgt in umgekehrter Reihenfolge
+                   NEW:Datum mu· nicht mehr komplett sein
+                   NEW:Geschlecht bei "Eltern" vorselektiert
+                   CHA:n/n bei mehreren Partnern nach Auswahl eines Menschen
+                   BUG:Lîschen kann in einem falschen Baum resultieren
+                       wenn MehrfachPartnerschaft gelîscht wird !!
+                   BUG:Darstellungsfehler bei A+D+S und Mehrfachpartnerschaft
+                   CHA:Listenfenster als Container (mit Sortierung)
+                   NEW:Person.ftx   (Persoenliche Daten)
+                   NEW:Weddings.ftx (HeiratsjubilÑen)
+                   NEW:Rexx Skripte fÅr GEDCOM Im/Export (beta)
+                   NEW:Rexx Dokumentation (beta)
+                   CHA:GeÑnderte Klasse MAN -> kein IGList mehr
+
+1.0g, Jun 25 1996: BUG:3175 wenn kein Drucken installiert ist
+                   NEW:Aktuelle Zoomrate wir in der .fam-Datei gespeichert
+                   BUG:im Editdailog wurde Adressenfeld nicht erhellt bei GotFocus
+                   NEW:Weibliche Personen werden mit runden Ecken gemalt
+                   CHA:Keine Fehlermeldung beim ersten Start "Fehlendes Profile"
+                   CHA:Listenfenster ist nicht mehr auto-Vordergrund
+                   NEW:Listenfenster kann Spalten verstecken/anzeigen
+                   CHA:Listenfenster arbeitet schneller
+                   CHA:Listenfenster kann nach mehreren Feldern sortieren (z.B. Name,Vor,Geb)
+                   CHA:Editierfenster hat ein neues Layout
+                   CHA:Memofeld und Bild bekommen gleichviel Platz
+                   CHA:Verbesserte Performance wÑhrend des Ladens
+                   BUG:Nach mehreren Rexxl-LÑufen: Hatte nicht alle Pipehandles geschlossen
+                   NEW:Datummodifikatoren '+-'ABT '>'AFT '<'BEF '?'EST
+                   NEW:TITL wird beim GEDCOM unterstÅtzt
+                   CHA:??.??.1950 -> --.--.1950 im Hauptfenster
+                   NEW:Rexxausgabe kann in Zischenablage kopiert werden
+                   NEW:Mehr Rexxskripte
+                   BUG:Ungarisches Datumformat falsch YYYY-MM-YYYY
+                   CHA:Theoretisch unendlich viele (65535) Kinder und Partner
+                       (beschrÑnkt auf 50, da sonst zuviele MenÅ Items)
+                   CHA:Bild Drag&Drop zeigt Link als Operation um Verweis (nicht Copy) zu verdeutlichen.
+                   BUG:GEDCOM Export schrieb 'W' fÅr Weiblich -> geÑndert in 'F' (GEDCOM will es so)
+                   BUG:Nach Einladen falsche minimal ID -> zwei Personen mit gleicher ID mîglich
+                       (schlecht fÅr GEDCOM Export)
+
+1.0h, Aug 18 1996: NEW:ImGedcom.ftx versteht jetzt CONC genauso wie CONT von Tag NOTE
+                   NEW:Rexx Skripte *.ftx tauchen mit langem Namen im MenÅ auf
+                   NEW:Beziehungen kînnen mit diagonalen oder orthogonalel Linien dargestellt werden
+                   BUG:Immer noch 3175 wenn kein Printer installiert
+                   BUG:3175 wenn Druckereigenschaften unter MERLIN geÑndert werden
+                   BUG:Invalid cursor wÑhrend Drucken/Speichern/Strukturieren
+                   NEW:Listenfenster scrollt zu aktueller Person + Cursortasten funktionieren
+                   BUG:Neue Familien-IDs starten zu niedrig nach dem Laden
+                   BUG:IDs werden nach dem Laden ÅberprÅft und korrigiert
+                   CHA:Rexxausgabe wird mit CR/LF anstatt LF gespeichert/in die Zwischenablage kopiert
+                   NEW:Konfigurationsdialog
+                       Layout (Programmeinstellung) :
+                       X Schriftart
+                       X Farben
+                       X Detailstufe: Vornamen,Datum
+                       X Linien: diagonal/orthogonal
+                       Datenassistent (Programmeinstellung) :
+                       X Partner -> gleiche Adresse
+                       X Partner -> gegensÑtzliches Geschlecht
+                       X Kind    -> gleiche Adresse
+                       X Kind    -> gleicher Name
+                       X Eltern  -> Mann+Frau
+                       X Eltern  -> gleiche Adresse
+                       X Eltern  -> gleicher Name
+                       Verschiedenes (Programmeinstellung) :
+                       X Focus zum Editfenster nach click auf person im Stammbaum
+                       X Versuchen einen relativen Pfad auf Attachements zu speichern
+                       X Datumformat MM-DD-YYYY/DD-MM-YYYY/YYYY-MM-DD Trennung .-x/
+                       Benutzerfelder (Baumeinstellung) :
+                       - 10 einstellbare Felder (noch nicht)
+                   NEW:Einstellbare Tiefe von Vorfahr/Nachfahr-generationen
+                   CHA:Editfenster hat neues Layout
+                   CHA:Hauptfenster hat neus Layout
+                   NEW:beinhaltet FILE_ID.DIZ
+                   CHA:ExGedcom.ftx vertauschte HUSB+WIFE (abhÑngig vom Baum)
+                   NEW:"Neu Partner" kann existierenden Menschen hinzufÅgen
+                   NEW:Neuer Baum hat keine Probleme mit Kreisen in den Daten
+                   CHA:öberarbeitete und erneuerte Dokumentation, die alle Features
+                       und Information Åber REXX-Skripte gibt
+                   NEW:HollÑndische Sprach-DLL
+                   NEW:Beim Lîschen wird der Name der Person im Abfragedialog gezeigt
+                   NEW:neue KonsistenzprÅfung nach Import (manche Kreise erlaubt)
+
+1.0i, Aug 26 1996: BUG:Import Routine stîrt sich an Cousins (oder Gro·cousins,...) die heiraten
+                   BUG:Lîschen|Diesen resultiert in einem falschen Baum (Absturz beim Speichern)
+                   NEW:Man kann jetzt Partner einer Person Åbers Kontextmenu lîschen
+
+1.1 , Okt 17 1996: NEW:Letzte Version beim Speichern sichern zu *.BAK
+                   BUG:Rexx-MenÅ Schnellzugriff funktioniert nicht
+                   CHA:Malen der Personen und Familien verschnellert
+                   BUG:WÑhrend Aktionen wird Buttonleiste nicht disabled
+                   BUG:System bekommt Mausklick auf Listenfenster nicht mit
+                   BUG:Nach hervorholen des Personenliste wird eine halb sichtbaren Zeile nicht gemalt
+                   BUG:Diagonale Linien zu zwei oder mehr Kindern werden nicht korrekt gemalt
+                   CHA:Editierfenster geÑndert (wg. Notebook)
+                   BUG:Nach dem éndern von Daten im Editierfenster wird beim Einladen/Neu Anlegen
+                       eines Baumes nicht gewarnt, den aktuellen erst zu speichern
+                   BUG:Warnung vor dem AusfÅhren eines Rexx-Skripts erst den Baum zu speichern
+                   NEW:Editierfenster mit Drag&Drop-Feld fÅr zusÑtzliche Infos
+                       (Gifs,Texts,AVIs,..), die durch Doppelklick geîffnet werden kînnen
+                       (nur registrierte Version)
+                   CHA:ImGedcom.ftx akzeptiert gro·-kleingeschriebenen Monat 'Jan 1900'
+                   NEW:Notebooks unter MERLIN haben das neue Aussehen
+                   BUG:ID PrÅfmethode prÅft keine Familien IDs, wenn Personen IDs o.k. waren
+                   NEW:HinzufÅgen einer ex. Person als Kind einer Familie (alte Eltern verlieren es)
+                       (Zusammen mit 'Neu Partner|Ex. Person' kann nun ein Baum korrigiert werden,
+                        ohne Daten neu einzugeben, im Fall von vorher falsch eingegebenen Daten)
+                   CHA:GEDCOM Import, bei dem Personen nicht einfach weggelassen werden
+                   CHA:Datum mit keiner Information (Tag/Monta/Jahr) kann Modifikation haben
+                   CHA:Rexx Auswahlfenster zeigt nur sprachspezifische Informationen
+                   NEW:Franzîsische Sprach-DLL
+
+1.1a, Okt 30 1996: NEW:Doppelklick mit Shift-Taste auf eine Person îffnet Editierfenster
+                   BUG:Hauptfenster minimiert und Auswahl einer Person im Listenfenster -> Exception
+                   BUG:Franzîsische Version sagt "Englais" anstatt "Francais" (French.rc+FTXs)
+                   BUG:Sys3175 mit S3 Treibern (unter 800x600x65k Farben)
+                       [ISlider::moveArmToTick(9) results in exception when window is visible]
+                   BUG:Editierfenster hat immer BEIDE Scrollleisten oder keine
+                   NEW:Langer Name von REXX-Skripten ist sprachabhÑngig
+                   CHA:Dokumentation erlÑutert Datenmodifikatoren
+                   NEW:Rexx kann Personen nach PID sortieren
+                   NEW:Editier & Listenfenster kînnen (nicht) frei schwebend sein
+
+1.b , Nov 16 1996: BUG:Immer noch Sys3175 unter bestimmer Auflîsung/Farbtiefe - RTFM !
+
+1.2 , May 25 1997: BUG:Gedcom Export schreibt 05 25 1970 anstatt 05 MAY 1970
+                   NEW:Rexx-Funktion get/setAddress wird nun in Hilfe aufgefÅhrt
+                   NEW:Zeilenumbruch fÅr Memo kann an/ausgeschaltet werden
+                   NEW:Rexx-Funktion selectPerson('R|emembered') + selectPerson('O|rigin')
+                   NEW:Schalter fÅr an/ausschalten der Toolbar-Leiste
+                   NEW:öberarbeitete Personenliste, deren Code in Ereignisliste wiederverwendet wird
+                   NEW:öberarbeitete Datumseingabe, die Code der Datum-Ausgabe von Listen/Baum wiederverwendet
+                   NEW:Datum wird ausgerichtet nach Tag/Monat/Jahr gemalt
+                   NEW:öberarbeitung mehrerer Fensterelemente
+                   BUG:Drucken Åber mehrere Seiten fÅhrt zu fehlenden Teilen (Gefunden von E.Neubauer)
+                   NEW:Drag&Drop von Tree-Dateien aufs Hauptfenster
+                   CHA:GeÑnderter Dialog fÅr Abfrage der sichtbaren Generationen
+                   NEW:Ereignisse
+                   NEW:Benutzerfelder (Maximal 3 in unregistrierter Version)
+
+1.2a, Jun 02 1997: NEW:Bubble-Help fÅr Heiratsknopf - zeigt Namen des Partners an
+                   BUG:Editierfenster erhÑlt nach Mausklick nicht automatische den Focus (obwohl eingestellt)
+                   CHA:öberarbeitete und aktualisierte Online-Hilfe
+                   BUG:DateianhÑngsel per MenÅ Ñnden -> Catched Exception
+                   BUG:Partnerschaften im Personendatenfenster werden umgekehrt indiziert
+
+1.2b, Jun 10 1997: CHA:Einstellen des Datumsformat hat eine eigene Seite im Optionsdialog
+                   BUG:Baumberechnung hÑngt bei bestimmten BÑumen (z.B. Heuler+Caesar)
+                   CHA:Statusbereich in der Buttonleiste nutzt nicht den ganzen verfÅgbaren Platz
+                   NEW:Installation bestimmt FTree-Objekt als Standardapp. fÅr .fam-Dateien
+
+1.2c, Jun 19 1997: BUG:Bîser Bug beim Schreiben von Benutzerfeldern -> resultiert in Absturz beim Einladen
+                   BUG:Invalid Cursor, wenn Listenfenster minimiert und Aktionen im Stammbaum laufen
+
+1.2d, Jul 06 1997: BUG:Auswahl eines MenÅpunkts vom MenÅ eines Notebooks resultiert in Absturz
+                   BUG:Absturz bei Start von FTree mit Parameter (meistens nur beim ersten Mal nach Reboot)
+                   NEW:Einstellung, die Rahmen um die neuen Buttons ermîglicht
+                   BUG:Fehler in IBM's Klassenbibliothek fÅhrt zu unladbarem Baum (extra sync before seekg)
+
+1.2e, Oct 16 1997: NEW:Spaltenbreite der Listen im Editierfenster werden gemerkt
+                   BUG:Unter Warp 3.0 und Warp 4.0 + Fix#3 ist die Ereignisliste kaputt
+
+1.2f, Aug 05 1998: NEW:Benutzerfelder kînnen aus REXX-Skripten ausgelesen werden. Bitte in Person.ftx nachlesen
+
+AUTOR KONTAKTIEREN:
+===================
+
+Meine Postanschrift lautet
+    Nils Meier
+    Birkenweg 27
+    53797 Lohmar
+    GERMANY / EUROPE
+
+Meine Internetadresse ist
+    meier2@athene.informatik.uni-bonn.de
+
+Bitte senden Sie VorschlÑge, Kommentare und BUG-Meldungen
+an eine der obigen Adressen.
+

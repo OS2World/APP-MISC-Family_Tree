@@ -1,0 +1,13 @@
+/*0000000000*/#pragma sourcedir("D:\\nils\\cpp\\src")
+/*0863130456*/#include "D:\nils\cpp\src\NPointersTo.h"
+/*0000000000*/#include "D:\nils\cpp\src\NPointersTo.c"
+/*0902373312*/#include "D:\nils\cpp\src\NMankind.hpp"
+/*0870160080*/#include "D:\IBMCPP\INCLUDE\istring.hpp"
+#pragma define(NPointersTo<NMankind::UserField>)
+#pragma define(NPointersTo<NPerson>)
+#pragma define(NPointersTo<NUserField>)
+#pragma define(NPointersTo<NEvent>)
+#pragma define(NPointersTo<IString>)
+#pragma define(NPointersTo<NMarriage>)
+#pragma define(NPointersTo<NEvent::ManAndRole>)
+#pragma undeclared

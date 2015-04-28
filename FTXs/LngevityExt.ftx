@@ -1,0 +1,158 @@
+/*
+   Family Tree Rexx Script FTX
+
+   Copyright (C) 1996 by <Nils Meier, Christoph Kurylo>
+
+   Please send comments to / Kommentar bitte an
+        meier2@athene.informatik.uni-bonn.de
+   or / oder
+        CKurylo@t-online.de
+
+   <
+   English:   This script shows the longevity of all persons in the tree
+              that have a date of birth and death.                             :English
+   Deutsch:   Dieses Skript zeigt Geburtsjahr, Todesjahr und die Lebenszeit aller
+              Menschen aus dem Baum, die einen Geburtstag und Sterbetag haben.                        :Deutsch
+   Nederlands:Dit script toont de levensduur van alle personen in de boom,    
+              die een geboortedatum hebben.                                    :Nederlands
+   Fran‡ais:  Ce script montre la long‚vit‚ de toutes les personnes de l'arbre pour
+              lesquelles une date de naissance et de d‚cŠs a ‚t‚ donn‚e.       :Fran‡ais
+   >
+
+   Long name is <
+                 English:    List longevity report                  :English
+                 Deutsch:    Ausgeben der Lebenszeitanalyse         :Deutsch
+                 Nederlands: List longevity report                  :Nederlands
+                 Fran‡ais:   Imprime long‚vit‚ de les personnes     :Fran‡ais
+                >
+*/
+
+/* ----------------------- Params  /  Parameter ------------------- */
+namewidth=40
+
+CALL initLanguage
+
+/* ----------------- Display Header / Kopf der Ausgabe ------------- */
+
+head=msg.Header.LANG||DATE()
+SAY(head)
+SAY(COPIES('=',length(head)))
+SAY(COPIES(' ',length(head)))
+
+
+/* ------------------------------ Output / Ausgabe ----------------- */
+
+/* Sort Persons by name and Birthday / Personen nach Name und Geburtstag sortieren */
+rc=sortPersons('N,B')
+
+/* Display persons in tree  /  Anzeigen der Menschen im Stammbaum*/
+
+/* Init */
+newname=''
+oldname=''
+line=''
+pcount=0
+agecount=0
+headcut=28
+
+/* Select first person / Erste Person anw„hlen */
+rc=selectPerson('F')
+
+DO UNTIL rc=0
+
+   /* Check Birth & Death years  /  Nachpruefen von Geburts-, Todesdatum */
+   birth=getBirthDate('Y')
+   death=getDeathDate('Y')
+
+   IF birth<>0 & death<>0 THEN DO
+
+      b_days=getBirthDate('d')
+      d_days=getDeathDate('d')
+            
+      age=(d_days-b_days)%365
+
+      /* Draw line with average age of family if name changes / Trennlinie mit 
+         Durchschnittsalter bei Namenswechsel zeichnen
+      */
+      newname = getName()
+      IF pos(",",newname) > 0 THEN DO    /* Maybe there's a comma separated title */
+         newname = substr(newname,1,pos(",",newname)-1)
+      END
+      IF newname<>oldname & oldname<>'' THEN DO
+         CALL DrawAverageLine
+      END
+      
+      oldname=newname
+ 
+      /* Say the result  /  Ergebnis ausgeben */
+      result = getName()||','||GetFirstName()
+      result=LEFT(result,namewidth)
+      SAY(result||' *'||birth||' +'||death||' ('||age||')')
+      pcount=pcount+1
+      agecount=agecount+age
+
+   END
+
+   /* next  /  naechster */
+   rc=selectPerson('N')
+
+END
+
+IF pcount>0 THEN
+   CALL DrawAverageLine
+ELSE
+   SAY('Keine Personen mit Geburts- und Todesdaten vorhanden!')
+
+/* Done  /  Fertig */
+RETURN
+
+
+/* ---------------------- LANGUAGE INIT --------------------------- */
+InitLanguage:
+
+   /* Calculate Language Index */
+   lang='E'                              /* Default -> [E]nglish */
+   IF getLanguage()='Deutsch' THEN       /* Deutsch -> [G]erman */
+      lang='G'
+   IF getLanguage()='Nederlands' THEN    /* Nederlands -> [D]utch */
+      lang='D'
+   IF getLanguage()='Francais' THEN       /* Francais -> [F]rench */
+      lang='F'
+
+   /* [E]nglish Messages */
+   msg.Header.E='Longevity Analysis. (Age at death) Today is '
+
+   /* [G]erman Messages */
+   msg.Header.G = 'Lebenszeitanalyse (erreichtes Alter). Heute ist der '
+
+   /* [D]utch Messages */
+   msg.Header.D='Levensduur Analyse. (behaalde leeftijd) Vandaag is '
+
+   /* [F]rench Messages */
+   msg.Header.F="Analyse sur la Long‚vit‚. (Age au d‚cŠs). Nous sommes le "
+
+   /* Done */
+RETURN
+
+
+
+DrawAverageLine:
+   /* 
+      Draw line with average age of family / Trennlinie mit 
+      Durchschnittsalter zeichnen
+   */
+
+      line=COPIES('-',length(head)-headcut)
+
+      IF getLanguage()='Deutsch' THEN  
+         line=line||' durchschn. Alter: '
+      ELSE 
+         line=line||'      average age: '
+
+      line=line||agecount/pcount
+      SAY(line)
+      SAY(COPIES(' ',length(head)))
+      agecount=0
+      pcount=0
+
+RETURN

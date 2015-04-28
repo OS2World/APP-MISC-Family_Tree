@@ -1,0 +1,716 @@
+/*
+   Family Tree Rexx Script FTX
+
+   Copyright (C) 1996 by <Nils Meier>
+
+   Please send comments to / Kommentar bitte an
+        meier2@athene.informatik.uni-bonn.de
+
+   <
+   English:   This script imports a family tree from a GEDCOM file.                 :English
+   Deutsch:   Dieses Skript importiert einen Stammbaum aus einer GEDCOM Datei.      :Deutsch
+   Nederlands:Dit Script importeert een Stamboom uit een GEDCOM bestand.            :Nederlands
+   Fran‡ais:  Ce script importe un arbre g‚n‚alogique … partir d'un fichier GEDCOM. :Fran‡ais
+   >
+
+   Long name is <
+                 English:    Import GEDCOM-format          :English
+                 Deutsch:    Gedcom-Format importieren     :Deutsch
+                 Nederlands: Import GEDCOM-format          :Nederlands
+                 Fran‡ais:   Importe un format GEDCOM      :Fran‡ais
+                >
+*/
+
+SIGNAL ON NOTREADY NAME unexpectedEnd
+
+/* ----------------------- Params  /  Parameter ------------------- */
+datasex   = 'MW'
+datamonth = 'JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC'
+datamods  = 'ABT AFT BEF EST'
+cr        = '0d0a'x
+
+CALL initLanguage
+
+
+/* ----------------- Display Header / Kopf der Ausgabe ------------- */
+head=msg.header.LANG||DATE()
+SAY(head)
+SAY(COPIES('=',length(head)))
+SAY('')
+
+
+/* ------------------- Open file  /  Datei oeffnen  ---------------- */ 
+file=getFileName(select,'*.GED')
+IF (file='') THEN DO
+   SAY(msg.done.LANG)
+   RETURN
+   END
+
+input=LINEIN(file,1,0)
+IF (LINES(file)=0) THEN DO
+   SAY(msg.fileerror.LANG||file)
+   RETURN
+   END
+
+/* -------------- Header of GEDCOM  /  Kopf von GEDCOM -------------- */
+
+input=LINEIN(file)
+PARSE VAR input lev tag
+IF (lev\=0)|(tag\='HEAD') THEN DO 
+   SAY(msg.nogedcom.LANG||file||' (Expected 0 HEAD)')
+   RETURN
+   END
+SAY(msg.foundheader.LANG)
+
+DO FOREVER
+input=LINEIN(file)
+   PARSE VAR input lev tag value
+   SELECT
+     WHEN lev='0' THEN LEAVE
+     WHEN tag='SYST' THEN SAY (value)
+     WHEN tag='SOUR' THEN SAY(msg.sourceis.LANG||'"'||value||'"')
+     WHEN tag='DATE' THEN SAY(msg.sourcedate.LANG||'"'||value||'"')
+     OTHERWISE NOP
+   END
+   /* Ignore SubTags / SubTags ignorieren 
+   DO UNTIL WORD(input,1)<=0;input=LINEIN(file);END */
+END
+SAY('')
+
+/* ---- Read Persons&Families / Personen und Familien einlesen --- */
+
+PIgnored=''
+FIgnored=''
+SIgnored=''
+
+DO FOREVER
+   PARSE VAR input lev tag1 tag2 rest
+   /* Check for INDI & FAM  /  Suchen nach INDI & FAM */
+   SELECT
+     WHEN tag2='INDI' THEN CALL readPerson
+     WHEN tag2='FAM'  THEN CALL readFamily
+     WHEN tag2='FAMI'  THEN CALL readPAFFamily
+     WHEN tag1='TRLR' THEN LEAVE
+     WHEN tag1='EOF' THEN LEAVE
+     OTHERWISE DO
+        IF WORDPOS(tag2,SIgnored)=0 THEN SIgnored=SIgnored tag2
+        /* Ignore SubTags / SubTags ignorieren */
+        DO UNTIL WORD(input,1)<=0;input=LINEIN(file);END
+     END
+   END
+   /* Next Datapacket /  Naechster Datensatz */
+END
+SAY('')
+
+/* ------------------ End of Import  /  Ende des Imports --------------- */
+
+SAY(msg.ignoring.LANG '(Structs)')
+SAY(SIgnored)
+SAY('')
+
+SAY(msg.ignoring.LANG '(in INDI)')
+SAY(PIgnored)
+SAY
+
+SAY(msg.ignoring.LANG '(in FAM)')
+SAY(FIgnored)
+SAY
+
+SAY(msg.importstart.LANG)
+SAY
+SAY(importDone())
+SAY
+SAY(msg.done.LANG)
+EXIT
+
+unexpectedEnd:
+   SAY(msg.unexpected.LANG)
+   EXIT
+
+
+/* =============== Read Functions / Lesefunktionen =============== */
+
+
+/* ------------- Read Person  /  Person einlesen ------------------ */
+
+readPerson:
+   id=WORD(input,2)  /* Needed for Ambiguous */
+
+   PID        =calcID(id)
+   PAddr      =''
+   PName      =''
+   PNote      =''
+   IF PID=0 THEN DO
+      /* Ignore SubTags / SubTags ignorieren */
+      DO UNTIL WORD(input,1)<=0;input=LINEIN(file);END
+      RETURN
+      END
+   CALL importPerson
+   CALL setPID(PID)
+
+   input=LINEIN(file)             /* input = lev tag value */
+   DO FOREVER
+     lev  =   WORD(input,1)
+     tag  =   WORD(input,2)
+     value=SUBWORD(input,3)
+
+     /* ---- Take data   / Daten bernehmen --- */
+     SELECT
+       /*-------------------------------------------*/
+       WHEN lev=0 THEN LEAVE
+       /*-------------------------------------------*/
+       WHEN tag='NAME' THEN DO
+         PARSE VAR value fname1 '/' name '/' fname2
+         pName=pName||STRIP(name)
+         CALL setFirstName(STRIP(fname1||fname2))
+         /* Ignore SubTags / SubTags ignorieren */
+         DO UNTIL WORD(input,1)<=1;input=LINEIN(file);END
+       END
+       /*-------------------------------------------*/
+       WHEN (tag='TITL'|tag='NSFX') THEN DO
+         pName=PName||','||value
+         /* Ignore SubTags / SubTags ignorieren */
+         DO UNTIL WORD(input,1)<=1;input=LINEIN(file);END
+       END
+       /*-------------------------------------------*/
+       WHEN tag='SEX' THEN DO
+         CALL setSex(calcSex(value))
+         /* Ignore SubTags / SubTags ignorieren */
+         DO UNTIL WORD(input,1)<=1;input=LINEIN(file);END
+       END
+       /*-------------------------------------------*/
+       WHEN tag='BIRT' THEN DO
+         input=LINEIN(file)     /* input = lev tag value */
+         DO FOREVER
+            lev=WORD(input,1)
+            tag=WORD(input,2)
+            SELECT
+              WHEN lev<=1     THEN LEAVE
+              WHEN tag='DATE' THEN CALL setBirthDate(calcDate(SUBWORD(input,3)))
+              WHEN tag='PLAC' THEN CALL setBirthPlace(SUBWORD(input,3))
+              OTHERWISE NOP
+            END
+            /* Ignore SubTags / SubTags ignorieren */
+            DO UNTIL WORD(input,1)<=2;input=LINEIN(file);END
+         END
+       END
+       /*-------------------------------------------*/
+       WHEN tag='DEAT' THEN DO
+         input=LINEIN(file)      /* input = lev tag value */
+         DO FOREVER
+            lev=WORD(input,1)
+            tag=WORD(input,2)
+            SELECT
+              WHEN lev<=1     THEN LEAVE
+              WHEN tag='DATE' THEN CALL setDeathDate(calcDate(SUBWORD(input,3)))
+              WHEN tag='PLAC' THEN CALL setDeathPlace(SUBWORD(input,3))
+              OTHERWISE NOP
+            END
+            /* Ignore SubTags / SubTags ignorieren */
+            DO UNTIL WORD(input,1)<=2;input=LINEIN(file);END
+         END
+       END
+       /*-------------------------------------------*/
+       WHEN tag='PHOT' THEN DO
+         CALL setPicture(value)
+         /* Ignore SubTags / SubTags ignorieren */
+         DO UNTIL WORD(input,1)<=1;input=LINEIN(file);END
+       END
+       /*-------------------------------------------*/
+       WHEN tag='OCCU' THEN DO
+         CALL setOccupation(value)
+         /* Ignore SubTags / SubTags ignorieren */
+         DO UNTIL WORD(input,1)<=1;input=LINEIN(file);END
+       END
+       /*-------------------------------------------*/
+       WHEN tag='ADDR' THEN DO
+         addr=value
+         input=LINEIN(file)     /* input = lev tag value */
+         DO FOREVER
+            lev=WORD(input,1)
+            tag=WORD(input,2)
+            SELECT
+              WHEN lev<=1   THEN LEAVE
+              WHEN tag='CONT' THEN addr=addr||','||SUBWORD(input,3)
+              WHEN tag='ADR1' THEN addr=addr||','||SUBWORD(input,3)
+              WHEN tag='ADR2' THEN addr=addr||','||SUBWORD(input,3)
+              WHEN tag='CITY' THEN addr=addr||','||SUBWORD(input,3)
+              WHEN tag='STAE' THEN addr=addr||','||SUBWORD(input,3)
+              WHEN tag='POST' THEN addr=addr||','||SUBWORD(input,3)
+              WHEN tag='PHON' THEN addr=addr||','||SUBWORD(input,3)
+              OTHERWISE NOP
+            END
+            /* Ignore SubTags / SubTags ignorieren */
+            DO UNTIL WORD(input,1)<=2;input=LINEIN(file);END
+         END
+         IF PAddr\='' THEN PAddr=PAddr||','
+         PAddr=PAddr||addr
+       END
+       /*-------------------------------------------*/
+       WHEN tag='PHON' THEN DO
+         IF PAddr\='' THEN PAddr=PAddr||','
+         PAddr=PAddr||value
+         /* Ignore SubTags / SubTags ignorieren */
+         DO UNTIL WORD(input,1)<=1;input=LINEIN(file);END
+       END
+       /*-------------------------------------------*/
+       WHEN tag='NOTE' THEN DO
+	 if PNote\='' then PNote=PNote||cr||value
+         else PNote=value
+         input=LINEIN(file)    /* input = lev tag value */
+         DO FOREVER
+            lev=WORD(input,1)
+            tag=WORD(input,2)
+            SELECT
+              /* WHEN lev<=1     THEN LEAVE */
+              WHEN tag='CONT' THEN PNote=PNote||cr||SUBWORD(input,3)
+              WHEN tag='CONC' THEN PNote=PNote||SUBWORD(input,3)
+              OTHERWISE LEAVE
+            END
+            /* Ignore SubTags / SubTags ignorieren */
+            DO UNTIL WORD(input,1)<=2;input=LINEIN(file);END
+         END
+         CALL setMemo(PNote)
+       END
+       /*-------------------------------------------*/
+       WHEN tag='FILE' THEN DO
+         CALL addFile(value)
+         /* Ignore SubTags / SubTags ignorieren */
+         DO UNTIL WORD(input,1)<=1;input=LINEIN(file);END
+       END
+       /*-------------------------------------------*/
+       /* added to support PAF 2.0 GEDCOM files */
+       WHEN tag='PARE' THEN DO
+         input=LINEIN(file)
+	FAMC=word(input,3)
+	F.FAMC=F.FAMC||' '||id
+         /* Ignore SubTags / SubTags ignorieren */
+         DO UNTIL WORD(input,1)<=1;input=LINEIN(file);END
+       END
+       /*-------------------------------------------*/
+       WHEN tag='COMM' THEN DO
+	 /* ----------comment tag-------------- */ 
+         /* Ignore SubTags / SubTags ignorieren */
+         DO UNTIL WORD(input,1)<=1;input=LINEIN(file);END
+       END
+       /*-------------------------------------------*/
+       OTHERWISE DO
+         IF WORDPOS(tag,PIgnored)=0 THEN PIgnored=PIgnored tag
+         /* Ignore SubTags / SubTags ignorieren */
+         DO UNTIL WORD(input,1)<=1;input=LINEIN(file);END
+       END
+       /*-------------------------------------------*/
+     END
+   END
+
+   CALL setName(PName)
+   CALL setAddress(PAddr)
+
+   RETURN
+
+
+/* ------------- Read Family  /  Familie einlesen ------------------ */
+
+readFamily:
+
+   id=WORD(input,2)  /* Needed for Ambiguous */
+   IF id="" THEN DO
+	input=LINEIN(file)
+	IF WORD(input,2)='RFN' THEN id=WORD(input,3)
+   END
+
+   FID=calcID(id)
+   IF FID=0 THEN DO
+      /* Ignore SubTags / SubTags ignorieren */
+      DO UNTIL WORD(input,1)<=0;input=LINEIN(file);END
+      RETURN
+      END
+
+   CALL importFamily
+   CALL setFID(FID)
+
+   input=LINEIN(file)     /* input = lev tag value */
+   DO FOREVER
+     lev  =   WORD(input,1)
+     tag  =   WORD(input,2)
+     value=SUBWORD(input,3)
+
+     /* ---- Take data   / Daten bernehmen --- */
+     SELECT
+       /*-------------------------------------------*/
+       WHEN lev=0  THEN LEAVE
+       /*-------------------------------------------*/
+       WHEN tag='HUSB' THEN DO
+         IF value="" THEN DO
+	   input=LINEIN(file)
+	   IF WORD(input,2)='RFN' THEN value=WORD(input,3)
+         END
+         CALL importAddPartner(calcID(value))
+         /* Ignore SubTags / SubTags ignorieren */
+         DO UNTIL WORD(input,1)<=1;input=LINEIN(file);END
+       END
+       /*-------------------------------------------*/
+       WHEN tag='WIFE' THEN DO
+         IF value="" THEN DO
+	   input=LINEIN(file)
+	   IF WORD(input,2)='RFN' THEN value=WORD(input,3)
+         END
+         CALL importAddPartner(calcID(value))
+         /* Ignore SubTags / SubTags ignorieren */
+         DO UNTIL WORD(input,1)<=1;input=LINEIN(file);END
+       END
+       /*-------------------------------------------*/
+       WHEN tag='MARR' THEN DO
+         input=LINEIN(file)     /* input = lev tag value */
+         DO FOREVER
+            lev=WORD(input,1)
+            tag=WORD(input,2)
+            SELECT
+              WHEN lev<=1   THEN LEAVE
+              WHEN tag='DATE' THEN CALL setMarriageDate(calcDate(SUBWORD(input,3)))
+              WHEN tag='PLAC' THEN CALL setMarriagePlace(SUBWORD(input,3))
+              OTHERWISE NOP
+            END
+            /* Ignore SubTags / SubTags ignorieren */
+            DO UNTIL WORD(input,1)<=2;input=LINEIN(file);END
+         END
+       END
+       /*-------------------------------------------*/
+       WHEN tag='DIV' THEN DO  
+         input=LINEIN(file)  /* input = lev tag value */
+	 
+         DO FOREVER
+            lev=WORD(input,1)
+            tag=WORD(input,2)
+            SELECT
+              WHEN lev<=1     THEN LEAVE
+              WHEN tag='DATE' THEN CALL setDivorceDate(calcDate(SUBWORD(input,3)))
+              OTHERWISE NOP
+            END
+            /* Ignore SubTags / SubTags ignorieren */
+            DO UNTIL WORD(input,1)<=2;input=LINEIN(file);END
+         END
+       END
+       /*-------------------------------------------*/
+       WHEN tag='CHIL' THEN DO
+         CALL importAddChild(calcID(value))
+         /* Ignore SubTags / SubTags ignorieren */
+         DO UNTIL WORD(input,1)<=1;input=LINEIN(file);END
+       END
+       /*-------------------------------------------*/
+       OTHERWISE DO
+         IF WORDPOS(tag,FIgnored)=0 THEN FIgnored=FIgnored tag
+         /* Ignore SubTags / SubTags ignorieren */
+         DO UNTIL WORD(input,1)<=1;input=LINEIN(file);END
+       END
+       /*-------------------------------------------*/
+     END
+   END
+
+   RETURN
+
+/* ------------- Read PAF 2.0 Family  /  Familie einlesen -------------- */
+
+readPAFFamily:
+
+   id=WORD(input,2)  /* Needed for Ambiguous */
+   IF id="" THEN DO
+	input=LINEIN(file)
+	IF WORD(input,2)='RFN' THEN id=WORD(input,3)
+   END
+
+   FID=calcID(id)
+   IF FID=0 THEN DO
+      /* Ignore SubTags / SubTags ignorieren */
+      DO UNTIL WORD(input,1)<=0;input=LINEIN(file);END
+      RETURN
+      END
+
+   CALL importFamily
+   CALL setFID(FID)
+
+   input=LINEIN(file)     /* input = lev tag value */
+   DO FOREVER
+     lev  =   WORD(input,1)
+     tag  =   WORD(input,2)
+     value=SUBWORD(input,3)
+
+     /* ---- Take data   / Daten bernehmen --- */
+     SELECT
+       /*-------------------------------------------*/
+       WHEN lev=0  THEN LEAVE
+       /*-------------------------------------------*/
+       WHEN tag='HUSB' THEN DO
+         IF value="" THEN DO
+	   input=LINEIN(file)
+	   IF WORD(input,2)='RFN' THEN value=WORD(input,3)
+         END
+         CALL importAddPartner(calcID(value))
+         /* Ignore SubTags / SubTags ignorieren */
+         DO UNTIL WORD(input,1)<=1;input=LINEIN(file);END
+       END
+       /*-------------------------------------------*/
+       WHEN tag='WIFE' THEN DO
+         IF value="" THEN DO
+	   input=LINEIN(file)
+	   IF WORD(input,2)='RFN' THEN value=WORD(input,3)
+         END
+         CALL importAddPartner(calcID(value))
+         /* Ignore SubTags / SubTags ignorieren */
+         DO UNTIL WORD(input,1)<=1;input=LINEIN(file);END
+       END
+       /*-------------------------------------------*/
+       WHEN tag='MARR' THEN DO
+         input=LINEIN(file)     /* input = lev tag value */
+         DO FOREVER
+            lev=WORD(input,1)
+            tag=WORD(input,2)
+            SELECT
+              WHEN lev<=1   THEN LEAVE
+              WHEN tag='DATE' THEN CALL setMarriageDate(calcDate(SUBWORD(input,3)))
+              WHEN tag='PLAC' THEN CALL setMarriagePlace(SUBWORD(input,3))
+              OTHERWISE NOP
+            END
+            /* Ignore SubTags / SubTags ignorieren */
+            DO UNTIL WORD(input,1)<=2;input=LINEIN(file);END
+         END
+       END
+       /*-------------------------------------------*/
+	/* ### This entry needs work DIVO has an argument Y 
+	 * basically need to add the words 'and divorced' 
+	 * to end of marriage place line since there is no
+	 * place to store this information.
+	 */
+       WHEN tag='DIV' THEN DO  
+         input=LINEIN(file)  /* input = lev tag value */
+	 
+         DO FOREVER
+            lev=WORD(input,1)
+            tag=WORD(input,2)
+            SELECT
+              WHEN lev<=1     THEN LEAVE
+              WHEN tag='DATE' THEN CALL setDivorceDate(calcDate(SUBWORD(input,3)))
+              OTHERWISE NOP
+            END
+            /* Ignore SubTags / SubTags ignorieren */
+            DO UNTIL WORD(input,1)<=2;input=LINEIN(file);END
+         END
+       END
+       /*-------------------------------------------*/
+       /* This could be sped up by storing actual numbers in
+	* F.id string so calcID would be unnecessary here.  Might
+	* lose some flexibility.
+	*/
+       WHEN tag='CHIL' THEN DO
+	  DO count=2 to WORDS(F.id) by 1
+             value=WORD(F.id,count)
+             CALL importAddChild(calcID(value))
+	  END
+         /* Ignore SubTags / SubTags ignorieren */
+         DO UNTIL WORD(input,1)<=1;input=LINEIN(file);END
+       END
+       /*-------------------------------------------*/
+       OTHERWISE DO
+         IF WORDPOS(tag,FIgnored)=0 THEN FIgnored=FIgnored tag
+         /* Ignore SubTags / SubTags ignorieren */
+         DO UNTIL WORD(input,1)<=1;input=LINEIN(file);END
+       END
+       /*-------------------------------------------*/
+     END
+   END
+
+   RETURN
+
+
+/* =============== Auxilary Functions / Hilfsfunktionen =============== */
+
+
+/* ---------------- Calculate ID  /  ID berechnen -------------------- */
+calcID:
+   i=SPACE(TRANSLATE(ARG(1),'','@IF'),0)
+   IF (DATATYPE(i)='NUM')&(i>0) THEN RETURN(i)
+   SAY(msg.oopsID.LANG||id||' ('||ARG(1)||')')
+   RETURN(0)   
+
+
+/* --------- Calculate Sex (0/1/2) /  Geschlecht berechnen ----------- */
+calcSex:
+   t=STRIP(ARG(1))
+   SELECT
+     WHEN t=''  THEN RETURN(0)
+     WHEN ABBREV(t,'M') THEN RETURN(1)
+     WHEN ABBREV(t,'F') THEN RETURN(2)
+     WHEN ABBREV(t,'m') THEN RETURN(1)
+     WHEN ABBREV(t,'f') THEN RETURN(2)
+     WHEN ABBREV(t,'W') THEN RETURN(2)
+     WHEN ABBREV(t,'w') THEN RETURN(2)
+     OTHERWISE NOP
+   END
+   SAY(msg.oopsSex.LANG||id||' ('||ARG(1)||')')
+   RETURN(0)
+
+
+/* --------------- Calculate Date  /  Datum berechnen ---------------- */
+calcDate:
+   /* ------------- '' --------------------- */
+   IF ARG(1)='' THEN RETURN('0.0.0')
+
+   /* -------------- PARSE ----------------- */ 
+   date=TRANSLATE(ARG(1),'00  ','_?-.')
+
+       /* This is simple support for PAF 2.0 dates 19970131 style.
+	* Note there this is primative and doesn't support the PAF
+	* Style uncertainy but it is a start.  User can hand edit
+	* any field using new style dates
+	*/
+   if LENGTH(WORD(DATE,1))=8 then date=substr(date,7,2)||' '||substr(date,5,2)||' '||substr(date,1,4)
+
+   mod=WORDPOS(WORD(date,1),datamods)
+   IF mod>0 THEN date=SUBWORD(date,2)
+
+   PARSE UPPER VAR date day ' ' month ' ' year
+
+   day  =SUBSTR(STRIP(day)  ,1,2)
+   month=SUBSTR(STRIP(month),1,3)
+   year =SUBSTR(      year  ,1,4)
+
+   daytype  =DATATYPE(day)
+   monthtype=DATATYPE(month)
+   yeartype =DATATYPE(year)
+
+   /* ----- 'dd mm yyyy' ------------------- */
+   IF (daytype='NUM')&(monthtype='NUM')&(yeartype='NUM') THEN DO
+      IF (month>12)&(month<32) THEN RETURN(mod||','||month||'.'||day||'.'||year)
+      ELSE                          RETURN(mod||','||day||'.'||month||'.'||year)
+      END
+   /* ----- 'dd MMM yyyy' ------------------- */
+   IF (daytype='NUM')&(yeartype='NUM') THEN DO
+      p=WORDPOS(month,datamonth)
+      IF (p>0) THEN RETURN(mod||','||day||'.'||p||'.'||year)
+      END
+   /* ----- 'dd MMM' ----------------------- */
+   IF (daytype='NUM')&(monthtype='CHAR')&(year='') THEN DO
+      p=WORDPOS(month,datamonth)
+      IF (p>0) THEN RETURN(mod||','||day||'.'||p||'.0')
+      END
+   /* ----- 'dd mm' ------------------------ */
+   IF (daytype='NUM')&(monthtype='NUM')&(year='') THEN
+      RETURN(mod||','||day||'.'||month||'.'||year)
+   /* ----- 'dd __ yyyy' ------------------- */
+   IF (daytype='NUM')&(month='')&(yeartype='NUM') THEN
+      RETURN(mod||','||day||'.0.'||year)
+
+
+   date=STRIP(DELWORD(date,4))
+   dcount   =WORDS(date)
+
+   word1    =SUBSTR(WORD(date,1),1,4)
+   PARSE UPPER VAR word1 word1
+   word2    =SUBSTR(WORD(date,2),1,4)
+   word1type=DATATYPE(word1)
+   word2type=DATATYPE(word2)
+   
+   /* ----- '__ __ yyyy' ------------------- */
+   IF (dcount=1)&(word1type='NUM') THEN 
+      RETURN(mod||',0.0.'||date)
+   /* ----- '__ MMM __' ---------------- */
+   IF (dcount=1) THEN DO
+      p=WORDPOS(SUBSTR(word1,1,3),datamonth)
+      if (p>0) THEN RETURN(mod||',0.'||p||'.0')
+      END
+
+   /* ----- '__ mm|MMM YYYY' ---------------- */
+   IF (dcount=2)&(word2type='NUM') THEN DO
+      IF (word1type='NUM')&(word1<13) THEN
+         RETURN(mod||',0.'||word1||'.'||word2)
+      p=WORDPOS(SUBSTR(word1,1,3),datamonth)
+      IF p>0 THEN
+         RETURN(mod||',0.'||p||'.'||word2)
+      END
+
+   /* ----- ???????????? ------------------- */
+   SAY(msg.oopsDate.LANG||id||' ('||ARG(1)||')')
+   return('0.0.0')
+
+
+
+/* ---------------------- LANGUAGE INIT --------------------------- */
+InitLanguage:
+
+   /* Calculate Language Index */
+   lang='E'                              /* Default -> [E]nglish */
+   IF getLanguage()='Deutsch' THEN       /* Deutsch -> [G]erman */
+      lang='G'
+   IF getLanguage()='Nederlands' THEN    /* Nederlands -> [D]utch */
+      lang='D'
+   IF getLanguage()='Fran‡ais' THEN       /* Fran‡ais -> [F]rench */
+      lang='F'
+
+   /* [E]nglish Messages */
+   msg.header.E      = 'Importing from GEDCOM :'
+   msg.select.E      = 'Select GEDCOM file for import:'
+   msg.fileerror.E   = 'Error: Reading from '
+   msg.nogedcom.E    = 'Error: No GEDCOM file '
+   msg.foundheader.E = 'Found HEADER !'
+   msg.done.E        = 'Done !'
+   msg.sourceis.E    = 'Source system is '
+   msg.sourcedate.E  = 'Produced at '
+   msg.unexpected.E  = 'Unexpected end of file !'
+   msg.ignoring.E    = 'Had to ignore during load:'
+   msg.oopsDate.E    = 'Ambiguous Date : '
+   msg.oopsSex.E     = 'Ambiguous Sex  : '
+   msg.oopsID.E      = 'Ambiguous ID   : '
+   msg.importstart.E = 'Starting Calculation of family tree !'cr'First person in GEDCOM-file becomes Origin :'
+
+   /* [G]erman Messages */
+   msg.header.G      = 'Importieren von GEDCOM-Daten :'
+   msg.select.G      = 'GEDCOM-Import-Datei angeben:'
+   msg.fileerror.G   = 'Fehler: Einladen von '
+   msg.nogedcom.G    = 'Fehler: Keine GEDCOM-Datei '
+   msg.foundheader.G = 'HEADER gefunden !'
+   msg.done.G        = 'Fertig !'
+   msg.sourceis.G    = 'Quellsystem ist '
+   msg.sourcedate.G  = 'Hergestellt am '
+   msg.unexpected.G  = 'Unerwartetes Ende der Datei !'
+   msg.ignoring.G    = 'Beim Einlesen wurden ignoriert: '
+   msg.oopsDate.G    = 'Undeutliches Datum  : '
+   msg.oopsSex.G     = 'Undeutliches Geschl : '
+   msg.oopsID.G      = 'Undeutliche  ID     : '
+   msg.importstart.G = 'Starte jetzt Berechnung des Stammbaumes !'cr'Die erste Person aus der GEDCOM-Datei wird Ursprung :'
+
+   /* [D]utch Messages */
+   msg.header.D      = 'Importeren van GEDCOM :'
+   msg.select.D      = 'Selecteer GEDCOM bestand voor import:'
+   msg.fileerror.D   = 'Fout: Tijdens laden van '
+   msg.nogedcom.D    = 'Error: Geen GEDCOM bestand '
+   msg.foundheader.D = 'HEADER gevonden!'
+   msg.done.D        = 'Klaar !'
+   msg.sourceis.D    = 'Bronsysteem is '
+   msg.sourcedate.D  = 'Gemaakt bij '
+   msg.unexpected.D  = 'Overwacht einde van het bestand !'
+   msg.ignoring.D    = 'Bij het inlezen werden overgeslagen :'
+   msg.oopsDate.D    = 'Onduidelijke Datum : '
+   msg.oopsSex.D     = 'Onduidelijk Geslacht  : '
+   msg.oopsID.D      = 'Onduidelijke ID   : '
+   msg.importstart.D = 'De berekening van de stamboom begint !'cr'Eerste persoon in GEDCOM-bestand wordt Oorsprong :'
+
+
+   /* [F]rench Messages */
+   msg.header.F      = "Import de GEDCOM :"
+   msg.select.F      = "Selectionnez un fichier GEDCOM pour l'import :"
+   msg.fileerror.F   = "Erreur: Lecture de "
+   msg.nogedcom.F    = "Erreur: Pas de Fichier GEDCOM file "
+   msg.foundheader.F = "HEADER trouv‚ !"
+   msg.done.F        = "Fait !"
+   msg.sourceis.F    = "Le systŠme Source est "
+   msg.sourcedate.F  = "Produit … "
+   msg.unexpected.F  = "Fin de fichier Impr‚vu !"
+   msg.ignoring.F    = "Il n'a pas ‚t‚ consid‚r‚ durant le chargement :"
+   msg.oopsDate.F    = "Date Equivoque : "
+   msg.oopsSex.F     = "Sexe Equivoque : "
+   msg.oopsID.F      = "ID Equivoque   : "
+   msg.importstart.F = "D‚but de Calcul de l'arbre g‚n‚alogique !"cr"La PremiŠre personne dans le fichier GEDCOM est consid‚r‚e comme Origine :"
+
+   /* Done */
+   RETURN
+

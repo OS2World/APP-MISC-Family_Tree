@@ -1,0 +1,428 @@
+/*
+   Personen liste Tree Rexx Script FTX
+
+   Copyright (C) 1996 by <Nils Meier, Peter Gervai, Walter Kopmann>
+
+   Please send comments to / Kommentar bitte an
+        meier2@athene.informatik.uni-bonn.de
+
+   <
+   English:   This script shows all informations about the persons per Family.
+              Output is HTML Code to be displayed by WEB Browser or input to a
+              to a TEXT program like STAR Office.                             :English
+   Deutsch:   Dieses Skript zeigt alle Informationen aller Personen je Familie
+              in HTML Ausgabe zur Anzeige mit WEB Browser oder als Eingabe
+              fr Textprogramme                                               :Deutsch
+   Nederlands:This script shows all informations about the persons per Family.
+              Output is HTML Code to be diplayed by WEB Browser or input to a
+              to a TEXT program like STAR Office.                             :Nederlands
+   Fran‡ais:  Ce script montre toutes les informations sur les personnes par
+              famille.
+              Le fichier de sortie est au format HTML pour ˆtre affich‚ par un
+              browser ou ˆtre entr‚ comme un programme Texte avec Star Office
+              par exemple.                                                    :Fran‡ais
+   >
+
+   Long name is <
+                 English:    HTML Family Report:English
+                 Deutsch:    HTML Family Report:Deutsch
+                 Nederlands: HTML Family Report:Nederlands
+                 Fran‡ais:   HTML Family Reports:Fran‡ais
+                >
+
+*/
+
+/* ----------------------- Params  /  Parameter ------------------- */
+cr    = '0d0a'x
+break = '<BR>'
+
+CALL InitLanguage
+
+/*
+*
+* Start Output HTML Text
+*
+*/
+call charout ,'<HTML><head><TITLE>'getNameOfTree()'</TITLE></head><BODY>'cr
+
+res_fam=selectFamily('F')
+
+do while res_fam=1
+  rcp=doStack('PF')
+  res_pers = SelectPerson('f');
+
+  if getSex()=2 then res_pers=SelectPerson('p')   /* SelectPerson('f') liefert nicht immer den Vater */
+
+  out_rec = getFirstName()||' '||getname()
+  out_rec = trans(out_rec)
+  call charout ,'<H1>'out_rec||'</H1>'||cr
+
+  call PrintPerson;
+  res_pers = SelectPerson('p');
+  call PrintPerson;
+
+  kind=1
+  res_pers = SelectPerson(kind);
+  res_f=selectPerson('f')
+  do while res_pers=1
+    res_pers = SelectPerson(kind);
+    if \ res_pers then leave
+    rcf=doStack('PF')
+    rcp=doStack('PP')
+    call PrintPerson;
+    kind=kind+1
+    rcp=doStack('pP')
+    rcp=doStack('pF')
+  end
+
+  rcp=doStack('pF')
+  res_fam=selectFamily('N')
+end
+call charout ,'</BODY></HTML>'cr
+exit;
+/*******
+*
+*   Ende
+*
+********/
+
+/*
+ * Print the actual person
+ */
+PrintPerson:
+
+/* ----------------- Define Table for Person ----------------------- */
+
+call charout , '<HR>'||cr
+call charout , '<TABLE BORDER=0 WIDTH=100%>'||cr
+
+/* ----------------- Display Table Header / Kopf der Tabelle ------- */
+
+head=msg.header.LANG||getFirstName()||' '||getName()
+head= trans(head)
+
+call charout ,'<TR><TD COLSPAN=3 ALIGN=CENTER>'||'<H2>'head||'</H2>'||'</TD></TR>'||cr
+
+/* ------------------------------ Output / Ausgabe ----------------- */
+
+call charout , '<TR>'||'<TD ALIGN=RIGHT VALIGN=TOP WIDTH=12%><FONT SIZE=-2><I>'
+call charout , msg.name.LANG
+call charout , '</I>: </FONT></TD>'||cr
+
+call charout , '<TD WIDTH=55% VALIGN=TOP >'
+out_rec = getName()
+out_rec = trans(out_rec)
+call charout ,'<B>'||out_rec||'</B>'
+call charout , '</TD>'||cr
+/* ----------------------- Output Picture Entry   --------------------
+*
+*   The Picture outputwidth is 210 Pixels. Picture with more Pixelwidth
+*         will be aligned (Wasted space)
+*
+* --------------------------------------------------------------------*/
+
+call charout , '<TD ALIGN=CENTER VALIGN=TOP ROWSPAN=999>'
+if getPicture() \= '' then do
+   Out_rec='<IMG SRC="'||getPicture()||'" WIDTH=210 Border=0 ALT='getpicture()'>'
+   call charout ,out_rec
+end
+call charout , '</TD>'
+call charout , '</TR>'||cr
+
+/* -----------------------end Picture Output ----------------------- */
+
+call charout , '<TR>'
+call charout , '<TD ALIGN=RIGHT VALIGN=TOP ><FONT SIZE=-2><I>'
+call charout , msg.firstname.LANG
+call charout , '</I>: </FONT></TD>'
+
+call charout , '<TD VALIGN=TOP >'
+out_rec = getFirstName()
+out_rec = trans(out_rec)
+call charout ,'<B>'||out_rec||'</B>'
+call charout , '</TD>'
+call charout , '</TR>'||cr
+
+call charout , '<TR>'
+call charout , '<TD VALIGN=TOP  ALIGN=RIGHT ><FONT SIZE=-2><I>'
+call charout , msg.sex.LANG
+call charout , '</I>: </FONT></TD>'
+
+call charout , '<TD VALIGN=TOP >'
+out_rec = WORD(msg.datasex.LANG,getSex()+1)
+out_rec = trans(out_rec)
+call charout ,'<B>'||out_rec||'</B>'
+call charout , '</TD>'
+call charout , '</TR>'||cr
+
+call charout , '<TR>'
+call charout , '<TD VALIGN=TOP  ALIGN=RIGHT ><FONT SIZE=-2><I>'
+call charout , msg.birthdate.LANG
+call charout , '</I>: </FONT></TD>'
+
+call charout , '<TD VALIGN=TOP >'
+out_rec = getBirthDate()
+out_rec = trans(out_rec)
+call charout ,'<B>'||out_rec||'</B>'
+call charout , '</TD>'
+call charout , '</TR>'||cr
+
+call charout , '<TR>'
+call charout , '<TD VALIGN=TOP  ALIGN=RIGHT ><FONT SIZE=-2><I>'
+call charout , msg.birthplace.LANG
+call charout , '</I>: </FONT></TD>'
+
+call charout , '<TD VALIGN=TOP >'
+out_rec = getBirthPlace()
+out_rec = trans(out_rec)
+call charout ,'<B>'||out_rec||'</B>'
+call charout , '</TD>'
+call charout , '</TR>'||cr
+
+call charout , '<TR>'
+call charout , '<TD VALIGN=TOP  ALIGN=RIGHT ><FONT SIZE=-2><I>'
+call charout , msg.deathdate.LANG
+call charout , '</I>: </FONT></TD>'
+
+call charout , '<TD VALIGN=TOP >'
+out_rec = getDeathDate()
+out_rec = trans(out_rec)
+call charout ,'<B>'||out_rec||'</B>'
+call charout , '</TD>'
+call charout , '</TR>'||cr
+
+call charout , '<TR>'
+call charout , '<TD VALIGN=TOP  ALIGN=RIGHT ><FONT SIZE=-2><I>'
+call charout , msg.deathplace.LANG
+call charout , '</I>: </FONT></TD>'
+
+call charout , '<TD VALIGN=TOP >'
+out_rec = getDeathPlace()
+out_rec = trans(out_rec)
+call charout ,'<B>'||out_rec||'</B>'
+call charout , '</TD>'
+call charout , '</TR>'||cr
+
+call charout , '<TR>'
+call charout , '<TD VALIGN=TOP  ALIGN=RIGHT ><FONT SIZE=-2><I>'
+call charout , msg.occupation.LANG
+call charout , '</I>: </FONT></TD>'
+
+call charout , '<TD VALIGN=TOP >'
+out_rec = getOccupation()
+out_rec=trans(out_rec)
+call charout ,'<B>'||out_rec||'</B>'
+call charout , '</TD>'
+call charout , '</TR>'||cr
+
+call charout , '<TR>'
+call charout , '<TD VALIGN=TOP  ALIGN=RIGHT ><FONT SIZE=-2><I>'
+call charout , msg.address.LANG
+call charout , '</I>: </FONT></TD>'
+
+call charout , '<TD VALIGN=TOP >'
+out_rec = getAddress()
+out_rec = trans(out_rec)
+call charout ,'<B>'||out_rec||'</B>'
+call charout , '</TD>'
+call charout , '</TR>'||cr
+
+/*-------------------- Memo field  /  Memofeld --------------------------
+*
+*                     output only if memo available
+*
+* ----------------------------------------------------------------------*/
+line=1
+DO FOREVER
+   out_rec=getMemo(line)
+   IF LENGTH(out_rec)=0 THEN LEAVE
+   if line=1 then do
+      call charout , '<TR>'
+      call charout , '<TD VALIGN=TOP  ALIGN=RIGHT ><FONT SIZE=-2><I>'
+      call charout , msg.memo.LANG
+      call charout , '</I>: </FONT></TD>'
+      call charout , '<TD VALIGN=TOP >'
+   end
+   out_rec = trans(out_rec)
+   call charout ,out_rec||cr
+   line=line+1
+END
+if line\=1 then do
+   call charout , '</TD>'
+   call charout , '</TR>'||cr
+end
+
+/*------------------------ Marriages  /  Ehen -------------------------*/
+
+p=1
+rc_f=selectFamily(p)
+if rc_f \=1 then call charout ,'<TR><TD Colspan=2></TD></TR>'||cr
+DO WHILE rc_f=1
+   /* Push Man on Stack  /  Menschen auf Stack */
+   rc=doStack('PP')
+
+   call charout ,'<TR><TD Colspan=2><HR></TD></TR>'||cr
+
+   /* Partner  /  Parner */
+   rc=selectPerson('p')
+   Partner=getFirstName()||' '||getName()||'  'getMarriageDate()
+
+   /* MarriageDate  /  Heiratsdatum */
+
+   call charout , '<TR>'
+   call charout , '<TD VALIGN=TOP  ALIGN=RIGHT ><FONT SIZE=-2><I>'
+   call charout , msg.marriage.LANG
+   call charout , '</I>: </FONT></TD>'
+   call charout , '<TD VALIGN=TOP>'
+   Partner  = trans(Partner)
+   call charout ,'<B>'||Partner||'</B>'
+   call charout , '</TD>'
+   call charout , '</TR>'||cr
+
+   /*---------------------- Children  /  Kinder --------------------------*/
+
+   rcp=doStack('PF')
+   c=1
+   rc_p=selectPerson(c);
+   DO WHILE rc_p=1
+      IF c=1 Then do
+         call charout , '<TR>'
+         call charout , '<TD VALIGN=TOP  ALIGN=RIGHT ><FONT SIZE=-2><I>'
+         call charout , msg.child.LANG
+         call charout , '</I>: </FONT></TD>'
+         call charout , '<TD VALIGN=TOP >'
+         Ergebnis=getBirthDate()||' '||getFirstName()||' '||getName()
+         Ergebnis=trans(Ergebnis)
+         call charout ,'<B>'||Ergebnis||'</B>'
+         call charout , '</TD>'
+         call charout , '</TR>'||cr
+         end
+      Else do
+         call charout , '<TR>'
+         call charout , '<TD VALIGN=TOP >'
+         call charout , '</TD>'
+         call charout , '<TD VALIGN=TOP >'
+         Ergebnis=getBirthDate()||' '||getFirstName()||' '||getName()
+         Ergebnis=trans(Ergebnis)
+         call charout ,'<B>'||Ergebnis||'</B>'
+         call charout , '</TD>'
+         call charout , '</TR>'||cr
+      end
+      c=c+1
+      rc_p=selectPerson(c)
+   END
+   rcp=doStack('pF')
+
+   /* Pop Man from Stack  /  Menschen vom Stack */
+   rc=doStack('pP')
+
+
+   /* Next Family of Actual /  Naechste Familie des Aktuellen */
+   p=p+1
+   rc_f=selectFamily(p)
+END
+
+call Charout ,'</table>'||cr
+
+/*------------------------end table output ---------------------------*/
+RETURN
+
+
+/*---- Translate special character to HTML ISO latin1 entitties  -----*/
+Trans: procedure
+parse arg txt
+org_txt = '<    >    ™       Ž     š      ”      „            á         ø      ñ      ®       ¯     ‚                Š        Ô        …        ·        ˆ       Ò       –       ê       Œ       ƒ       ¶    '
+rep_txt = '&lt; &gt; &Ouml; &Auml; &Uuml; &ouml; &auml; &uuml; &szlig; &#183; &#177; &#171; &#187; &eacute; &Eacute; &egrave; &Egrave; &agrave; &Agrave; &ecirc; &Ecirc; &ucirc; &ucirc; &icirc; &acirc; &Acirc;'
+do i=1 to words(org_txt)
+  strt=1
+  do while strt\=0
+    pn=pos(word(org_txt,i),txt,strt)
+     if pn\=0 then do
+      txt=substr(txt,strt,pn-strt)||word(rep_txt,i)||substr(txt,pn+1,length(txt)-pn)
+     end
+     else iterate i
+  end
+end
+return  txt
+
+
+/* ---------------------- LANGUAGE INIT --------------------------- */
+InitLanguage:
+
+   /* Calculate Language Index */
+   lang='E'                              /* Default -> [E]nglish */
+   IF getLanguage()='Deutsch' THEN       /* Deutsch -> [G]erman */
+      lang='G'
+   IF getLanguage()='Nederlands' THEN    /* Nederlands -> [D]utch */
+      lang='D'
+   IF getLanguage()='Fran‡ais' THEN      /* Fran‡ais -> [F]rench */
+      lang='F'
+
+   /* [E]nglish Messages */
+   msg.header.E    =''
+   msg.name.E      ='Name'
+   msg.firstname.E ='First name'
+   msg.sex.E       ='Sex'
+   msg.birthdate.E ='Birth date'
+   msg.birthplace.E='Birth location'
+   msg.deathdate.E ='Death date'
+   msg.deathplace.E='Death location'
+   msg.occupation.E='Occupation'
+   msg.address.E   ='Address'
+   msg.memo.E      ='Memo'
+   msg.marriage.E  ='Marriage with'
+   msg.child.E     ='- Children'
+   msg.datasex.E   = '? male female'
+
+   /* [G]erman Messages */
+   msg.header.G    =''
+   msg.name.G      ='Name'
+   msg.firstname.G ='Vorname'
+   msg.sex.G       ='Geschlecht'
+   msg.birthdate.G ='Geburtsdatum'
+   msg.birthplace.G='Geburtsort'
+   msg.deathdate.G ='Todesdatum'
+   msg.deathplace.G='Todesort'
+   msg.occupation.G='Beruf'
+   msg.address.G   ='Adresse'
+   msg.memo.G      ='Memo'
+   msg.marriage.G  ='Ehe mit'
+   msg.child.G     ='- Kinder'
+   msg.datasex.G   = '? m„nnlich weiblich'
+
+   /* [D]utch Messages */
+   msg.header.D    =''
+   msg.name.D      ='Name'
+   msg.firstname.D ='First name'
+   msg.sex.D       ='Sex'
+   msg.birthdate.D ='Birth date'
+   msg.birthplace.D='Birth location'
+   msg.deathdate.D ='Death date'
+   msg.deathplace.D='Death location'
+   msg.occupation.D='Occupation'
+   msg.address.D   ='Address'
+   msg.memo.D      ='Memo'
+   msg.marriage.D  ='Marriage with'
+   msg.child.D     ='- Children'
+   msg.datasex.D   = '? male female'
+
+   /* [F]rench Messages */
+   msg.header.F    =""
+   msg.name.F      ="Nom"
+   msg.firstname.F ="Pr&eacute;nom(s)"
+   msg.sex.F       ="Sexe"
+   msg.birthdate.F ="Date de Naissance"
+   msg.birthplace.F="Lieu de Naissance"
+   msg.deathdate.F ="Date du D&eacute;c&egrave;s"
+   msg.deathplace.F="Lieu du D&eacute;c&egrave;s"
+   msg.occupation.F="Activit&eacute;"
+   msg.address.F   ="Adresse"
+   msg.memo.F      ="M&eacute;mo"
+   msg.marriage.F  ="Mariage avec"
+   msg.child.F     ="- Enfant(s)"
+   msg.datasex.F   ="? Homme Femme"
+
+   /* Done */
+   RETURN
+
+

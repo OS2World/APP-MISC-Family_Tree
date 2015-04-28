@@ -1,0 +1,311 @@
+/*
+   Family Tree Rexx Script FTX
+
+   Copyright (C) 1996 by <Nils Meier>
+
+   Please send comments to / Kommentar bitte an
+        meier2@athene.informatik.uni-bonn.de
+
+   <
+   English:   This script exports the family tree to a GEDCOM file.            :English
+   Deutsch:   Dieses Skript exportiert den Stammbaum in eine GEDCOM Datei.     :Deutsch
+   Nederlands:This script exports the family tree to a GEDCOM file.            :Nederlands
+   Fran‡ais:  Ce script exporte l'arbre g‚n‚alogique vers un fichier au format
+              GEDCOM.                                                          :Fran‡ais
+   >
+
+   Long name is <
+                 English:    Export to GEDCOM-format   :English
+                 Deutsch:    GEDCOM-Format exportieren :Deutsch
+                 Nederlands: Dit script exporteert de stamboom
+                             naar een GEDCOM bestand.  :Nederlands
+                 Fran‡ais:   Exporte au format GEDCOM  :Fran‡ais
+                >
+*/
+
+CALL RxFuncAdd 'SysFileDelete', 'RexxUtil', 'SysFileDelete'
+
+/* ----------------------- Params  /  Parameter ------------------- */
+namewidth=30
+
+datasex   = ' MF'
+datamonth = 'JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC'
+datamod   = 'ABT AFT BEF EST'
+
+CALL InitLanguage
+
+/* ----------------- Display Header / Kopf der Ausgabe ------------- */
+head=msg.Header.LANG||DATE()
+SAY(head)
+SAY(COPIES('=',length(head)))
+
+
+/* ------------------- Open file  /  Datei oeffnen  ---------------- */
+filename=getFileName(select,'*.GED')
+IF filename='' THEN DO
+   SAY(msg.Done.LANG)
+   RETURN
+   END
+
+rc=SysFileDelete(filename)
+rc=rc+LINEOUT(filename,,1)
+IF (rc=1) THEN DO
+   SAY(msg.Fileerror.LANG||filename)
+   RETURN
+   END
+
+/* -------------- Header of GEDCOM  /  Kopf von GEDCOM -------------- */
+
+SAY(msg.Exporthead.LANG)
+
+rc=LINEOUT(filename,'0 HEAD')
+rc=LINEOUT(filename,'1 SOUR FamilyTree for OS/2 - ExGedcom.ftx')
+rc=LINEOUT(filename,'2 VERS 1.2x')
+rc=LINEOUT(filename,'1 CHAR IBMPC')
+rc=LINEOUT(filename,'1 FILE '||FILESPEC('name',filename))
+rc=LINEOUT(filename,'1 DATE '||DATE())
+
+/* ------------ Export Persons  /  Personen exportieren -------------- */
+
+SAY(msg.Exportindis.LANG)
+
+rc=selectPerson('F')
+DO WHILE RC=1
+   /* Export this one / Diesen exportieren */
+   call ExportPerson
+   /* Next one / Naechster */
+   rc=selectPerson('N')
+END
+
+/* ------------ Export Families  /  Familien exportieren -------------- */
+
+SAY(msg.Exportfams.LANG)
+
+rc=selectFamily('F')
+DO WHILE RC=1
+   /* Export this one / Diesen exportieren */
+   call ExportFamily
+   /* Next one / Naechster */
+   rc=selectFamily('N')
+END
+
+/* ------------------- Close File  /  Datei schliessen -------------- */
+rc=LINEOUT(filename,'0 TRLR')
+rc=LINEOUT(filename)
+
+/* ------------------------ Done / Fertig ---------------------------*/
+SAY(msg.Done.LANG)
+RETURN
+
+
+
+/* =============== Auxilary Functions / Hilfsfunktionen =============== */
+
+
+/* --------------- Export Person  /  Person exportieren ---------------- */
+ExportFamily:
+
+   /* Standard data  /  Standarddaten */
+
+   rc=LINEOUT(filename,'0 @F'||getFID()||'@ FAM')
+
+   tag='HUSB'
+   rc=selectPerson('f')
+   fSex=getSex()
+   fID =getPID()
+   rc=selectPerson('m')
+   mSex=getSex()
+   mID =getPID()
+   IF (fSex=2)|(mSex=1) THEN DO
+      tID=fID
+      fID=mID
+      mID=tID
+      END
+   rc=LINEOUT(filename,'1 HUSB @I'||fID||'@')
+   rc=LINEOUT(filename,'1 WIFE @I'||mID||'@')
+
+   rc=LINEOUT(filename,'1 MARR')
+   rc=LINEOUT(filename,'2 DATE '||calcDate(getMarriageDate('O'),getMarriageDate('D'),getMarriageDate('M'),getMarriageDate('Y')))
+   rc=LINEOUT(filename,'2 PLAC '||getMarriagePlace())
+
+   rc=LINEOUT(filename,'1 DIV')
+   rc=LINEOUT(filename,'2 DATE '||calcDate(getDivorceDate('O'),getDivorceDate('D'),getDivorceDate('M'),getDivorceDate('Y')))
+
+   /* Children  /  Kinder */
+   c=1
+   DO FOREVER
+      rc=selectPerson(c)
+      IF rc=0 THEN LEAVE
+      rc=LINEOUT(filename,'1 CHIL @I'||getPID()||'@')
+      c=c+1
+   END
+
+   /* Done / Fertig */
+   RETURN
+
+
+/* --------------- Export Person  /  Person exportieren ---------------- */
+ExportPerson:
+
+   /* Personal Data  /  persoenliche Daten */
+
+   rc=LINEOUT(filename,'0 @I'||getPID()||'@ INDI')
+   rc=LINEOUT(filename,'1 NAME '||getFirstName()||' /'||getName()||'/')
+   rc=LINEOUT(filename,'1 SEX '||SUBSTR(datasex,getSex()+1,1))
+   rc=LINEOUT(filename,'1 BIRT')
+   rc=LINEOUT(filename,'2 DATE '||calcDate(getBirthDate('O'),getBirthDate('D'),getBirthDate('M'),getBirthDate('Y')))
+   rc=LINEOUT(filename,'2 PLAC '||getBirthPlace())
+   rc=LINEOUT(filename,'1 DEAT')
+   rc=LINEOUT(filename,'2 DATE '||calcDate(getDeathDate('O'),getDeathDate('D'),getDeathDate('M'),getDeathDate('Y')))
+   rc=LINEOUT(filename,'2 PLAC '||getDeathPlace())
+
+   temp=getPicture()
+   IF temp<>'' THEN
+     rc=LINEOUT(filename,'1 PHOT '||temp)
+
+   temp=getOccupation()
+   IF temp<>'' THEN
+      rc=LINEOUT(filename,'1 OCCU '||temp)
+
+   temp=getAddress()
+   tag='1 ADDR '
+   DO WHILE temp<>''
+      p=POS(',',temp)
+      IF p=0 THEN p=LENGTH(temp)+1
+      rc=LINEOUT(filename,tag||SUBSTR(temp,1,p-1))
+      temp=SUBSTR(temp,p+1)
+      tag='2 CONT '
+   END
+
+
+   l=1
+   DO FOREVER
+      temp=getFile(l)
+      IF LENGTH(temp)=0 THEN LEAVE
+      rc=LINEOUT(filename,'1 FILE '||temp)
+      l=l+1
+   END
+
+
+   l=1
+   tag='1 NOTE '
+   DO FOREVER
+      temp=getMemo(l)
+      IF LENGTH(temp)=0 THEN LEAVE
+      rc=LINEOUT(filename,tag||temp)
+      tag='2 CONT '
+      l=l+1
+   END
+
+   /* Families with partners  /  Familien mit Partnern */
+   f=1
+   DO FOREVER
+      rc=selectFamily(f)
+      IF rc=0 THEN LEAVE
+      rc=LINEOUT(filename,'1 FAMS @F'||getFID()||'@')
+      f=f+1
+   END
+
+   /* Family of parents  /  Familie der Eltern */
+   rc=selectFamily('p')
+   IF rc=1 THEN
+      rc=LINEOUT(filename,'1 FAMC @F'||getFID()||'@')
+
+   /* Done  /  Fertig */
+   RETURN
+
+
+/* --------------- Calculate Date  /  Datum berechnen ---------------- */
+calcDate:
+   IF ARG(1)=0 THEN mod=''
+   ELSE mod=WORD(datamod,ARG(1))
+
+   day=ARG(2)
+   month=ARG(3)
+   year=ARG(4)
+
+
+   /* --- 'dd.mm.yyyy' -> 'dd MMM yyyy' ---- */
+   IF (day>0)&(month>0)&(year>0) THEN
+      RETURN(mod day WORD(datamonth,month) year)
+
+   /* --- '--.--.----' -> '' -------------- */
+   IF (day=0)&(month=0)&(year=0) THEN
+      RETURN('')
+
+   /* --- '--.mm.yyyy' -> 'MMM yyyy ------- */
+   IF (day=0)&(month>0)&(year>0) THEN
+      RETURN(mod WORD(datamonth,month) year)
+
+   /* --- '--.--.yyyy' -> 'yyyy' ---------- */
+   IF (day=0)&(month=0)&(year>0) THEN
+      RETURN(mod year)
+
+   /* --- 'dd.mm.----' -> 'dd MMM' -------- */
+   IF (day>0)&(month>0)&(year=0) THEN
+      RETURN(mod day WORD(datamonth,month))
+
+   /* --- '--.mm.----' -> 'MMM' ----------- */
+   IF (day=0)&(month>0)&(year=0) THEN
+      RETURN(mod WORD(datamonth,month))
+
+   /* --- 'dd.--.yyyy' -> 'yyyy' ---------- */
+   IF (day>0)&(month=0)&(year>0) THEN
+      RETURN(mod year)
+
+   /* --- 'dd.--.----' -> ''--------------- */
+   RETURN('')
+
+
+/* ---------------------- LANGUAGE INIT --------------------------- */
+InitLanguage:
+
+   /* Calculate Language Index */
+   lang='E'                              /* Default -> [E]nglish */
+   IF getLanguage()='Deutsch' THEN       /* Deutsch -> [G]erman */
+      lang='G'
+   IF getLanguage()='Nederlands' THEN    /* Nederlands -> [D]utch */
+      lang='D'
+   IF getLanguage()='Fran‡ais' THEN      /* Fran‡ais -> [F]rench */
+      lang='F'
+
+   /* [E]nglish Messages */
+   msg.Header.E     = 'Exporting to GEDCOM:'
+   msg.Select.E     = 'Select GEDCOM file for export:'
+   msg.Fileerror.E  = 'Error during writing to : '
+   msg.Exporthead.E = 'Exporting HEAD ...'
+   msg.Exportindis.E= 'Exporting INDIs ...'
+   msg.Exportfams.E = 'Exporting FAMs ...'
+   msg.Done.E       = 'Done !'
+
+   /* [G]erman Messages */
+   msg.Header.G     = 'Exportiere nach GEDCOM:'
+   msg.Select.G     = 'GEDCOM-Export-Datei angeben:'
+   msg.Fileerror.G  = 'Fehler waehrend des Schreibens von : '
+   msg.Exporthead.G = 'Exportiere HEAD ...'
+   msg.Exportindis.G= 'Exportiere INDIs ...'
+   msg.Exportfams.G = 'Exportiere FAMs ...'
+   msg.Done.G       = 'Fertig !'
+
+   /* [D]utch Messages */
+   msg.Header.D     = 'Exporteer naar GEDCOM:'
+   msg.Select.D     = 'Kies GEDCOM bestand voor export:'
+   msg.Fileerror.D  = 'Fout tijdens wegschrijven naar : '
+   msg.Exporthead.D = 'Exporteer HEAD ...'
+   msg.Exportindis.D= 'Exporteer INDIs ...'
+   msg.Exportfams.D = 'Exporteer FAMs ...'
+   msg.Done.D       = 'Klaar !'
+
+   /* [F]rench Messages */
+   msg.Header.F     = "Export vers GEDCOM :"
+   msg.Select.F     = "S‚lectionnez un fichier GEDCOM pour l'export :"
+   msg.Fileerror.F  = "Erreur durand l'‚criture … : "
+   msg.Exporthead.F = "Export HEAD ..."
+   msg.Exportindis.F= "Export INDIs ..."
+   msg.Exportfams.F = "Export FAMs ..."
+   msg.Done.F       = "Fait !"
+
+   /* Done */
+   RETURN
+
+

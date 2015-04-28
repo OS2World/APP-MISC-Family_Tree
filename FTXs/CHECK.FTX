@@ -1,0 +1,376 @@
+/*
+   Family Tree Rexx Script FTX
+
+   Copyright (C) 1996 by <Peter Gervai>
+
+   Please send comments to / Kommentar bitte an
+   Grin at 2:370/15@fidonet or grin@lifeforce.fido.hu
+
+   <
+   English:   Check the tree for inconsistencies.             :English
+   Deutsch:   Stammbaum nach Inkonsistenzen untersuchen.      :Deutsch
+   Nederlands:Check the tree for inconsistencies.             :Nederlands
+   Fran‡ais:  V‚rification de l'arbre pour des incoh‚rences.  :Fran‡ais
+   >
+
+   Long name is <
+                 English:    Check Consistency                             :English
+                 Deutsch:    Prfe Konsistenz                              :Deutsch
+                 Nederlands: De stamboom op tegenstrijdigheden controleren :Nederlands
+                 Fran‡ais:   V‚rification des incoh‚rences                 :Fran‡ais
+                >
+
+*/
+
+/*
+ * check for:
+ *   (self)
+ *  born after death
+ *  lived longer than usual
+ *   (parental)
+ *  born sooner than parents
+ *  born after parents' death
+ *  born sooner than usual (too young mother/father)
+ *   (marriages)
+ *  married too young
+ *  married after death
+ *  spouses are male and female
+ *  divorced before marriage
+ *  divorced after death
+ *
+ * warnings:
+ *   (parental)
+ *  changed surname from daddy
+ *   (marriages)
+ *  had too old partner
+ *
+ */
+
+call InitLanguage
+
+say msg.Header.LANG
+say '==================='
+
+
+/*
+ * some initialisations
+ */
+Warnings = 1                            /* set to 0 if you don't want warnings */
+if \Warnings then
+  say '(Warnings are suppressed)'
+
+oldestManEver    = 150*365
+youngestPregnant =  16*365
+youngestMarried  =  14*365              /* ...not counting India... :) */
+
+oldestMarried    =  60*365
+
+humanPregnancy   =   9*31
+
+res = SelectPerson('F')
+
+do while res\=0
+
+  call FetchPerson 1
+
+  /*
+   * personal checks
+   */
+  /*-- there is no "missing data" warnings this time. anyone needs it? */
+  if p.1.birthc & p.1.deathc then do
+    if p.1.birth1 > p.1.death1 then
+      call perror msg.BornAfterDeath.LANG,p.1.birth'/'p.1.death
+    else do
+      if p.1.death1-p.1.birth1 > oldestManEver then
+        call perror msg.BornBeforeParent.LANG,(p.1.death1-p.1.birth1)/365 || msg.Years.LANG
+    end
+  end
+
+  /* ...except this one :) */
+  if p.1.sex=0 then
+    call pwarning msg.NoGender.LANG,'0'
+
+  /*
+   * checking of parents
+   */
+  res=doStack('PP')                     /* push actual guy */
+  res=SelectFamily('p')                 /* get his parents */
+  if res\=0 then do
+    res=SelectPerson('p')               /* get parent1 */
+    call FetchPerson 2
+    res=SelectPerson('p')               /* get parent2 */
+    call FetchPerson 3
+
+    if p.1.birthc then do
+
+    /* check older than parent / young parent */
+      if p.2.birthc then do
+        if p.1.birth1<=p.2.birth1 then
+          call perror msg.BornBeforeParent.LANG,p.1.birth'/'p.2.birth '['p.2.sname p.2.fname']'
+
+        if p.1.birth1-p.2.birth1 < youngestPregnant then
+          call perror msg.TooYoungParent.LANG,(p.1.birth1-p.2.birth1)/365 msg.Years.LANG'['p.2.sname p.2.fname']'
+      end
+
+      if p.3.birthc then do
+        if p.1.birth1<=p.3.birth1 then
+          call perror msg.BornBeforeParent.LANG,p.1.birth'/'p.3.birth '['p.3.sname p.3.fname']'
+
+        if p.1.birth1-p.3.birth1 < youngestPregnant then
+          call perror msg.TooYoungParent.LANG,(p.1.birth1-p.3.birth1)/365 msg.Years.LANG'['p.3.sname p.3.fname']'
+      end
+
+      /* check dead&pregnant parent */
+      if p.2.deathc then do
+        if p.1.birth1-humanPregnancy>=p.2.death1 then
+          call perror msg.ParentDiedBefore.LANG,p.1.birth'/'p.2.death '['p.2.sname p.2.fname']'
+      end
+
+      if p.3.deathc then do
+        if p.1.birth1-humanPregnancy>=p.3.death1 then
+          call perror msg.ParentDiedBefore.LANG,p.1.birth'/'p.3.death '['p.3.sname p.3.fname']'
+      end
+
+    end /* p.1.birth=\'' */
+
+    /* check that surname is the same as daddy's */
+    if p.2.sex=1 then do
+      if p.1.sname\='' & p.2.sname\='' & p.1.sname\=p.2.sname then
+        call pwarning msg.SurnameChanged.LANG,p.1.sname'/'p.2.sname
+    end
+    else do
+      if p.3.sex=1 then do
+        if p.1.sname\='' & p.3.sname\='' & p.1.sname\=p.3.sname then
+          call pwarning msg.SurnameChanged.LANG,p.1.sname'/'p.3.sname
+      end
+    end
+
+
+  end /* if have family */
+
+  /*
+   * Checking marriages
+   */
+  res=doStack('pP')                     /* get back actual guy */
+
+  famNum = 1
+  res=SelectFamily(famNum)
+
+  do while res\=0
+    call FetchFamily famNum
+
+    if f.famNum.marry\='' then do
+    /* married too young */
+      if p.1.birthc then
+        if f.famNum.marry1-p.1.birth1<youngestMarried then
+          call perror msg.MarriedTooYoung.LANG,(f.famNum.marry1-p.1.birth1)/365 msg.Years.LANG '['msg.Family.LANG famNum']'
+
+      /* married after death */
+      if p.1.deathc then
+        if f.famNum.marry1>p.1.death1 then
+          call perror msg.MarriedADeath.LANG,p.1.death'/'f.famNum.marry '['msg.Family.LANG famNum']'
+    end
+
+    if f.famNum.divor\='' then do
+    /* divorced before marriage (even I think it's a good idea :)) */
+      if f.famNum.marry\='' then
+        if f.famNum.divor1<=f.famNum.marry1 then
+          call perror msg.DivorceBMarriage.LANG,f.famNum.divor'/'f.famNum.marry '['msg.Family.LANG famNum']'
+
+      /* divorced after death */
+      if p.1.deathc then
+        if f.famNum.divor1>p.1.death1 then
+          call perror msg.DivorceADeath.LANG,f.famNum.divor'/'p.1.death '['msg.Family.LANG famNum']'
+    end
+
+    /* married to the same sex [Dutch users should comment this out :-))) ] */
+    res=doStack('PP')
+    res=SelectPerson('p')
+    call FetchPerson 4
+    if p.1.sex\=0 then
+      if p.1.sex = p.4.sex then
+        call perror msg.MarriedSSex.LANG,p.1.sex'/'p.4.sex '['p.4.sname p.4.fname']'
+
+    /* too old partner ("masochist check") */
+    if p.1.birthc & p.4.birthc then
+      if abs(p.1.birth1-p.4.birth1)>oldestMarried then
+        call pwarning msg.OldPartner.LANG,abs(p.1.birth1-p.4.birth1)/365 msg.Years.LANG '['p.4.sname p.4.fname']'
+
+    res=doStack('pP')
+
+    famNum = famNum + 1
+    res=SelectFamily(famNum)
+end /* do */
+
+
+/* finished */
+
+  res = SelectPerson('N')
+end
+
+return
+
+
+/******************************************************************
+ *
+ * Fetch personal data
+ *
+ */
+FetchPerson: parse arg n
+
+  p.n.id    = GetPID()
+  p.n.sname = GetName()
+  first=pos(",",p.n.sname)                /* Maybe there's a comma separated title */
+  if first>0 then p.n.sname=substr(p.n.sname,1,first-1)
+  p.n.fname = GetFirstName()
+  p.n.sex   = GetSex()                    /* or "got sex?" :) */
+  p.n.birth = GetBirthDate()              /* I can't tell him to tell the format *I* like */
+  p.n.birth1= GetBirthDate('d')           /* days since 0 */
+  p.n.birthc= GetBirthDate('c')           /* complete date ? */
+  p.n.bplace= GetBirthPlace()
+  p.n.death = GetDeathDate()
+  p.n.death1= GetDeathDate('d')
+  p.n.deathc= GetDeathDate('c')           /* complete date ? */
+  p.n.dplace= GetDeathPlace()
+  p.n.occup = GetOccupation()
+  p.n.memo  = GetMemo()
+  p.n.pic   = GetPicture()
+return
+
+/******************************************************************
+ *
+ * Fetch family data
+ *
+ */
+FetchFamily: parse arg n
+
+  f.n.id    = GetFID()
+  f.n.marry = GetMarriageDate()
+  f.n.marry1= GetMarriageDate('d')
+  f.n.mplace= GetMarriagePlace()
+  f.n.divor = GetDivorceDate()
+  f.n.divor1= GetDivorceDate('d')
+return
+
+/******************************************************************
+ *
+ * Errors and warnings
+ *
+ */
+perror:
+  say msg.Error.LANG'! ID='p.1.id '"'p.1.fname','p.1.sname'":' arg(1) '('arg(2)')'
+return
+
+pwarning:
+  if \Warnings then return
+  say msg.Warning.LANG' ID='p.1.id '"'p.1.fname','p.1.sname'":' arg(1) '('arg(2)')'
+return
+
+
+/******************************************************************
+ *
+ * Language init
+ *
+ */
+InitLanguage:
+
+   /* Calculate Language Index */
+   lang='E'                              /* Default -> [E]nglish */
+   IF getLanguage()='Deutsch' THEN       /* Deutsch -> [G]erman */
+      lang='G'
+   IF getLanguage()='Nederlands' THEN    /* Nederlands -> [D]utch */
+      lang='D'
+   IF getLanguage()='Fran‡ais' THEN      /* Fran‡ais -> [F]rench */
+      lang='F'
+
+   /* [E]nglish Messages */
+   msg.Header.E  = 'Checking Family Tree for inconsistencies.'
+   msg.Error.E   = 'Error'
+   msg.Warning.E = 'Warning at'
+   msg.Years.E   = ' years'                          /* "999 years old" */
+   msg.Family.E  = 'Family'                          /* "Family 2" */
+
+   msg.BornAfterDeath.E  = 'Born after death'
+   msg.BornBeforeParent.E = 'Born before parent'
+   msg.ParentDiedBefore.E = 'Parent died before child born'
+   msg.MarriedTooYoung.E  = 'Married too young'
+
+   msg.MarriedADeath.E    = 'Married after death'
+   msg.MarriedSSex.E      = 'Married to the same sex'
+   msg.DivorceBMarriage.E = 'Divorced before marriage'
+   msg.DivorceADeath.E    = 'Divorced after death'
+   msg.TooYoungParent.E   = 'Have too young parent'
+
+   msg.SurnameChanged.E   = "Surname changed from father's"
+   msg.NoGender.E         = 'Person have no gender'
+   msg.OldPartner.E       = 'Have quite old partner'
+
+   /* [G]erman Messages */
+   msg.Header.G  = 'Untersuche Stammbaum nach Inkonsistenzen.'
+   msg.Error.G   = 'Fehler'
+   msg.Warning.G = 'Warnung bei'
+   msg.Years.G   = ' Jahre'                            /* "999 years old" */
+   msg.Family.G  = 'Familie'                           /* "Family 2" */
+
+   msg.BornAfterDeath.G  = 'Geburt nach Tod'
+   msg.BornBeforeParent.G = 'Geboren vor Elternteil'
+   msg.ParentDiedBefore.G = 'Elternteil gestorben befor Kind geboren'
+   msg.MarriedTooYoung.G  = 'Zu jung verheiratet'
+
+   msg.MarriedADeath.G    = 'Heirat nach Tod'
+   msg.MarriedSSex.G      = 'Heirated  mit gleichem Geschlecht'
+   msg.DivorceBMarriage.G = 'Scheidung vor Heirat'
+   msg.DivorceADeath.G    = 'Scheidung nach Tod'
+   msg.TooYoungParent.G   = 'Zu junge Eltern'
+
+   msg.SurnameChanged.G   = 'Nicht der Nachname des Vaters'
+   msg.NoGender.G         = 'Person ohne Geschlecht'
+   msg.OldPartner.G       = 'Ziemlich alter Partner'
+
+
+   /* [D]utch Messages */
+   msg.Header.D  = 'De stamboom wordt op onregelmatigheden gecontroleerd.'
+   msg.Error.D   = 'Fout'
+   msg.Warning.D = 'Waarschuwing '
+   msg.Years.D   = ' jaren'                          /* "999 jaar oud" */
+   msg.Family.D  = 'Familie'                          /* "Familie 2" */
+
+   msg.BornAfterDeath.D  = 'Geboren na sterfdatum'
+   msg.BornBeforeParent.D = 'Geboren voor ouder(s)'
+   msg.ParentDiedBefore.D = 'Ouder overleden voor de geboorte van het kind'
+   msg.MarriedTooYoung.D  = 'Te jong getrouwd'
+
+   msg.MarriedADeath.D    = 'Getrouwd na sterfdatum'
+   msg.MarriedSSex.D      = 'Getrouwd met hetzelde geslacht'
+   msg.DivorceBMarriage.D = 'Gescheiden voor trouwdatum'
+   msg.DivorceADeath.D    = 'Gescheiden na sterfdatum'
+   msg.TooYoungParent.D   = 'Heeft een te jonge ouder'
+
+   msg.SurnameChanged.D   = "Achternaam anders dan die van de vader"
+   msg.NoGender.D         = 'Persoon heeft geen geslacht'
+   msg.OldPartner.D       = 'Heeft een zeer oude partner'
+
+   /* [F]rench Messages */
+   msg.Header.F  = "V‚rification de l'arbre g‚n‚alogique pour des incoh‚rences."
+   msg.Error.F   = "Erreur"
+   msg.Warning.F = "ProblŠme …"
+   msg.Years.F   = " ann‚es"                          /* "999 years old" */
+   msg.Family.F  = "Famille"                          /* "Family 2" */
+
+   msg.BornAfterDeath.F   = "N‚(e) apr‚s le d‚cŠs"
+   msg.BornBeforeParent.F = "N‚(e) avant le parent"
+   msg.ParentDiedBefore.F = "Parent d‚c‚d‚(e) avant que l'enfant ne naisse"
+   msg.MarriedTooYoung.F  = "Mari‚(e) trop jeune"
+
+   msg.MarriedADeath.F    = "Mari‚(e) apr‚s le d‚cŠs"
+   msg.MarriedSSex.F      = "Mari‚(e) … quelqu'un du mˆme sexe"
+   msg.DivorceBMarriage.F = "Divorc‚(e) avant le mariage"
+   msg.DivorceADeath.F    = "Divorc‚(e) apr‚s le d‚cŠs"
+   msg.TooYoungParent.F   = "A un parent trop jeune"
+
+   msg.SurnameChanged.F   = "Nom diff‚rent de celui du pŠre"
+   msg.NoGender.F         = "Le sexe de cette personne n'est pas d‚fini"
+   msg.OldPartner.F       = "A un conjoint vraiment ag‚"
+
+   /* Done */ 
+   return

@@ -1,0 +1,38 @@
+FamilyTree Version 1.2e
+=======================
+
+Copyright (C) 1996 Nils Meier
+
+
+SHORT DESCRIPTION:
+==================
+
+FamilyTree is a PM-32bit-multithreaded program for OS/2 3.x.
+
+With FamilyTree you can edit your ancestral data as a visual family
+tree. You can add persons to a family tree and enter their properties
+have a look at their ancestors and descendants and investigate
+relationships.
+Supported properties are: Name, Birth, Death, Marriage, Address,
+Comment, Picture, Files, *UserFields , *Sources, *Events (*=planned).
+Working is done by pointing with the mouse and opening context-menus
+via a right-mouse-click.
+FamilyTree supports Rexx-scripts for various (extendable) reports and
+im/export (GEDCOM is supported).
+
+FamilyTree was written and tested on OS/2 3.0 with VAC++ 3.0.
+
+CONTACTING THE AUTHOR:
+======================
+
+My mail address is
+    Nils Meier
+    Birkenweg 27
+    53797 Lohmar
+    GERMANY / EUROPE
+
+My Internet address is
+    meier2@athene.informatik.uni-bonn.de
+
+Please send any suggestions, comments or bug reports to one of the above
+addresses.

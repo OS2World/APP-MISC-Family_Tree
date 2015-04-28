@@ -1,0 +1,440 @@
+#include "..\ftree.h"
+#include <os2.h>
+
+ACCELTABLE ID_NMainWindow
+BEGIN
+   "+", MI_MankindZoomIn
+   "-", MI_MankindZoomOut
+
+   "n", MI_FileNew, CONTROL
+   "l", MI_FileOpen, CONTROL
+   "m", MI_FileMerge, CONTROL
+   "s", MI_FileSave, CONTROL
+   "d", MI_FilePrint, CONTROL
+   "x", MI_FileClose, CONTROL
+
+   VK_F2, MI_FileSave, VIRTUALKEY
+   VK_F3, MI_FileClose, VIRTUALKEY
+
+   "r", MI_RexxStart, CONTROL
+
+   "1", MI_MankindAncestors, CONTROL
+   "2", MI_MankindDescendants, CONTROL
+   "3", MI_MankindSiblings, CONTROL
+
+   "h", MI_MankindHori, CONTROL
+   "v", MI_MankindVert, CONTROL
+END
+
+STRINGTABLE PRELOAD MOVEABLE
+ BEGIN
+
+   ID_nbOpen,                "Data laden"
+   ID_nbSave,                "Data Opslaan"
+   ID_nbPrint,               "Data printen"
+   ID_nbOptions,             "Keuzes instellen"
+   ID_nbLocate,              "Persoon zoeken"
+   ID_nbHoriVert,            "Horizontaal/Vertikaal overzicht"
+   ID_nbAncestors,           "Zichtbare generaties van voorouders"
+   ID_nbDescendants,         "Zichtbare generaties van afstammelingen"
+   ID_nbSiblings,            "Broers en zusters zichtbaar"
+   ID_isZoom,                  "Zoom factor"
+   ID_nbTopBottom,           "Knoppenbalk boven/onder"
+
+   SI_MainTitle,               " Stamboom "
+   SI_MainTitleUnregistered,   " (ongeregistreerd) "
+   SI_EditTitle,               "Bewerk venster "
+   SI_ListTitle,               "Lijst venster "
+   SI_EventTitle,              "Events venster "
+   SI_OptionsTitle,            "Keuzes venster "
+
+   SI_NotImplemented,   "Nog niet af"
+   SI_TabStandard,      "Standaard datavelden"
+   SI_TabUser,          "Gebruikers datavelden"
+   SI_TabSources,       "Gedocumenteerde bronnen"
+   SI_TabEvents,        "Gebeurtenissen"
+   SI_TabAttachments,   "Aangehechte bestanden"
+
+   SI_Name,             "Naam"
+   SI_FirstName,        "Voor"
+   SI_Sex,              "M/V"
+   SI_MaleFemale,       "-MV"
+   SI_BirthDate,        "Geboorte"
+   SI_BirthPlace,       "Plaats"
+   SI_DeathDate,        "Sterf"
+   SI_DeathPlace,       "Plaats"
+   SI_MarriageDate,     "Huwelijk"
+   SI_MarriagePlace,    "Plaats"
+   SI_DivorceDate,      "Be‰indigd"
+   SI_Occupation,       "Beroep"
+   SI_Address,          "Adres"
+   SI_Memo,             "Notitie"
+   SI_Bitmap,           "Afbeelding"
+
+   SI_Adam,             "Adam"
+   SI_Child,            "Kind"
+   SI_Mom,              "Moeder"
+   SI_Dad,              "Vader"
+   SI_Partner,          "Partner"
+   SI_NoneRemembered,   "<Geen Bekend>" /**/
+   SI_NewPerson,        "~Nieuw"
+   SI_ReallyDelChilds1, "Kinderen verwijderen van "
+   SI_ReallyDelChilds2, " wist alle kinderen en hun verwanten! Doorgaan?"
+   SI_ReallyDelParents1,"Ouders verwijderen van "
+   SI_ReallyDelParents2," wist de ouders en hun verwanten, behalve deze regel?"
+   SI_ReallyDelThis1,   "Verwijderen persoon "     /**/
+   SI_ReallyDelThis2,   " verwijdert ook alle verwanten, niet aan de kant van de oorsprong! Doorgaan?"
+   SI_ReallyDelPartner1,"Partner verwijderen van "
+   SI_ReallyDelPartner2," verwijdert ouders, kinderen en hun verwanten! Doorgaan?"
+   SI_ReallyStealChild1,"Toevoegen kind "  /**/
+   SI_ReallyStealChild2," verwijdert zijn/haar ouders, als deze niet langer aan de oorsprong verwant zijn! Doorgaan?"
+   SI_AncestorLoop1,    " kan geen kind zijn van " /**/
+   SI_AncestorLoop2,    ", omdat hij/zij een voorouder is!"
+   SI_ImportNoData,     "*** geen data om te importeren!"
+   SI_ImportNumPersons, "*** aantal te importeren personen: "
+   SI_ImportOrigin,     "*** Oorsprong is                        : "
+   SI_ImportPAdded,     "*** aantal personen toegevoegd als gevolg van onbekende/programmalus situatie    : "
+   SI_ImportPDropped,   "*** aantal personen laten vervallen omdat zij niet verwant zijn aan de oorsprong : "
+   SI_ImportFDropped,   "*** Aantal families laten vervallen omdat zij niet zijn bereikt     : "
+
+   SI_DlgFileError,     "fout bij openen van het bestand: "
+   SI_DlgFileFalse,     "Geen geldig bestand: "
+   SI_DlgFileBadWrite,  "Bestands schrijffout: "
+   SI_DlgFileLoad,      "Stamboom wordt geladen"
+   SI_DlgFileSave,      "Stamboom wordt opgeslagen"
+
+   SI_BmpOrGifPlease,   "slechts GIFs,TIFs,PCXs or BMPs!"
+   SI_BmpGiveName,      "Geef uw stamboom een naam  (bij Opslaan Als), zodat ik het betreffende pad kan opslaan !"
+   SI_BmpDoRelative,    "Verplaats de afbeelding naar de Directory waarin uw stamboom zich bevindt, zodat ik een verwijzingspad kan opslaan !"
+
+   SI_NoHelp,           "Geen hulp beschikbaar!"
+   SI_SaveNow,          "U hebt deze stamboom gewijzigd! Nu opslaan? "
+   SI_NoProfile,        "Ik kon het profiel niet lezen of het profiel is niet compleet!"
+   SI_NoSaveProfile,    "Ik kon het profiel niet wegschrijven!"
+
+   SI_PrintTitle,              "Stamboom wordt afgedrukt"
+   SI_PrintPrinter,            "Printer"
+   SI_PrintPageSize,           "blz. afmeting (cm)"
+   SI_PrintDPI,                "Resolutie (dpi)"
+   SI_PrintPages,              "aantal blz."
+   SI_PrintFit,                "Inpassen"
+   SI_PrintZoom,               "Zoom factor"
+   SI_PrintDoPrint,            "Afdrukken"
+   SI_PrintDoProps,            "Eigenschappen"
+   SI_PrintDoCancel,           "Annuleren"
+   SI_PrintErrNoQueuesDef,     "Er zijn geen afdrukrijen gedefinieerd!"
+   SI_PrintErrDevOpenFailed,   "Ik kon het Printer Device niet openen!"
+   SI_PrintErrQueryCapsFailed, "Ik kon de kenmerken van de afdrukrij niet opvragen "
+   SI_PrintErrCreatePSFailed,  "Ik kon PS niet aanmaken!"
+
+   SI_QueryGenerationsPlease  ,"Specificeren a.u.b." /**/
+   SI_QueryGenerationsParent  ,"Zichtbare generaties van voorouders om de boom om te boom op toe te snijden"
+   SI_QueryGenerationsChild   ,"Zichtbare generaties van afstammelingen om de boom op toe te snijden"
+   SI_QueryGenerationsMax     ,"Altijd het maximum"
+   SI_QueryGenerationsUpTo    ,"tot aan"
+
+   SI_DropFileHere,            "Laat hier een bestand op vallen!"
+   SI_DropPersonHere,          "Laat hier een persoon op vallen om hem/haar aan deze gebeurtenis toe te voegen!"
+   SI_DropEventHere,           "Laat hier een gebeurtenis op vallen om die aan de persoon toe te voegen!"
+   SI_ClickForEvent,           "Hier aanklikken om een nieuwe gebeurtenis te cre‰ren!"
+   SI_Person,                  "Persoon"
+   SI_Event,                   "Gebeurtenis"
+   SI_InvolvedPerson,          "Betrokken persoon"
+   SI_InvolvedAs,              "Betrokken als"
+
+   SI_MsgGenAncestors,         " Gen.Voorouders "
+   SI_MsgGenDescendants,       " Gen.Afstammelingen "
+   SI_MsgNumberOfMan,          " Personen "
+   SI_MsgNumberOfRel,          " Families "
+   SI_MsgPrinting,             "Blz. wordt afgedrukt "
+   SI_MsgLoadPerson,           "Persoon wordt geladen "
+   SI_MsgLoadMarriage,         "Familielid wordt geladen "
+   SI_MsgLoadEvent,            "Loading event "
+   SI_MsgSaveEvent,            "Saving event "
+   SI_MsgSavePerson,           "Persoon wordt opgeslagen "
+   SI_MsgSaveMarriage,         "Familielid wordt opgeslagen "
+   SI_MsgLoadCheck,            "IDs controleren..."
+   SI_MsgDuplicateIDs,         "Dubbele/ontbrekende ID(s) ! Mag ik de ID's corrigeren?"
+   SI_MsgDoingBackup,          "Maak backup "
+
+   SI_AboutTitle,              "Info Family Tree"
+   SI_AboutHead,               "Family Tree 1.2f"
+   SI_AboutCopyright,          "(C) 1996 Nils Meier"
+   SI_AboutRegisterHere,       "Hier kunt u zich registreren :"
+   SI_AboutPlease1,            "Lees de on-line hulp voor"
+   SI_AboutPlease2,            "informatie over registratie."
+   SI_AboutDoRegister,         "Register"
+   SI_AboutLater,              "Tot ziens"
+   SI_AboutIsRegTo,            "Dit programma is geregistreerd door"
+   SI_AboutThanks,             "Bedankt voor uw registratie !"
+   SI_AboutVerify,             "Verifieer aub uw data! \n Vul de registratie informatie precies zo in als vermeld!"
+
+   SI_MonthNames+ 0,           "?"
+   SI_MonthNames+ 1,           "Januari"
+   SI_MonthNames+ 2,           "Februari"
+   SI_MonthNames+ 3,           "Maart"
+   SI_MonthNames+ 4,           "April"
+   SI_MonthNames+ 5,           "Mei"
+   SI_MonthNames+ 6,           "Juni"
+   SI_MonthNames+ 7,           "Juli"
+   SI_MonthNames+ 8,           "Augustus"
+   SI_MonthNames+ 9,           "September"
+   SI_MonthNames+10,           "Oktober"
+   SI_MonthNames+11,           "November"
+   SI_MonthNames+12,           "December"
+
+   SI_Window,                  "Venster"
+   SI_Language,                "Nederlands"
+   SI_EnterPath,               "Pad invullen:"
+
+   SI_RexxDialog,              "Kies Rexx"
+   SI_RexxScript,              "Script"
+   SI_RexxLongname,            "Lange naam"
+   SI_RexxAuthor,              "Auteur"
+   SI_RexxComment,             "Commentaar"
+   SI_RexxStart,               "~Start"
+   SI_RexxRemember,            "~Opslaan"
+   SI_RexxNotFound,            "Geen scripts gevonden !"
+   SI_RexxUnknown,             "Onbekend"
+   SI_RexxTitle,               "Rexx Output van "
+   SI_RexxFinished,            "Klaar "
+   SI_RexxDone,                "~OK"
+   SI_RexxCancel,              "~Annuleer"
+   SI_RexxPrint,               "~Afdrukken"
+   SI_RexxSave,                "~Opslaan"
+   SI_RexxOutputSave,          " rexx output in bestand opslaan"
+   SI_RexxOutputSaveError,     "Ik kon de rexx output niet in een bestand opslaan!"
+   SI_RexxUnfinishedImport,    "There are persons left, who are not related to the Origin! Do you want to keep them in memory for a later import?"
+
+   SI_ListId,                  "ID"
+   SI_ListSex,                 "Geslacht"
+   SI_ListName,                "Naam"
+   SI_ListFirst,               "Voornaam"
+   SI_ListBirth,               "Geboortedatum"
+   SI_ListBPlace,              "Geboorteplaats"
+   SI_ListDeath,               "Sterfdatum"
+   SI_ListDPlace,              "Sterfplaats"
+   SI_ListSortBy,              "Sorteer selectie"
+   SI_ListSortFields,          "Beschikbare velden"
+   SI_ListSortSequence,        "Sorteer aan de hand van"
+
+   SI_EventsTab1,              "Gebeurtenis Gegevens"
+   SI_EventsTab2,              "Beterokken personen"
+   SI_EventsTab3,              "Gedocumenteerde Bronnen"
+   SI_EventsName,              "Gebeurtenis"
+   SI_EventsFrom,              "Vanaf Datum"
+   SI_EventsTo,                "Tot Datum"
+   SI_EventsPlace,             "Plaats"
+   SI_EventsDescription,       "Beschrijving"
+
+   SI_OptionsLayout,           "Opmaak"
+   SI_OptionsDataAssistant,    "Data Assistent"
+   SI_OptionsMiscellaneous,    "Diversen"
+   SI_OptionsDateFormat,       "Date format"
+   SI_OptionsUserFields,       "Gebruikers velden"
+   SI_OptionsProgram,          "(Programma Instellingen)"
+   SI_OptionsTree,             "(Boom Instellingen)"
+   SI_OptionsLines,            "Lijnen"
+   SI_OptionsDiagonal,         "Diagonaal"
+   SI_OptionsOrthogonal,       "Orthogonaal"
+   SI_OptionsDetail,           "Detail"
+   SI_OptionsFirstNames,       "Voornamen"
+   SI_OptionsDates,            "Geboorte/sterf datums"
+   SI_OptionsColor,            "Kleur"
+   SI_OptionsCBackground,      "Achtergrond"
+   SI_OptionsCLines,           "Lijnen"
+   SI_OptionsCBoxes,           "Kaders"
+   SI_OptionsCEmphasis,        "Vet"
+   SI_OptionsCTexts,           "Teksten"
+   SI_OptionsCDefault,         "Standaard"
+   SI_OptionsFont,             "Lettertype"
+   SI_OptionsAddPartSA,        "Partner toevoegen -> krijgt het zelfde adres"
+   SI_OptionsAddPartOS,        "Partner toevoegen -> krijgt andere geslacht"
+   SI_OptionsAddChilSN,        "Kind toevoegen -> krijgt de zelde naam"
+   SI_OptionsAddChilSA,        "Kind toevoegen -> krijgt het zelfde adres"
+   SI_OptionsAddPareMF,        "Ouders toevoegen -> worden manlijk&vrouwelijk"
+   SI_OptionsAddPareSN,        "Ouders toevoegen -> Krijgen de zelfde naam"
+   SI_OptionsAddPareSA,        "Ouders toevoegen -> Krijgen het zelfde adres"
+   SI_OptionsFocusToEdit,      "Bewerkingsdialoog komt in beeld na klik op persoon"
+   SI_OptionsRelPath,          "Probeer de betrokken paden op te slaan"
+   SI_OptionsDoBackup,         "Maak reservebestand v••r het opslaan"
+   SI_OptionsImportPreserve,   "Bewaar altijd de niet geimporteerde personen"
+   SI_OptionsFloatEdit,        "Vrij zwevend bewerkings-venster"
+   SI_OptionsFloatList,        "Vrij zwevend lijst-venster"
+   SI_OptionsFloatEvents,      "Vrij zwevend Gebeurtenis-venster"
+   SI_OptionsMemoWordWrap,     "Memoveld met word wrap"
+   SI_OptionsBorderlessButtons,"Borderless buttons"
+   SI_OptionsDateFmt,          "Datumformaat"
+   SI_OptionsChooseFont,       "Kies een lettertype"
+
+   SI_FeatureNotAvailable1,    "Niet geregistreerd"
+   SI_FeatureNotAvailable2,    "Na registratie van FamilyTree, is deze verandering permanent. Bestandskoppelingen worden niet bewaard in de ongeregistreerde versie !"
+
+   SI_UserFieldField,     "Veld"
+   SI_UserFieldValue,     "Waarde"
+   SI_UserFieldFieldName, "Veldnaam"
+   SI_UserFieldFieldType, "Veldtype"
+   SI_UserFieldYesNo,     "Ja/Nee"
+   SI_UserFieldText,      "Tekst"
+   SI_UserFieldNumber,    "Nummer"
+   SI_UserFieldDate,      "Datum"
+   SI_UserFieldNone,      "Geen velden defined!"
+   SI_UserFieldMax3,      "U Kunt niet meer dan 3 gebruikersvelden in de ongeregistreerde versie van FamilyTree!"
+   SI_UserFieldDelete,    "Wilt U echt het gebruikersveld verlaten $? Alle data in de stamboom in verbonden met dat veld zullen worden gewist!"
+
+   SI_OK,     "OK"
+   SI_Cancel, "Annuleer"
+   SI_New,    "Nieuw"
+   SI_Change, "Wijzig"
+   SI_Delete, "Wis"
+   SI_Yes,    "Ja"
+   SI_No,     "Nee"
+   SI_Unknown,"Onbekend"
+
+END
+
+ MENU MI_Main
+   BEGIN
+        SUBMENU "~Bestand",                     MI_MainFile
+           BEGIN
+             MENUITEM "~Nieuw\tCtrl+N",         MI_FileNew
+             MENUITEM "~Laden\tCtrl+L",         MI_FileOpen
+             MENUITEM "~Merge\tCtrl+M",         MI_FileMerge
+             MENUITEM "~Opslaan\tCtrl+S",       MI_FileSave
+             MENUITEM "Opslaan ~Als",           MI_FileSaveAs
+             MENUITEM "~Afdrukken\tCtrl+P",     MI_FilePrint
+             MENUITEM                           SEPARATOR
+             MENUITEM "~Sluiten\tCtrl+X",       MI_FileClose
+           END
+         SUBMENU "~Bekijken",                   MI_MainView
+           BEGIN
+             MENUITEM "~Voorouders\tCtrl+1",    MI_MankindAncestors
+             MENUITEM "~Afstammelingen\tCtrl+2",MI_MankindDescendants
+             MENUITEM "~Broers&Zusters\tCtrl+3",MI_MankindSiblings
+             MENUITEM                           SEPARATOR
+             MENUITEM "Inzoomen\t+",            MI_MankindZoomIn
+             MENUITEM "Uitzoomen\t-",           MI_MankindZoomOut
+             MENUITEM                           SEPARATOR
+             MENUITEM "~Horizontaal\tCtrl+H",   MI_MankindHori
+             MENUITEM "~Vertikaal\tCtrl+V",     MI_MankindVert
+             MENUITEM                           SEPARATOR
+             MENUITEM "~Lijst",                 MI_MankindList
+             MENUITEM "~Events",                MI_MankindEvents
+             MENUITEM "~Toolbar",               MI_MankindToolbar
+           END
+        SUBMENU "~Keuzes",                      MI_MainOptions
+          BEGIN
+            MENUITEM "~Layout",                 MI_OptionsLayout
+            MENUITEM "Data ~Hulp",              MI_OptionsDataAssistant
+            MENUITEM "~Diversen",               MI_OptionsMiscellaneous
+            MENUITEM "~Gebruikers Velden",      MI_OptionsUserFields
+          END
+         SUBMENU "~Rexx",                       MI_MainRexx
+           BEGIN
+             MENUITEM "~Start Ctrl+R",          MI_RexxStart
+             MENUITEM                           SEPARATOR
+           END
+         SUBMENU "~Help",                       MI_MainHelp, MIS_HELP
+           BEGIN
+             MENUITEM "~Introductie",           SC_HELPEXTENDED, MIS_SYSCOMMAND
+             MENUITEM "Hulp~index",             SC_HELPINDEX, MIS_SYSCOMMAND
+             MENUITEM                           SEPARATOR
+             MENUITEM "~Info",                  MI_About
+           END
+   END
+
+MENU MI_Man                                   //ManPopUpMenu for Man
+  BEGIN
+    MENUITEM "~Centreren",              MI_ManCenter
+    MENUITEM "~Bewerken",               MI_ManEdit
+    MENUITEM "~Hoofdpersoon",           MI_ManOrigin
+    MENUITEM SEPARATOR
+    SUBMENU "~Wissen",                  MI_ManDel
+      BEGIN
+        SUBMENU "~Partner ",            MI_ManDelPartner
+          BEGIN
+          END
+        SUBMENU "~Kinderen met ",       MI_ManDelChilds
+          BEGIN
+          END
+        MENUITEM "~Ouders",             MI_ManDelParents
+        MENUITEM "~Deze",               MI_ManDelThis
+      END
+    SUBMENU "Nieuw ~Kind met ",         MI_ManChild
+      BEGIN
+      END
+    MENUITEM "Nieuw ~Ouders",           MI_ManParents
+    SUBMENU "Nieuw P~artner",           MI_ManPartner
+      BEGIN
+        MENUITEM "~Nieuw",              MI_ManPartnerNew
+      END
+    MENUITEM "Op~slaan",                 MI_ManRemember
+  END
+
+MENU MI_Mankind                               //ManPopUpMenu for Mankind
+  BEGIN
+    MENUITEM "~Voorouders\tCtrl+1",     MI_MankindAncestors
+    MENUITEM "~Afstammelingen\tCtrl+2", MI_MankindDescendants
+    MENUITEM "~Broers&Zusters\tCtrl+3", MI_MankindSiblings
+    MENUITEM                            SEPARATOR
+    MENUITEM "Inzoomen\t~+",            MI_MankindZoomIn
+    MENUITEM "Uitzoomen\t~-",           MI_MankindZoomOut
+    MENUITEM                            SEPARATOR
+    MENUITEM "~Horizontaal\tCtrl+H",    MI_MankindHori
+    MENUITEM "~Vertikaal\tCtrl+V",      MI_MankindVert
+    MENUITEM                            SEPARATOR
+    MENUITEM "~Lijst",                  MI_MankindList
+    MENUITEM "~Events",                 MI_MankindEvents
+    MENUITEM "~Toolbar",                MI_MankindToolbar
+  END
+
+MENU MI_Manlist PRELOAD MOVEABLE           // ManlistPopUpMenu for Manlist
+  BEGIN
+    MENUITEM "~Sorteren op ...",             MI_ManlistSort
+  END
+
+MENU MI_EventList PRELOAD MOVEABLE        // EventList
+  BEGIN
+    MENUITEM "~Nieuwe gebeurtenissen",            MI_EventListNew
+    MENUITEM "~Gebeurtenis wissen",         MI_EventListDel
+  END
+
+MENU MI_EventEdit PRELOAD MOVEABLE        // EventEdit
+  BEGIN
+    MENUITEM "~Wijzig",                MI_EventEditChange
+    MENUITEM "~Verwijder",                MI_EventEditDel
+    MENUITEM "Naar ~boven",                    MI_EventEditUp
+    MENUITEM "Naar be~neden",                  MI_EventEditDown
+  END
+
+MENU MI_ManEditEventList PRELOAD MOVEABLE  // ManEdit EventList
+  BEGIN
+    MENUITEM "~Spring naar",               MI_ManEditEventListJump
+    MENUITEM                           SEPARATOR
+    MENUITEM "~Wijzig",                MI_ManEditEventListChange
+    MENUITEM                           SEPARATOR
+    MENUITEM "Ver~wijder",                MI_ManEditEventListDel
+  END
+
+
+MENU MI_FileBox PRELOAD MOVEABLE           // FilesPopUpMenu for NFileBox
+  BEGIN
+    MENUITEM "~Open",                   MI_FileBoxOpen
+    MENUITEM "~Wijzig",                 MI_FileBoxChange
+    MENUITEM "~Maak Eerst",             MI_FileBoxFirst
+    MENUITEM "~Verwijder",              MI_FileBoxDel
+    MENUITEM                            SEPARATOR
+    MENUITEM "~Nieuw",                  MI_FileBoxNew
+    MENUITEM "Verwijder ~Alles",        MI_FileBoxClear
+  END
+
+MENU MI_Date PRELOAD MOVEABLE           // PopUpMenu for date information
+  BEGIN
+    MENUITEM "~at\aCtrl+0",                  MI_DateAt
+    MENUITEM "a~bout\aCtrl+1",               MI_DateAbout
+    MENUITEM "a~fter\aCtrl+2",               MI_DateAfter
+    MENUITEM "~before\aCtrl+3",              MI_DateBefore
+    MENUITEM "~estimated\aCtrl+4",           MI_DateEstimated
+  END
+
+

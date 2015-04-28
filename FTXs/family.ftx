@@ -1,0 +1,262 @@
+/*
+   Family Tree Rexx Script FTX
+
+   Copyright (C) 1997 by <Dale DePriest>
+   revised 20 Sep 1997
+
+   Please send comments to / Kommentar bitte an
+        daled@cadence.com
+
+   <
+   English:   This script tells a story about the currently selected family. You, your spouse, sons and daughters. :English
+   Deutsch:   Dieses Skript zeigt alle Informationen des aktuell ausgew„hlten Menschen.:Deutsch
+   Nederlands:This script shows all informations about the currently selected person.  :Nederlands
+   Fran‡ais:  Ce script affiche toutes les informations sur la personne actuellement
+              s‚lectionn‚e.                                                            :Fran‡ais
+   >
+
+   Long name is <
+                 English:    Story about current family          :English
+                 Deutsch:    Ausgeben der aktuellen Person       :Deutsch
+                 Nederlands: Print out current person            :Nederlands
+                 Fran‡ais:   Imprime la personne s‚lectionn‚e    :Fran‡ais
+                >
+*/
+
+/* ----------------------- Params  /  Parameter ------------------- */
+
+CALL InitLanguage
+
+/* ---------------- Get age of Current Person. Everything else
+                    is in the story.ftx call           ------------ */
+
+cr        = '0d0a'x
+linelength=70
+
+leftover=''
+dayold=getBirthDate('d')
+
+
+/* Print information about Selected Person - The 1 forces an early return */
+/* return value is the preferred name of this Person. */
+CALL 'ftxs/story.ftx' 1
+nickname=RESULT
+
+/* Marriages  /  Ehen */
+p=1
+rc=selectFamily(p)
+
+DO WHILE rc=1
+   /* Push Man on Stack  /  Menschen auf Stack */
+   rc=doStack('PP')
+
+   /* Partner  /  Parner */
+   rc=selectPerson('p')
+   result=getFirstName()||' '||getName()||' '
+
+   /* MarriageDate  /  Heiratsdatum */
+   result=space(nickname msg.marriage.LANG||result||parsedate('marriage'))
+   daymar=getMarriageDate('d')
+
+   /* Output  /  Ausgabe */
+   SAY('')
+if (daymar * dayold) \= 0 then
+   call printline(result||' at age' TRUNC((daymar - dayold)/ 365)'.' )
+else call printline (result'.')
+
+if leftover \= '' then say(leftover)
+leftover=''
+
+
+/* Now do spouse, marriage place and children names comes from here.*/
+if p>1 then say (cr'About 'nickname"'s  number "p" spouse. ")
+else say('')
+  rc=doStack('PF')
+  call 'ftxs/story.ftx'
+  rc=doStack('pF')
+
+   /* Detailed info about Children  /  Kinder */
+   ch=1
+   rc=selectPerson(ch);
+   DO WHILE rc=1
+
+      /* link to tell story of child */
+      say ('')
+      rc=doStack('PF')
+      call "ftxs/story.ftx"
+      rc=doStack('pF')
+      ch=ch+1
+      rc=selectPerson(ch)
+   END
+
+   /* Pop Man from Stack  /  Menschen vom Stack */
+   rc=doStack('pP')
+
+   /* Next Family of Actual /  Naechste Familie des Aktuellen */
+   p=p+1
+   rc=selectFamily(p)
+END
+
+
+/* Done / Fertig */
+Say (cr'The story about 'nickname"'s Family is Finished.")
+EXIT
+
+  /* SubRoutines */
+printline:
+parse arg linetoprint
+leftover=leftover||' '||linetoprint
+
+if length(leftover) < linelength then return
+loca=pos(' ',leftover)
+do while loca < linelength
+ oldloc=loca
+ loca=pos(' ',leftover,loca+1)
+ if loca=0 then leave
+end
+say(left(leftover,oldloc))
+leftover=right(leftover,length(leftover)-oldloc)
+if length(leftover) > linelength then call printline
+return
+
+Parsedate: 
+parse arg type
+
+If type='birth' then do
+	Day=Getbirthdate('D')
+	Month1=GetBirthDate('m')
+	Year=GetBirthDate('Y')
+	modify=GetBirthDate('O')
+   end
+if Type='death' then do
+	Day=GetDeathdate('D')
+	Month1=GetDeathDate('m')
+	Year=GetDeathDate('Y')
+	modify=GetDeathDate('O')
+   end
+if Type='marriage' then do
+	Day=GetMarriageDate('D')
+	Month1=GetMarriageDate('m')
+	Year=GetMarriageDate('Y')
+	modify=GetMarriageDate('O')
+   end
+
+prep='on '
+if Day=0 then Day=""
+else Day=Day||', '
+if Month1='?' then do
+   Month1 = ''
+   if modify > 0 then prep=''
+   else prep='in '
+end
+if modify = 0 then modify=''
+else modify=WORD(msg.mod.LANG, modify)
+If Year=0 then do
+prep=''
+year=''
+end
+msg=prep || Modify ||' '||Month1 ||' '|| Day|| Year
+return msg
+
+ParsePlace:
+loc=pos(',',msg2)
+do while loc>0 
+	msg2=insert(' ',msg2,loc)
+	loc=pos(',',msg2,loc+2)
+end
+return space(msg2)
+
+/* ---------------------- LANGUAGE INIT --------------------------- */
+InitLanguage:
+
+   /* Calculate Language Index */
+   lang='E'                              /* Default -> [E]nglish */
+   IF getLanguage()='Deutsch' THEN       /* Deutsch -> [G]erman */
+      lang='G'
+   IF getLanguage()='Nederlands' THEN    /* Nederlands -> [D]utch */
+      lang='D'
+   IF getLanguage()='Fran‡ais' THEN       /* Fran‡ais -> [F]rench */
+      lang='F'
+
+   /* [E]nglish Messages */
+   msg.header.E    ='Personal data of '
+   msg.name.E      ='Name            : '
+   msg.firstname.E ='First name      : '
+   msg.sex.E       ='Sex             : '
+   msg.birthdate.E ='Birth date'
+   msg.birthplace.E='Birth location  : '
+   msg.deathdate.E ='Death date      : '
+   msg.deathplace.E='Death location  : '
+   msg.occupation.E='works as '
+   msg.address.E   ='Address         : '
+   msg.memo.E      ='Memo            : '
+   msg.picture.E   ='Picture         : '
+   msg.marriage.E  ='married '
+   msg.child.E     ='They had the following Children:'
+   msg.empty.E     ='    '
+   msg.datasex.E   = '? He She'
+   msg.datasex1.E  = 'child son daughter'
+   msg.mod.E = 'about after before estimated'
+
+   /* [G]erman Messages */
+   msg.header.G    ='Persoenliche Daten von '
+   msg.name.G      ='Name            : '
+   msg.firstname.G ='Vorname         : '
+   msg.sex.G       ='Geschlecht      : '
+   msg.birthdate.G ='Geburtsdatum    : '
+   msg.birthplace.G='Geburtsort      : '
+   msg.deathdate.G ='Todesdatum      : '
+   msg.deathplace.G='Todesort        : '
+   msg.occupation.G='Beruf           : '
+   msg.address.G   ='Addresse        : '
+   msg.memo.G      ='Memo            : '
+   msg.picture.G   ='Bild            : '
+   msg.marriage.G  ='Ehe mit         : '
+   msg.child.G     ='- Kinder        : '
+   msg.empty.G     ='                : '
+   msg.datasex.G   = '? m„nnlich weiblich'
+   msg.datasex1.G   = 'm„nnlich weiblich'
+
+   /* [D]utch Messages */
+   msg.header.D    ='Personal data of '
+   msg.name.D      ='Name            : '
+   msg.firstname.D ='First name      : '
+   msg.sex.D       ='Sex             : '
+   msg.birthdate.D ='Birth date      : '
+   msg.birthplace.D='Birth location  : '
+   msg.deathdate.D ='Death date      : '
+   msg.deathplace.D='Death location  : '
+   msg.occupation.D='Occupation      : '
+   msg.address.D   ='Address         : '
+   msg.memo.D      ='Memo            : '
+   msg.picture.D   ='Picture         : '
+   msg.marriage.D  ='Marriage with   : '
+   msg.child.D     ='- Children      : '
+   msg.empty.D     ='                : '
+   msg.datasex.D   = '? male female'
+
+   /* [F]rench Messages */
+   msg.header.F    ="Renseignements sur "
+   msg.name.F      ="Nom                : "
+   msg.firstname.F ="Pr‚nom(s)          : "
+   msg.sex.F       ="Sexe               : "
+   msg.birthdate.F ="Date de Naissance  : "
+   msg.birthplace.F="Lieu de Naissance  : "
+   msg.deathdate.F ="Date du D‚cŠs      : "
+   msg.deathplace.F="Lieu du D‚cŠs      : "
+   msg.occupation.F="Activit‚           : "
+   msg.address.F   ="Adresse            : "
+   msg.memo.F      ="M‚mo               : "
+   msg.picture.F   ="Image              : "
+   msg.marriage.F  ="Mariage avec       : "
+   msg.child.F     ="- Enfant(s)        : "
+   msg.empty.F     ="                   : "
+   msg.datasex.F   ="? Homme Femme"
+   msg.datasex1.F   ="Homme Femme"
+
+   /* Done */
+   RETURN
+
+
+
+
